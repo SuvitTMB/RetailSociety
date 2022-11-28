@@ -1,0 +1,46 @@
+.box-menu {
+  width:30%; border:1px solid #f1f1f1; background-color: #e4ecff; height: 130px; 
+  color:#0056ff; font-weight: 600; overflow: hidden;
+  padding:10px; text-align: center; margin:5px; float: left; border-radius: 8px;
+  font-size: 13px; line-height: 1.2;
+}
+.box-menu:hover {
+  background-color: #fff6e4; cursor: pointer; color:#000;
+}
+.box-menu-img {
+  margin:2px auto 6px auto; width:100%; max-width:65px;
+}
+.box-menu-text {
+  font-size: 13px; font-weight: 600; line-height: 1.1;
+}
+
+
+.btn-t1 {
+  font-family: ttb-regular, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  transition: 0.5s;
+  line-height: 1;
+  margin-top: 6px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #ab79ff;
+  background-color: #ab79ff;
+  text-align: center;
+  width:120px;
+  color:#fff;
+}
+
+.btn-t1:hover {
+  background: #fff;
+  color: #ab79ff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
