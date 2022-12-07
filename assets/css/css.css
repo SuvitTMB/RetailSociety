@@ -1,3 +1,12 @@
+.body-background {
+  font: 400 15px ttb-regular, sans-serif;
+  background: url(../img/bg-logo.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
+
 .box-menu {
   width:30%; border:1px solid #f1f1f1; background-color: #e4ecff; height: 130px; 
   color:#0056ff; font-weight: 600; overflow: hidden;
@@ -17,30 +26,216 @@
 
 .btn-t1 {
   font-family: ttb-regular, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 13px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 6px 20px;
-  border-radius: 50px;
+  padding: 7px 25px;
+  border-radius: 6px;
   transition: 0.5s;
   line-height: 1;
   margin-top: 6px;
-  color: #fff;
   -webkit-animation-delay: 0.8s;
   animation-delay: 0.8s;
-  border: 2px solid #ab79ff;
-  background-color: #ab79ff;
+  border: 2px solid #0056ff;
+  background: #e2eafa;
   text-align: center;
-  width:120px;
-  color:#fff;
+  min-width:120px;
+  color:#0056ff;
 }
 
 .btn-t1:hover {
-  background: #fff;
-  color: #ab79ff;
+  color: #fff;
+  background-color: #0056ff;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
 }
+
+
+.btn-t11 {
+  font-family: ttb-regular, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 6px;
+  transition: 0.5s;
+  line-height: 1;
+  margin-top: 6px; margin-bottom: 10px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #0056ff;
+  background: #e2eafa;
+  text-align: center;
+  min-width:120px;
+  color:#0056ff;
+  animation-delay: 0.8s;
+}
+
+.btn-t11:hover {
+  color: #fff;
+  background-color: #0056ff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-t2 {
+  display: inline-block;
+  background: #dee3eb;
+  color:#000;
+  border: 2px solid #a6b4c8;
+  padding: 7px 25px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+  margin:3px;
+}
+.btn-t2:hover {
+  cursor: pointer;
+  color:#fff;
+  background: #0156d4;
+}
+
+.btn-t3 {
+  display: inline-block;
+  background: #f0f1f3;
+  color:#666666;
+  border: 2px solid #dcdce4;
+  padding: 5px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 50px;
+  margin:30px 0px 10px 0px;
+}
+
+.Profile-img {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  /*
+  -webkit-box-shadow: 0px 0px 0px 4px #E2E2E2; 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  */
+}
+.Profile-title {
+  font-size: 14px;line-height: 1.3; color:#000;
+}
+.box-reward {
+  width:24%; float: left; text-align: center; height: 60px;
+  padding:6px; font-size: 12px; font-weight: 600; color:#999;
+  line-height: 1.1;
+}
+.box-reward1 { width:13%; float: left; height: 60px; padding:6px;}
+.XPpoint {
+  font-size: 20px; font-weight: 600; color:#0056ff; text-align: center; margin:4px auto;
+}
+
+
+.dropmenu {
+    background-color: #053e93;
+    color: white;
+    padding: 6px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+.drop-option {
+  font-size: 12px;
+}
+
+.text-link {
+  font-size: 14px; color:#438fff;
+}
+.no-message-box {
+  border:1px solid #ccc; background-color: #f1f1f1; border-radius: 10px;padding:20px;text-align: center;font-size:14px;
+}
+.chart-profilt {
+  width: 40px; height: 40px; border-radius: 50%;
+}
+.chart-img {
+  width:14%; min-height: 35px; float: left; margin-top:4px;
+}
+.chart-text {
+  width:86%; min-height: 35px; float: left; line-height: 1.3; margin-top:4px; color:#000; font-weight: 600;
+  border:1px solid #f1f1f1; padding: 5px; border-radius: 8px; font-size: 13px; background-color: #e8f2fc;
+}
+.chart-date {
+  font-size: 11px; color:#999;
+}
+.chart-memo {
+  height:100px;vertical-align: text-top;padding:8px;margin-top:5px;padding:5px;
+}
+
+.chart-view {
+  width:37px; 
+  border-radius: 50%;
+  margin:1px; border:1px solid #ccc;
+}
+.chart-like {
+  width:35px; background-color:#0056ff; border-radius: 50%;padding:5px;
+  position: absolute;
+  top: 15px;
+  /*bottom: 8px;*/
+  right: 20px;
+}
+.chart-dislike {
+  width:35px; background-color:#999; border-radius: 50%;padding:5px;
+  position: absolute;
+  top: 15px;
+  /*bottom: 8px;*/
+  right: 20px;
+}
+
+
+/*
+
+.dropbtn {
+    background-color: #438fff;
+    color: white;
+    padding: 6px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 9999;
+}
+
+.dropdown-content {
+    margin-top:4px; border-radius: 6px;
+    display: none;
+    position: absolute;
+    background-color: #75b2f3; color:#000;
+    min-width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    font-size: 13px; font-weight: 600; color: #000;
+    text-align: left;
+    color: black;
+    padding: 6px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #053e93; color:#fff;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #053e93;
+}
+*/
 

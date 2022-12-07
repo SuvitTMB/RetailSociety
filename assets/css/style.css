@@ -30,6 +30,9 @@ h1, h2, h3, h4, h5, h6 {
 p {
   line-height: 1.3; font-size: 14px;
 }
+.clr {
+  clear: both;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -92,6 +95,7 @@ p {
 }
 
 #header .logo a {
+  font-family: ttb-regular, sans-serif;
   color: #fff;
 }
 
@@ -238,6 +242,7 @@ p {
 }
 
 .mobile-nav {
+  font-family: ttb-regular, sans-serif;
   position: fixed;
   top: 55px;
   right: 15px;
@@ -575,7 +580,8 @@ section {
 }
 
 .breadcrumbs h2 {
-  font-size: 18px;
+  font-family: ttb-regular, sans-serif;
+  font-size: 16px;
   font-weight: 600;
   color: #fff;
 }
@@ -606,7 +612,7 @@ section {
 
 @media (max-width: 991px) {
   .breadcrumbs {
-    margin-top: 52px;
+    margin-top: 42px;
   }
   .breadcrumbs .d-flex {
     display: block !important;
@@ -1021,7 +1027,7 @@ section {
   text-transform: uppercase;
   display: block;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: ttb-regular, sans-serif;
   color: #111;
 }
 
@@ -1103,7 +1109,7 @@ section {
   font-size: 36px;
   color: #438fff;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: ttb-regular, sans-serif;
   margin-bottom: 20px;
 }
 
@@ -1159,7 +1165,7 @@ section {
   transition: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: ttb-regular, sans-serif;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -1570,11 +1576,11 @@ section {
 # Blog
 --------------------------------------------------------------*/
 .blog {
-  padding: 40px 0 20px 0;
+  padding: 40px 0 10px 0;
 }
 
 .blog .entry {
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 60px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
@@ -1586,13 +1592,15 @@ section {
 }
 
 .blog .entry .entry-title {
-  font-size: 28px;
+  font-family: ttb-regular, sans-serif;
+  font-size: 15px;
   font-weight: bold;
   padding: 0;
   margin: 0 0 20px 0;
 }
 
 .blog .entry .entry-title a {
+  font-family: ttb-regular, sans-serif;
   color: #111;
   transition: 0.3s;
 }
@@ -1625,7 +1633,7 @@ section {
 
 .blog .entry .entry-meta a {
   color: #5e5e5e;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   line-height: 20px;
   transition: 0.3s;
@@ -1636,7 +1644,8 @@ section {
 }
 
 .blog .entry .entry-content p {
-  line-height: 24px;
+  line-height: 18px;
+  color:#000;
 }
 
 .blog .entry .entry-content .read-more {
@@ -1963,7 +1972,8 @@ section {
 }
 
 .blog .sidebar .sidebar-title {
-  font-size: 20px;
+  font-family: ttb-regular, sans-serif;
+  font-size: 15px;
   font-weight: 700;
   padding: 0 0 0 0;
   margin: 0 0 15px 0;
@@ -2043,12 +2053,15 @@ section {
 }
 
 .blog .sidebar .recent-posts h4 {
-  font-size: 15px;
+  font-size: 14px; color:#0056ff;
   margin-left: 95px;
-  font-weight: bold;
+  /*font-weight: bold; */
+  height: 48px;
+  overflow: hidden;
 }
 
 .blog .sidebar .recent-posts h4 a {
+  font-family: ttb-regular, sans-serif;
   color: black;
   transition: 0.3s;
 }
@@ -2061,8 +2074,9 @@ section {
   display: block;
   margin-left: 95px;
   font-style: italic;
-  font-size: 14px;
+  font-size: 13px;
   color: #777777;
+  margin-top:-8px;
 }
 
 .blog .sidebar .tags {
@@ -2111,7 +2125,7 @@ section {
 }
 
 #footer .footer-top {
-  padding: 60px 0 30px 0;
+  padding: 30px 0 20px 0;
   background: #f68b1f;
 }
 
@@ -2120,13 +2134,12 @@ section {
 }
 
 #footer .footer-top .footer-contact h3 {
-  font-size: 16px;
+  font-size: 14px;
   margin: 0 0 10px 0;
   padding: 2px 0 2px 0;
   line-height: 1;
   font-weight: 500;
   letter-spacing: 1px;
-  text-transform: uppercase;
   color: #fff;
 }
 
@@ -2191,7 +2204,8 @@ section {
 }
 
 #footer .footer-newsletter h4 {
-  font-size: 16px;
+  font-family: ttb-regular, sans-serif;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   position: relative;
