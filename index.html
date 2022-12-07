@@ -6,6 +6,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -16,96 +21,50 @@
 
   <!-- Favicons -->
   <link href="assets/img/favicom.ico" rel="icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Company - v2.2.0
-  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 </head>
 
 <body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <div id="isLoggedIn" style="color:#fff;"></div>
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
       <h1 class="logo mr-auto"><a href="index.html"><span>LINE</span> Retail Society</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="index.html">ระบบงาน LINE Retail Society</a></li>
-
-          <li class="drop-down"><a href="">About</a>
-            <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="news.html">ข่าวสารองค์กร</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
-
-
     </div>
-  </header><!-- End Header -->
+  </header>
 
   <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>ข่าวสารองค์กร</h2>
-          <ol style="margin-top:-10px;">
-            <li><a href="index.html">Home</a></li>
-            <li>ข่าวสารองค์กร</li>
-          </ol>
+    <div style="text-align: center;margin-top:50px;"><img src="img/bg.png" style="width:90%;"></div>
+    <div class="container" style="text-align: center">
+      <div id="loading" style="margin-top:30px;"><img src="./img/loading1.gif" style="width:50px;"></div>
+      <div id="NoService" style="display: none;margin-top:20px;">
+        <div class="btn-t8" style="color:#ff0000;">คุณไม่ได้รับสิทธิ์ในการเข้าถึงข้อมูลนี้<br>กรุณาบอกเราว่าคุณมีความจำเป็นอย่างไร<br>
+          <a href="mailto:suvit.cha@ttbbank.com&subject=แจ้งขอใช้งาน BBD Champion League&body=กรุณาระบุเหตุผลที่ต้องการใช้งาน ชื่อ-นามสกุล และรหัสพนักงาน" style="text-decoration: none;"><div class="btn-t2">แจ้งเหตุผลเข้าใช้ระบบงาน</div></a>
         </div>
-
       </div>
-    </section><!-- End Breadcrumbs -->
+      <div id="OldSurvey" style="display: none;margin-top:30px;">
+        <div style="margin:auto;">
+          <div class="btn-t11" onclick="window.location.href='home.html';" style="line-height: 1.4;"><b>Welcome to ...</b><br><b>LINE Retail Society</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="clr" style="height: 50px;"></div>
+  </main>
 
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
+
+<!--
+  <main id="main">
     <section id="faq" class="faq section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -127,7 +86,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="100">
-              <!--<i class="bx bx-help-circle icon-help"></i>--><a data-toggle="collapse" href="#faq-list-2" class="collapsed">ประกาศรายชื่อผู้ผ่านเข้ารอบชิงชนะเลิศการประกวดวาดภาพดิจิทัล <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <a data-toggle="collapse" href="#faq-list-2" class="collapsed">ประกาศรายชื่อผู้ผ่านเข้ารอบชิงชนะเลิศการประกวดวาดภาพดิจิทัล <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
 
               <div id="faq-list-2" class="collapse" data-parent=".faq-list">
                 <div><img src="https://media.ttbbank.com/1/news/8024-content-desktop-th.jpg" style="width:100%"></div>
@@ -139,7 +98,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="200">
-              <!--<i class="bx bx-help-circle icon-help"></i>--><a data-toggle="collapse" href="#faq-list-3" class="collapsed">Gen ไหน ควรสร้างหนี้อย่างไรดี รู้แบบนี้..จะได้วางแผนให้ดีตั้งแต่เริ่มกู้<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <a data-toggle="collapse" href="#faq-list-3" class="collapsed">Gen ไหน ควรสร้างหนี้อย่างไรดี รู้แบบนี้..จะได้วางแผนให้ดีตั้งแต่เริ่มกู้<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-3" class="collapse" data-parent=".faq-list">
                 <div><img src="https://media.ttbbank.com/1/fin_tips/5899-content-mobile-th.jpg" style="width:100%"></div>
                 <p>
@@ -150,7 +109,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-              <!--<i class="bx bx-help-circle icon-help"></i>--><a data-toggle="collapse" href="#faq-list-4" class="collapsed">ชวนแฟนเก็บเงินแต่งงาน ต้องใช้งบเท่าไร <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <a data-toggle="collapse" href="#faq-list-4" class="collapsed">ชวนแฟนเก็บเงินแต่งงาน ต้องใช้งบเท่าไร <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-4" class="collapse" data-parent=".faq-list">
                 <div><img src="https://media.ttbbank.com/1/fin_tips/8399-content-mobile-th.jpg" style="width:100%"></div>
                 <p>
@@ -161,7 +120,7 @@
             </li>
 
             <li data-aos="fade-up" data-aos-delay="400">
-              <!--<i class="bx bx-help-circle icon-help"></i>--><a data-toggle="collapse" href="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <a data-toggle="collapse" href="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-5" class="collapse" data-parent=".faq-list">
                 <p>
                   Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
@@ -173,75 +132,16 @@
         </div>
 
       </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section>
 
-  </main><!-- End #main -->
+  </main>
+-->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
 
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Company</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-<!--
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
--->
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-      <div class="mr-md-auto text-center text-md-left">
-        <div class="copyright">
-          &copy; Copyright <strong><span>LINE Retail Society</span></strong>
-        </div>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
+  <!--
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -252,9 +152,48 @@
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-
+  <footer class="container-fluid text-center" style="margin-top:40px;">
+    <div id="isLoggedIn" style="color:#fff;"></div>
+    <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    <div class="footer-main" style="color:#fff;">
+      @<span class="footer-font-greenn" style="color:#fff;">LINE</span> 
+      <span class="footer-font-navi" style="color:#fff;">Retail</span> 
+      <span class="footer-font-blue" style="color:#fff;">So</span><span class="footer-font-org" style="color:#fff;">ciety</span>
+    </div>
+  </footer>
+  -->
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="width:95%;margin:auto;min-height: 270px;">
+        <center>
+          <div class="btn-t3">ยินดีต้อนรับสู่ LINE Retail Society</div>    
+          <div style="margin:30px auto 15px auto;"><img src="./img/WelcomePoint.gif" style="width:100%;"></div>            
+          <div style="text-align: left;margin: 10px 0; font-size: 13px; color:#000;line-height: 1.3;">เพื่อเพื่มประสบการณ์ในการใช้งาน <b>LINE Retail Society</b> ของคุณ เรายินดีที่จะมอบ <b><font color="#0056ff">Welcome Point</font></b> สำหรับการนำไปใช้แลกของรางวัลในอนาคตให้คุณ โดยเราจะทำการสุ่ม Welcome Point ให้คุณอัตโนมัติ และนอกจากนี้คุณยังสามารถเข้าทำการเก็บ Point จากภารกิจต่าง ๆ ภายใน <b>LINE Retail Socitey</b> นี้</div>
+          <div class="clr"></div>
+          <div class="btn-t2" onclick="WelcomePoint()" style="margin-top:20px;">กดลุ้น <b>Welcome Point</b> ของคุณ</div>
+          <div class="clr" style="height: 30px;"></div>
+        </center>
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+
+  <div id="id02" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="width:95%;margin:auto;min-height: 270px;">
+        <center>
+          <div id="DisplayWelcomePoint"></div>     
+        </center>
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+  <script src="js/index.js"></script>
+
 
 </body>
 
