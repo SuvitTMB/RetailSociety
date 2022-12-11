@@ -2,40 +2,17 @@ var cleararray = "";
 
 
 $(document).ready(function () {
-    if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
-    //sessionStorage.clear(); 
-    //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
-    //var sLineName = "Website";
-    //var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
-    //sessionStorage.setItem("LineID", sLineID);
-    //sessionStorage.setItem("LineName", sLineName);
-    //sessionStorage.setItem("LinePicture", sLinePicture);
-    //str += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-    //str += '<div class="Profile-title"><b>'+ sessionStorage.getItem("LineName")+'</b><br>LineName : '+ sessionStorage.getItem("LineName")+'<br>Phone : 0837850099</div>';
-    //$("#MyProfile").html(str);  
-    var str = "";
-    var xtr = '<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">';
-    str += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-    str += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society")+'</b><br>LineName : '+ sessionStorage.getItem("EmpName_Society")+'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society")+'</div>';
-    //str += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society")+'</b><br>LineName : '+ sessionStorage.getItem("EmpName_Society")+'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society")+'</div>';
-    $("#MyUser1").html(str);  
-    //$("#ProfileUser").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
-    //$("#ProfileUser").html(str);  
-    //var Xnumber=document.getElementById("XPoint");
-    ///Xnumber = "6";
-    //console.log(Xnumber);
-    //document.getElementById("XPoint").value = "Johnny Bravo";
-    //document.getElementById("XPoint").value = 8;
-    //$("#XPoint").innerHTML(Xnumber);
-    //document.getElementById('XPoint').HTML('6');
-    //$("#XPoint").innerHTML('6');  
-    //alert(xtr);
-//alert(sessionStorage.getItem("LinePicture"));
-    Connect_DB();
-    MenuSlide();
+  if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
+  Connect_DB();
+  dbProfile = firebase.firestore().collection("CheckProfile");
+  dbSocietyMenu = firebase.firestore().collection("SocietyMenu");
+  dbttbNews = firebase.firestore().collection("ttbnews");
+  dbGroupNews = firebase.firestore().collection("ttbheadnews");
+  MenuSlide();
+  CheckData();
 });
 
-
+/*
 function Connect_DB() {
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
@@ -48,15 +25,12 @@ function Connect_DB() {
     measurementId: "G-9SKTRHHSW9"
   };
   firebase.initializeApp(firebaseConfig);
-  dbProfile = firebase.firestore().collection("CheckProfile");
-  dbSocietyMenu = firebase.firestore().collection("SocietyMenu");
-  dbttbNews = firebase.firestore().collection("ttbnews");
-  CheckData();
 }
+*/
 
 function CheckData() {
-  $("#ProfileUser").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
-  $("#ProfileUser1").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
+  //$("#ProfileUser").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
+  //$("#ProfileUser1").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
   var str = "";
   dbProfile.where('lineID','==',sessionStorage.getItem("LineID"))
   .get().then((snapshot)=> {
@@ -64,22 +38,7 @@ function CheckData() {
       CheckFoundData = doc.data().statusconfirm;
       EidProfile = doc.id;
       sDateRegister = doc.data().DateRegister;
-      //sessionStorage.setItem("EmpID", doc.data().empID);
-      //sessionStorage.setItem("EmpName", doc.data().empName);
-      //str += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-      //str += '<div class="Profile-title"><b>'+ sessionStorage.getItem("LineName")+'</b><br>LineName : '+ sessionStorage.getItem("EmpName")+'<br>Phone : 0837850099</div>';
-      //$("#MyProfile").html(str);  
-
       ListWebPage();
-      /*
-      if(doc.data().statusconfirm==1) {
-        ListWebPage();
-      } else if(doc.data().statusconfirm==2) {
-        location.href = "waittingpage.html";
-      } else {
-        location.href = "cancelpage.html";
-      }
-      */
     });
   });
 }
@@ -102,6 +61,37 @@ function ListWebPage() {
   });
 }
 
+
+
+function ClickCheckView(link,id) {
+  var sLinktoWeb = "";
+  var str = "";
+  dbSocietyMenu.where(firebase.firestore.FieldPath.documentId(), "==", id)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      EidSocietyMenu = doc.id;
+      sCountView = parseInt(doc.data().CountView) + 1;
+      sLinktoWeb = doc.data().GroupLink;
+      sGroupName = doc.data().GroupName;
+      str += '<div style="max-width:450px;width:100%;margin:auto;">';
+      str += '<div class="btn-t3" style="cursor: default;margin-top:10px;"><b>'+doc.data().GroupName+'</b></div>';
+      str += '<div style="margin-top:15px"><img src="'+doc.data().GroupImg+'" style="width:120px;"></div>';
+      str += '<div style="text-align:left; color:#0056ff; padding-top:12px;font-size:13px;">ข้อมูลระบบงาน</div>';
+      str += '<div class="LDP-detail">'+doc.data().GroupDetail+'</div>';
+      str += '</div>';
+      str += '<div style="max-width:450px;width:100%;margin-top:25px; margin-bottom: 20px;">';
+      str += '<div class="btn-t2" onclick="CheckCountView(\''+ doc.data().GroupLink +'\')">เข้าสู่เว็บไซต์</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()">Close</div>';
+      str += '</div>';
+      $("#DisplayProject").html(str);
+    });
+    dbSocietyMenu.doc(id).update({
+        CountView : sCountView
+    });
+    document.getElementById('id01').style.display='block';
+  });
+
+}
 
 function MenuSlide() {
   var i = 0;
@@ -140,5 +130,11 @@ function MenuSlide() {
 
 function ReadNews(id,xGroup) {
   location.href = "readnews.html?gid="+id+"&groupid="+xGroup+"";
+}
+
+
+function CloseAll() {
+  document.getElementById('menu').style.display='none';
+  document.getElementById('id01').style.display='none';
 }
 

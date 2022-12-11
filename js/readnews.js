@@ -6,14 +6,27 @@ var ClickView = 0;
 var ClickMemo = 0;
 var ClickLike = 0;
 var xRecordNews = 0;
+var ReadNewsPoint = 1;
+var xHeadNews = "";
 
 $(document).ready(function () {
+  if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
+  if(sessionStorage.getItem("RefID_Member")==null) { location.href = "index.html"; }
   ReadID = getParameterByName('gid');
   ReadGroup = getParameterByName('groupid');
   Connect_DB();
-});
+  dbttbMember = firebase.firestore().collection("ttbMember");
+  dbttbnews = firebase.firestore().collection("ttbnews");
+  dbttbnewsMemo = firebase.firestore().collection("ttbnewsMemo");
+  dbttbnewsLike = firebase.firestore().collection("ttbnewsLike");
+  dbttbnewsRead = firebase.firestore().collection("ttbnewsRead");
+  dbGroupNews = firebase.firestore().collection("ttbheadnews");
+  dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
+  GetAllRead();
+  ShowView();
+  NewsUpdate();});
 
-
+/*
 function Connect_DB() {
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
@@ -26,14 +39,9 @@ function Connect_DB() {
     measurementId: "G-9SKTRHHSW9"
   };
   firebase.initializeApp(firebaseConfig);
-  dbttbnews = firebase.firestore().collection("ttbnews");
-  dbttbnewsMemo = firebase.firestore().collection("ttbnewsMemo");
-  dbttbnewsLike = firebase.firestore().collection("ttbnewsLike");
-  dbttbnewsRead = firebase.firestore().collection("ttbnewsRead");
-  GetAllRead();
-  ShowView();
-}
 
+}
+*/
 
 function getParameterByName(name, url) {
   str = '';
@@ -47,9 +55,7 @@ function getParameterByName(name, url) {
 }
 
 
-//var ReadMemberArr = [];
 var ReadUserArr = [];
-
 function GetAllRead() {
   var i = 0;
   var str = "";
@@ -80,6 +86,8 @@ function ShowView() {
         xResults = results[0].ReadDate;
       }
       EidNews = doc.id;
+      xHeadNews = doc.data().NewsHeader;
+      ReadNewsPoint = doc.data().NewsPoint;
       ClickRead = doc.data().NewsRead;
       ClickView = (doc.data().NewsView+1);
       ClickLike = doc.data().NewsLike;
@@ -101,8 +109,8 @@ function ShowView() {
         str += '<div style="margin:0px auto 10px auto;">'+ doc.data().NewsVDO +'</div>'
       }
       str += '<div class="entry-meta"><ul>';
-      str += '<li class="d-flex align-items-center"><i class="icofont-file-spreadsheet"></i> '+ doc.data().NewsView +' อ่าน</li>';
       str += '<li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> '+ doc.data().NewsDate +'</li>';
+      str += '<li class="d-flex align-items-center"><i class="icofont-file-spreadsheet"></i> '+ doc.data().NewsView +' อ่าน</li>';
       str += '<li class="d-flex align-items-center"><i class="icofont-comment"></i> '+ doc.data().NewsMemo +' ความเห็น</li>';
       str += '</ul></div>';
       str += '<div class="entry-content"><p>'+ doc.data().NewsDetail +'</p></div>';
@@ -146,7 +154,7 @@ function ShowLike() {
   .orderBy('LikeTimeStamp','desc')
   .get().then((snapshot)=> {
   snapshot.forEach(doc=> {
-      str += '<img src="'+ doc.data().LinePicture +'" onerror="javascript:imgError(this)" class="chart-img" title="'+ doc.data().LineName +'">';
+      str += '<img src="'+ doc.data().LinePicture +'" onerror="javascript:imgError(this)" class="chart-profilt" title="'+ doc.data().LineName +'">';
       i++;
     });
     if(i==0) {
@@ -175,7 +183,6 @@ function CheckUserLike() {
   snapshot.forEach(doc=> {
       sClickLike_user  = 1;
     });
-    //str += '<div style="width:100%; max-width: 500px;background-color:#ff0000;">';
     if(sClickLike_user==0) {
       str +='<img src="./img/like1.png" class="chart-like" id="ShowClickLike" onclick="SaveClickLike()">';
     } else {
@@ -188,8 +195,6 @@ function CheckUserLike() {
 
 var sClickRead_user = 0;
 function CheckUserRead() {
-  //CheckCountRead();
-  //alert(EidNews);
   var str = "";
   var ReadTime = "";
   dbttbnewsRead.where('LineID','==',sessionStorage.getItem("LineID"))
@@ -198,18 +203,8 @@ function CheckUserRead() {
   .get().then((snapshot)=> {
   snapshot.forEach(doc=> {
       sClickRead_user = 1;
-      //RecordNews = doc.data().RecordNews;
       ReadTime = doc.data().LikeDate;
-      //alert("ระบบได้บันทึกการอ่านของคุณเรียบร้อบแ้ว");
     });
-/*
-    if(sClickRead_user==0) {
-      str += '<div class="btn-t6" style="position: absolute;right: 10px;" id="ShowClickRead" onclick="SaveClickRead()">คลิกเพื่อบันทึกการอ่าน</div>';
-    } else {
-      str += '<div class="btn-t66" style="position: absolute;right: 10px;" id="ShowClickRead">บันทึกการอ่าน '+ReadTime+'</div>';
-    }
-    $("#ShowClickRead").html(str);
-*/
   });
 }
 
@@ -222,8 +217,8 @@ function SaveClickRead() {
     LineID : sessionStorage.getItem("LineID"),
     LineName : sessionStorage.getItem("LineName"),
     LinePicture : sessionStorage.getItem("LinePicture"),
-    EmpID : sessionStorage.getItem("EmpID"),
-    EmpName : sessionStorage.getItem("EmpName"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
     LikeID : EidNews,
     LikeDate : dateString,
     LikeTimeStamp : TimeStampDate
@@ -235,9 +230,8 @@ function SaveClickRead() {
   CheckCountLike();
   CheckUserRead();
   ShowLike();
-  //document.getElementById('id03').style.display='block';
-  //alert("Save");
 }
+
 
 var sClickLike = 0;
 function CheckCountLike() {
@@ -247,13 +241,11 @@ function CheckCountLike() {
       sClickLike = doc.data().NewsLike+1;
       $("#GetClickLike").html(doc.data().NewsLike);
     });
-    //alert("Like="+sClickLike);
   });
 }
 
 
 function SaveClickLike() {
-  //alert("EidNews="+EidNews);
   CheckCountLike();
   NewDate();
   var TimeStampDate = Math.round(Date.now() / 1000);
@@ -261,8 +253,8 @@ function SaveClickLike() {
     LineID : sessionStorage.getItem("LineID"),
     LineName : sessionStorage.getItem("LineName"),
     LinePicture : sessionStorage.getItem("LinePicture"),
-    EmpID : sessionStorage.getItem("EmpID"),
-    EmpName : sessionStorage.getItem("EmpName"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
     LikeID : EidNews,
     LikeDate : dateString,
     LikeTimeStamp : TimeStampDate
@@ -276,8 +268,13 @@ function SaveClickLike() {
   document.getElementById('id03').style.display='block';
 }
 
-function GotoAllPage() {
-  location.href = "news.html";
+function GotoGroupNews() {
+  location.href = "groupnews.html";
+}
+
+
+function GotoHome() {
+  location.href = "home.html";
 }
 
 
@@ -285,17 +282,15 @@ var timeLeft = 60;
 var elem = document.getElementById('CountReadNews');
 var timerId = setInterval(countdown, 1000); 
 function countdown() {
-
   if(xResults!="") { 
     clearTimeout(timerId);
     $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+xResults+"<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
   } else {
     if (timeLeft == -1) {
       clearTimeout(timerId);
-      //RecordNews();
       CallReadNews();
     } else {
-      elem.innerHTML = 'เหลือเวลาอีก ' +timeLeft + ' วินาที<br>(ระบบจะทำการบันทึกการอ่านอัตโนมัติเมื่อสิ้นสุดเวลาที่กำหนด)';
+      elem.innerHTML = 'เหลือเวลาอีก ' +timeLeft + ' วินาที<br>(ระบบจะบันทึกการอ่านอัตโนมัติเมื่อสิ้นสุดเวลาที่กำหนด)<br>คุณจะได้ '+ ReadNewsPoint +' Point เมื่อสิ้นสุดเวลาที่กำหนด';
       timeLeft--;
     }    
   }
@@ -321,21 +316,47 @@ function CallReadNews() {
 }
 
 
-
 function RecordNews() {
-  //console.log("RefID : "+EidNews);
   NewDate();
   var TimeStampDate = Math.round(Date.now() / 1000);
   dbttbnewsRead.add({
     LineID : sessionStorage.getItem("LineID"),
     LineName : sessionStorage.getItem("LineName"),
     LinePicture : sessionStorage.getItem("LinePicture"),
-    EmpID : sessionStorage.getItem("EmpID"),
-    EmpName : sessionStorage.getItem("EmpName"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
     RefID : EidNews,
     ReadDate : dateString,
     ReadTimeStamp : TimeStampDate
   });
+  sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(ReadNewsPoint));
+  sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(ReadNewsPoint));
+  dbttbMember.doc(sessionStorage.getItem("RefID_Member")).update({
+    XP_Point : sessionStorage.getItem("XP_Point"),
+    RP_Point : sessionStorage.getItem("RP_Point")
+  });
+  dbttbnewsLog.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    RefID : EidNews,
+    HeadNews : "ข่าวสารองค์กร",
+    SubNews : xHeadNews,
+    GetPoint : parseFloat(ReadNewsPoint),
+    LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
+    LogDate : dateString,
+    LogTimeStamp : TimeStampDate
+  });
+
+  var str = "";
+  str += '<div class="btn-t3"><b>คุณได้รับ '+ ReadNewsPoint +' Point</b></div>';
+  str += '<div style="margin-top:15px;font-size:13px;">จากการอ่านข่าวสารเรื่อง<br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
+  str += '<div class="clr"></div>';
+  str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</b></div>';
+  str += '<div class="clr" style="height:40px;"></div>';
+  $("#DisplayGetPoint").html(str);  
   document.getElementById('id01').style.display='block';
   $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+dateString+"<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
   GetAllRead();
@@ -355,8 +376,8 @@ function ClickSendQ() {
       LineID : sessionStorage.getItem("LineID"),
       LineName : sessionStorage.getItem("LineName"),
       LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID"),
-      EmpName : sessionStorage.getItem("EmpName"),
+      EmpID : sessionStorage.getItem("EmpID_Society"),
+      EmpName : sessionStorage.getItem("EmpName_Society"),
       RefID : EidNews,
       WriteMemo : sMemo,
       WriteDate : dateString,
@@ -395,6 +416,32 @@ function ShowMemo() {
   });
 }
 
+function NewsUpdate() {
+  var str = "";
+  dbttbnews.where("NewsStatus", "==", 0)
+  .orderBy('NewsTimeStamp','desc')
+  .limit(6)
+  .get().then((snapshot)=> {
+  snapshot.forEach(doc=> {
+      if(EidNews!=doc.id) {
+        str += '<div class="post-box" onclick="ReadNews(\''+ doc.id +'\',\''+ doc.data().NewsGroup +'\')">';
+        str += '<div class="post-headnews">'+ doc.data().NewsHeader +'</div>';
+        str += '<div class="post-news">'+ doc.data().ShortNews +'</div><div class="clr"></div>';
+        str += '<div style="margin-top:5px;text-align: left;"><i>';
+        str += '<div class="d-flex post-text"><i class="icofont-wall-clock"></i>&nbsp;'+ doc.data().NewsDate +'</div>';
+        str += '<div class="d-flex post-text"><i class="icofont-file-spreadsheet"></i>&nbsp;'+ doc.data().NewsView +' อ่าน</div>';
+        str += '<div class="d-flex post-text"><i class="icofont-comment"></i>&nbsp;'+ doc.data().NewsMemo +' ความเห็น</div></i>';
+        str += '</div></div>';
+      }
+    });
+    $("#DisplayNewsUpdate").html(str);
+  });
+}
+
+
+function ReadNews(id,xGroup) {
+  location.href = "readnews.html?gid="+id+"&groupid="+xGroup+"";
+}
 
 
 function NewDate() {

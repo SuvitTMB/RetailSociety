@@ -17,7 +17,7 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-*/  
+*/   
   main();
 });
 
@@ -85,11 +85,13 @@ function CheckData() {
         sessionStorage.setItem("EmpPhone_Society", doc.data().empPhone);
         CheckMember();
       } else {
-        location.href = "https://liff.line.me/1655966947-KxrAqdyp";
+        location.href = "waitingpage.html";
+        //location.href = "https://liff.line.me/1655966947-KxrAqdyp";
       }
     });
     if(CheckFoundData==0) {
-      location.href = "https://liff.line.me/1655966947-KxrAqdyp"; 
+      location.href = "registerpage.html";
+      //location.href = "https://liff.line.me/1655966947-KxrAqdyp"; 
     }
   });
 }
@@ -105,6 +107,7 @@ function CheckMember() {
     snapshot.forEach(doc=> {
       CheckFound = 1;
       UpdatePorfile();
+      sessionStorage.setItem("RefID_Member", doc.id);
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
@@ -159,12 +162,12 @@ function WelcomePoint() {
   document.getElementById('id02').style.display='block';
   var str = "";
       str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img" style="margin-top:35px;width:120px;height:120px;"></div>';
-      str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;">'+ sessionStorage.getItem("LineName")+'</div>';
+      str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;text-align:center;">'+ sessionStorage.getItem("LineName")+'</div>';
       str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div><div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' Point</div>';
-      str += '<div><img src="./img/welcome.gif" style="width:100%; max-width: 250px;"></div>';
+      str += '<div style="margin-top:15px;"><img src="./img/welcome.gif" style="width:100%; max-width: 200px;"></div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:15px;">เข้าสู่ <b>LINE Retail Society</b></div>';
-      str += '<div class="clr" style="height:30px;"></div>';
+      str += '<div class="clr" style="height:40px;"></div>';
     $("#DisplayWelcomePoint").html(str);  
 }
 

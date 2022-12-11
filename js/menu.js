@@ -1,43 +1,61 @@
-var xLine = "";
-xLine += '<div style="margin:10px 0 20px 0;">';
-xLine += '<div class="container" style="width:100%;padding:5px;">';
-xLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-xLine += '<div class="Profile-title"><b>สุวิทย์ ชัยรุ่งปัญญาxxx</b><br>LineName : Website<br>Phone : 0837850099</div>';
-xLine += '</div></div><div class="clr"></div>';
-xLine += '<div style="height: 70px;background-color: #fff;">';
-xLine += '<div class="box-reward1"> </div>';
-xLine += '<div class="box-reward"><div class="XPpoint">1</div>ระดับ<br>ผู้แข่งขัน</div>';
-xLine += '<div class="box-reward"><div class="XPpoint">45.98</div>คะแนน<br>ประสบการณ์</div>';
-xLine += '<div class="box-reward"><div class="XPpoint">45.98</div>คะแนน<br>แลกรางวัล</div>';
-xLine += '<div class="box-reward1"> </div>';
-xLine += '</div><div style="margin-top:25px;">';
-xLine += '<ul><li class="active"><a href="home.html">ระบบงาน LINE Retail Society</a></li>';
-xLine += '<li class="drop-down"><a href="">About</a>';
-xLine += '<ul><li><a href="about.html">About Us</a></li><li><a href="team.html">Team</a></li>';
-xLine += '<li><a href="testimonials.html">Testimonials</a></li>';
-xLine += '<li class="drop-down"><a href="#">Deep Drop Down</a>';
-xLine += '<ul><li><a href="#">Deep Drop Down 1</a></li>';
-xLine += '<li><a href="#">Deep Drop Down 2</a></li><li><a href="#">Deep Drop Down 3</a></li>';
-xLine += '<li><a href="#">Deep Drop Down 4</a></li><li><a href="#">Deep Drop Down 5</a></li></ul></li></ul></li>';
-xLine += '<li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li>';
-xLine += '<li><a href="news.html">ข่าวสารองค์กร</a></li><li><a href="blog.html">Blog</a></li>';
-xLine += '<li><a href="contact.html">Contact</a></li></ul></div>';
-$("#MenuSociety").html(xLine);  
-//document.getElementById('MenuSociety').style.display='block';
-$("#XPpoint").html("55 คะแนน");  
+
+function OpenMenu() {
+  var xLine = "";
+  var str = "";
+  var xCountNews = 0;
+  dbGroupNews.where('GroupType','==',2)
+  .where('NewsStatus','==',1)
+  .orderBy('NewsGroup','asc')
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> { 
+      str += '<div class="menu-box" onclick="window.location.href=\''+ doc.data().NewsLink +'\';">';
+      str += '<div class="menu-box-img"><img src="'+ doc.data().NewsIcon +'" style="width:35px;"></div>';
+      str += '<div class="menu-box-text">'+ doc.data().NewsNameWeb +'</div></div>';
+    });
+    xLine += '<div style="margin:10px 0 20px 0;">';
+    xLine += '<div class="container" style="width:100%;padding:5px;">';
+    xLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
+    xLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+    xLine += '</div></div><div class="clr"></div>';
+    xLine += '<div style="height: 70px;background-color: #fff;">';
+    xLine += '<div class="box-reward1"> </div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("Level_Point") +'</div>ระดับ<br>ผู้แข่งขัน</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("XP_Point") +'</div>คะแนน<br>ประสบการณ์</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("RP_Point") +'</div>คะแนน<br>แลกรางวัล</div>';
+    xLine += '<div class="clr"style="height:30px;"></div>';
+    xLine += '<div style="font-size:13px;">เมนูสำหรับใช้งาน</div>';
+    xLine += '<div style="margin-left: 10px;margin-top:5px;">'+ str +'</div><div class="clr"></div>';
+    xLine += '<div class="clr" style="height:20px;"></div>';
+    xLine += '<center><div class="btn-t2" onclick="CloseMenu()">Close Menu</div></center>';
+    xLine += '<div class="clr" style="height:40px;"> </div>';
+    $("#MenuSociety").html(xLine);  
+    document.getElementById('menu').style.display='block';
+  });
+}
+
+function MyPoint() {
+  var yLine = "";
+  var zLine = "";
+  yLine += '<div style="margin:10px 0 20px 0;">';
+  yLine += '<div class="container" style="width:90%;padding:5px; max-width:450px;">';
+  yLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
+  yLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+  yLine += '</div></div><div class="clr"></div>';
+  $("#DisplayMember").html(yLine);  
+
+  zLine += '<div style="height: 70px;background-color: #c2dfef; width:100%; max-width:450px; margin:auto;">';
+  zLine += '<div class="box-reward1"> </div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("Level_Point") +'</div>ระดับ<br>ผู้แข่งขัน</div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("XP_Point") +'</div>คะแนน<br>ประสบการณ์</div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("RP_Point") +'</div>คะแนน<br>แลกรางวัล</div>';
+  zLine += '<div class="clr"style="height:30px;"></div>';
+  zLine += '<div class="clr" style="height:40px;"></div></div>';
+  $("#DisplayMyPoint").html(zLine);  
+
+}
 
 
-/*
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="index.html"><span>LINE</span> Retail Society</a></h1>
-      <nav class="nav-menu d-none d-lg-block" style="background: #d6ebff;">
-        <div style="margin:10px 0 20px 0;">
-          <div class="container" style="width:100%;padding:5px;">
-            <div id="MenuSociety"></div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-*/
+function CloseMenu() {
+  document.getElementById('menu').style.display='none';
+}
+
