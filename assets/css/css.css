@@ -24,8 +24,8 @@
 }
 
 .box-menu-group {
-  width:30%; border:1px solid #f1f1f1; background-color: #eceef3; height: 122px; 
-  color:#0056ff; font-weight: 600; overflow: hidden;
+  width:30%; border:1px solid #f1f1f1; background-color: #3353a2; height: 122px; 
+  color:#ffffff; font-weight: 600; overflow: hidden;
   padding:10px; text-align: center; margin:5px; float: left; border-radius: 8px;
   font-size: 13px; line-height: 1.2; 
   /*box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);*/
@@ -40,7 +40,7 @@
   font-size: 13px; font-weight: 600; line-height: 1.1;
 }
 .box-menu-count {
-  color:#000; font-weight: 600; font-size: 13px; padding:2px;
+  color:#ffc107; font-weight: 600; font-size: 13px; padding:2px;
 }
 
 .btn-t1 {
@@ -262,11 +262,11 @@
   background-color: #f68b1f; cursor: pointer;
 }
 .menu-box-text {
-  font-size: 13px; padding-top:3px; font-weight: 600; color: #f68b1f;
+  font-size: 13px; padding-top:3px; font-weight: 600; color: #111111;
 }
 
 .menu-reward-img {
-  border:2px solid #fff; background-color: #438fff; border-radius: 50%; width:60px; height: 60px; margin:auto;
+  border:2px solid #fff; background-color: #dc3545; border-radius: 50%; width:60px; height: 60px; margin:auto;
   text-align: center; padding:10px 5px 0px 5px;
 }
 .menu-reward-img:hover { 
