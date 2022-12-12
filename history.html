@@ -94,7 +94,7 @@
         min-width: 50px;
       }
       .dataTables_wrapper .dataTables_filter input {
-        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #c1d2ec; color:#111; font-weight: 600;
+        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #438fff; color:#fff; font-weight: 600;
         border:2px solid #fff ;
       }
   </style>
@@ -118,33 +118,76 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>ข่าวสารองค์กร</h2>
+          <h2>ประวัติการลงทะเบียนกิจกรรม</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="groupnews.html">หมวดข่าวสาร</a></li>
-            <li>รายละเอียดข่าว</li>
+            <li><a href="history.html">ประวัติการลงทะเบียน</a></li>
+            <li>รายละเอียด</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="blog" class="blog" style="padding-top:12px;">
-      <div class="container">
+    <section id="NewsUpdate" class="blog" style="padding-top:12px;">
+      <div class="container" data-aos="fade-up">
         <div class="row">
-          <div class="col-lg-8 entries">
-            <article class="entry" style="box-shadow: none;margin-bottom: 30px;" data-aos="fade-up">
+          <div class="col-lg-4">
+            <div class="sidebar" data-aos="fade-left">
               <center>
-                <div class="btn-t3" style="margin-top:10px;margin-bottom: 25px;"><b>เลือกหมวดหมู่ข่าวสาร</b></div>
+                <div class="btn-t3" style="margin-top:30px;margin-bottom: 10px; background-color: #fff;"><b>ประวัติการลงทะเบียน</b></div>
               </center>
-              <div id="DisplayGroupNews" style="width:100%; max-width: 330px; margin:auto;"></div>
-              <div class="clr"></div>
-            </article>
+              <div class="sidebar-item recent-posts">
+                <div style="width:98%; margin:0 auto;">
+                  <div style="font-size: 13px;padding:10px 20px; color:#111;">เราเก็บรวบรวมทุก ๆ การลงทะเบียนเข้าร่วมกิจกรรมต่าง ๆ ของคุณทั้งหมดไว้ที่นี่ สามารถตรวจสอบวัน เวลา และสถานที่ในการเข้าร่วมกิจกรรมที่นี่</div>
+                  <div class="clr" style="height: 30px;"></div>
+                  <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
+                    <thead>
+                      <tr>
+                        <th style="width:10%;text-align: center;">No</th>
+                        <th style="width:88%;text-align: center;">กิจกรรม / ลงทะเบียน</th>
+                        <th style="width:1%;text-align: center;display: none;">View</th>
+                        <th style="width:1%;text-align: center;display: none;">Time</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="clr"></div>
+                <center>
+                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
+                </center>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <a id="ttbNews"></a>
     </section>
+<!--
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
+      <div class="container">
+        <div id="DisplayMember"></div>
+      </div>
+      <div id="DisplayMyPoint"></div>
 
+      <div class="container">
+        <div class="row" data-aos="fade-up">
+          <article class="entry" style="box-shadow: none;width:330px; margin:auto; text-align: center;">
+            <div class="menu-box" onclick="window.location.href='home.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-08.png" style="width:35px;"></div>
+            <div class="menu-reward-text">Mypoint</div></div>
+            <div class="menu-box" onclick="window.location.href='home.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-07.png" style="width:35px;"></div>
+            <div class="menu-reward-text">Mypoint</div></div>
+            <div class="menu-box" onclick="window.location.href='home.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-05.png" style="width:35px;"></div>
+            <div class="menu-reward-text">Mypoint</div></div>
+            <div class="menu-box" onclick="window.location.href='home.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">แลกรางวัล</div></div>
+            <div class="clr"></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
       <div class="container" data-aos="fade-up">
@@ -152,14 +195,14 @@
           <div class="col-lg-4">
             <div class="sidebar" data-aos="fade-left">
               <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ข่าวสารองค์กร</b></div>
+                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>รายการคะแนนของคุณ</b></div>
               </center>
               <div class="sidebar-item recent-posts">
                 <div style="width:98%; margin:0 auto;">
                   <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
                     <thead>
                       <tr>
-                        <th style="width:10%;text-align: center;">Date</th>
+                        <th style="width:10%;text-align: center;">No</th>
                         <th style="width:80%;text-align: center;">News</th>
                         <th style="width:9%;text-align: center;">View</th>
                         <th style="width:1%;text-align: center;display: none;">Time</th>
@@ -177,6 +220,7 @@
         </div>
       </div>
     </section>
+-->
 
 
   </main>
@@ -212,82 +256,16 @@
           @<strong><span>LINE Retail Society</span></strong>
         </div>
       </div>
-      <!--
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      -->
     </div>
-  </footer><!-- End Footer -->
-
-<!--
-  <div id="id01" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="width:95%;margin:auto;min-height: 270px;">
-        <center>
-          <div id="DisplayGetPoint"></div>      
-        </center>
-      </div>
-    </div>
-    <div class="clr" style="height:70px;"></div>
-  </div>
+  </footer>
 
 
-  <div id="id02" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="width:95%;margin:auto;min-height: 270px;">
-        <center>
-          <div class="btn-t3"><b>ขอบคุณสำหรับความคิดเห็น</b></div>        
-          <div><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>        
-          <div style="font-size: 13px; text-align: left; padding:15px 15px 10px 15px;color:#f68b1f;">ทุก ๆ ความคิดเห็น/ข้อเสนอแนะ ของจะเป็นประโยชน์ต่อข่าวสารนี้</div>
-          <div class="clr"></div>
-          <div class="btn-t2" onclick="CloseAll()">ปิดหน้าต่าง</div>
-          <div class="clr" style="height: 30px;"></div>
-        </center>
-      </div>
-    </div>
-    <div class="clr" style="height:70px;"></div>
-  </div>
-
-
-  <div id="id03" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="width:95%;margin:auto;min-height: 270px;">
-        <center>
-          <div class="btn-t3"><b>ขอบคุณสำหรับการกดชื่นชม</b></div>        
-          <div><img src="./img/like.gif" style="width:100%; max-width: 250px;"></div>        
-          <div class="clr"></div>
-          <div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่าง</div>
-          <div class="clr" style="height: 30px;"></div>
-        </center>
-      </div>
-    </div>
-    <div class="clr" style="height:70px;"></div>
-  </div>
--->
   <div id="menu" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content w3-card-4" style="background-color: #d6ebff;">
       <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
         <div id="MenuSociety"></div>
         <div style="margin-left: 5px;margin-top:15px;">
           <div id="DisplayLink"></div>
-<!--
-          <div class="menu-box"><div class="menu-box-img"><img src="./icon/icon-01.png" style="width:35px;"></div>
-          <div class="menu-box-text">Home</div></div>
-
-          <div class="menu-box"><div class="menu-box-img"><img src="./icon/icon-02.png" style="width:35px;"></div>
-          <div class="menu-box-text">News</div></div>
-
-          <div class="menu-box"><div class="menu-box-img">News</div></div>
-          <div class="menu-box"><div class="menu-box-img">1</div></div>
-          <div class="menu-box"><div class="menu-box-img">1</div></div>
-          <div class="menu-box"><div class="menu-box-img">1</div></div>
-          <div class="menu-box"><div class="menu-box-img">1</div></div>
--->
         </div>
       </div>
       <div class="clr" style="height:70px;"></div>
@@ -295,9 +273,6 @@
   </div>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-  <!-- Vendor JS Files -->
-
 
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -326,7 +301,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/groupnews.js"></script>
+  <script src="js/history.js"></script>
   <script src="js/menu.js"></script>
 
 </body>
