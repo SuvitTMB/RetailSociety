@@ -68,6 +68,7 @@ function Connect_DB() {
   firebase.initializeApp(firebaseConfig);
   dbProfile = firebase.firestore().collection("CheckProfile");
   dbttbMember = firebase.firestore().collection("ttbMember");
+  dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   CheckData();
 }
 
@@ -84,9 +85,11 @@ function CheckData() {
         sessionStorage.setItem("EmpName_Society", doc.data().empName);
         sessionStorage.setItem("EmpPhone_Society", doc.data().empPhone);
         CheckMember();
-      } else {
+      } else if(doc.data().statusconfirm==2) { 
         location.href = "waitingpage.html";
         //location.href = "https://liff.line.me/1655966947-KxrAqdyp";
+      } else {
+        location.href = "cancelpage.html";
       }
     });
     if(CheckFoundData==0) {
@@ -136,7 +139,7 @@ function UpdatePorfile() {
 function AddNewMember() {
   NewDate();
   var TimeStampDate = Math.round(Date.now() / 1000);
-  var newPoint = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  var newPoint = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   var NewScore = random_item(newPoint);
   dbttbMember.add({
     LineID : sessionStorage.getItem("LineID"),
@@ -153,6 +156,22 @@ function AddNewMember() {
   sessionStorage.setItem("Level_Point", 1);
   sessionStorage.setItem("XP_Point", parseFloat(NewScore));
   sessionStorage.setItem("RP_Point", parseFloat(NewScore));
+
+  dbttbnewsLog.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    RefID : "",
+    NewsGroup : 0,
+    HeadNews : "ลงทะเบียน",
+    SubNews : "เข้าใช้ระบบงานครั้งแรก",
+    GetPoint : parseFloat(NewScore),
+    LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
+    LogDate : dateString,
+    LogTimeStamp : TimeStampDate
+  });
   document.getElementById('id01').style.display='block';
 }
 

@@ -10,6 +10,7 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   MenuSlide();
   CheckData();
+  OpenPopMenu();
 });
 
 /*
@@ -92,6 +93,12 @@ function ClickCheckView(link,id) {
   });
 
 }
+
+
+function CheckCountView(link) {
+  location.href = ""+link+"";
+}
+
 
 function MenuSlide() {
   var i = 0;

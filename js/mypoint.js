@@ -10,8 +10,7 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   MyPoint();
   NewsLog();
-  //CheckGroupNews();
-  //CheckNews(GroupNews);
+  OpenPopMenu();
 });
 
 function CheckGroupNews() {
@@ -36,16 +35,6 @@ function CheckGroupNews() {
   });
 }
 
-/*
-function CheckNews(NewsGroup) {
-  if(NewsGroup==0) {
-    ListAllNews();
-  } else {
-    ListGroupNews(NewsGroup);
-  }
-}
-*/
-
 
 function NewsLog() {
   var i = 0;
@@ -58,7 +47,8 @@ function NewsLog() {
     snapshot.forEach(doc=> {
       i = (i+1);
       var xNews = '<b>' + doc.data().SubNews + '</b><br>'+ doc.data().HeadNews + ' | ' + doc.data().LogDate;
-      dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.id];
+
+      dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
       dataSrc.push(dataSet);
       count++;
     }); 
@@ -79,65 +69,16 @@ function NewsLog() {
         columnDefs: [ { type: 'num-fmt', 'targets': [1] } ],
         order: [[ 3, 'desc']]
       });   
-    /*
-      $('#ex-table tbody').on( 'click', 'tr', function () {
-        var data = dTable.row( $(this).parents('tr') ).data();
-        if(count!=0) {
-            ReadNews(dTable.row( this ).data()[4],dTable.row( this ).data()[1]);
-        }
-      });
-      */
-  });
-  $('#ex-table').DataTable().destroy();
-  $("#ex-table tbody").remove();
-}
-
-
-
-function ListGroupNews(NewsGroup) {
-  var i = 0;
-  count = 0;
-  dataSet = "";
-  dataSrc = [];
-  //.where('EmpGroup','==', sessionStorage.getItem("EmpGroup_BA"))
-  dbttbNews
-  //.where('GroupType','==',1)
-  .where('NewsGroup','==', NewsGroup)
-  .where('NewsStatus','==',0)
-  .orderBy('NewsTimeStamp','desc')
-  .get().then((snapshot)=> {
-    snapshot.forEach(doc=> {
-      //if(doc.data().NewsStatus==1) {
-        i = (i+1);
-        dataSet = [doc.data().NewsDate, doc.data().NewsHeader, doc.data().NewsView, doc.data().NewsTimeStamp, doc.id, i];
-        dataSrc.push(dataSet);
-        count++;        
-      //}
-
-    }); 
-    dTable=$('#ex-table').DataTable({
-      "bDestroy": true,    
-      data: dataSrc,
-      columns: [
-        { title: "Date", className: "txt-center" },
-        { title: "News" },
-        { title: "View", className: "txt-center" },
-        { title: "Time", className: "txt-none" }
-        ],
-        dom: 'lfrtipB',
-        buttons: [
-            //'copy', 'excelFlash', 'excel', 'pdf', 'print'
-        ],
-          lengthMenu: [[50, 100, -1], [50, 100, "All"]],
-        columnDefs: [ { type: 'num-fmt', 'targets': [1] } ],
-        order: [[ 3, 'desc']]
-      });   
-      $('#ex-table tbody').on( 'click', 'tr', function () {
-        var data = dTable.row( $(this).parents('tr') ).data();
-        if(count!=0) {
-            ReadNews(dTable.row( this ).data()[4],dTable.row( this ).data()[ NewsGroup ]);
-        }
-      });
+      //if(dTable.row( this ).data()[5]==1) {
+        $('#ex-table tbody').on( 'click', 'tr', function () {
+          var data = dTable.row( $(this).parents('tr') ).data();
+          if(count!=0) {
+            console.log(dTable.row( this ).data()[5]);
+            if(dTable.row( this ).data()[5]!=0) {
+              ReadNews(dTable.row( this ).data()[4],dTable.row( this ).data()[5]);
+            }
+          }
+        });        
   });
   $('#ex-table').DataTable().destroy();
   $("#ex-table tbody").remove();
@@ -147,6 +88,8 @@ function ListGroupNews(NewsGroup) {
 function ReadNews(id,xGroup) {
   location.href = "readnews.html?gid="+id+"&groupid="+xGroup+"";
 }
+
+
 
 function GotoHome() {
   location.href = "home.html";

@@ -8,6 +8,7 @@ var ClickLike = 0;
 var xRecordNews = 0;
 var ReadNewsPoint = 1;
 var xHeadNews = "";
+var xNewsGroup = 0;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
@@ -24,7 +25,9 @@ $(document).ready(function () {
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   GetAllRead();
   ShowView();
-  NewsUpdate();});
+  NewsUpdate();
+  OpenPopMenu();
+});
 
 /*
 function Connect_DB() {
@@ -86,6 +89,7 @@ function ShowView() {
         xResults = results[0].ReadDate;
       }
       EidNews = doc.id;
+      xNewsGroup = doc.data().NewsGroup;
       xHeadNews = doc.data().NewsHeader;
       ReadNewsPoint = doc.data().NewsPoint;
       ClickRead = doc.data().NewsRead;
@@ -342,6 +346,7 @@ function RecordNews() {
     EmpID : sessionStorage.getItem("EmpID_Society"),
     EmpName : sessionStorage.getItem("EmpName_Society"),
     RefID : EidNews,
+    NewsGroup : xNewsGroup,
     HeadNews : "ข่าวสารองค์กร",
     SubNews : xHeadNews,
     GetPoint : parseFloat(ReadNewsPoint),
