@@ -8,7 +8,7 @@
 }
 
 .box-menu {
-  width:30%; border:1px solid #f1f1f1; background-color: #e4ecff; height: 130px; 
+  width:30%; border:1px solid #f1f1f1; background-color: #dde5f2; height: 130px; 
   color:#0056ff; font-weight: 600; overflow: hidden;
   padding:10px; text-align: center; margin:5px; float: left; border-radius: 8px;
   font-size: 13px; line-height: 1.2;
@@ -24,7 +24,7 @@
 }
 
 .box-menu-group {
-  width:30%; border:1px solid #f1f1f1; background-color: #3353a2; height: 122px; 
+  width:30%; border:1px solid #f1f1f1; background-color: #1259c1; height: 122px; 
   color:#ffffff; font-weight: 600; overflow: hidden;
   padding:10px; text-align: center; margin:5px; float: left; border-radius: 8px;
   font-size: 13px; line-height: 1.2; 
@@ -107,7 +107,7 @@
   background: #dee3eb;
   color:#000;
   border: 2px solid #a6b4c8;
-  padding: 7px 25px;
+  padding: 7px 20px;
   transition: 0.3s;
   font-size: 14px;
   border-radius: 4px;
@@ -266,15 +266,78 @@
 }
 
 .menu-reward-img {
-  border:2px solid #fff; background-color: #dc3545; border-radius: 50%; width:60px; height: 60px; margin:auto;
-  text-align: center; padding:10px 5px 0px 5px;
+  border:2px solid #fff; background-color: #94a9b3; border-radius: 50%; width:60px; height: 60px; margin:auto;
+  text-align: center; padding:10px 5px 0px 5px; 
 }
 .menu-reward-img:hover { 
   background-color: #0056ff; cursor: pointer;
 }
+.menu-reward-text {
+  font-size: 13px; font-weight: 600; color:#111;
+}
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+  }
+  .carousel-indicators li {
+    border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+    background-color: #f4511e;
+  }
+
+
+.progress2 {
+  margin:4px 0;
+  padding:0;
+  width:100%;
+  height:6px;
+  overflow:hidden;
+  background:#ff0000;
+  font-size: 10px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.copyright {
+  color:#fff; font-size: 13px; letter-spacing: 2px;
+}
+.font13 {
+  font-size: 13px; line-height: 1.2; color:#111111; text-align: left;
+}
+.webboard0 {
+  margin:15px 5px 15px 5px; font-weight: 600; padding:15px 10px; background-color: #dfebff;
+  font-size: 13px; color:#111; border-radius: 8px; line-height: 1.2;
+  /*border:2px solid #c4d6f6;*/
+}
+.webboard1 {
+  width:17%; text-align:left; float: left; 
+}
+.webboard2 {
+  width:83%; text-align:left; float: left; 
+}
+.webboard3 {
+  text-align:left; font-size: 12px; color:#f68b1f; margin-top:-2px;
+}
+
 
 
 /*
+.txt-top {
+  vertical-align: text-top !important;
+}
+
+
 
 .dropbtn {
     background-color: #438fff;
