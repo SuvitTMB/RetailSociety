@@ -4,6 +4,7 @@ var dateString = "";
 
 
 $(document).ready(function () {
+
 /*
   sessionStorage.clear(); 
   var str = "";

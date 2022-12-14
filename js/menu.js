@@ -1,3 +1,19 @@
+MenuFooter();
+var xCal = 0;
+
+//sessionStorage.setItem("XP_Point", 299);
+if(sessionStorage.getItem("XP_Point") > 0 && sessionStorage.getItem("XP_Point") < 100) {
+  xCal = 100;
+} else if(sessionStorage.getItem("XP_Point") > 100 && sessionStorage.getItem("XP_Point") < 300) {
+  xCal = 300;
+} else if(sessionStorage.getItem("XP_Point") > 300 && sessionStorage.getItem("XP_Point") < 600) {
+  xCal = 600;
+} else if(sessionStorage.getItem("XP_Point") > 600 && sessionStorage.getItem("XP_Point") < 1000) {
+  xCal = 1000;
+}
+
+
+
 function OpenPopMenu() {
   var xLine = "";
   var str = "";
@@ -21,16 +37,20 @@ function OpenPopMenu() {
     xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("Level_Point") +'</div>ระดับ<br>ผู้แข่งขัน</div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("XP_Point") +'</div>คะแนน<br>ประสบการณ์</div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("RP_Point") +'</div>คะแนน<br>แลกรางวัล</div>';
-    xLine += '<div class="clr"style="height:30px;"></div>';
+    xLine += '<div class="clr" style="height:3px;"></div>'
+    var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
+    xLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
+    xLine += '<div class="clr"style="height:20px;"></div>';
     xLine += '<div style="font-size:13px;">เมนูสำหรับเลือกใช้งาน</div>';
     xLine += '<div style="margin: 10px auto; width:280px; text-align: center;">'+ str +'</div><div class="clr"></div>';
     xLine += '<div class="clr" style="height:20px;"></div>';
     xLine += '<center><div class="btn-t2" onclick="CloseMenu()">Close Menu</div></center>';
     xLine += '<div class="clr" style="height:40px;"> </div>';
-    $("#MenuSociety").html(xLine);  
+    $("#MenuSociety").html(xLine); 
     //document.getElementById('menu').style.display='block';
   });
 }
+
 
 function OpenMenu() {
 /*
@@ -69,6 +89,7 @@ function OpenMenu() {
     document.getElementById('menu').style.display='block';
 }
 
+
 function MyPoint() {
   var yLine = "";
   var zLine = "";
@@ -84,11 +105,36 @@ function MyPoint() {
   zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("Level_Point") +'</div>ระดับ<br>ผู้แข่งขัน</div>';
   zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("XP_Point") +'</div>คะแนน<br>ประสบการณ์</div>';
   zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("RP_Point") +'</div>คะแนน<br>แลกรางวัล</div>';
+  zLine += '<div class="clr" style="height:3px;"></div>'
+  var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
+  zLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
   zLine += '<div class="clr"style="height:30px;"></div>';
   zLine += '<div class="clr" style="height:40px;"></div></div>';
   $("#DisplayMyPoint").html(zLine);  
 
 }
+
+
+function MenuFooter() {
+  var str = "";
+  str += '<div class="footer-top"><div class="container">';
+  str += '<div class="row"><div class="col-lg-4 col-md-6 footer-newsletter">';
+  str += '<h4>พูดคุยกับทีมผู้บริหาร</h4><p>ไม่ว่าจะเป็นเรื่องที่ต้องการความช่วยเหลือ หรือการสนับสนุนจากผู้บริหาร คุณสามารถส่งเรื่องราวของคุณที่นี่</p>';
+  str += '<form action="" method="post"><input type="email" name="email"><input type="submit" value="ส่งเรื่องราว">';
+  str += '</form></div></div></div></div>';
+  str += '<div class="container d-md-flex py-4"><div class="mr-md-auto text-center text-md-left">';
+  str += '<div class="copyright">@<span>LINE Retail Society</span></div></div></div>';
+  $("#DisplayFooter").html(str);  
+}
+
+
+
+
+
+
+
+
+
 
 
 function CloseMenu() {

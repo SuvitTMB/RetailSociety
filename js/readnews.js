@@ -75,7 +75,6 @@ function GetAllRead() {
 }
 
 
-//const results = [];
 var xResults = "";
 function ShowView() {
   var str = "";
@@ -288,12 +287,16 @@ var timerId = setInterval(countdown, 1000);
 function countdown() {
   if(xResults!="") { 
     clearTimeout(timerId);
-    $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+xResults+"<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
+    document.getElementById('loading').style.display='none';
+    document.getElementById('CountReadNews').style.display='block';
+    $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+xResults+" | รับคะแนน "+ ReadNewsPoint +" Point<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
   } else {
     if (timeLeft == -1) {
       clearTimeout(timerId);
       CallReadNews();
     } else {
+      document.getElementById('loading').style.display='none';
+      document.getElementById('CountReadNews').style.display='block';
       elem.innerHTML = 'เหลือเวลาอีก ' +timeLeft + ' วินาที<br>(ระบบจะบันทึกการอ่านอัตโนมัติเมื่อสิ้นสุดเวลาที่กำหนด)<br>คุณจะได้ '+ ReadNewsPoint +' Point เมื่อสิ้นสุดเวลาที่กำหนด';
       timeLeft--;
     }    
@@ -354,7 +357,6 @@ function RecordNews() {
     LogDate : dateString,
     LogTimeStamp : TimeStampDate
   });
-
   var str = "";
   str += '<div class="btn-t3"><b>คุณได้รับ '+ ReadNewsPoint +' Point</b></div>';
   str += '<div style="margin-top:15px;font-size:13px;">จากการอ่านข่าวสารเรื่อง<br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
@@ -364,6 +366,7 @@ function RecordNews() {
   $("#DisplayGetPoint").html(str);  
   document.getElementById('id01').style.display='block';
   $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+dateString+"<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
+  OpenPopMenu();
   GetAllRead();
 }
 

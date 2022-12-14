@@ -7,13 +7,15 @@ $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
   dbttbNews = firebase.firestore().collection("ttbnews");
-  dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
+  //dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
+  dbttbMember = firebase.firestore().collection("ttbMember");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   MyPoint();
-  NewsLog();
+  RankingMember();
   OpenPopMenu();
 });
 
+/*
 function CheckGroupNews() {
   var str = "";
   var xCountNews = 0;
@@ -35,21 +37,22 @@ function CheckGroupNews() {
     $("#DisplayGroupNews").html(str);
   });
 }
+*/
 
-
-function NewsLog() {
+function RankingMember() {
   var i = 0;
   count = 0;
   dataSet = "";
   dataSrc = [];
-  dbttbnewsLog.where('LineID','==',sessionStorage.getItem("LineID"))
-  .orderBy('LogTimeStamp','desc')
+  dbttbMember.where('LineID','==',sessionStorage.getItem("LineID"))
+  .orderBy('RP_Point','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       i = (i+1);
-      var xNews = '<b>' + doc.data().SubNews + '</b><br>'+ doc.data().HeadNews + ' | ' + doc.data().LogDate;
-
-      dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
+      var xPicture = '<center><img src="'+ doc.data().LinePicture +'" style="width:30px;"></center>';
+      var xProfile = '<div style="font-size:12px;"><b>'+ doc.data().EmpName +'</b><br>Level : <b>'+ doc.data().Level_Point +'</b> | Date : '+doc.data().LogDateTime+'</div>';
+      dataSet = [xPicture, xProfile, '<b>'+doc.data().RP_Point+'</b>', i ];
+      //dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
       dataSrc.push(dataSet);
       count++;
     }); 
@@ -57,10 +60,10 @@ function NewsLog() {
       "bDestroy": true,    
       data: dataSrc,
       columns: [
-        { title: "No", className: "txt-center" },
-        { title: "News" },
+        { title: "รูป", className: "txt-center" },
+        { title: "ผู้เข้าแข่งขัน" },
         { title: "Point", className: "txt-center" },
-        { title: "Time", className: "txt-none" }
+        { title: "อันดับ", className: "txt-center" }
         ],
         dom: 'lfrtipB',
         buttons: [
@@ -71,6 +74,7 @@ function NewsLog() {
         order: [[ 3, 'desc']]
       });   
       //if(dTable.row( this ).data()[5]==1) {
+        /*
         $('#ex-table tbody').on( 'click', 'tr', function () {
           var data = dTable.row( $(this).parents('tr') ).data();
           if(count!=0) {
@@ -80,12 +84,13 @@ function NewsLog() {
             }
           }
         });        
+        */
   });
   $('#ex-table').DataTable().destroy();
   $("#ex-table tbody").remove();
 }
 
-
+/*
 function ReadNews(id,xGroup) {
   location.href = "readnews.html?gid="+id+"&groupid="+xGroup+"";
 }
@@ -99,6 +104,7 @@ function GotoHome() {
 function GotoGroupNews() {
   location.href = "groupnews.html";
 }
+*/
 
 function CloseAll() {
   document.getElementById('menu').style.display='none';
