@@ -113,13 +113,16 @@
         <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-      
-      <ol class="carousel-indicators" id="hero-carousel-indicators" style="z-index: 1;"><div class="btn-t2" style="background-color: #f68b1f; border:2px solid #fff;" onclick="location.href='groupnews.html'"><b>ดูข่าวสารทั้งหมด</b></div></ol>
+      <ol class="carousel-indicators" id="hero-carousel-indicators" style="z-index: 1;">
+        <div class="btn-t2" style="background-color: #a6b4c8; border:2px solid #fff;" onclick="location.href='groupnews.html'"><b>ดูข่าวสารทั้งหมด</b></div>
+        <div class="btn-t2" style="background-color: #a6b4c8; border:2px solid #fff;" onclick="location.href='home.html#menusystem'"><b>เมนูระบบงาน</b></div>
+      </ol>
     </div>
   </section><!-- End Hero -->
 
 
   <main id="main">
+    <a id="menusystem"></a>
     <section id="about-us" class="about-us" style="padding:40px 15px;">
       <div class="container" data-aos="fade-up" style="padding-right:0px; padding-left: 0px;">
         <div class="section-title">
@@ -417,11 +420,13 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+
+
+              <!--
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
-              <!--
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3><b>LINE Retail Society</b></h3>
             <p>
@@ -431,8 +436,6 @@
               <strong>Email:</strong> suvit.cha@ttbbank.com<br>
             </p>
           </div>
-            -->
-<!--
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
@@ -454,7 +457,6 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
           </div>
--->
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>พูดคุยกับทีมผู้บริหาร</h4>
             <p>ไม่ว่าจะเป็นเรื่องที่ต้องการความช่วยเหลือ หรือการสนับสนุนจากผู้บริหาร คุณสามารถส่งเรื่องราวของคุณที่นี่</p>
@@ -465,15 +467,17 @@
         </div>
       </div>
     </div>
+-->
 
     <div class="container d-md-flex py-4">
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-          &copy;<strong><span>LINE Retail Society</span></strong>
+          @<span>LINE Retail Society</span>
         </div>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
+
 
   <div id="id01" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content w3-card-4" style="background-color: #fff; padding:24px;text-align: center;">
@@ -483,7 +487,7 @@
   </div>
 
   <div id="menu" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background-color: #d6ebff;padding:0px;">
+    <div class="w3-modal-content w3-card-4" style="background-color: #ebebeb;padding:0px;">
       <div class="w3-container" style="min-height:300px;width:100%;text-align:center;center;padding:0px;margin-bottom: 20px;">
         <div id="MenuSociety"></div>
       </div>
@@ -491,6 +495,9 @@
     </div>
   </div>
 
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

@@ -70,7 +70,7 @@
       .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { 
           margin-bottom: 10px;
       }
-      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; }
+      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; vertical-align: top; }
       .table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td { padding: 6px 4px; }
       .txt-center { text-align: center; }
       .txt-right { text-align: right; right: 10px; }
@@ -118,31 +118,43 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>ข่าวสารองค์กร</h2>
+          <h2>MyPoint</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="groupnews.html">หมวดข่าวสาร</a></li>
-            <li>รายละเอียดข่าว</li>
+            <li><a href="mypoint.html">คะแนนของคุณ</a></li>
+            <li>รายละเอียดของคะแนน</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="blog" class="blog" style="padding-top:12px;">
+
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
+<!--
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 entries">
-            <article class="entry" style="box-shadow: none;margin-bottom: 30px;" data-aos="fade-up">
-              <center>
-                <div class="btn-t3" style="margin-top:10px;margin-bottom: 25px;"><b>เลือกหมวดหมู่ข่าวสาร</b></div>
-              </center>
-              <div id="DisplayGroupNews" style="width:100%; max-width: 330px; margin:auto;"></div>
-              <div class="clr"></div>
-            </article>
-          </div>
+        <div id="DisplayMember"></div>
+      </div>
+      <div id="DisplayMyPoint"></div>
+-->
+      <div class="container">
+        <div class="row" data-aos="fade-up">
+          <article class="entry" style="box-shadow: none;width:330px; margin:auto; text-align: center;">
+            <div class="menu-box" onclick="window.location.href='mypoint.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-07.png" style="width:35px;"></div>
+            <div class="menu-reward-text">คะแนนคุณ</div></div>
+            <div class="menu-box" onclick="window.location.href='profile.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-08.png" style="width:35px;"></div>
+            <div class="menu-reward-text">ข้อมูลคุณ</div></div>
+            <div class="menu-box" onclick="window.location.href='ranking.html';">
+            <div class="menu-reward-img" style="background-color: #4e5f68;"><img src="./icon/icon-06.png" style="width:35px;"></div>
+            <div class="menu-reward-text">อันดับแข่ง</div></div>
+            <div class="menu-box" onclick="window.location.href='rewards.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">แลกรางวัล</div></div>
+            <div class="clr"></div>
+          </article>
         </div>
       </div>
-      <a id="ttbNews"></a>
     </section>
 
 
@@ -152,17 +164,17 @@
           <div class="col-lg-4">
             <div class="sidebar" data-aos="fade-left">
               <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ข่าวสารองค์กร</b></div>
+                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ตารางอันดับการแข่งขัน</b></div>
               </center>
               <div class="sidebar-item recent-posts">
                 <div style="width:98%; margin:0 auto;">
                   <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
                     <thead>
                       <tr>
-                        <th style="width:10%;text-align: center;">Date</th>
-                        <th style="width:80%;text-align: center;">News</th>
-                        <th style="width:9%;text-align: center;">View</th>
-                        <th style="width:1%;text-align: center;display: none;">Time</th>
+                        <th style="width:12%;text-align: center;">รูป</th>
+                        <th style="width:76%;text-align: center;">ผู้แข่งขัน</th>
+                        <th style="width:6%;text-align: center;">คะแนน</th>
+                        <th style="width:6%;text-align: center;">อันดับ</th>
                       </tr>
                     </thead>
                   </table>
@@ -170,6 +182,9 @@
                 <div class="clr"></div>
                 <center>
                   <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
+                  <!--
+                  <div class="btn-t2" onclick="GotoGroupNews()" type="submit" style="margin-top:20px;font-size:14px;">ดูข่าวทั้งหมด</div>
+                  -->
                 </center>
               </div>
             </div>
@@ -177,19 +192,8 @@
         </div>
       </div>
     </section>
-
-
   </main>
-  <!-- End #main -->
 
-
-
-
-
-
-
-
-  <!-- ======= Footer ======= -->
 <!--
   <footer id="footer">
     <div class="footer-top">
@@ -235,7 +239,6 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -246,8 +249,10 @@
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
 
+  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Data Table -->
   <script src='https://code.jquery.com/jquery-1.12.3.js'></script>
   <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
   <script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
@@ -261,7 +266,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/groupnews.js"></script>
+  <script src="js/ranking.js"></script>
   <script src="js/menu.js"></script>
 
 </body>

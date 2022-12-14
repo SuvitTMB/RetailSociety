@@ -26,15 +26,13 @@
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
   <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/bento.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-
-
-  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
-  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
-
   <style>
     .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
       padding-right: 5px; padding-left: 5px;
@@ -50,53 +48,59 @@
     }
     .button, select { font-size: 14px; font-weight: 600; }
     .label {  font-size: 13px; color:#111; }
-  </style>
 
-  <style type="text/css">
-      .w3-container, .w3-panel {
-        padding:0px;
-      }
-      table.dataTable tbody th, table.dataTable tbody td {
-        padding: 2px 6px;
-        font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
-      }
-      table.dataTable thead th, table.dataTable thead td {
-          background: #94a9b3; color: #ffffff; padding: 4px; margin-top:15px;
-          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
-      }
-      table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
-          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;  
-      }
-      .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { 
-          margin-bottom: 10px;
-      }
-      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; }
-      .table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td { padding: 6px 4px; }
-      .txt-center { text-align: center; }
-      .txt-right { text-align: right; right: 10px; }
-      .a { width:10px; text-align: center;}
-      .b { height:10px; text-align: center;}
-      .table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
-        cursor: pointer; 
-      }
-      .table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
-        background-color: #0056ff; color:#ffffff;
-      }
-      .table.dataTable tbody tr {
-        background:#ff0000;
-      }
-      .table.dataTable tbody tr { 
-        cursor: pointer; 
-      }
-      table.dataTable thead th, table.dataTable thead td { padding: 9px; }
-      .btn-add {
-        max-width:50px !important; padding:2px 5px; font-size: 13px; margin-top:0px;
-        min-width: 50px;
-      }
-      .dataTables_wrapper .dataTables_filter input {
-        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #c1d2ec; color:#111; font-weight: 600;
-        border:2px solid #fff ;
-      }
+    .list-element {
+        display: none;
+    }
+    #loadmore {
+        margin: 25px auto 0px;
+        display: table;
+        border: none;
+        padding: 8px 30px;
+        font-size: 13px;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 30px;
+        background-color: #2196f3;
+    }
+    #loadmore:hover {
+      background: #f68b1f;
+    }
+    .list {
+        /*margin: 0px auto;
+        width: 80%;
+        box-sizing: border-box;*/
+    }
+    .list .list-element:nth-child(1) {
+        display: block;
+    }
+    .list .list-element:nth-child(2) {
+        display: block;
+    }
+    .list .list-element:nth-child(3) {
+        display: block;
+        /*margin-top: 16px; */
+    }
+    .list .list-element:nth-child(4) {
+        display: block;
+    }
+    .list .list-element:nth-child(5) {
+        display: block;
+    }
+    .list .list-element:nth-child(6) {
+        display: block;
+    }
+    .list .list-element:nth-child(7) {
+        display: block;
+    }
+    .list .list-element:nth-child(8) {
+        display: block;
+    }
+    .media {
+  display: block;
+  align-items: flex-start;
+}
+
   </style>
 </head>
 
@@ -118,78 +122,77 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>ข่าวสารองค์กร</h2>
+          <h2>ห้องสนทนา</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="groupnews.html">หมวดข่าวสาร</a></li>
-            <li>รายละเอียดข่าว</li>
+            <li><a href="mypoint.html">ห้องสนทนา</a></li>
+            <li>เลือกห้องที่ต้องการคุย</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="blog" class="blog" style="padding-top:12px;">
+
+    <section id="blog" class="blog  section-bg" style="padding-top:10px;">
+<!--
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 entries">
-            <article class="entry" style="box-shadow: none;margin-bottom: 30px;" data-aos="fade-up">
-              <center>
-                <div class="btn-t3" style="margin-top:10px;margin-bottom: 25px;"><b>เลือกหมวดหมู่ข่าวสาร</b></div>
-              </center>
-              <div id="DisplayGroupNews" style="width:100%; max-width: 330px; margin:auto;"></div>
-              <div class="clr"></div>
-            </article>
-          </div>
+        <div id="DisplayMember"></div>
+      </div>
+      <div id="DisplayMyPoint"></div>
+-->
+      <div class="container">
+        <div class="row" data-aos="fade-up">
+          <article class="entry" style="box-shadow: none;width:350px; margin:10px auto; text-align: center;padding:0px;">
+            <div class="menu-box" onclick="GroupChat('ChatAll')">
+            <div class="menu-reward-img" style="background-color: #e02335;"><img src="./icon/icon-07.png" style="width:35px;"></div>
+            <div class="menu-reward-text">คุยทุกเรื่อง</div></div>
+            <div class="menu-box" onclick="GroupChat('APE')">
+            <div class="menu-reward-img"><img src="./icon/icon-08.png" style="width:35px;"></div>
+            <div class="menu-reward-text">ห้อง APE</div></div>
+            <div class="menu-box" onclick="GroupChat('HL')">
+            <div class="menu-reward-img"><img src="./icon/icon-06.png" style="width:35px;"></div>
+            <div class="menu-reward-text">ห้อง HL</div></div>
+            <div class="menu-box" onclick="GroupChat('CYH')">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">ห้อง CYH</div></div>
+            <div class="menu-box" onclick="GroupChat('CYC')">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">ห้อง CYC</div></div>
+            <div class="menu-box" onclick="GroupChat('Suggestion')">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">แนะนำเว็บ</div></div>
+            <div class="menu-box" onclick="GroupChat('Problem')">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">แจ้งปัญหา</div></div>
+            <div class="clr"></div>
+          </article>
         </div>
       </div>
-      <a id="ttbNews"></a>
     </section>
 
 
-    <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="sidebar" data-aos="fade-left">
-              <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ข่าวสารองค์กร</b></div>
-              </center>
-              <div class="sidebar-item recent-posts">
-                <div style="width:98%; margin:0 auto;">
-                  <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
-                    <thead>
-                      <tr>
-                        <th style="width:10%;text-align: center;">Date</th>
-                        <th style="width:80%;text-align: center;">News</th>
-                        <th style="width:9%;text-align: center;">View</th>
-                        <th style="width:1%;text-align: center;display: none;">Time</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-                <div class="clr"></div>
-                <center>
-                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
-                </center>
-              </div>
+    <section id="ChatNews" class="blog" style="padding-top:12px;">
+      <div class="container" style="margin-top:0px;">
+        <center>
+          <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ห้องนี้คุยได้ทุเรื่อง</b></div>
+        </center>
+        <div class="container bootstrap snippets bootdey" style="padding-left:5px; padding-right: 5px; min-height: 400px;">
+          <div class="tile tile-alt" id="messages-main">
+            <div class="message-feed media">
+              <div id="DisplayMemo" class="list"></div>
+              <button id="loadmore" style="margin-bottom: 30px;">Load More...</button>
             </div>
           </div>
         </div>
       </div>
+      <div class="msb-reply">
+        <textarea id="TextMamo" placeholder="เขียนข้อความของคุณได้ที่นี่ ..."></textarea>
+        <button style="background: #f68b1f;" onclick="CheckMemo()"><i class="fa fa-paper-plane-o"></i></button>
+      </div>
+      <div class="clr" style="height: 20px;"></div>
     </section>
-
-
   </main>
-  <!-- End #main -->
 
-
-
-
-
-
-
-
-  <!-- ======= Footer ======= -->
 <!--
   <footer id="footer">
     <div class="footer-top">
@@ -235,7 +238,6 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -246,22 +248,12 @@
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
 
+  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
-  <script src='https://code.jquery.com/jquery-1.12.3.js'></script>
-  <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js'></script>
-  <script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js'></script>
-  <script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js'></script>
-
 
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/groupnews.js"></script>
+  <script src="js/chat.js"></script>
   <script src="js/menu.js"></script>
 
 </body>
