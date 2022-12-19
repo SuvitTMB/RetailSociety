@@ -6,41 +6,42 @@
   -o-background-size: cover;
   background-size: cover;  
 }
-
 .box-menu {
-  width:30%; border:1px solid #f1f1f1; background-color: #dde5f2; height: 130px; 
+  width:30%; border:1px solid #f1f1f1;  height: 130px; 
   color:#0056ff; font-weight: 600; overflow: hidden;
   padding:10px; text-align: center; margin:5px; float: left; border-radius: 8px;
   font-size: 13px; line-height: 1.2;
+  /*background-color: #dde5f2;*/
+  background-color: #e1e5ea;
 }
 .box-menu:hover {
-  background-color: #fff6e4; cursor: pointer; color:#000;
+  background-color: #b7cdf1; cursor: pointer; color:#fff;
 }
 .box-menu-img {
-  margin:2px auto 6px auto; width:100%; max-width:65px;
+  margin:2px auto 6px auto; width:100%; max-width:55px;
 }
 .box-menu-text {
-  font-size: 13px; font-weight: 600; line-height: 1.1;
+  font-size: 13px; font-weight: 600; line-height: 1.1; padding-top:5px; color:#111;
 }
 
-.box-menu-group {
-  width:30%; border:1px solid #f1f1f1; background-color: #1259c1; height: 122px; 
+.box-menu-group { /*#9cb3be*/
+  width:30%; border:1px solid #f1f1f1; background-color: #a8b4c3 ; height: 115px; 
   color:#ffffff; font-weight: 600; overflow: hidden;
   padding:10px; text-align: center; margin:5px; float: left; border-radius: 8px;
   font-size: 13px; line-height: 1.2; 
   /*box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);*/
 }
 .box-menu-group:hover {
-  background-color: #fff6e4; cursor: pointer; color:#000;
+  background-color: #5f757f; cursor: pointer; color:#000;
 }
 .box-menu-img-group {
-  margin:2px auto 8px auto; width:100%; max-width:50px;
+  margin:2px auto 8px auto; width:100%; max-width:40px;
 }
 .box-menu-text-group {
   font-size: 13px; font-weight: 600; line-height: 1.1;
 }
 .box-menu-count {
-  color:#ffc107; font-weight: 600; font-size: 13px; padding:2px;
+  color:#111111; font-weight: 600; font-size: 13px; padding:2px;
 }
 
 .btn-t1 {
@@ -102,16 +103,41 @@
   cursor: pointer;
 }
 
+
+.btn-t111 {
+  font-family: ttb-regular, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 35px;
+  border-radius: 6px;
+  transition: 0.5s;
+  line-height: 1;
+  margin-top: 6px; margin-bottom: 10px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #93a3b1;
+  background: #a1b0be;
+  text-align: center;
+  min-width:120px;
+  color:#fff;
+  animation-delay: 0.8s;
+}
+
+
 .btn-t2 {
   display: inline-block;
-  background: #dee3eb;
-  color:#000;
+  /*background: #dee3eb;*/
+  background-color: #dfeaf8;
+  color:#333;
   border: 2px solid #a6b4c8;
   padding: 7px 20px;
   transition: 0.3s;
-  font-size: 14px;
+  font-size: 13px; font-weight: 600;
   border-radius: 4px;
-  margin:3px;
+  margin:3px; line-height: 1.2;
 }
 .btn-t2:hover {
   cursor: pointer;
@@ -119,10 +145,89 @@
   background: #0156d4;
 }
 
+.btn-t2-ok {
+  display: inline-block;
+  background-color: #f2d8bd;
+  color:#333;
+  border: 2px solid #e1c1a1;
+  padding: 7px 20px;
+  transition: 0.3s;
+  font-size: 13px; font-weight: 600;
+  border-radius: 4px;
+  margin:3px; line-height: 1.2;
+}
+.btn-t2-ok:hover {
+  cursor: pointer;
+  color:#fff;
+  background: #f68b1f;
+}
+
+.btn-t2-no {
+  display: inline-block;
+  background-color: #abe4b8;
+  color:#333;
+  border: 2px solid #7dc78e;
+  padding: 7px 20px;
+  transition: 0.3s;
+  font-size: 13px; font-weight: 600;
+  border-radius: 4px;
+  margin:3px; line-height: 1.2;
+}
+.btn-t2-ok:hover {
+  cursor: pointer;
+  color:#fff;
+  background: #f68b1f;
+}
+
+.btn-t2-red {
+  display: inline-block;
+  background-color: #ce1123;
+  color:#fff;
+  border: 2px solid #b70f1f;
+  padding: 7px 20px;
+  transition: 0.3s;
+  font-size: 13px; font-weight: 600;
+  border-radius: 4px;
+  width:210px;
+  margin:3px; line-height: 1.2;
+}
+
+.btn-t22 {
+  display: inline-block;
+  /*background: #dee3eb;*/
+  background-color: #93b6dd;
+  color:#333;
+  border: 2px solid #8aadd5;
+  padding: 7px 18px;
+  transition: 0.3s;
+  font-size: 13px; font-weight: 600;
+  border-radius: 40px;
+  line-height: 1.2;
+}
+.btn-t22:hover {
+  cursor: pointer;
+  color:#fff;
+  background: #557fae;
+}
+
+.btn-t22a {
+  display: inline-block;
+  /*background: #dee3eb;*/
+  background-color: #557fae !important;
+  color:#fff;
+  border: 2px solid #8aadd5 !important;
+  padding: 7px 18px;
+  transition: 0.3s;
+  font-size: 13px; font-weight: 600;
+  border-radius: 40px;
+  line-height: 1.2;
+}
+
+
 .btn-t3 {
   display: inline-block;
   background: #f0f1f3;
-  color:#666666;
+  color:#111;
   border: 2px solid #dcdce4;
   padding: 5px 25px;
   transition: 0.3s;
@@ -135,11 +240,11 @@
 .btn-t33 {
   display: inline-block;
   background: #f0f1f3;
-  color:#666666;
+  color:#444;
   border: 2px solid #dcdce4;
   padding: 5px 25px;
   transition: 0.3s;
-  font-size: 14px;
+  font-size: 13px;
   border-radius: 50px;
   margin:50px 0px 10px 0px;
 }
@@ -162,7 +267,7 @@
 }
 .box-reward1 { width:13%; float: left; height: 60px; padding:6px;}
 .XPpoint {
-  font-size: 20px; font-weight: 600; color:#0056ff; text-align: center; margin:4px auto;
+  font-size: 18px; font-weight: 600; color:#0056ff; text-align: center; margin:4px auto;
 }
 
 
@@ -329,59 +434,183 @@
 .webboard3 {
   text-align:left; font-size: 12px; color:#f68b1f; margin-top:-2px;
 }
-
-
-
-/*
-.txt-top {
-  vertical-align: text-top !important;
+.input-group {
+  margin-bottom: 10px;
+  zoom: 1;
+  width:100%;
+}
+input[type=text], textarea {
+  font: 600 13px ttb-regular, sans-serif !important;
+  color:#0056ff;
+  width: 100%;
+  padding: 10px;
+  line-height: 1.3 !important;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+textarea:focus { 
+  outline: none !important;
+  color: #0056ff; 
+  border-color: #ffc107;
+}
+.bg-menu {
+  background-color: #e9ecef !important;
+  /*background-color: #ffff00 !important;*/
+}
+.img-ranking {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    text-align: center;
+}
+.box25 {
+  width:75px; float: left; height: 84px; background-color: #dde5f2; margin: 5px;
+  border-radius: 8px; line-height: 1.1; color:#0056ff; font-weight: 600;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  font-size: 13px;
+} 
+.box25-text {
+  font-size: 16px; text-align: center; font-weight: 600; color:#002d63; margin:10px auto 6px auto;
 }
 
-
-
-.dropbtn {
-    background-color: #438fff;
-    color: white;
-    padding: 6px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    z-index: 9999;
+.box-menu-game {
+  width:46%; border:1px solid #f1f1f1; background-color: #fff; height: 102px; 
+  color:#0056ff; font-size: 11px; font-weight: 600; overflow: hidden; line-height: 1.3;
+  padding:5px; text-align: center; margin:5px; float: left; border-radius: 8px;
+}
+.box-menu-game:hover {
+  background-color: #f68b1f; cursor: pointer; color:#fff;
+}
+.bar {
+  position:relative;
+  float:left;
+  min-width:1%;
+  height:4px !important;
+  background:#13d200;
+}
+.bar1 {
+  position:relative;
+  float:left;
+  min-width:1%;
+  height:4px !important;
+  background:#0056ff;
+}
+.progress { 
+  height:4px !important;
+}
+.text-team1 {
+  font-size: 12px; font-weight: 600; color:#002d63; line-height: 1.1;margin:5px auto;
+}
+.text-team2 {
+  font-size: 12px; font-weight: 600; color:#000; line-height: 1.1;margin:8px auto; 
+}
+.text-team3 {
+  font-size: 12px; font-weight: 300; color:#0056ff; line-height: 1.1;padding:10px; text-align: left;
+}
+.ScoreGame2 {
+  width:31%; text-align: center; font-size: 15px; font-weight: 600; color:#0056ff; margin-left: 5px; float: left;
+  height: 70px; background-color: #e1e5ea; padding:8px 10px 6px 10px; border-radius: 8px;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-    z-index: 9999;
+.ScoreGame4 {
+  width:23%; text-align: center; font-size: 15px; font-weight: 600; color:#0056ff; margin-left: 5px; float: left;
+  height: 70px; background-color: #e1e5ea; padding:7px 10px 6px 10px; border-radius: 8px;
+}
+.ScoreGame5 {
+  width:22%; text-align: center; font-size: 11px !important ; font-weight: 400; color:#f68b1f; margin-left: 5px; float: left;
+  height: 120px; background-color: #f1f1f1; padding:10px 10px 6px 10px; border-radius: 8px;
+}
+.ScoreGame5:hover { 
+  cursor: pointer; background:#fee4b5;
 }
 
-.dropdown-content {
-    margin-top:4px; border-radius: 6px;
-    display: none;
-    position: absolute;
-    background-color: #75b2f3; color:#000;
-    min-width: 190px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+.ScoreGame4-text {
+  font-size: 12px; color:#888; border-top:2px solid #bccbd9; padding-top:4px; line-height: 1.1;
+}
+.font15number {
+  font-size:15px; font-weight: 600; 
+}
+.box-game {
+  width:31%; border:1px solid #f1f1f1; background-color: #f2f2f0; height: 102px; 
+  color:#0056ff; font-size: 11px; font-weight: 600; overflow: hidden; line-height: 1.3;
+  padding:5px; text-align: center; margin:3px; float: left; border-radius: 8px;
+}
+.box-game:hover {
+  background-color: #f68b1f; cursor: pointer; color:#fff;
+}
+.profile-team1 {
+  border-radius: 14px; width:90px; height: 90px; 
+}
+.img-game1 {
+  width:100%; border-top-left-radius: 15px; border-top-right-radius: 15px; margin-bottom: 12px;
+}
+.font12 { 
+  padding:10px 6px;font-size:12px;color:#555; line-height: 1.2;
+}
+.box-numberON {
+  background: #0056ff; width:14%; margin:3px; border-radius: 8px; float: left; text-align: center;
+  -webkit-box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#ffffff; height: 80px;
+box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17);
+}
+.box-number {
+  background: #ced5e0; margin:3px; border-radius: 50%; float: left; text-align: center;
+  -webkit-box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); padding-top:8px; font-size: 13px; font-weight: 600;
+box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; width: 35px;
+}
+.box-number:hover {
+  cursor: pointer; background-color: #0056ff; color: #fff;
+}
+.random-box {  
+  width:110px; float: left; text-align: center; background-color: #f1f1f1; font-size: 12px; padding:10px;
+  color: #999; font-weight: 600; border-radius: 10px; line-height: 1.1; margin-top:10px;
+}
+.random-box1 {  
+  width:110px; text-align: center; background-color: #c2cee6; font-size: 12px; padding:10px;
+  color: #111; font-weight: 600; border-radius: 10px; line-height: 1.1; margin:15px auto;
+  -webkit-box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); 
+  box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17);
+}
+.get-number {
+  font-size: 16px; color:#0056ff; font-weight: 600; padding:5px;
+}
+.title-touch {
+  text-align: left; padding:10px 0px 15px 0px; font-size: 13px; color:#fff; font-weight: 600; line-height:1.3;
+}
+.text-team {
+  font-size: 12px; font-weight: 300; color:#999; line-height: 1.1;padding:0px 5px 10px 0px;
+  line-height: 1.4;
+}
+.text-team1 {
+  font-size: 12px; font-weight: 600; color:#002d63; line-height: 1.1;
+}
+.text-team2 {
+  font-size: 12px; font-weight: 600; color:#000; line-height: 1.1;margin:8px auto; 
+}
+.text-team3 {
+  font-size: 12px; font-weight: 300; color:#0056ff; line-height: 1.1;padding:10px; text-align: left;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th { 
+  vertical-align: top; padding:4px; font-size: 13px; font-weight: 600;
+}
+.progress {
+  margin:0;
+  padding:0;
+  width:98%;
+  height:4px;
+  overflow:hidden;
+  background:#e5e5e5;
+  border-radius:6px;
+  font-size: 10px;
+}
+.td-center {
+  background-color: #f1f1f1; padding:4px;
 }
 
-.dropdown-content a {
-    font-size: 13px; font-weight: 600; color: #000;
-    text-align: left;
-    color: black;
-    padding: 6px 20px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #053e93; color:#fff;}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #053e93;
-}
-*/
 
