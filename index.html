@@ -46,8 +46,10 @@
       </div>
       <div id="OldSurvey" style="display: none;margin-top:30px;">
         <div style="margin:auto;">
-          <div class="btn-t11" onclick="window.location.href='intro.html';" style="line-height: 1.2; padding:10 15px; min-width: 80px;border:2px solid #f68b1f; background-color: #f5e8dc;"><b>แนะนำ</b><br><b>ระบบงาน</b></div>
-          <div class="btn-t11" onclick="window.location.href='home.html';" style="line-height: 1.2; padding:10 15px; min-width: 80px;"><b>Welcome to ...</b><br><b>LINE Retail Society</b></div>
+          <div class="btn-t2" onclick="location.href='home.html'" style="margin-bottom: 7px;padding:10px 77px;color:#fff;background-color: #469dfa; border:2px solid #268cf9;">Welcome to ...<br>LINE Retail Society</div>
+          <div class="clr"></div>
+          <div class="btn-t2" onclick="location.href='intro.html'">แนะนำการใช้<br>ระบบงาน</div>
+          <div class="btn-t2" onclick="DisplayQRCode()">ชวนเพื่อนเข้าใช้งาน<br>LINE Retail Society</div>
         </div>
       </div>
     </div>
@@ -80,6 +82,20 @@
       </div>
     </div>
     <div class="clr" style="height:70px;"></div>
+  </div>
+
+  <div id="id03" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="width:100%;margin:auto;min-height: 350px;">
+        <center>
+          <div style="margin:30px auto 15px auto; color:#f68b1f; line-height: 1.2;"><b>ชวนเพื่อนสแกน QR Code<br>เพื่อเข้าใช้งาน LINE Retail Society</b></div>
+          <div style="padding:10px auto 30px auto;"><img src="./img/QRCode-LINERetailSociety.png" style="width:90%;"></div>
+          <div class="clr"></div>
+          <div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่างนี้</div>
+        </center>
+      </div>
+      <div class="clr" style="height: 30px;"></div>
+    </div>
   </div>
 
   <script src="js/index.js"></script>

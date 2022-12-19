@@ -62,7 +62,7 @@
       }
       table.dataTable thead th, table.dataTable thead td {
           background: #94a9b3; color: #ffffff; padding: 4px; margin-top:15px;
-          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
+          font-size: 13px; color:#000; line-height: 1.2; 
       }
       table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
           font-size: 13px; color:#000; line-height: 1.2; 
@@ -79,8 +79,11 @@
       .table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
         cursor: pointer; 
       }
-      .table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
-        background-color: #0056ff; color:#ffffff;
+      table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 { 
+        vertical-align: text-top;
+      }
+      table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+        vertical-align: text-top;
       }
       .table.dataTable tbody tr {
         background:#ff0000;
@@ -94,7 +97,7 @@
         min-width: 50px;
       }
       .dataTables_wrapper .dataTables_filter input {
-        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #c1d2ec; color:#111; font-weight: 600;
+        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #e0e5ec; color:#111; font-weight: 600;
         border:2px solid #fff ;
       }
   </style>
@@ -118,11 +121,11 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>เว็บบอร์ด</h2>
+          <h2>ห้องคำถาม-คำตอบ</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="mypoint.html">เว็บบอร์ด</a></li>
-            <li>เลือกหัวข้อเว็บบอร์ด</li>
+            <li><a href="webboard.html">ห้องคำถาม-คำตอบ</a></li>
+            <li>รายละเอียดคำถาม</li>
           </ol>
         </div>
       </div>
@@ -131,23 +134,25 @@
 
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
       <div class="container">
-          <center>
-            <div class="btn-t3" style="margin-top:20px auto; background-color: #fff;"><b>Webboard</b></div>
-            <div style="margin-bottom: 0px;"><img src="./img/webboard.jpg" style="width:100%;"></div>
-            <div class="font13" style="margin:15px 10px 15px 10px;">กระดานเว็บบอร์ด เป็นกระดานสำหรับการตั้งคำถามที่เพื่อน ๆ ต้องการอยากทราบทุกเรื่องราวในโลกนี้ สำหรับการตอบคำถามอาจจะเป็นเพื่อน ๆ พนักงานด้วยกัน หรือเป็นผู้ที่เกี่ยวข้องก็ได้ เรามาร่วมกันหาคำตอบกันดีกว่า</div>
-            <div class="btn-t2" style="background-color: #a6b4c8; border:2px solid #647c9d;margin-bottom: 20px;" onclick="location.href='groupnews.html'"><b>ตั้งคำถามใหม่</b></div>
-          </center>
+        <center>
+          <div class="btn-t3" style="margin-top:20px auto;">ห้องคำถาม-คำตอบ</div>
+          <div style="margin-bottom: 0px;"><img src="./img/webboard.jpg" style="width:100%;"></div>
+          <div class="font13" style="margin:15px 10px 15px 10px;">ห้องคำถาม-คำตอบ เป็นห้องสำหรับเพื่อน ๆ ที่มีคำถาม  สามารถเข้ามาทำการตั้งคำถาม ถามสิ่งที่ต้องการอยากทราบทุกเรื่องราวในโลกนี้ สำหรับการตอบคำถามอาจจะเป็นเพื่อน ๆ พนักงานด้วยกัน หรือเป็นผู้ที่เกี่ยวข้องก็ได้ เรามาร่วมกันหาคำตอบกันดีกว่า</div>
+          <div class="btn-t2" style="margin-bottom: 30px;" onclick="NewQuestion()">ตั้งคำถามใหม่</div>
+          <div class="btn-t2" style="margin-bottom: 30px;" onclick="location.href='webboard.html#Question'">ดูคำถามทั้งหมด</div>
+        </center>
       </div>
     </section>
 
 
     <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
+      <div id="Question"></div>
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-4">
             <div class="sidebar" data-aos="fade-left">
               <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>คำถามจากเพื่อน ๆ</b></div>
+                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>หัวข้อคำถามทั้งหมด</b></div>
               </center>
               <div class="sidebar-item recent-posts">
                 <div style="width:98%; margin:0 auto;">
@@ -155,7 +160,8 @@
                     <thead>
                       <tr>
                         <th style="width:10%;text-align: center;">img</th>
-                        <th style="width:89%;text-align: center;">คำถาม</th>
+                        <th style="width:81%;text-align: center;">คำถาม</th>
+                        <th style="width:8%;text-align: center;">โพส</th>
                         <th style="width:1%;text-align: center;display: none;">Time</th>
                       </tr>
                     </thead>
@@ -163,7 +169,7 @@
                 </div>
                 <div class="clr"></div>
                 <center>
-                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
+                  <div class="btn-t2" onclick="location.href='home.html'" type="submit" style="margin-top:20px;">กลับหน้าแรก</div>
                   <!--
                   <div class="btn-t2" onclick="GotoGroupNews()" type="submit" style="margin-top:20px;font-size:14px;">ดูข่าวทั้งหมด</div>
                   -->
@@ -202,9 +208,17 @@
     </div>
   </footer>
 -->
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background-color: #fff; padding:24px;text-align: center;">
+      <div id="DisplayQuestion"></div>
+
+
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
 
   <div id="menu" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background-color: #ebebeb;">
+    <div class="w3-modal-content w3-card-4 bg-menu">
       <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
         <div id="MenuSociety"></div>
         <div style="margin-left: 5px;margin-top:15px;">

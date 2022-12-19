@@ -26,11 +26,13 @@
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
   <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/bento.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-
 
   <style>
     .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
@@ -47,6 +49,55 @@
     }
     .button, select { font-size: 14px; font-weight: 600; }
     .label {  font-size: 13px; color:#111; }
+
+    .list-element {
+        display: none;
+    }
+    #loadmore {
+        margin: 25px auto 0px;
+        display: table;
+        border: none;
+        padding: 8px 30px;
+        font-size: 13px;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 30px;
+        background-color: #2196f3;
+    }
+    #loadmore:hover {
+      background: #f68b1f;
+    }
+    .list {
+    }
+    .list .list-element:nth-child(1) {
+        display: block;
+    }
+    .list .list-element:nth-child(2) {
+        display: block;
+    }
+    .list .list-element:nth-child(3) {
+        display: block;
+    }
+    .list .list-element:nth-child(4) {
+        display: block;
+    }
+    .list .list-element:nth-child(5) {
+        display: block;
+    }
+    .list .list-element:nth-child(6) {
+        display: block;
+    }
+    .list .list-element:nth-child(7) {
+        display: block;
+    }
+    .list .list-element:nth-child(8) {
+        display: block;
+    }
+    .media {
+  display: block;
+  align-items: flex-start;
+}
+
   </style>
 
 </head>
@@ -69,35 +120,58 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>เว็บบอร์ด</h2>
+          <h2>ห้องคำถาม</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="mypoint.html">เว็บบอร์ด</a></li>
-            <li>รายละเอียดเว็บบอร์ด</li>
+            <li><a href="webboard.html">ห้องคำถาม</a></li>
+            <li>รายละเอียดคำถาม</li>
           </ol>
         </div>
       </div>
     </section>
 
 
-    <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
+    <section id="blog" class="blog" style="padding-top:10px;">
       <center>
+        <div class="btn-t3" style="margin-top:30px;"><b>คำถาม ... ถามว่า</b></div>
         <div><img src="./img/webboard-chat.jpg" style="width:100%;"></div>
-        <div class="btn-t3" style="margin-top:20px; background-color: #fff;"><b>คำถามจากเพื่อน ๆ</b></div>
       </center>
       <center>
-        <div id="loading" style="margin:20px auto 20px auto;"><img src="./img/loading1.gif" style="width:30px;margin-top:20px; margin-bottom: 80px;"></div>
+        <div id="loading" style="margin:20px auto 20px auto;">
+          <img src="./img/loading1.gif" style="width:30px;margin-top:20px; margin-bottom: 80px;">
+        </div>
       </center>
       <div class="container" id="ShowContent" style="display: none;">
         <div class="webboard0" id="DisplayNameWebboard"></div>
         <div id="DisplayOwner"></div>
         <div class="clr" style="height: 20px;"></div>
-        <center>
-          <div class="btn-t2" style="background-color: #a6b4c8; border:2px solid #647c9d;margin-bottom: 20px;" onclick="location.href='webboard.html'"><b>ดูคำถามทั้งหมด</b></div>
-        </center>
       </div>
     </section>
 
+
+    <section id="ChatNews" class="blog section-bg" style="padding-top:12px; border-top: 3px dashed #e4e4e4;">
+      <div class="container" style="margin-top:20px;">
+        <div class="container bootstrap snippets bootdey" style="padding-left:5px; padding-right: 5px; min-height: 300px;">
+          <div class="tile tile-alt" id="messages-main">
+            <div class="message-feed media">
+              <div id="DisplayMemo" class="list"></div>
+              <button id="loadmore" style="margin-top:40px; margin-bottom: 10px;">Load More...</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="msb-reply">
+        <textarea id="TextMamo" placeholder="เขียนข้อความของคุณได้ที่นี่ ..."></textarea>
+        <button style="background: #f68b1f;" onclick="CheckMemo()"><i class="fa fa-paper-plane-o"></i></button>
+      </div>
+      <center>
+        <div class="btn-t2" style="margin-bottom: 20px;" onclick="location.href='home.html'"><b>กลับหน้าแรก</b></div>
+        <div class="btn-t2" style="margin-bottom: 20px;" onclick="location.href='webboard.html'"><b>ดูคำถามทั้งหมด</b></div>
+      </center>
+
+      <div class="clr" style="height: 20px;"></div>
+    </section>
+  </main>
 
 <!--
     <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
@@ -159,7 +233,7 @@
 -->
 
   <div id="menu" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background-color: #ebebeb;">
+    <div class="w3-modal-content w3-card-4 bg-menu">
       <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
         <div id="MenuSociety"></div>
         <div style="margin-left: 5px;margin-top:15px;">

@@ -94,7 +94,7 @@
         min-width: 50px;
       }
       .dataTables_wrapper .dataTables_filter input {
-        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #c1d2ec; color:#fff; font-weight: 600;
+        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #e0e5ec; color:#fff; font-weight: 600;
         border:2px solid #fff ;
       }
   </style>
@@ -128,18 +128,31 @@
       </div>
     </section>
 
-    <section id="NewsUpdate" class="blog" style="padding-top:12px;">
+
+    <section id="NewsUpdate" class="blog" style="padding-top:10px;background-color: #fff;">
+      <div class="container">
+        <center>
+          <div class="btn-t3" style="margin-top:20px auto;">ประวัติการลงทะเบียน</div>
+          <div style="margin-bottom: 0px;"><img src="./img/register.jpg" style="width:100%;"></div>
+          <div class="font13" style="margin:15px 10px 15px 10px;">เราเก็บรวบรวมทุก ๆ การลงทะเบียนเข้าร่วมกิจกรรมต่าง ๆ ของคุณทั้งหมดไว้ที่นี่ สามารถตรวจสอบวัน เวลา และสถานที่ในการเข้าร่วมกิจกรรมที่นี่</div>
+          <div class="btn-t2" style="margin-bottom: 30px;margin-top:10px;" onclick="location.href='history.html#Register'">ดูประวัติการลงทะเบียนกิจกรรม</div>
+        </center>
+      </div>
+      <div id="Register"></div>
+    </section>
+
+
+    <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
+      <div id="Question"></div>
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-4">
             <div class="sidebar" data-aos="fade-left">
               <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 10px; background-color: #fff;"><b>ประวัติการลงทะเบียน</b></div>
+                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;">รายการประวัติการลงทะเบียน</div>
               </center>
               <div class="sidebar-item recent-posts">
                 <div style="width:98%; margin:0 auto;">
-                  <div style="font-size: 13px;padding:10px 20px; color:#111;">เราเก็บรวบรวมทุก ๆ การลงทะเบียนเข้าร่วมกิจกรรมต่าง ๆ ของคุณทั้งหมดไว้ที่นี่ สามารถตรวจสอบวัน เวลา และสถานที่ในการเข้าร่วมกิจกรรมที่นี่</div>
-                  <div class="clr" style="height: 30px;"></div>
                   <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
                     <thead>
                       <tr>
@@ -153,7 +166,7 @@
                 </div>
                 <div class="clr"></div>
                 <center>
-                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
+                  <div class="btn-t2" onclick="location.href='home.html'" type="submit" style="margin-top:20px;">กลับหน้าแรก</div>
                 </center>
               </div>
             </div>
@@ -161,6 +174,9 @@
         </div>
       </div>
     </section>
+  </main>
+
+
 <!--
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
       <div class="container">
@@ -263,7 +279,7 @@
 
 
   <div id="menu" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background-color: #ebebeb;">
+    <div class="w3-modal-content w3-card-4 bg-menu">
       <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
         <div id="MenuSociety"></div>
         <div style="margin-left: 5px;margin-top:15px;">

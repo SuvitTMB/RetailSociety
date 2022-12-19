@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="assets/img/favicom.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <style>
+    .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+      padding-right: 5px; padding-left: 5px;
+    }
+    .blog .sidebar { 
+      margin: 0 0 40px 0px; box-shadow: none; padding: 20px;
+    }
+    #footer .footer-top { 
+      padding: 30px 15px 20px 15px;
+    }
+    .blog .sidebar { 
+      padding: 0px;
+    }
+    .button, select { font-size: 14px; font-weight: 600; }
+    .label {  font-size: 13px; color:#111; }
+  </style>
+
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="home.html"><span>LINE</span> Retail Society</a></h1>
+      <div class="mobile-nav-toggle d-lg-none" onclick="OpenMenu()">
+        <i class="icofont-navigation-menu"></i>
+      </div>
+    </div>
+  </header>
+
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>ภารกิจสะสมเหรียญรางวัล</h2>
+          <ol style="margin-top:-10px;">
+            <li><a href="home.html#QuizGame">Home</a></li>
+            <li><a href="quizgame1.html">ภารกิจสะสมเหรียญรางวัล</a></li>
+            <li>รู้จักทัชให้มากขึ้น</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
+      <div class="container">
+        <center>
+          <div class="btn-t3" style="margin-top:20px auto;"><u>ภารกิจที่ 1</u> รู้จักทัชให้มากขึ้น</div>
+          <div id="MyProfile" style="margin-top:15px;"></div>
+          <div style="width:80%; margin:20px auto;">
+            <div class="ScoreGame2">
+              <div id="Loading1" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show1" style="display:none;"><div id="ShowUserSumTime1"></div></div>
+            </div>
+            <div class="ScoreGame2">
+              <div id="Loading2" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show2" style="display:none;"><div id="ShowUserSumTime2"></div></div>
+            </div>
+            <div class="ScoreGame2">
+              <div id="Loading3" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show3" style="display:none;"><div id="ShowUserSumTime3"></div></div>
+            </div>
+            <div class="clr"></div>
+            <div id="Bar0" style="margin:5px;"></div>
+          </div>
+          <div class="clr"></div>
+          <div style="margin-top:10px;">
+            <div class="btn-t22" onclick="UnLoading('A')" id="a1">โจทย์ของคุณ</div>
+            <div class="btn-t22" onclick="UserBoard('B')" id="a2">คะแนนของคุณ</div>
+            <div class="btn-t22" onclick="LeaderBoard('C')" id="a3">ตารางผู้นำ</div>
+          </div>
+
+          <div id="DisplayPage" style="max-width:450px;padding:10px;margin:auto;">
+            <div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ การเงินรอบด้านของชีวิต ดีขึ้นได้</div>
+            <div class="font13" style="text-align: left;">เปลี่ยนชีวิตคุณให้ง่ายขึ้น ด้วยแอป ttb touch ผู้ช่วยส่วนตัวที่ศึกษาคุณจนรู้ใจ พร้อมวางแผนทางการเงิน ให้ดีขึ้นไม่ว่าไลฟ์สไตล์ไหน ก็ตอบโจทย์ มาดูกันในแต่ละเรื่องสำคัญของ ttb touch ใหม่ของเรา พร้อมลุ้นเหรียญรางวัลพิเศษ</div>
+            <div style="margin-top:25px;">
+              <div class="box-game">
+                <div id="DisplayWait1" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow1" style="display:none;" onclick="gotoGame1(1)">
+                  <img src="./img/png-1.png" style="width:50px;">
+                  <div class="text-team1">การเงินรอบด้าน<br>ของชีวิต ดีขึ้นได้</div>
+                  <div id="Bar1"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait2" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow2" style="display:none;" onclick="gotoGame1(2)">
+                  <img src="./img/png-2.png" style="width:50px;">
+                  <div class="text-team1">ให้คุณไม่พลาดใน<br>ทุกธุรกรรมสำคัญ</div>
+                  <div id="Bar2"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait3" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow3" style="display:none;" onclick="gotoGame1(3)">
+                  <img src="./img/png-3.png" style="width:50px;">
+                  <div class="text-team1">จัดการทุกเรื่อง<br>สำคัญในชีวิต</div>
+                  <div id="Bar3"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait4" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow4" style="display:none;" onclick="gotoGame1(4)">
+                  <img src="./img/png-4.png" style="width:50px;">
+                  <div class="text-team1">สะดวกเหมือน<br>ไปสาขา</div>
+                  <div id="Bar4"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait5" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow5" style="display:none;" onclick="gotoGame1(5)">
+                  <img src="./img/png-5.png" style="width:50px;">
+                  <div class="text-team1">ทุกความยุ่งยาก<br>จะหมดไป</div>
+                  <div id="Bar5"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait6" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow6" style="display:none;" onclick="gotoGame1(6)">
+                  <img src="./img/png-6.png" style="width:50px;">
+                  <div class="text-team1">ได้รับคืนมากกว่า<br>ในทุกการใช้งาน</div>
+                  <div id="Bar6"></div>
+                </div>
+              </div>
+            </div>
+            <div class="clr"></div>
+         </div>
+
+          <div style="max-width:400px;margin:auto;padding:10px;">
+            <div id="LoadingScore" style="display:none;margin:">
+              <center><img src="./img/loading1.gif" style="padding-top:45px;width:20px;margin-bottom: 30px;"></center>
+            </div>
+            <div id="UserScore" style="display:none;">
+              <div class="title-touch" style="color:#0056ff;">ตารางผู้นำการแข่งขันรู้จักทัชให้มากขึ้น</div>
+              <div class="font13" style="text-align: left;">เพื่อให้กิจกรรมของเราสนุกมากยิ่งขึ้น เรามาดูกันว่า 50 อันดับแรกที่สามารถทำเหรียญรางวัลในหมวดนี้ได้มากที่สุดกัน</div>
+              <div id="UserScore0" style="margin-top:10px;"></div>
+            </div>
+          </div>
+
+
+          <div style="max-width:400px;margin:auto;padding:10px;">
+            <div id="UserBoard" style="display:none;max-width:400px;margin:-20px auto 15px auto;">
+              <div class="title-touch" style="color:#0056ff;">ตารางเหรียญรางวัลการเรียนรู้ผลิตภัณฑ์ของคุณ</div>
+              <div class="font13" style="text-align: left;">คุณสามารถตรวจสอบตารางการเรียนรู้ผลิตภัณฑ์ของคุณได้ที่นี่ </div>
+              <table class="table" style="width:100%;margin-top:10px;"><tbody>
+                <tr>
+                  <td class="td-center td-padding" style="width:10%;text-align:center;">1</td>
+                  <td class="td-padding" style="width:70%;"><font color="#0056ff">การเงินรอบด้านของชีวิต ดีขึ้นได้</font></td>
+                  <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint1"></td>
+                </tr>
+                <tr>
+                  <td class="td-center td-padding" style="width:10%;text-align:center;">2</td>
+                  <td class="td-padding" style="width:70%;"><font color="#0056ff">ให้คุณไม่พลาดในธุรกรกรรมสำคัญ</font></td>
+                  <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint2"></td>
+                </tr>
+                <tr>
+                  <td class="td-center td-padding" style="width:10%;text-align:center;">3</td>
+                  <td class="td-padding" style="width:70%;"><font color="#0056ff">จัดการทุกเรื่องสำคัญในชีวิต</font></td>
+                  <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint3"></td>
+                </tr>
+                <tr>
+                  <td class="td-center td-padding" style="width:10%;text-align:center;">4</td>
+                  <td class="td-padding" style="width:70%;"><font color="#0056ff">สะดวกเหมือนไปสาขา</font></td>
+                  <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint4"></td>
+                </tr>
+                <tr>
+                  <td class="td-center td-padding" style="width:10%;text-align:center;">5</td>
+                  <td class="td-padding" style="width:70%;"><font color="#0056ff">ทุกความยุ่งยากจะหมดไป</font></td>
+                  <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint5"></td>
+                </tr>
+                <tr>
+                  <td class="td-center td-padding" style="width:10%;text-align:center;">6</td>
+                  <td class="td-padding" style="width:70%;"><font color="#0056ff">ได้รับคืนมากกว่าในทุกการใช้งาน</font></td>
+                  <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint6"></td>
+                </tr>
+              </tbody></table>
+            </div>
+          </div>
+
+
+
+
+<!--
+          <div class="font13" style="margin:25px 10px 10px 10px;"><b><font color="#0056ff">ttb touch ใหม่ การเงินรอบด้านของชีวิต ดีขึ้นได้</font></b><br><br>เปลี่ยนชีวิตคุณให้ง่ายขึ้น ด้วยแอป ttb touch ผู้ช่วยส่วนตัวที่ศึกษาคุณจนรู้ใจ พร้อมวางแผนทางการเงิน ให้ดีขึ้นไม่ว่าไลฟ์สไตล์ไหน ก็ตอบโจทย์ มาดูกันในแต่ละเรื่องสำคัญของ ttb touch ใหม่ของเรา พร้อมลุ้นคะแนนพิเศษ</div>
+          <div id="DisplayPage" style="max-width:450px;padding:5px;margin:10px auto 15px auto;">
+            <div>
+              <div class="box-game">
+                <div id="DisplayWait1" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow1" style="display:none;" onclick="gotoGame1(1)">
+                  <img src="./img/png-1.png" style="width:50px;">
+                  <div class="text-team1">การเงินรอบด้าน<br>ของชีวิต ดีขึ้นได้</div>
+                  <div id="Bar1"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait2" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow2" style="display:none;" onclick="gotoGame1(2)">
+                  <img src="./img/png-2.png" style="width:50px;">
+                  <div class="text-team1">ให้คุณไม่พลาดใน<br>ทุกธุรกรรมสำคัญ</div>
+                  <div id="Bar2"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait3" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow3" style="display:none;" onclick="gotoGame1(3)">
+                  <img src="./img/png-3.png" style="width:50px;">
+                  <div class="text-team1">จัดการทุกเรื่อง<br>สำคัญในชีวิต</div>
+                  <div id="Bar3"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait4" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow4" style="display:none;" onclick="gotoGame1(4)">
+                  <img src="./img/png-4.png" style="width:50px;">
+                  <div class="text-team1">สะดวกเหมือน<br>ไปสาขา</div>
+                  <div id="Bar4"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait5" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow5" style="display:none;" onclick="gotoGame1(5)">
+                  <img src="./img/png-5.png" style="width:50px;">
+                  <div class="text-team1">ทุกความยุ่งยาก<br>จะหมดไป</div>
+                  <div id="Bar5"></div>
+                </div>
+              </div>
+              <div class="box-game">
+                <div id="DisplayWait6" style="display:block;"><img src="./img/loading1.gif" style="padding-top:30px;width:20px;"></div>
+                <div id="DisplayShow6" style="display:none;" onclick="gotoGame1(6)">
+                  <img src="./img/png-6.png" style="width:50px;">
+                  <div class="text-team1">ได้รับคืนมากกว่า<br>ในทุกการใช้งาน</div>
+                  <div id="Bar6"></div>
+                </div>
+              </div>
+            </div>
+            <div class="clr"></div>
+         </div>
+
+  <div style="max-width:400px;margin:auto;padding:10px;">
+    <div id="LoadingScore" style="display:none;margin:">
+      <center><img src="./img/loading1.gif" style="padding-top:45px;width:20px;margin-bottom: 30px;"></center>
+    </div>
+    <div id="UserScore" style="display:none;">
+      <div class="title-touch" style="color:#0056ff;">ตารางผู้นำการแข่งขันรู้จักทัชให้มากขึ้น</div>
+      <div class="text-team" style="text-align: left;">เพื่อให้กิจกรรมของเราสนุกมากยิ่งขึ้น เรามาดูกันว่าใครที่สามารถที่จะทำคะแนนในหมวดนี้ได้มากที่สุดกัน</div>
+      <div id="UserScore0"></div>
+    </div>
+  </div>
+
+
+  <div style="max-width:400px;margin:auto;padding:10px;display:none;">
+    <div id="UserBoard" style="display:none;max-width:400px;margin:-20px auto 15px auto;">
+      <div class="title-touch" style="color:#0056ff;">ตารางคะแนนการเรียนรู้ผลิตภัณฑ์ของคุณ</div>
+      <div class="text-team" style="text-align: left;">คุณสามารถตรวจสอบตารางการเรียนรู้ผลิตภัณฑ์ของคุณได้ที่นี่ </div>
+      <table class="table" style="width:100%;"><tbody>
+        <tr>
+          <td class="td-center td-padding" style="width:10%;text-align:center;">1</td>
+          <td class="td-padding" style="width:70%;"><font color="#0056ff">การเงินรอบด้านของชีวิต ดีขึ้นได้</font></td>
+          <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint1"></td>
+        </tr>
+        <tr>
+          <td class="td-center td-padding" style="width:10%;text-align:center;">2</td>
+          <td class="td-padding" style="width:70%;"><font color="#0056ff">ให้คุณไม่พลาดในธุรกรกรรมสำคัญ</font></td>
+          <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint2"></td>
+        </tr>
+        <tr>
+          <td class="td-center td-padding" style="width:10%;text-align:center;">3</td>
+          <td class="td-padding" style="width:70%;"><font color="#0056ff">จัดการทุกเรื่องสำคัญในชีวิต</font></td>
+          <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint3"></td>
+        </tr>
+        <tr>
+          <td class="td-center td-padding" style="width:10%;text-align:center;">4</td>
+          <td class="td-padding" style="width:70%;"><font color="#0056ff">สะดวกเหมือนไปสาขา</font></td>
+          <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint4"></td>
+        </tr>
+        <tr>
+          <td class="td-center td-padding" style="width:10%;text-align:center;">5</td>
+          <td class="td-padding" style="width:70%;"><font color="#0056ff">ทุกความยุ่งยากจะหมดไป</font></td>
+          <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint5"></td>
+        </tr>
+        <tr>
+          <td class="td-center td-padding" style="width:10%;text-align:center;">6</td>
+          <td class="td-padding" style="width:70%;"><font color="#0056ff">ได้รับคืนมากกว่าในทุกการใช้งาน</font></td>
+          <td class="td-padding" style="width:20%;text-align:center;color:#000;font-weight: 600;" id="UserPoint6"></td>
+        </tr>
+      </tbody></table>
+    </div>
+  </div>
+-->
+
+
+
+    <div class="clr"></div>
+    <div class="btn-t2" onclick="ShowIntro()">แนะนำภารกิจ</div>
+    <div class="btn-t2" onclick="location.href='home.html#QuizGame'" type="submit" style="margin:30px auto;">กลับหน้าแรก</div>
+    <div class="clr"></div>
+        </center>
+      </div>
+    </section>
+  </main>
+
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="width:100%;text-align:center; padding:0;">
+        <div id="DisplayWB"></div>
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+  <div id="id02" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;">
+        <div id="DisplayGetPoint"></div>
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+  <div id="id03" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center; padding:0;">
+        <div><img src="./img/touch-mobile.gif" width="100%"></div>
+        <div class="btn-t3" style="margin-top:20px auto;"><u>ภารกิจที่ 1</u> รู้จักทัชให้มากขึ้น</div>
+        <div class="text-team" style="margin:15px 15px 10px 15px;text-align: left;line-height: 1.2;color:#111;">มาทบทวนความเข้าใจกับ ttb touch ใหม่ ที่จะทำให้การเงินรอบด้านของชีวิต ดีขึ้นได้ กับ 6 หัวข้อเพื่อทบทวนความเข้าใจ พร้อมลุ้นรับเหรียญรางวัล แลอาจจะได้รับเหรียญรางวัล เพิ่มเป็น 2 เท่า<br><br>
+        </div>
+        <div>
+          <ul style="font-size: 13px; text-align: left; color:#002d63;">
+            <li>การเงินรอบด้านของชีวิต ดีขึ้นได้</li>
+            <li>ให้คุณไม่พลาดในธุรกรกรรมสำคัญ</li>
+            <li>จัดการทุกเรื่องสำคัญในชีวิต</li>
+            <li>สะดวกเหมือนไปสาขา</li>
+            <li>ทุกความยุ่งยากจะหมดไป</li>
+            <li>ได้รับคืนมากกว่าในทุกการใช้งาน</li>
+          </ul>
+        </div>
+        <div class="clr"></div>
+        <div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ไปเริ่มภารกิจกันเลย</div>
+        <div class="clr" style="height:30px;"></div>
+        <!--<div id="DisplayIntro"></div>-->
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+  <div id="menu" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4 bg-menu">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
+        <div id="MenuSociety"></div>
+        <div style="margin-left: 5px;margin-top:15px;">
+          <div id="DisplayLink"></div>
+        </div>
+      </div>
+      <div class="clr" style="height:70px;"></div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="js/connect.js"></script>
+  <script src="js/quizgame1.js"></script>
+  <script src="js/menu.js"></script>
+
+</body>
+</html>
