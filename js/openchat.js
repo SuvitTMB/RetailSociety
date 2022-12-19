@@ -7,14 +7,13 @@ var xCal = 0;
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
-  dbttbWebboard = firebase.firestore().collection("ttbWebboard");
+  //dbttbWebboard = firebase.firestore().collection("ttbWebboard");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
-  //dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
-  //MyPoint();
-  CheckWebboard();
+  //CheckWebboard();
   OpenPopMenu();
 });
 
+/*
 
 function CheckWebboard() {
   var i = 0;
@@ -68,7 +67,7 @@ function CheckWebboard() {
 
 function NewQuestion() {
   var str = ""; 
-  str += '<div class="btn-t3" style="margin-top:15px;">ตั้งคำถามใหม่</div>';
+  str += '<div class="btn-t3" style="margin-top:15px;">ตั้งคำถามกระดานเว็บบอร์ด</div>';
   str += '<div class="row-font"><div class="header-font" style="padding:15px 10px;line-height:1.2;">เพื่อน ๆ สามารถตั้งคำถามที่อยากจะถามผ่านช่องทางด้านล่างได้เลยน้า</div>';
   str += '<div class="input-group"><textarea id="txtQuestion" rows="10" placeholder="เพิ่มข้อความที่ต้องการถามได้ที่นี่ ..."></textarea></div></div>';
   str += '<div class="clr" style="height:10px;"></div><div class="btn-t2" onclick="AddNewQuestion()" style="margin-top:10px;">เพิ่มคำถามใหม่</div>';
@@ -164,7 +163,7 @@ function checkZero(data){
   }
   return data;
 }
-
+*/
 
 
 /*

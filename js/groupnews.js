@@ -40,11 +40,16 @@ function CheckGroupNews() {
       str += '<a href="#ttbNews"><div class="box-menu-group" onclick="CheckNews('+ doc.data().NewsGroup +')">';
       str += '<div><img src="'+ doc.data().NewsIcon +'" class="box-menu-img-group"></div>';
       str += '<div class="box-menu-text-group">'+ doc.data().NewsNameWeb +'</div>';
-      str += '<div class="box-menu-count">'+ doc.data().TotalNews +' ข่าว</div></div></a>';
+      if(doc.data().TotalNews!=0) {
+        str += '<div class="box-menu-count">'+ doc.data().TotalNews +' ข่าว</div>';
+      } else {
+        str += '<div class="box-menu-count">-</div>';
+      }
+      str += '</div></a>';
       xCountNews = xCountNews + doc.data().TotalNews;
     });
     str += '<a href="#ttbNews"><div class="box-menu-group" onclick="CheckNews(0)">';
-    str += '<div><img src="./img/news-00.png" class="box-menu-img-group"></div>';
+    str += '<div><img src="./icon/news-00.png" class="box-menu-img-group"></div>';
     str += '<div class="box-menu-text-group">ดูข่าวสาร<br>ทั้งหมด</div>';
     str += '<div class="box-menu-count">'+ xCountNews +' ข่าว</div></div></a>';
     $("#DisplayGroupNews").html(str);

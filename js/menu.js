@@ -34,9 +34,9 @@ function OpenPopMenu() {
     xLine += '</div></div><div class="clr"></div>';
     xLine += '<div style="height: 70px;background-color: #fff;">';
     xLine += '<div class="box-reward1"> </div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("Level_Point") +'</div>ระดับ<br>ผู้แข่งขัน</div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("XP_Point") +'</div>คะแนน<br>ประสบการณ์</div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("RP_Point") +'</div>คะแนน<br>แลกรางวัล</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'</div>เหรียญ<br>แลกรางวัล</div>';
     xLine += '<div class="clr" style="height:3px;"></div>'
     var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
     xLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
@@ -102,9 +102,9 @@ function MyPoint() {
 
   zLine += '<div style="height: 70px;background-color: #c2dfef; width:100%; max-width:450px; margin:auto;">';
   zLine += '<div class="box-reward1"> </div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("Level_Point") +'</div>ระดับ<br>ผู้แข่งขัน</div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("XP_Point") +'</div>คะแนน<br>ประสบการณ์</div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ sessionStorage.getItem("RP_Point") +'</div>คะแนน<br>แลกรางวัล</div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'</div>เหรียญ<br>แลกรางวัล</div>';
   zLine += '<div class="clr" style="height:3px;"></div>'
   var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
   zLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';

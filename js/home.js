@@ -1,37 +1,31 @@
 var cleararray = "";
+var sTimeGame1 = 0;
+var sTimeGame2 = 0;
+var sTimeGame3 = 0;
+var sTimeGame4 = 0;
 
 
 $(document).ready(function () {
-  if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
+  if(sessionStorage.getItem("RefID_Member")==null) { location.href = "index.html"; }
+  //if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
   dbProfile = firebase.firestore().collection("CheckProfile");
   dbSocietyMenu = firebase.firestore().collection("SocietyMenu");
   dbttbNews = firebase.firestore().collection("ttbnews");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
+
+  //dbMember = firebase.firestore().collection("touch_member");
+  dbMember = firebase.firestore().collection("ttbMember");
+  dbQuiz = firebase.firestore().collection("touch_quiz");
+
   MenuSlide();
   CheckData();
   OpenPopMenu();
+  CheckBarChart();
 });
 
-/*
-function Connect_DB() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
-    authDomain: "retailproject-6f4fc.firebaseapp.com",
-    projectId: "retailproject-6f4fc",
-    databaseURL: "https://file-upload-6f4fc.firebaseio.com",
-    storageBucket: "retailproject-6f4fc.appspot.com",
-    messagingSenderId: "653667385625",
-    appId: "1:653667385625:web:a5aed08500de80839f0588",
-    measurementId: "G-9SKTRHHSW9"
-  };
-  firebase.initializeApp(firebaseConfig);
-}
-*/
 
 function CheckData() {
-  //$("#ProfileUser").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
-  //$("#ProfileUser1").html('<img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img">');  
   var str = "";
   dbProfile.where('lineID','==',sessionStorage.getItem("LineID"))
   .get().then((snapshot)=> {
@@ -43,6 +37,7 @@ function CheckData() {
     });
   });
 }
+
 
 function ListWebPage() {
   var str = "";
@@ -58,7 +53,7 @@ function ListWebPage() {
     });
     str += '</div>';
     $("#DisplayListWebPage").html(str);
-    $("#yyy").html(str);
+    //$("#yyy").html(str);
   });
 }
 
@@ -77,7 +72,7 @@ function ClickCheckView(link,id) {
       str += '<div style="max-width:450px;width:100%;margin:auto;">';
       str += '<div class="btn-t3" style="cursor: default;margin-top:10px;"><b>'+doc.data().GroupName+'</b></div>';
       str += '<div style="margin-top:15px"><img src="'+doc.data().GroupImg+'" style="width:120px;"></div>';
-      str += '<div style="text-align:left; color:#0056ff; padding-top:12px;font-size:13px;">ข้อมูลระบบงาน</div>';
+      str += '<div style="text-align:left; color:#0056ff; padding-top:25px;font-size:13px;"><b>ข้อมูลระบบงาน</b></div>';
       str += '<div class="LDP-detail">'+doc.data().GroupDetail+'</div>';
       str += '</div>';
       str += '<div style="max-width:450px;width:100%;margin-top:25px; margin-bottom: 20px;">';
@@ -140,8 +135,87 @@ function ReadNews(id,xGroup) {
 }
 
 
+function CheckBarChart() {
+  var str = "";
+  var str2 = "";
+  var str3 = "";
+  var str4 = "";
+  dbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      var CalAllTime = doc.data().TimeGame1 + doc.data().TimeGame2 + doc.data().TimeGame3 + doc.data().TimeGame4;
+      var UserTrue = parseFloat(doc.data().UserSumTrue) + parseFloat(doc.data().Game3SumTru);
+      var UserFalse = doc.data().UserSumFalse + doc.data().Game3SumFalse;
+      var UserAll = UserTrue + UserFalse;
+      var CalRatio = ((doc.data().TimeGame4/6)*100);
+      if(isNaN(UserTrue)) {
+        var CalTrue = 0;
+      } else {
+        var CalTrue = ((UserTrue/UserAll)*100);
+      }
+      if(isNaN(UserFalse)) {
+        var CalFalse = 0;
+      } else {
+        var CalFalse = ((UserFalse/UserAll)*100);
+      }
+      $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+CalAllTime+'</div><div class="ScoreGame4-text">จำนวน<br>แข่งสะสม</div>');
+      $("#ShowUserSumTime2").html("<div class='font15number' style='color:#2dcc02'>"+CalTrue.toFixed(2) +'%</div><div class="ScoreGame4-text">%การตอบ<br>คำถามถูก</div>');
+      $("#ShowUserSumTime3").html("<div class='font15number' style='color:#ff0000'>"+CalFalse.toFixed(2) +'%</div><div class="ScoreGame4-text">%การตอบ<br>คำถามผิด</div>');
+      $("#ShowUserSumTime4").html("<div class='font15number' style='color:#0056ff'>"+doc.data().TotalScore.toFixed(2) +'</div><div class="ScoreGame4-text">คะแนนสะสม<br>ล่าสุด</div>');
+      sTimeGame1 = (doc.data().TimeGame1/6)*100;
+      if(sTimeGame1>=100) {
+        str += '<div class="progress"><div class="bar" style="width:'+sTimeGame1.toFixed(2)+'%"></div></div>';
+      } else {
+        str += '<div class="progress"><div class="bar1" style="width:'+sTimeGame1.toFixed(2)+'%"></div></div>';
+      }
+      $("#RatioGame1").html(str);  
+
+      sTimeGame2 = (doc.data().TimeGame2/9)*100;
+      if(sTimeGame2>=100) {
+        str2 += '<div class="progress"><div class="bar" style="width:'+sTimeGame2.toFixed(2)+'%"></div></div>';
+      } else {
+        str2 += '<div class="progress"><div class="bar1" style="width:'+sTimeGame2.toFixed(2)+'%"></div></div>';
+      }
+      $("#RatioGame2").html(str2);  
+
+      sTimeGame3 = (doc.data().TimeGame3/9)*100;
+      if(sTimeGame3>=100) {
+        str3 += '<div class="progress"><div class="bar" style="width:'+sTimeGame3.toFixed(2)+'%"></div></div>';
+      } else {
+        str3 += '<div class="progress"><div class="bar1" style="width:'+sTimeGame3.toFixed(2)+'%"></div></div>';
+      }
+      $("#RatioGame3").html(str3);  
+    });
+    document.getElementById('Loading1').style.display='none';
+    document.getElementById('Show1').style.display='block';
+    document.getElementById('Loading2').style.display='none';
+    document.getElementById('Show2').style.display='block';
+    document.getElementById('Loading3').style.display='none';
+    document.getElementById('Show3').style.display='block';
+    document.getElementById('Loading4').style.display='none';
+    document.getElementById('Show4').style.display='block';
+  });
+}
+
+
+function GotoGame(gotopage) {
+  if(gotopage==1) {
+    location.href = 'quizgame1.html';
+  } else if(gotopage==2) { 
+    location.href = 'quizgame2.html';
+  } else if(gotopage==3) { 
+    location.href = 'quizgame3.html';
+  } else if(gotopage==4) { 
+    location.href = 'quizgame4.html';
+  }
+}
+
+
 function CloseAll() {
   document.getElementById('menu').style.display='none';
   document.getElementById('id01').style.display='none';
 }
+
+
 

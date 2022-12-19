@@ -162,11 +162,7 @@ function NewDate() {
   minutes = checkZero(minutes);
   seconds = checkZero(seconds);
   dateString = day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds +" "+ ampm;
-
   xdateCheck = months[monthEN] + " " + day + ", " + year + " " + hour + ":" + minutes + ":" + seconds ;
-  //var GetWatingTime = "april 25, 2022 12:30:00";
-
-
 }
 
 

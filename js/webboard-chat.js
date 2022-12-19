@@ -1,6 +1,11 @@
 var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
 var cleararray = "";
 var idRoomWebboard = "";
+var xidRoomWebboard = "";
+var MaxTime = 0;
+var qInterval;
+var i = 0;
+var str = '';
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
@@ -10,23 +15,14 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbWebboard = firebase.firestore().collection("ttbWebboard");
   dbttbWebChat = firebase.firestore().collection("ttbWebChat");
-
-
-
-
-  //dbttbNews = firebase.firestore().collection("ttbnews");
-  //dbttbMember = firebase.firestore().collection("ttbMember");
-  //dbSocial = firebase.firestore().collection("WorldMemberChat");
-  //alert(RoomWebboard);
-  //GroupChat(sGroupChart);
   CheckBoardID();
+  GroupChat();
   OpenPopMenu();
 });
 
 
 
 function getParameterByName(name, url) {
-  str = '';
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -55,10 +51,180 @@ function CheckBoardID() {
       $("#DisplayNameWebboard").html(doc.data().QWebboard);
       $("#DisplayOwner").html(str);
     });
+  if(xidRoomWebboard != idRoomWebboard) {
     UpdateRead();
+    xidRoomWebboard = idRoomWebboard;
+  }
     document.getElementById('loading').style.display='none';
     document.getElementById('ShowContent').style.display='block';
   });
+}
+
+
+function GroupChat() {
+  //if(idRoomWebboard=="") { sGroupChart = "ChatAll"; } else { sGroupChart = xGroup; }
+  DisplayChat();
+  //console.log(sGroupChart);
+}
+
+function DisplayLog() {
+  timecountdown();
+  console.log(arrayIN.length);
+  $("#DisplayMemo").html(str);    
+}
+
+
+var arrayIN = [];
+var CountIN = 0;
+var CheckLastTime = "";
+function DisplayChat() {
+  var xCheckChat = 0;
+  str1 = "";
+  document.getElementById("TextMamo").innerHTML = "";   
+  document.getElementById("DisplayMemo").innerHTML = "";   
+  dbttbWebChat.where("GroupChart",'==',idRoomWebboard)
+  .orderBy('PostTimeStamp','desc')
+  .limit(100).get().then( snapshot => {
+    snapshot.forEach(doc=> {
+      xCheckChat++;
+      ShowChat(doc);
+    });
+    if(xCheckChat==0) {
+      str1+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
+      str1+='<img src="./img/box.jpg" class="img-avatar"><div class="msb-font11">Admin</div></div>';
+      str1+='<div class="media-body"><div class="mf-content" style="background:#fbe6a5;">เพื่อน ๆ สามารถที่จะเขียนข้อความตอบกลับเพื่อนของเราได้ที่กล่องข้อความด้านล่างได้เลยน้า ...';
+      str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ dateString +'</small></div></div></div></div>';
+      $("#DisplayMemo").html(str1); 
+    }
+  })
+  DisplayLog();
+}
+
+
+function ShowChat(doc) {
+  i = i+1;
+  arrayIN.push(doc.id);
+  if(CheckLastTime=="") { CheckLastTime = doc.data().PostTimeStamp; }
+  if(sessionStorage.getItem("LineID")==doc.data().LineID) {
+    str+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
+    str+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
+    str+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
+    str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
+  } else {
+    str+='<div class="list-element"><div class="message-feed media" id="'+i+'"><div class="pull-left">';
+    str+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
+    str+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
+    str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
+  }
+/*
+  str+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
+  str+='<img src="./img/box.jpg" class="img-avatar"><div class="msb-font11">Admin</div></div>';
+  str+='<div class="media-body"><div class="mf-content" style="background:#fbe6a5;">เพื่อน ๆ สามารถที่จะเขียนข้อความตอบกลับเพื่อนของเราได้ที่กล่องข้อความด้านล่างได้เลยน้า ...';
+  str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ dateString +'</small></div></div></div></div>';
+*/
+  $("#DisplayMemo").html(str); 
+}
+
+
+function NewChat(doc) {
+  var str1 = "";
+  if(CheckLastTimeUpdate=="") { 
+    CheckLastTimeUpdate = "1";
+    CheckLastTime = doc.data().PostTimeStamp; 
+  }
+  if(sessionStorage.getItem("LineID")==doc.data().LineID) {
+    str1+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
+    str1+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
+    str1+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
+    str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
+  } else {
+    str1+='<div class="list-element"><div class="message-feed media" id="'+i+'"><div class="pull-left">';
+    str1+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
+    str1+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
+    str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
+  }
+  str = str1+str;
+  $("#DisplayMemo").html(str); 
+}
+
+
+var xAnsWebboard = 0;
+function MemoCount() {
+  xAnsWebboard = 0;
+  //dbttbWebChat.where(firebase.firestore.FieldPath.documentId(), "==", idRoomWebboard)
+  dbttbWebChat.where("GroupChart",'==',idRoomWebboard)
+  .get().then( snapshot => {
+    snapshot.forEach(doc=> {
+      xAnsWebboard = xAnsWebboard+1;
+    });
+    //xAnsWebboard = xAnsWebboard+1;
+    dbttbWebboard.doc(idRoomWebboard).update({
+      AnsWebboard : parseInt(xAnsWebboard)
+    });
+    CheckBoardID();
+    //alert(idRoomWebboard+"==="+xAnsWebboard);
+  })
+}
+
+
+function CheckMemo() {
+  MemoCount();
+  var TimeStampDate = Math.round(Date.now() / 1000);
+  if(document.getElementById("TextMamo").value=="") {
+    alert("กรุณาใส่พิมพ์ข้อความก่อนกดส่งข้อมูล");
+    return
+  }
+  dbttbWebChat.add({
+    GroupChart : idRoomWebboard,
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    PostMemo : document.getElementById("TextMamo").value,
+    PostDate : dateString,
+    PostTimeStamp : TimeStampDate
+  });  
+
+  i = i+1;
+  var str1 = "";  
+  str1+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
+  str1+='<img src="'+ sessionStorage.getItem("LinePicture") +'" class="img-avatar"></div>';
+  str1+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ document.getElementById("TextMamo").value +'';
+  str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ dateString +'</small></div></div></div></div>';
+  str = str1+str;
+  $("#DisplayMemo").html(str); 
+  $("#TextMamo").val('');
+}
+
+
+function CheckUpdate() {
+  CheckLastTimeUpdate = "";
+  console.log(CheckLastTime);
+  dbttbWebChat.where("GroupChart",'==',idRoomWebboard)
+  .where('PostTimeStamp','>',CheckLastTime).get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      if(doc.data().LineID!=sessionStorage.getItem("LineID")) {
+        NewChat(doc);
+      }
+    });
+  });
+  timecountdown();
+}
+
+
+function timecountdown() {
+  var timeleft = MaxTime;
+    qInterval = setInterval(function(){
+    if(timeleft <= 0) {
+      stopcountdown();
+      CheckUpdate();
+    }
+    },10000);
+}
+
+
+
+function stopcountdown() { 
+    clearInterval(qInterval);
 }
 
 
@@ -69,7 +235,6 @@ function UpdateRead() {
 }
 
 
-
 function imgError(image) {
     image.onerror = "";
     image.src = "./img/box.jpg";
@@ -77,7 +242,21 @@ function imgError(image) {
 }
 
 
-
+const loadmore = document.querySelector('#loadmore');
+let currentItems = 8;
+loadmore.addEventListener('click', (e) => {
+    const elementList = [...document.querySelectorAll('.list .list-element')];
+    for (let i = currentItems; i < currentItems + 8; i++) {
+        if (elementList[i]) {
+            elementList[i].style.display = 'block';
+        }
+    }
+    currentItems += 8;
+    // Load more button will be hidden after list fully loaded
+    if (currentItems >= elementList.length) {
+        event.target.style.display = 'none';
+    }
+})
 
 /*
 

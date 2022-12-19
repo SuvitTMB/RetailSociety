@@ -29,22 +29,6 @@ $(document).ready(function () {
   OpenPopMenu();
 });
 
-/*
-function Connect_DB() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
-    authDomain: "retailproject-6f4fc.firebaseapp.com",
-    projectId: "retailproject-6f4fc",
-    databaseURL: "https://file-upload-6f4fc.firebaseio.com",
-    storageBucket: "retailproject-6f4fc.appspot.com",
-    messagingSenderId: "653667385625",
-    appId: "1:653667385625:web:a5aed08500de80839f0588",
-    measurementId: "G-9SKTRHHSW9"
-  };
-  firebase.initializeApp(firebaseConfig);
-
-}
-*/
 
 function getParameterByName(name, url) {
   str = '';
@@ -339,6 +323,7 @@ function RecordNews() {
   sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(ReadNewsPoint));
   sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(ReadNewsPoint));
   dbttbMember.doc(sessionStorage.getItem("RefID_Member")).update({
+    LastUpdate : dateString,
     XP_Point : sessionStorage.getItem("XP_Point"),
     RP_Point : sessionStorage.getItem("RP_Point")
   });
@@ -359,8 +344,8 @@ function RecordNews() {
   });
   var str = "";
   str += '<div class="btn-t3"><b>คุณได้รับ '+ ReadNewsPoint +' Point</b></div>';
-  str += '<div style="margin-top:15px;font-size:13px;">จากการอ่านข่าวสารเรื่อง<br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
-  str += '<div class="clr"></div>';
+  str += '<div style="margin-top:15px;font-size:13px;line-height:1.1;">จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
+  str += '<div class="clr" style="height:15px;"></div>';
   str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</b></div>';
   str += '<div class="clr" style="height:40px;"></div>';
   $("#DisplayGetPoint").html(str);  

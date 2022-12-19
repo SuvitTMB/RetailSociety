@@ -4,7 +4,6 @@ var dateString = "";
 
 
 $(document).ready(function () {
-
 /*
   sessionStorage.clear(); 
   var str = "";
@@ -18,7 +17,7 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-*/   
+   */
   main();
 });
 
@@ -149,15 +148,57 @@ function AddNewMember() {
     EmpID : sessionStorage.getItem("EmpID_Society"),
     EmpName : sessionStorage.getItem("EmpName_Society"),
     Level_Point : 1,
+    JoinTime : 1,
     XP_Point : parseFloat(NewScore),
     RP_Point : parseFloat(NewScore),
+    TimeGame1 : 0,
+    TimeGame2 : 0,
+    TimeGame3 : 0,
+    TimeGame4 : 0,
+    TotalGame1 : 0,
+    TotalGame2 : 0,
+    TotalGame3 : 0,
+    TotalGame4 : 0,
+
+    SubGame11 : 0,
+    SubGame12 : 0,
+    SubGame13 : 0,
+    SubGame14 : 0,
+    SubGame15 : 0,
+    SubGame16 : 0,
+    SubGame21 : 0,
+    SubGame22 : 0,
+    SubGame23 : 0,
+    SubGame24 : 0,
+    SubGame25 : 0,
+    SubGame26 : 0,
+    SubGame27 : 0,
+    SubGame28 : 0,
+    SubGame29 : 0,
+    SubGame31 : 0,
+    SubGame32 : 0,
+    SubGame33 : 0,
+    SubGame34 : 0,
+    SubGame35 : 0,
+    SubGame36 : 0,
+    SubGame37 : 0,
+    SubGame38 : 0,
+    SubGame39 : 0,
+    SumAll : 0,
+    SumFalse : 0,
+    SumTrue : 0,
+    TotalScore : 0,
+    UserSumFalse : 0,
+    UserSumTrue : 0,
+    UserSumFree : 0,
+    UserSumTime : 0,
     LogDateTime : dateString,
+    LastUpdate : dateString,
     LogTimeStamp : TimeStampDate
   });
   sessionStorage.setItem("Level_Point", 1);
   sessionStorage.setItem("XP_Point", parseFloat(NewScore));
   sessionStorage.setItem("RP_Point", parseFloat(NewScore));
-
   dbttbnewsLog.add({
     LineID : sessionStorage.getItem("LineID"),
     LineName : sessionStorage.getItem("LineName"),
@@ -181,14 +222,19 @@ function WelcomePoint() {
   document.getElementById('id01').style.display='none';
   document.getElementById('id02').style.display='block';
   var str = "";
-      str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img" style="margin-top:35px;width:120px;height:120px;"></div>';
-      str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;text-align:center;">'+ sessionStorage.getItem("LineName")+'</div>';
-      str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div><div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' Point</div>';
-      str += '<div style="margin-top:15px;"><img src="./img/welcome.gif" style="width:100%; max-width: 200px;"></div>';
-      str += '<div class="clr"></div>';
-      str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:15px;">เข้าสู่ <b>LINE Retail Society</b></div>';
-      str += '<div class="clr" style="height:40px;"></div>';
-    $("#DisplayWelcomePoint").html(str);  
+  str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img" style="margin-top:35px;width:120px;height:120px;"></div>';
+  str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;text-align:center;">'+ sessionStorage.getItem("LineName")+'</div>';
+  str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div><div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' Point</div>';
+  str += '<div style="margin-top:15px;"><img src="./img/welcome.gif" style="width:100%; max-width: 200px;"></div>';
+  str += '<div class="clr"></div>';
+  str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:15px;">เข้าสู่ <b>LINE Retail Society</b></div>';
+  str += '<div class="clr" style="height:40px;"></div>';
+  $("#DisplayWelcomePoint").html(str);  
+}
+
+
+function DisplayQRCode() {
+  document.getElementById('id03').style.display='block';
 }
 
 
@@ -232,5 +278,6 @@ function random_item(items) {
 function CloseAll() {
   document.getElementById('id01').style.display='none';
   document.getElementById('id02').style.display='none';
+  document.getElementById('id03').style.display='none';
 }
 

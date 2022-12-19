@@ -15,42 +15,20 @@ $(document).ready(function () {
   OpenPopMenu();
 });
 
-/*
-function CheckGroupNews() {
-  var str = "";
-  var xCountNews = 0;
-  dbGroupNews.where('GroupType','==',1)
-  .where('NewsStatus','==',1)
-  .orderBy('NewsGroup','asc')
-  .get().then((snapshot)=> {
-    snapshot.forEach(doc=> {
-      str += '<a href="#ttbNews"><div class="box-menu-group" onclick="CheckNews('+ doc.data().NewsGroup +')">';
-      str += '<div><img src="'+ doc.data().NewsIcon +'" class="box-menu-img-group"></div>';
-      str += '<div class="box-menu-text-group">'+ doc.data().NewsNameWeb +'</div>';
-      str += '<div class="box-menu-count">'+ doc.data().TotalNews +' ข่าว</div></div></a>';
-      xCountNews = xCountNews + doc.data().TotalNews;
-    });
-    str += '<a href="#ttbNews"><div class="box-menu-group" onclick="CheckNews(0)">';
-    str += '<div><img src="./img/news-00.png" class="box-menu-img-group"></div>';
-    str += '<div class="box-menu-text-group">ดูข่าวสาร<br>ทั้งหมด</div>';
-    str += '<div class="box-menu-count">'+ xCountNews +' ข่าว</div></div></a>';
-    $("#DisplayGroupNews").html(str);
-  });
-}
-*/
 
 function RankingMember() {
   var i = 0;
   count = 0;
   dataSet = "";
   dataSrc = [];
-  dbttbMember.where('LineID','==',sessionStorage.getItem("LineID"))
+  dbttbMember
+  //.where('LineID','==',sessionStorage.getItem("LineID"))
   .orderBy('RP_Point','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       i = (i+1);
-      var xPicture = '<center><img src="'+ doc.data().LinePicture +'" style="width:30px;"></center>';
-      var xProfile = '<div style="font-size:12px;"><b>'+ doc.data().EmpName +'</b><br>Level : <b>'+ doc.data().Level_Point +'</b> | Date : '+doc.data().LogDateTime+'</div>';
+      var xPicture = '<center><img src="'+ doc.data().LinePicture +'" class="img-ranking"></center>';
+      var xProfile = '<div style="font-size:12px;"><b>'+ doc.data().EmpName +'</b> ( Level : <b>'+ doc.data().Level_Point +'</b> )<br>Date : '+doc.data().LastUpdate+'</div>';
       dataSet = [xPicture, xProfile, '<b>'+doc.data().RP_Point+'</b>', i ];
       //dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
       dataSrc.push(dataSet);
@@ -71,7 +49,7 @@ function RankingMember() {
         ],
           lengthMenu: [[50, 100, -1], [50, 100, "All"]],
         columnDefs: [ { type: 'num-fmt', 'targets': [1] } ],
-        order: [[ 3, 'desc']]
+        order: [[ 2, 'desc']]
       });   
       //if(dTable.row( this ).data()[5]==1) {
         /*

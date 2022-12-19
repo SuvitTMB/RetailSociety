@@ -63,12 +63,12 @@ function NewChat(doc) {
   if(sessionStorage.getItem("LineID")==doc.data().LineID) {
     str1+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
     str1+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
-    str1+='<div class="media-body"><div class="mf-content">'+ doc.data().PostMemo +'';
+    str1+='<div class="media-body" style="margin-top:10px;"><div class="mf-content">'+ doc.data().PostMemo +'';
     str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
   } else {
     str1+='<div class="list-element"><div class="message-feed media" id="'+i+'"><div class="pull-left">';
     str1+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
-    str1+='<div class="media-body"><div class="mf-content">'+ doc.data().PostMemo +'';
+    str1+='<div class="media-body" style="margin-top:10px;"><div class="mf-content">'+ doc.data().PostMemo +'';
     str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
   }
   str = str1+str;
@@ -84,12 +84,12 @@ function ShowChat(doc) {
   if(sessionStorage.getItem("LineID")==doc.data().LineID) {
     str+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
     str+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
-    str+='<div class="media-body"><div class="mf-content">'+ doc.data().PostMemo +'';
+    str+='<div class="media-body" style="margin-top:10px;"><div class="mf-content">'+ doc.data().PostMemo +'';
     str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
   } else {
     str+='<div class="list-element"><div class="message-feed media" id="'+i+'"><div class="pull-left">';
     str+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
-    str+='<div class="media-body"><div class="mf-content">'+ doc.data().PostMemo +'';
+    str+='<div class="media-body" style="margin-top:10px;"><div class="mf-content">'+ doc.data().PostMemo +'';
     str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
   }
   $("#DisplayMemo").html(str); 
