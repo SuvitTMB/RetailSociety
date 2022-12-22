@@ -29,6 +29,7 @@ var VDOtimer = 0;
 var counter = 0;
 var sVDOnumber = 0;
 var timeup = 0;
+var xData2 = 0;
 
 
 $(document).ready(function () {
@@ -47,20 +48,6 @@ $(document).ready(function () {
   OpenPopMenu();
 });
 
-/*
-function Connect_DB() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
-    authDomain: "retailproject-6f4fc.firebaseapp.com",
-    projectId: "retailproject-6f4fc",
-    storageBucket: "retailproject-6f4fc.appspot.com",
-    messagingSenderId: "653667385625",
-    appId: "1:653667385625:web:a5aed08500de80839f0588",
-    measurementId: "G-9SKTRHHSW9"
-  };
-  firebase.initializeApp(firebaseConfig);
-}
-*/
 
 function CheckScore() {
   document.getElementById('DisplayPage').style.display='block';
@@ -185,7 +172,6 @@ function CheckScore() {
       $("#Bar9").html(str9);  
       document.getElementById('DisplayWait9').style.display='none';
       document.getElementById('DisplayShow9').style.display='block';
-      //alert(xCheck1+"===");
     });
     document.getElementById('Loading1').style.display='none';
     document.getElementById('Show1').style.display='block';
@@ -197,237 +183,216 @@ function CheckScore() {
 }
 
 
+function ReCheckMember() {
+  dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      xData2 = parseFloat(doc.data().TimeGame2);
+      if(parseFloat(doc.data().TimeGame2)>=9) {
+        clearInterval(counter);
+        document.getElementById('id01').style.display='none';
+        CheckScore();
+      } else {
+        document.getElementById('id01').style.display='block';
+      }
+    });
+  });
+}  
+
+
 function gotoGame2(x) {
-  //console.log("X==="+x);
-  var str = "";
-  SelectChoice = 0;
-  VDOtimer = 0;
-  //sMyPoint = 0;
-  clearInterval(counter);
-  timer(x);
-  //alert(xCheck1);
-  SelectChoice = x;
-  sVDOnumber = x;
-
-  if(x==1) {
-    //seeVDO = 1;
-    //VDOtimer = 223;
-    if(xCheck1==0) {
-      //VDOtimer = 225;
-      //VDOtimer = 120;
-      VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">วิธีการสมัครใช้งาน ttb touch ใหม่</div>';    
-    str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/yjLaMMu9ZUk?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck1==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">เริ่มต้นใช้งาน ttb touch ง่าย ๆ ได้ทุกคน</div>';
-    str += '<div class="font13" style="text-align:left;">เรามาพร้อมกับฟีเจอร์ใหม่ที่ชาญฉลาด<br>และวิธีการใช้งานที่ง่ายขึ้น ครอบคลุมทุกธุรกรรม<br>ที่จะมาตอบโจทย์ชีวิตทางการเงินของลูกค้าทุกกลุ่ม</div>';               
-    str += '</div></div>';
-  } else if(x==2) { 
-    if(xCheck2==0) { 
-      //VDOtimer = 166;
-      VDOtimer = 120;
-      //VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">การตั้งค่าต่าง ๆ แบบเฉพาะของคุณ</div>';    
-    str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/HcGl_B2LapM?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck2==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่<br>รู้ว่า จะจัดการแอปอย่างไรให้เหมาะกับคุณที่สุด</div>';
-    str += '<div class="font13" style="text-align:left;">ให้คุณจัดการแอปได้อย่างง่าย ๆ ด้วยตัวคุณเอง<br>การจัดการวิดเจ็ต การเปลี่ยนรหัส<br>ตั้งค่าข้อมูลส่วนตัว หรือการรีเซ็ตรหัสผ่าน</div>';               
-    str += '</div></div>';
-  } else if(x==3) { 
-    if(xCheck3==0) {  
-      //VDOtimer = 292;
-      VDOtimer = 120;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">สิทธิประโยชน์ของฉัน แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/qNaFl9uUdvA?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck3==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ รู้ใจคุณมากขึ้น ลงตัวในแบบเฉพาะคุณ</div>';
-    str += '<div class="font13" style="text-align:left;">สิทธิประโยชน์ที่เป้นของคุณรวมไว้ให้อยู่ที่เดียว จัดการสิทธิประโยชน์ได้อย่างง่าย ๆ</div>';               
-    str += '</div></div>';
-
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">สิทธิประโยชน์ แบบเฉพาะของคุณ</div>';    
-    //str += '<div class="text-subtopic1" style="text-align:left;">ttb touch ใหม่ รู้ใจคุณมากขึ้น งลงตัวในแบบเฉพาะคุณ</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">สิทธิประโยชน์ที่เป้นของคุณรวมไว้ให้อยู่ที่เดียว จัดการสิทธิประโยชน์ได้อย่างง่าย ๆ</div>';               
-    //str += '</div>';
-  } else if(x==4) { 
-    if(xCheck4==0) {  
-      //VDOtimer = 393;
-      VDOtimer = 120;
-      //VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัญชีเงินฝาก แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/JiWSdsLO9Qo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck4==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">ทุกเรื่องบัญชีเงินฝาก ttb touch ใหม่</div>';
-    str += '<div class="font13" style="text-align:left;">ช่วยจัดการให้เหมาะกับชีวิตคุณ จัดการบัญชีเงินฝากตามแบบคุณได้อย่างง่าย ๆ</div>';               
-    str += '</div></div>';
-
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">สิทธิประโยชน์ แบบเฉพาะของคุณ</div>';    
-    //str += '<div class="text-subtopic1" style="text-align:left;">ทุกเรื่องบัญชีเงินฝาก ttb touch ใหม่ </span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">ช่วยจัดการให้เหมาะกับชีวิตคุณ จัดการบัญชีเงินฝากตามแบบคุณได้อย่างง่าย ๆ</div>';               
-
-    //str += '<div><img src="./img/DisplayItem-4.jpg" style="width:100%;"></div>';
-    //str += '<div class="text-subtopic1" style="text-align:left;">ttb touch ใหม่ รู้ใจคุณมากขึ้น งลงตัวในแบบเฉพาะคุณ</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">สิทธิประโยชน์ที่เป้นของคุณรวมไว้ให้อยู่ที่เดียว จัดการสิทธิประโยชน์ได้อย่างง่าย ๆ</div>';               
-    str += '</div>';
-  } else if(x==5) { 
-    if(xCheck5==0) {  
-      //VDOtimer = 443;
-      VDOtimer = 120;
-      //VDOtimer = 70;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    } 
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัตรเครดิต แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/UATEeiUlDXo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck5==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ จัดการบัตรเครดิตตางใจในแบบคุณ</div>';
-    str += '<div class="font13" style="text-align:left;">เปิดการใช้งาน อายัดบัตร/ออกบัตรใหม่ ปรับวงเงิน <br>ตรวจสอบรายการทำรายการแบ่งจ่าย so gooood</div>';               
-    str += '</div></div>';
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">สิทธิประโยชน์ แบบเฉพาะของคุณ</div>';    
-    //str += '<div><img src="./img/DisplayItem-4.jpg" style="width:100%;"></div>';
-    //str += '<div class="clr"></div><div class="text-subtopic1" style="text-align:left;">ttb touch ใหม่ จัดการบัตรเครดิตตางใจในแบบคุณ</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">เปิดการใช้งาน อายัดบัตร/ออกบัตรใหม่ ปรับวงเงิน <br>ตรวจสอบรายการทำรายการแบ่งจ่าย so gooood</div>';               
-    //str += '</div>';
-  } else if(x==6) { 
-    if(xCheck6==0) {  
-      //VDOtimer = 569;
-      VDOtimer = 120;
-      //VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/r3eOChjGBRw?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck6==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">จัดการสินเชื่อรถยนต์ ให้เหมาะกับชีวิตการเงินคุณ</div>';
-    str += '<div class="font13" style="text-align:left;">ttb touch ใหม่ จัดการสินเชื่อรถยนต์อย่างง่าย ๆ ตามแบบคุณ</div>';               
-    str += '</div></div>';
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ</div>';    
-    //str += '<div class="text-subtopic1" style="text-align:left;">จัดการสินเชื่อรถยนต์ ให้เหมาะกับชีวิตการเงินคุณ</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">ttb touch ใหม่ จัดการสินเชื่อรถยนต์อย่างง่าย ๆ ตามแบบคุณ</div>';               
-    //str += '</div>';
-  } else if(x==7) { 
-    if(xCheck7==0) {  
-      //VDOtimer = 279;
-      VDOtimer = 120;
-      //VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการกองทุน แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/_mPlS174S5s?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck7==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">ลงทุนอย่างไร ให้เหมาะกับชีวิตคุณ</div>';
-    str += '<div class="font13" style="text-align:left;">ttb touch ใหม่ช่วยให้การลงทุนของคุณง่ายขึ้น พร้อมกับการบริหารและจัดการกองทุนด้ายตัวคุณเอง</div>';               
-    str += '</div></div>';
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">บริการกองทุน แบบเฉพาะของคุณ</div>';    
-    //str += '<div class="text-subtopic1" style="text-align:left;">ลงทุนอย่างไร ให้เหมาะกับชีวิตคุณ</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">ttb touch ใหม่ช่วยให้การลงทุนของคุณง่ายขึ้น พร้อมกับการบริหารและจัดการกองทุนด้ายตัวคุณเอง</div>';               
-    //str += '</div>';
-  } else if(x==8) { 
-    if(xCheck8==0) {  
-      //VDOtimer = 139;
-      VDOtimer = 120;
-      //VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการประกัน แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/mqGF-B8zPmY?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck8==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ รู้ทุกกรมธรรม์ที่คุณมี</div>';
-    str += '<div class="font13" style="text-align:left;">พร้อมเตรียมความคุ้มครองที่เหมาะสมที่สุด จัดสรรทุกการคุ้มครองของคุณอย่างง่าย ๆ</div>';               
-    str += '</div></div>';
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">บริการประกัน แบบเฉพาะของคุณ</div>';    
-    //str += '<div class="text-subtopic1" style="text-align:left;">ttb touch ใหม่ รู้ทุกกรมธรรม์ที่คุณมี</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">พร้อมเตรียมความคุ้มครองที่เหมาะสมที่สุด จัดสรรทุกการคุ้มครองของคุณอย่างง่าย ๆ</div>';               
-    //str += '</div>';
-  } else if(x==9) { 
-    if(xCheck9==0) {  
-      //VDOtimer = 214;
-      VDOtimer = 120;
-      //VDOtimer = 5;
-      timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
-      counter = setInterval(timer, 1000);
-    }
-    str += '<div class="text-topic">';
-    str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อ แบบเฉพาะของคุณ</div>';    
-    str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/wZkMODxJYWg?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
-    if(xCheck9==0) { 
-      str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
-    }
-    str += '<div style="padding:15px 15px 20px 15px;">';
-    str += '<div class="title-touch" style="color:#0056ff;">จะกู้ จะผ่อนสินเชื่อย่างไร ให้เข้ากับชีวิตคุณ</div>';
-    str += '<div class="font13" style="text-align:left;">ttb touch จัดการสินเชื่อให้เหมาะสมกับคุณได้อย่างง่ายๆ กับการสมัครสินเชื่อออนไลน์ ชำระสินเชื่อตรวจสอบประวัติ การชำระสินเชื่อ หรือการสมัคร E-Statement</div>';               
-    str += '</div></div>';
-
-    //str += '<div class="clr"></div><div class="btn-t33" style="margin-top:25px;">บริการสินเชื่อ แบบเฉพาะของคุณ</div>';    
-    //str += '<div class="text-subtopic1" style="text-align:left;">จะกู้ จะผ่อนสินเชื่อย่างไร ให้เข้ากับชีวิตคุณ</span></div>';
-    //str += '<div class="text-subtopic2" style="text-align:left;">ttb touch จัดการสินเชื่อให้เหมาะสมกับคุณได้อย่างง่ายๆ<br>กับการสมัครสินเชื่อออนไลน์ ชำระสินเชื่อตรวจสอบประวัติ<br>การชำระสินเชื่อ หรือการสมัคร E-Statement</div>';               
-    //str += '</div>';
-  }
-
-  if(sVDOnumber!=0 && VDOtimer!=0) {
-     str += '<div class="clr"></div><center>';
-     //str += '<div class="btn-t1" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-     str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:15px;">ยังไม่ดูตอนนี้</div>';
-     str += '<div style="padding:10px;font-size:12px;color:#f68b1f; font-weight: 600;">ระบบจะไปที่หน้าสุ่มรางวัลเมื่อเวลานับถอยหลังสิ้นสุดลง</div>';
-     str += '</center><div class="clr" style="height:10px;"></div>';
+  ReCheckMember();
+  console.log("Count Data - "+xData2);
+  if(parseFloat(xData2)>=9) {
+    document.getElementById('id01').style.display='none';
+    CheckScore();
   } else {
-     str += '<div class="clr"></div>';
-     str += '<center><div class="btn-t2 stop-video" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</div></center><div class="clr" style="height:10px;"></div>';
-  }
+    var str = "";
+    SelectChoice = 0;
+    VDOtimer = 0;
+    clearInterval(counter);
+    timer(x);
+    SelectChoice = x;
+    sVDOnumber = x;
+
+    if(x==1) {
+      //seeVDO = 1;
+      //VDOtimer = 223;
+      if(xCheck1==0) {
+        //VDOtimer = 225;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">วิธีการสมัครใช้งาน ttb touch ใหม่</div>';    
+      str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/yjLaMMu9ZUk?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck1==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">เริ่มต้นใช้งาน ttb touch ง่าย ๆ ได้ทุกคน</div>';
+      str += '<div class="font13" style="text-align:left;">เรามาพร้อมกับฟีเจอร์ใหม่ที่ชาญฉลาด<br>และวิธีการใช้งานที่ง่ายขึ้น ครอบคลุมทุกธุรกรรม<br>ที่จะมาตอบโจทย์ชีวิตทางการเงินของลูกค้าทุกกลุ่ม</div>';               
+      str += '</div></div>';
+    } else if(x==2) { 
+      if(xCheck2==0) { 
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">การตั้งค่าต่าง ๆ แบบเฉพาะของคุณ</div>';    
+      str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/HcGl_B2LapM?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck2==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่<br>รู้ว่า จะจัดการแอปอย่างไรให้เหมาะกับคุณที่สุด</div>';
+      str += '<div class="font13" style="text-align:left;">ให้คุณจัดการแอปได้อย่างง่าย ๆ ด้วยตัวคุณเอง<br>การจัดการวิดเจ็ต การเปลี่ยนรหัส<br>ตั้งค่าข้อมูลส่วนตัว หรือการรีเซ็ตรหัสผ่าน</div>';               
+      str += '</div></div>';
+    } else if(x==3) { 
+      if(xCheck3==0) {  
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">สิทธิประโยชน์ของฉัน แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/qNaFl9uUdvA?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck3==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ รู้ใจคุณมากขึ้น ลงตัวในแบบเฉพาะคุณ</div>';
+      str += '<div class="font13" style="text-align:left;">สิทธิประโยชน์ที่เป้นของคุณรวมไว้ให้อยู่ที่เดียว จัดการสิทธิประโยชน์ได้อย่างง่าย ๆ</div>';               
+      str += '</div></div>';
+    } else if(x==4) { 
+      if(xCheck4==0) {  
+        //VDOtimer = 393;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัญชีเงินฝาก แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/JiWSdsLO9Qo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck4==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">ทุกเรื่องบัญชีเงินฝาก ttb touch ใหม่</div>';
+      str += '<div class="font13" style="text-align:left;">ช่วยจัดการให้เหมาะกับชีวิตคุณ จัดการบัญชีเงินฝากตามแบบคุณได้อย่างง่าย ๆ</div>';               
+      str += '</div></div>';
+      str += '</div>';
+    } else if(x==5) { 
+      if(xCheck5==0) {  
+        //VDOtimer = 443;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      } 
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัตรเครดิต แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/UATEeiUlDXo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck5==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ จัดการบัตรเครดิตตางใจในแบบคุณ</div>';
+      str += '<div class="font13" style="text-align:left;">เปิดการใช้งาน อายัดบัตร/ออกบัตรใหม่ ปรับวงเงิน <br>ตรวจสอบรายการทำรายการแบ่งจ่าย so gooood</div>';               
+      str += '</div></div>';
+    } else if(x==6) { 
+      if(xCheck6==0) {  
+        //VDOtimer = 569;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/r3eOChjGBRw?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck6==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">จัดการสินเชื่อรถยนต์ ให้เหมาะกับชีวิตการเงินคุณ</div>';
+      str += '<div class="font13" style="text-align:left;">ttb touch ใหม่ จัดการสินเชื่อรถยนต์อย่างง่าย ๆ ตามแบบคุณ</div>';               
+      str += '</div></div>';
+    } else if(x==7) { 
+      if(xCheck7==0) {  
+        //VDOtimer = 279;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการกองทุน แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/_mPlS174S5s?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck7==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">ลงทุนอย่างไร ให้เหมาะกับชีวิตคุณ</div>';
+      str += '<div class="font13" style="text-align:left;">ttb touch ใหม่ช่วยให้การลงทุนของคุณง่ายขึ้น พร้อมกับการบริหารและจัดการกองทุนด้ายตัวคุณเอง</div>';               
+      str += '</div></div>';
+    } else if(x==8) { 
+      if(xCheck8==0) {  
+        //VDOtimer = 139;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการประกัน แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/mqGF-B8zPmY?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck8==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ รู้ทุกกรมธรรม์ที่คุณมี</div>';
+      str += '<div class="font13" style="text-align:left;">พร้อมเตรียมความคุ้มครองที่เหมาะสมที่สุด จัดสรรทุกการคุ้มครองของคุณอย่างง่าย ๆ</div>';               
+      str += '</div></div>';
+    } else if(x==9) { 
+      if(xCheck9==0) {  
+        //VDOtimer = 214;
+        //VDOtimer = 120;
+        VDOtimer = 5;
+        timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
+        counter = setInterval(timer, 1000);
+      }
+      str += '<div class="text-topic">';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อ แบบเฉพาะของคุณ</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/wZkMODxJYWg?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      if(xCheck9==0) { 
+        str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
+      }
+      str += '<div style="padding:15px 15px 20px 15px;">';
+      str += '<div class="title-touch" style="color:#0056ff;">จะกู้ จะผ่อนสินเชื่อย่างไร ให้เข้ากับชีวิตคุณ</div>';
+      str += '<div class="font13" style="text-align:left;">ttb touch จัดการสินเชื่อให้เหมาะสมกับคุณได้อย่างง่ายๆ กับการสมัครสินเชื่อออนไลน์ ชำระสินเชื่อตรวจสอบประวัติ การชำระสินเชื่อ หรือการสมัคร E-Statement</div>';               
+      str += '</div></div>';
+    }
+    if(sVDOnumber!=0 && VDOtimer!=0) {
+       str += '<div class="clr"></div><center>';
+       //str += '<div class="btn-t1" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+       str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:15px;">ยังไม่ดูตอนนี้</div>';
+       str += '<div style="padding:10px;font-size:12px;color:#f68b1f; font-weight: 600;">ระบบจะไปที่หน้าสุ่มรางวัลเมื่อเวลานับถอยหลังสิ้นสุดลง</div>';
+       str += '</center><div class="clr" style="height:10px;"></div>';
+    } else {
+       str += '<div class="clr"></div>';
+       str += '<center><div class="btn-t2 stop-video" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</div></center><div class="clr" style="height:10px;"></div>';
+    }
     $("#DisplayVDOLearning").html(str);  
-    document.getElementById('id01').style.display='block';
+  }
+  //document.getElementById('id01').style.display='block';
 }
 
 
@@ -466,6 +431,7 @@ function SelectBox(x) {
 
 
 function RandomPoint(x) {
+  ReCheckMember();
   str = "";
   var sNewMyPoint = 0;
   NewScore = 0;
@@ -512,7 +478,7 @@ function SaveDataFWB(x,p) {
   }
 */
   if(SelectChoice==1 && xCheck1==0) {
-   xHeader = "วิธีการสมัครใช้งาน ttb touch ใหม่";
+   xHeader = "2.1 วิธีการสมัครใช้งาน ttb touch ใหม่";
    dbttbMember.doc(EidMember).update({
      SubGame21 : p,
      TimeGame2 : TimeCount,
@@ -520,7 +486,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==2 && xCheck2==0) {
-   xHeader = "การตั้งค่าต่าง ๆ แบบเฉพาะของคุณ";
+   xHeader = "2.2 การตั้งค่าต่าง ๆ แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame22 : p,
      TimeGame2 : TimeCount,
@@ -528,7 +494,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==3 && xCheck3==0) {
-   xHeader = "สิทธิประโยชน์ของฉัน แบบเฉพาะของคุณ";
+   xHeader = "2.3 สิทธิประโยชน์ของฉัน แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame23 : p,
      TimeGame2 : TimeCount,
@@ -536,7 +502,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==4 && xCheck4==0) {
-   xHeader = "บริการบัญชีเงินฝาก แบบเฉพาะของคุณ";
+   xHeader = "2.4 บริการบัญชีเงินฝาก แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame24 : p,
      TimeGame2 : TimeCount,
@@ -544,7 +510,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==5 && xCheck5==0) {
-   xHeader = "บริการบัตรเครดิต แบบเฉพาะของคุณ";
+   xHeader = "2.5 บริการบัตรเครดิต แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame25 : p,
      TimeGame2 : TimeCount,
@@ -552,7 +518,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==6 && xCheck6==0) {
-   xHeader = "บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ";
+   xHeader = "2.6บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame26 : p,
      TimeGame2 : TimeCount,
@@ -560,7 +526,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==7 && xCheck7==0) {
-   xHeader = "บริการกองทุน แบบเฉพาะของคุณ";
+   xHeader = "2.7บริการกองทุน แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame27 : p,
      TimeGame2 : TimeCount,
@@ -568,7 +534,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==8 && xCheck8==0) {
-   xHeader = "บริการประกัน แบบเฉพาะของคุณ";
+   xHeader = "2.8 บริการประกัน แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame28 : p,
      TimeGame2 : TimeCount,
@@ -576,7 +542,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });    
   } else if(SelectChoice==9 && xCheck9==0) {
-   xHeader = "บริการสินเชื่อ แบบเฉพาะของคุณ";
+   xHeader = "2.9 บริการสินเชื่อ แบบเฉพาะของคุณ";
    dbttbMember.doc(EidMember).update({
      SubGame29 : p,
      TimeGame2 : TimeCount,
@@ -584,6 +550,7 @@ function SaveDataFWB(x,p) {
      TotalScore : parseFloat(SumScore.toFixed(2))
    });     
   }
+  CheckScore();
   sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(p));
   sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(p));
   dbttbMember.doc(EidMember).update({
@@ -598,7 +565,7 @@ function SaveDataFWB(x,p) {
     EmpID : sessionStorage.getItem("EmpID_Society"),
     EmpName : sessionStorage.getItem("EmpName_Society"),
     RefID : EidMember,
-    NewsGroup : "QuizGame",
+    NewsGroup : 0,
     HeadNews : "QuizGame-2",
     SubNews : xHeader,
     GetPoint : parseFloat(p),
@@ -606,7 +573,7 @@ function SaveDataFWB(x,p) {
     LogDate : dateString,
     LogTimeStamp : TimeStampDate
   });
-  alert("Save Done");
+  //alert("Save Done");
   CheckScore();
   OpenPopMenu();
 }

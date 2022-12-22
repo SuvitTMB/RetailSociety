@@ -21,8 +21,7 @@ var xCheck3 = 0;
 var xCheck4 = 0;
 var xCheck5 = 0;
 var xCheck6 = 0;
-
-
+var xData1 = 0;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
@@ -141,71 +140,92 @@ function CheckScore() {
 }
 
 
+function ReCheckMember() {
+  dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      xData1 = parseFloat(doc.data().TimeGame1);
+      if(parseFloat(doc.data().TimeGame1)>=6) {
+        document.getElementById('id01').style.display='none';
+        CheckScore();
+      } else {
+        document.getElementById('id01').style.display='block';
+      }
+    });
+  });
+}  
 
 
 function gotoGame1(x) {
-  SelectChoice = x;
-  console.log(SelectChoice);
-  console.log(xCheck1,xCheck2,xCheck3,xCheck4,xCheck5,xCheck6)
-  var str = "";
-  if(x==1) {
-     str += '<div><img src="./img/game1-01.jpg" class="img-game1"></div><center>';
-     if(xCheck1==0) {
-        str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-        str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-        str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
-     } else {
-        str += '<div class="btn-t2" onclick="CloseAll()" style="margin:10px auto 25px auto;">ปิดหน้าต่างนี้</div>';
-     }
-  } else if(x==2) { 
-     str += '<div><img src="./img/game1-02.jpg" class="img-game1"></div><center>';
-     if(xCheck2==0) {
-        str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-        str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-        str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
-     } else {
-        str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
-     }
-  } else if(x==3) { 
-     str += '<div><img src="./img/game1-03.jpg" class="img-game1"></div><center>';
-     if(xCheck3==0) {
-        str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-        str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-        str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
-     } else {
-        str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
-     }
-  } else if(x==4) { 
-     str += '<div><img src="./img/game1-04.jpg" class="img-game1"></div><center>';
-     if(xCheck4==0) {
-        str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-        str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-        str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
-     } else {
-        str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
-     }
-  } else if(x==5) { 
-     str += '<div><img src="./img/game1-05.jpg" class="img-game1"></div><center>';
-     if(xCheck5==0) {
-        str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-        str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-        str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
-     } else {
-        str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
-     }
-  } else if(x==6) { 
-     str += '<div><img src="./img/game1-06.jpg" class="img-game1"></div><center>';
-     if(xCheck6==0) {
-        str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
-        str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-        str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
-     } else {
-        str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
-     }
+  ReCheckMember();
+  if(parseFloat(xData1)>=6) {
+    document.getElementById('id01').style.display='none';
+    CheckScore();
+  } else {
+    SelectChoice = x;
+    console.log("เมนูที่เลือก = "+SelectChoice);
+    console.log("เช็คค่าตัวแปร = "+xCheck1,xCheck2,xCheck3,xCheck4,xCheck5,xCheck6)
+    var str = "";
+    if(x==1) {
+       str += '<div><img src="./img/game1-01.jpg" class="img-game1"></div><center>';
+       if(xCheck1==0) {
+          str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+          str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
+          str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+       } else {
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin:10px auto 25px auto;">ปิดหน้าต่างนี้</div>';
+       }
+    } else if(x==2) { 
+       str += '<div><img src="./img/game1-02.jpg" class="img-game1"></div><center>';
+       if(xCheck2==0) {
+          str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+          str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
+          str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+       } else {
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
+       }
+    } else if(x==3) { 
+       str += '<div><img src="./img/game1-03.jpg" class="img-game1"></div><center>';
+       if(xCheck3==0) {
+          str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+          str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
+          str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+       } else {
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
+       }
+    } else if(x==4) { 
+       str += '<div><img src="./img/game1-04.jpg" class="img-game1"></div><center>';
+       if(xCheck4==0) {
+          str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+          str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
+          str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+       } else {
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
+       }
+    } else if(x==5) { 
+       str += '<div><img src="./img/game1-05.jpg" class="img-game1"></div><center>';
+       if(xCheck5==0) {
+          str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+          str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
+          str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+       } else {
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
+       }
+    } else if(x==6) { 
+       str += '<div><img src="./img/game1-06.jpg" class="img-game1"></div><center>';
+       if(xCheck6==0) {
+          str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
+          str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
+          str += '<div class="font12"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+       } else {
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
+       }
+    }
+    str += '<div style="height: 30px;"></div>';
+    $("#DisplayWB").html(str);  
+    //document.getElementById('id01').style.display='block';    
   }
-  str += '<div style="height: 30px;"></div>';
-  $("#DisplayWB").html(str);  
-  document.getElementById('id01').style.display='block';
 }
 
 
@@ -230,6 +250,8 @@ function BeForRandom(x) {
 
 
 function SelectBox(x) {
+   console.log("XX="+x);
+   //alert("XXX-"+x);
    sMyPoint = 0;
    var i = 0;
    for (i = 0; i < 15; i++) {
@@ -242,12 +264,15 @@ function SelectBox(x) {
 
 
 function RandomPoint(x) {
+  //ReCheckMember();
+  console.log("X="+x);
   str = "";
   var sNewMyPoint = 0;
   NewScore = 0;
   ChangeNow();
   if(sMyPoint==NewScore) { sNewMyPoint=(NewScore*2); }
   else if(sMyPoint!=NewScore) { sNewMyPoint=NewScore; }
+  SaveDataFWB(x,sNewMyPoint);
   str += '<div class="random-number"><img src="./img/number.gif" width="100%"></div>';    
   str += '<div class="btn-t3" style="margin-top:20px auto;">ผลการสุ่มเหรียญรางวัล</div>';
   str += '<div style="width:230px; margin:auto;">';
@@ -260,96 +285,98 @@ function RandomPoint(x) {
   str += '<div class="btn-t2" onclick="CloseAll()">ปิดหน้าต่างนี้</div>';
   str += '<div style="height: 30px;"></div>';
   $("#DisplayGetPoint").html(str);  
-  SaveDataFWB(x,sNewMyPoint);
   CheckScore();
+/*
+*/
 }
 
 
 
 function SaveDataFWB(x,p) {
-
-  NewDate();
-  var TimeStampDate = Math.round(Date.now() / 1000);
-  var xHeader = "";
-  console.log(x+"==="+p+"==="+EidMember);
-  TimeCount = parseFloat(TimeCount)+1;
-  SumPoint = parseFloat(SumPoint)+parseFloat(p);
-  SumScore = parseFloat(SumScore)+parseFloat(p);
-  if(x==1 && xCheck1==0) {
-   xHeader = "การเงินรอบด้านของชีวิต ดีขึ้น";
-   dbttbMember.doc(EidMember).update({
-     SubGame11 : p,
-     TimeGame1 : TimeCount,
-     TotalGame1 : parseFloat(SumPoint.toFixed(2)),
-     TotalScore : parseFloat(SumScore.toFixed(2))
-   });    
-  } else if(x==2 && xCheck2==0) {
-   xHeader = "ให้คุณไม่พลาดในทุกธุรกรรมสำคัญ";
-   dbttbMember.doc(EidMember).update({
-     SubGame12 : p,
-     TimeGame1 : TimeCount,
-     TotalGame1 : parseFloat(SumPoint.toFixed(2)),
-     TotalScore : parseFloat(SumScore.toFixed(2))
-   });    
-  } else if(x==3) {
-   xHeader = "จัดการทุกเรื่องสำคัญในชีวิต";
-   dbttbMember.doc(EidMember).update({
-     SubGame13 : p,
-     TimeGame1 : TimeCount,
-     TotalGame1 : parseFloat(SumPoint.toFixed(2)),
-     TotalScore : parseFloat(SumScore.toFixed(2))
-   });    
-  } else if(x==4) {
-   xHeader = "สะดวกเหมือนไปสาขา";
-   dbttbMember.doc(EidMember).update({
-     SubGame14 : p,
-     TimeGame1 : TimeCount,
-     TotalGame1 : parseFloat(SumPoint.toFixed(2)),
-     TotalScore : parseFloat(SumScore.toFixed(2))
-   });    
-  } else if(x==5) {
-   xHeader = "ทุกความยุ่งยากจะหมดไป";
-   dbttbMember.doc(EidMember).update({
-     SubGame15 : p,
-     TimeGame1 : TimeCount,
-     TotalGame1 : parseFloat(SumPoint.toFixed(2)),
-     TotalScore : parseFloat(SumScore.toFixed(2))
-   });    
-  } else if(x==6) {
-   xHeader = "ได้รับคืนมากกว่าในทุกการใช้งาน";
-   dbttbMember.doc(EidMember).update({
-     SubGame16 : p,
-     TimeGame1 : TimeCount,
-     TotalGame1 : parseFloat(SumPoint.toFixed(2)),
-     TotalScore : parseFloat(SumScore.toFixed(2))
-   });    
-  }
-  sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(p));
-  sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(p));
-  dbttbMember.doc(EidMember).update({
-    LastUpdate : dateString,
-    XP_Point : sessionStorage.getItem("XP_Point"),
-    RP_Point : sessionStorage.getItem("RP_Point")
-  });
-  dbttbnewsLog.add({
-    LineID : sessionStorage.getItem("LineID"),
-    LineName : sessionStorage.getItem("LineName"),
-    LinePicture : sessionStorage.getItem("LinePicture"),
-    EmpID : sessionStorage.getItem("EmpID_Society"),
-    EmpName : sessionStorage.getItem("EmpName_Society"),
-    RefID : EidMember,
-    NewsGroup : "QuizGame",
-    HeadNews : "QuizGame-1",
-    SubNews : xHeader,
-    GetPoint : parseFloat(p),
-    LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
-    LogDate : dateString,
-    LogTimeStamp : TimeStampDate
-  });
-  alert("Save Done");
-  console.log('Save Done '+ p);
-  CheckScore();
-  OpenPopMenu();
+  if(parseFloat(xData1) < 6) {
+    NewDate();
+    var TimeStampDate = Math.round(Date.now() / 1000);
+    var xHeader = "";
+    console.log("ตัวแปร --> "+x+"==="+p+"==="+EidMember);
+    TimeCount = parseFloat(TimeCount)+1;
+    SumPoint = parseFloat(SumPoint)+parseFloat(p);
+    SumScore = parseFloat(SumScore)+parseFloat(p);
+    if(x==1 && xCheck1==0) {
+     xHeader = "1.1 การเงินรอบด้านของชีวิต ดีขึ้น";
+     dbttbMember.doc(EidMember).update({
+       SubGame11 : p,
+       TimeGame1 : TimeCount,
+       TotalGame1 : parseFloat(SumPoint.toFixed(2)),
+       TotalScore : parseFloat(SumScore.toFixed(2))
+     });    
+    } else if(x==2 && xCheck2==0) {
+     xHeader = "1.2 ให้คุณไม่พลาดในทุกธุรกรรมสำคัญ";
+     dbttbMember.doc(EidMember).update({
+       SubGame12 : p,
+       TimeGame1 : TimeCount,
+       TotalGame1 : parseFloat(SumPoint.toFixed(2)),
+       TotalScore : parseFloat(SumScore.toFixed(2))
+     });    
+    } else if(x==3) {
+     xHeader = "1.3 จัดการทุกเรื่องสำคัญในชีวิต";
+     dbttbMember.doc(EidMember).update({
+       SubGame13 : p,
+       TimeGame1 : TimeCount,
+       TotalGame1 : parseFloat(SumPoint.toFixed(2)),
+       TotalScore : parseFloat(SumScore.toFixed(2))
+     });    
+    } else if(x==4) {
+     xHeader = "1.4 สะดวกเหมือนไปสาขา";
+     dbttbMember.doc(EidMember).update({
+       SubGame14 : p,
+       TimeGame1 : TimeCount,
+       TotalGame1 : parseFloat(SumPoint.toFixed(2)),
+       TotalScore : parseFloat(SumScore.toFixed(2))
+     });    
+    } else if(x==5) {
+     xHeader = "1.5 ทุกความยุ่งยากจะหมดไป";
+     dbttbMember.doc(EidMember).update({
+       SubGame15 : p,
+       TimeGame1 : TimeCount,
+       TotalGame1 : parseFloat(SumPoint.toFixed(2)),
+       TotalScore : parseFloat(SumScore.toFixed(2))
+     });    
+    } else if(x==6) {
+     xHeader = "1.6 ได้รับคืนมากกว่าในทุกการใช้งาน";
+     dbttbMember.doc(EidMember).update({
+       SubGame16 : p,
+       TimeGame1 : TimeCount,
+       TotalGame1 : parseFloat(SumPoint.toFixed(2)),
+       TotalScore : parseFloat(SumScore.toFixed(2))
+     });    
+    }
+    sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(p));
+    sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(p));
+    dbttbMember.doc(EidMember).update({
+      LastUpdate : dateString,
+      XP_Point : sessionStorage.getItem("XP_Point"),
+      RP_Point : sessionStorage.getItem("RP_Point")
+    });
+    dbttbnewsLog.add({
+      LineID : sessionStorage.getItem("LineID"),
+      LineName : sessionStorage.getItem("LineName"),
+      LinePicture : sessionStorage.getItem("LinePicture"),
+      EmpID : sessionStorage.getItem("EmpID_Society"),
+      EmpName : sessionStorage.getItem("EmpName_Society"),
+      RefID : EidMember,
+      NewsGroup : 0,
+      HeadNews : "QuizGame-1",
+      SubNews : xHeader,
+      GetPoint : parseFloat(p),
+      LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
+      LogDate : dateString,
+      LogTimeStamp : TimeStampDate
+    });
+    CheckScore();
+    OpenPopMenu();
+    } else {
+      alert("คุณทำรายการครบตามที่กำหนดแล้ว ระบบไม่อนุญาตให้ทำรายการต่อไป");
+    }
 }
 
 
@@ -364,7 +391,7 @@ function random_item(items) {
 
 
 function UnLoading(x) {
-  if(x!="") { SelectBoxGroup(x); }
+  SelectBoxGroup(x);
   document.getElementById('DisplayPage').style.display='block';
   document.getElementById('DisplayWait1').style.display='block';
   document.getElementById('DisplayWait2').style.display='block';

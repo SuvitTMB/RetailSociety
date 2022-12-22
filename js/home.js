@@ -1,3 +1,9 @@
+var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear()+543;
+today = dd + '/' + mm + '/' + yyyy;
 var cleararray = "";
 var sTimeGame1 = 0;
 var sTimeGame2 = 0;
@@ -13,15 +19,13 @@ $(document).ready(function () {
   dbSocietyMenu = firebase.firestore().collection("SocietyMenu");
   dbttbNews = firebase.firestore().collection("ttbnews");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
-
-  //dbMember = firebase.firestore().collection("touch_member");
-  dbMember = firebase.firestore().collection("ttbMember");
-  dbQuiz = firebase.firestore().collection("touch_quiz");
-
+  dbttbMember = firebase.firestore().collection("ttbMember");
+  dbttbQuiz = firebase.firestore().collection("ttbQuizoftheday");
   MenuSlide();
   CheckData();
-  OpenPopMenu();
+  CheckUserQuiz();
   CheckBarChart();
+  OpenPopMenu();
 });
 
 
@@ -58,6 +62,25 @@ function ListWebPage() {
 }
 
 
+var sCheckQ = 0;
+function CheckUserQuiz() {
+  var str4 = "";
+  var sCheckQ = 0;
+  dbttbQuiz.where('QuizDate','==',today)
+  .where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      sCheckQ = 1;
+      //console.log(sCheckQ);
+    });
+    if(sCheckQ==1) {
+      str4 += '<div class="progress"><div class="bar" style="width:100%"></div></div>';
+    } else {
+      str4 += '<div class="progress"><div class="bar1" style="width:0%"></div></div>';
+    }
+    $("#RatioGame4").html(str4);  
+  });
+}
 
 function ClickCheckView(link,id) {
   var sLinktoWeb = "";
@@ -140,14 +163,20 @@ function CheckBarChart() {
   var str2 = "";
   var str3 = "";
   var str4 = "";
-  dbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
+      //var CalAllTime = doc.data().TimeGame1 + doc.data().TimeGame2 + doc.data().TimeGame3 + doc.data().TimeGame4;
+      //var UserTrue = parseFloat(doc.data().UserSumTrue) + parseFloat(doc.data().Game3SumTrue);
+      //var UserFalse = doc.data().UserSumFalse + doc.data().Game3SumFalse;
+      //var UserAll = UserTrue + UserFalse;
+
       var CalAllTime = doc.data().TimeGame1 + doc.data().TimeGame2 + doc.data().TimeGame3 + doc.data().TimeGame4;
-      var UserTrue = parseFloat(doc.data().UserSumTrue) + parseFloat(doc.data().Game3SumTru);
-      var UserFalse = doc.data().UserSumFalse + doc.data().Game3SumFalse;
+      var UserTrue = parseFloat(doc.data().UserSumTrue);
+      var UserFalse = parseFloat(doc.data().UserSumFalse);
       var UserAll = UserTrue + UserFalse;
+
       var CalRatio = ((doc.data().TimeGame4/6)*100);
       if(isNaN(UserTrue)) {
         var CalTrue = 0;
