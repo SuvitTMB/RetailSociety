@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="assets/img/favicom.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/flipcard.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <style type="text/css">
+    input[type="radio"],
+    input[type="checkbox"] {
+      box-sizing: border-box; 
+      padding: 0; 
+      display: none;
+    }  
+</style>
+
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="home.html"><span>LINE</span> Retail Society</a></h1>
+      <div class="mobile-nav-toggle d-lg-none" onclick="OpenMenu()">
+        <i class="icofont-navigation-menu"></i>
+      </div>
+    </div>
+  </header>
+
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>ภารกิจสะสมเหรียญรางวัล</h2>
+          <ol style="margin-top:-10px;">
+            <li><a href="home.html#QuizGame">Home</a></li>
+            <li><a href="quizgame4.html">ภารกิจสะสมเหรียญรางวัล</a></li>
+            <li>คำถามประจำวัน (ทัช)</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
+      <div class="container">
+        <center>
+          <div class="btn-t3" style="margin-top:20px auto;">คำถามประจำวัน (ทัช)</div>
+          <div class="NameLine" id="ToDayDate"></div>
+          <div class="font13" style="margin-top:8px;text-align: left; font-weight: 600; color:#000;">ผู้เข้าร่วมกิจกรรม จะต้องเข้ามาทำการตอบคำถามประจำวัน ซึ่งเป็นคำถามที่เกี่ยวกับ <font color="#0056ff">ttb touch ใหม่</font>  เพื่อเก็บสะสมคะแนนตลอดช่วงเวลาของการแข่งขัน หากไม่ได้เข้ามาแข่งขันในวันนั้นจะไม่สามารถทำการแข่งขันย้อนหลังได้น้า</div>
+          <div class="clr"></div>
+          <div id="Loading" style="display:block;"><img src="./img/load2.gif" style="padding-top:30px; padding-bottom: 30px; width:90%;">
+            <div style="margin:-40px auto 30px auto; color:#000;">. . . L o a d i n g . . .</div>
+          </div>
+
+          <div id="QuizComplete" style="display:none;margin-top:10px;">
+            <div><img src='./img/endgame.gif' style="width:100%;"></div>
+            <div class="text-team" style="margin:20px auto 30px auto;" id="ShowPointToDay"></div>
+          </div>
+
+          <div id="DiaplayBox" style="display: none;">
+            <div id="BoxGame" style="margin-top:30px;"></div>
+            <div class="clr"></div>
+            <div class="font12" style="margin-top:8px;"><b>คลิกที่ภาพเพื่อสุ่มเลือกคำถามประจำวัน (ทัช)</b></div>
+            <div class="clr" style="height: 40px;"></div>
+          </div>
+          <div class="btn-t2" onclick="location.href='quizgame4.html'">เมนูคำถามประจำวัน</div>
+          <div class="btn-t2" onclick="location.href='home.html#QuizGame'">กลับหน้าหลัก</div>
+          <div class="clr" style="height: 40px;"></div>
+
+
+
+        </center>
+      </div>
+    </section>
+  </main>
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;padding:0px;">
+          <div class="header-line" style="margin-top:10px;color:#0056ff;margin-bottom: 20px;">คลิกเลือกภาพ ... ตามหาคะแนน</div>
+          <div><img src="./img/openpage.png" width="120px"></div>
+          <div style="padding:20px;">ให้คลิกเลือกภาพวันละ 1 ครั้งน้า</div>
+          <div class="btn-t2" onclick="CloseAll()">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+    <div style="height:20px;"></div>
+  </div>
+
+  <div id="id02" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;">
+          <center><div class="border-timer noshow" id="countdowntimer"></div>
+          <div id="ShowStory"></div>
+        </center>
+      </div>
+    </div>
+    <div style="height:20px;"></div>
+  </div>
+
+  <div id="id03" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <center>
+        <div style="margin-top:30px;background:#002d63;padding:20px;border-top-left-radius: 18px;border-top-right-radius: 18px;">
+          <!--<div class="header-line" style="padding:15px 0px;text-align: center;color:#f68b1f;">คำถาม Main Bank</div>-->
+          <div id="DisplayTimer"></div>
+          <div id="DisplayQuestion"></div>
+        </div>
+        <div class="clr"></div>
+        <div id="DisplayChoice" style="color:#fff;margin-top:30px;"></div>
+      </center>
+    </div>
+    <div style="height: 30px;"></div>
+  </div>
+
+  <div id="id04" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+          <div id="ShowEndPoint" style="text-align: center;"></div>
+          <div class="btn-t2" onclick="CloseAll()">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="menu" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4 bg-menu">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
+        <div id="MenuSociety"></div>
+        <div style="margin-left: 5px;margin-top:15px;">
+          <div id="DisplayLink"></div>
+        </div>
+      </div>
+      <div class="clr" style="height:70px;"></div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="js/connect.js"></script>
+  <script src="js/quizgame.js"></script>
+  <script src="js/menu.js"></script>
+
+</body>
+</html>
