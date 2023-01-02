@@ -632,9 +632,10 @@ section {
 --------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
-  padding: 30px 20px 30px 20px;
+  padding: 10px 20px;
   transition: all ease-in-out 0.3s;
-  background: #fff;
+  background: #ECEFF1;
+  border-radius: 10px;
 }
 
 .services .icon-box .icon {
@@ -667,12 +668,12 @@ section {
 
 .services .icon-box h4 {
   font-weight: 600;
-  margin: 10px 0 15px 0;
-  font-size: 15px;
+  /*margin: 10px 0 15px 0;*/
+  font-size: 14px;
 }
 
 .services .icon-box h4 a {
-  font-size: 15px;
+  font-size: 14px;
   color: #5d86fa;
   transition: ease-in-out 0.3s;
 }
