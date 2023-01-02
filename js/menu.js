@@ -91,6 +91,7 @@ function OpenMenu() {
 
 
 function MyPoint() {
+  var xLine = "";
   var yLine = "";
   var zLine = "";
   yLine += '<div style="margin:10px 0 20px 0;">';
@@ -112,7 +113,26 @@ function MyPoint() {
   zLine += '<div class="clr" style="height:40px;"></div></div>';
   $("#DisplayMyPoint").html(zLine);  
 
+
+  xLine += '<div style="margin: -25px auto 20px auto; width: 100%; min-height:50px; max-width: 450px;">';
+  xLine += '<div style="width:73%; float: left;">';
+  xLine += '<div style="width:100%;"><div style="width:32%;float: left; text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
+  xLine += '<div class="Profile-title" style="padding-top:5px;"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+  xLine += '</div></div>';
+  xLine += '<div style="width:24%; float: left; background-color :#c0d8fc; height:50px; text-align: center; border-radius: 8px;">';
+  xLine += '<div class="box-reward" style="width:100%; padding-top:4px; font-size: 10px;"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'</div>เหรียญรางวัล</div>';
+
+  //xLine += '</div>';
+  xLine += '</div>';
+  xLine += '';
+  xLine += '';
+  xLine += '';
+  $("#DisplayRPPoint").html(xLine);  
+
+
+
 }
+
 
 
 function MenuFooter() {

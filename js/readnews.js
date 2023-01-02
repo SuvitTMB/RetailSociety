@@ -270,17 +270,21 @@ var elem = document.getElementById('CountReadNews');
 var timerId = setInterval(countdown, 1000); 
 function countdown() {
   if(xResults!="") { 
+    document.getElementById('PopupMenu').style.display='none';
     clearTimeout(timerId);
     document.getElementById('loading').style.display='none';
     document.getElementById('CountReadNews').style.display='block';
     $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+xResults+" | รับคะแนน "+ ReadNewsPoint +" Point<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
   } else {
     if (timeLeft == -1) {
+      document.getElementById('PopupMenu').style.display='none';
       clearTimeout(timerId);
       CallReadNews();
     } else {
       document.getElementById('loading').style.display='none';
       document.getElementById('CountReadNews').style.display='block';
+      document.getElementById('PopupMenu').style.display='block';
+      $("#PopupTime").html('ระบบบันทึกการอ่าน<br>เหลือเวลา ' +timeLeft+ ' วินาที');
       elem.innerHTML = 'เหลือเวลาอีก ' +timeLeft + ' วินาที<br>(ระบบจะบันทึกการอ่านอัตโนมัติเมื่อสิ้นสุดเวลาที่กำหนด)<br>คุณจะได้ '+ ReadNewsPoint +' Point เมื่อสิ้นสุดเวลาที่กำหนด';
       timeLeft--;
     }    

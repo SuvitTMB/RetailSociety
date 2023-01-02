@@ -49,22 +49,6 @@ $(document).ready(function () {
 });
 
 
-/*
-function Connect_DB() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
-    authDomain: "retailproject-6f4fc.firebaseapp.com",
-    projectId: "retailproject-6f4fc",
-    storageBucket: "retailproject-6f4fc.appspot.com",
-    messagingSenderId: "653667385625",
-    appId: "1:653667385625:web:a5aed08500de80839f0588",
-    measurementId: "G-9SKTRHHSW9"
-  };
-  firebase.initializeApp(firebaseConfig);
-  //db = firebase.firestore().collection("QuizoftheDay");
-}
-*/
-
 var EidRewards = "";
 var xCheckRewards = 0;
 var xAllUserTure = 0;
@@ -137,7 +121,7 @@ function CheckUserQuiz() {
       LastScore = doc.data().PointOUT;
       newScore = doc.data().PointOUT;
       CheckQuiz = 1;
-      str += '1. คุณตอบคำถามประจำวันนี้ไปเรียบร้อยแล้ว<br>';
+      str += 'คุณตอบคำถามประจำวันนี้ไปเรียบร้อยแล้ว<br>';
       str += 'วันนี้คุณทำคะแนนได้ <font color="#0056ff"><b>'+doc.data().PointOUT+'</b></font> คะแนน';
       $("#ShowPointToDay").html(str);  
     });
@@ -232,7 +216,7 @@ function RandomCard1() {
     NewDate();
     var TimeStampDate = Math.round(Date.now() / 1000);
     dbttbQuiz.add({
-      GroupQuiz : "Extra Point",
+      GroupQuiz : "Extra Point Touch : "+today,
       LineID : sessionStorage.getItem("LineID"),
       LineName : sessionStorage.getItem("LineName"),
       LinePicture : sessionStorage.getItem("LinePicture"),
@@ -290,6 +274,11 @@ function RandomCard1() {
     str1 += '<div class="text-team" style="padding-top:15px;font-weight:600;">วันนี้คุณได้รับ '+parseFloat(NewRandom).toFixed(2)+' คะแนน</div>';
     $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำคะแนนได้ "+ parseFloat(NewRandom).toFixed(2) +" คะแนน</div>");
     $("#ShowEndPoint").html(str1);
+    //var str = "";
+    //str += 'คุณตอบคำถามประจำวันนี้ไปเรียบร้อยแล้ว<br>';
+    //str += 'วันนี้คุณทำคะแนนได้ <font color="#0056ff"><b>'+parseFloat(NewRandom).toFixed(2)+'</b></font> คะแนน';
+    //$("#ShowPointToDay").html(str);  
+
     document.getElementById("QuizComplete").style.display = "block";
     document.getElementById("DiaplayBox").style.display = "none";
     document.getElementById("id04").style.display = "block";
@@ -631,7 +620,7 @@ function SaveData() {
   }
   if(CheckAddEdit==2) { 
     dbttbQuiz.doc(Eid).update({
-      GroupQuiz : "Quiz of The Day",
+      GroupQuiz : xHeader,
       LineID : sessionStorage.getItem("LineID"),
       LineName : sessionStorage.getItem("LineName"),
       LinePicture : sessionStorage.getItem("LinePicture"),
@@ -772,7 +761,7 @@ function AddNewUser() {
   if(CheckAddEdit==2) {
     YourScore = 0;
     dbttbQuiz.add({
-      GroupQuiz : "Quiz of The Day",
+      GroupQuiz : xHeader,
       LineID : sessionStorage.getItem("LineID"),
       LineName : sessionStorage.getItem("LineName"),
       LinePicture : sessionStorage.getItem("LinePicture"),
@@ -895,7 +884,8 @@ function NoChangeNow() {
 
 function CloseAll() {
   var str = "";
-  str += '2. คุณตอบคำถามประจำวันนี้ไปเรียบร้อยแล้ว<br>';
+  if(newScore==0) { newScore = NewRandom;}
+  str += 'คุณตอบคำถามประจำวันนี้ไปเรียบร้อยแล้ว<br>';
   str += 'วันนี้คุณทำคะแนนได้ <font color="#0056ff"><b>'+newScore+'</b></font> คะแนน';
   $("#ShowPointToDay").html(str);  
   document.getElementById('id01').style.display='none';

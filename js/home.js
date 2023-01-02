@@ -21,10 +21,12 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbQuiz = firebase.firestore().collection("ttbQuizoftheday");
+  dbttbWebboard = firebase.firestore().collection("ttbWebboard");
   MenuSlide();
   CheckData();
   CheckUserQuiz();
   CheckBarChart();
+  WebboardUpdate();
   OpenPopMenu();
 });
 
@@ -153,6 +155,31 @@ function MenuSlide() {
 }
 
 
+function WebboardUpdate() {
+  var str = "";
+  dbttbWebboard.where("StatusBoard", "==", 0)
+  .orderBy('TimeStamp','desc')
+  .limit(3)
+  .get().then((snapshot)=> {
+  snapshot.forEach(doc=> {
+      str += '<div class="webboard-box" onclick="ReadWebboard(\''+ doc.id +'\')">';
+      //str += '<div class="post-headnews">'+ doc.data().QWebboard +'</div>';
+      str += '<div class="webboard-news">'+ doc.data().QWebboard +'</div><div class="clr"></div>';
+      str += '<div style="margin-top:5px;text-align: left;"><i>';
+      str += '<div class="d-flex post-text"><i class="icofont-wall-clock"></i>&nbsp;'+ doc.data().SendDate +'</div>';
+      str += '<div class="d-flex post-text"><i class="icofont-file-spreadsheet"></i>&nbsp;'+ doc.data().ReadWebboard +' อ่าน</div>';
+      str += '<div class="d-flex post-text"><i class="icofont-comment"></i>&nbsp;'+ doc.data().AnsWebboard +' ความเห็น</div></i>';
+      str += '</div></div>';
+    });
+    $("#DisplayWebboardUpdate").html(str);
+  });
+}
+
+function ReadWebboard(id,xGroup) {
+  location.href = "webboard-chat.html?gid="+id+"";
+}
+
+
 function ReadNews(id,xGroup) {
   location.href = "readnews.html?gid="+id+"&groupid="+xGroup+"";
 }
@@ -167,11 +194,6 @@ function CheckBarChart() {
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      //var CalAllTime = doc.data().TimeGame1 + doc.data().TimeGame2 + doc.data().TimeGame3 + doc.data().TimeGame4;
-      //var UserTrue = parseFloat(doc.data().UserSumTrue) + parseFloat(doc.data().Game3SumTrue);
-      //var UserFalse = doc.data().UserSumFalse + doc.data().Game3SumFalse;
-      //var UserAll = UserTrue + UserFalse;
-
       var CalAllTime = doc.data().TimeGame1 + doc.data().TimeGame2 + doc.data().TimeGame3 + doc.data().TimeGame4;
       var UserTrue = parseFloat(doc.data().UserSumTrue);
       var UserFalse = parseFloat(doc.data().UserSumFalse);
@@ -188,6 +210,9 @@ function CheckBarChart() {
       } else {
         var CalFalse = ((UserFalse/UserAll)*100);
       }
+      if(Number.isNaN(CalTrue)) { CalTrue = 0; }
+      if(Number.isNaN(CalFalse)) { CalFalse = 0; }
+
       $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+CalAllTime+'</div><div class="ScoreGame4-text">จำนวน<br>แข่งสะสม</div>');
       $("#ShowUserSumTime2").html("<div class='font15number' style='color:#2dcc02'>"+CalTrue.toFixed(2) +'%</div><div class="ScoreGame4-text">%การตอบ<br>คำถามถูก</div>');
       $("#ShowUserSumTime3").html("<div class='font15number' style='color:#ff0000'>"+CalFalse.toFixed(2) +'%</div><div class="ScoreGame4-text">%การตอบ<br>คำถามผิด</div>');
@@ -208,7 +233,7 @@ function CheckBarChart() {
       }
       $("#RatioGame2").html(str2);  
 
-      sTimeGame3 = (doc.data().TimeGame3/9)*100;
+      sTimeGame3 = (doc.data().TimeGame3/15)*100;
       if(sTimeGame3>=100) {
         str3 += '<div class="progress"><div class="bar" style="width:'+sTimeGame3.toFixed(2)+'%"></div></div>';
       } else {

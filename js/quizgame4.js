@@ -63,6 +63,8 @@ function CheckUserQuiz() {
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       CheckPass = 1;
+      $("#PointToday").html("<div class='font13' style='color:#f68b1f;text-align:center; font-weight: 600;margin-top:-10px;'>คุณทำคะแนนได้ "+doc.data().PointOUT+' คะแนน</div>');
+
     });
     if(CheckPass==0) {
       document.getElementById('Loading').style.display='none';
@@ -89,13 +91,13 @@ function UserBoard(x) {
   .orderBy('TimeStamp','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      //str += '<tr onclick="OpenProfile(\''+ doc.id +'\')" class="LinkProfile">';
+      i++;
       str += '<tr>';
-      str += '<td class="td-center td-padding" style="width:20%;text-align:center;">'+doc.data().QuizDate+'</td>';
-      str += '<td class="td-padding" style="width:65%;"><font color="#0056ff">'+doc.data().GroupQuiz+'</font></td>';
+      //str += '<td class="td-center td-padding" style="width:20%;text-align:center;">'+doc.data().QuizDate+'</td>';
+      str += '<td class="td-center td-padding" style="width:10%;text-align:center;">'+i+'</td>';
+      str += '<td class="td-padding" style="width:75%;"><font color="#0056ff">'+doc.data().GroupQuiz+'</font></td>';
       str += '<td class="td-padding" style="width:15%;text-align:center;"><font color="#000"><b>'+doc.data().PointOUT+'</b></font></td>';
       str += '</tr>';
-      i++;
     }); 
     str += '</tbody></table>';
     $("#UserScore").html(str);  
@@ -118,9 +120,8 @@ function TopDayBoard(x) {
   .limit(30)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      //str += '<tr onclick="OpenProfile(\''+ doc.id +'\')" class="LinkProfile">';
       str += '<tr>';
-      str += '<td class="td-center td-padding" style="width:40%;text-align:left;font-size:9px;">'+doc.data().DateRegister+'</td>';
+      str += '<td class="td-center td-padding" style="width:40%;text-align:left;font-size:11px;">'+doc.data().DateRegister+'</td>';
       str += '<td class="td-padding" style="width:45%;"><font color="#0056ff">'+doc.data().EmpName+'</font></td>';
       str += '<td class="td-padding" style="width:15%;text-align:center;"><font color="#000"><b>'+doc.data().PointOUT+'</b></font></td>';
       str += '</tr>';

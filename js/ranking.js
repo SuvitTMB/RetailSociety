@@ -29,7 +29,7 @@ function RankingMember() {
       i = (i+1);
       var xPicture = '<center><img src="'+ doc.data().LinePicture +'" class="img-ranking"></center>';
       var xProfile = '<div style="font-size:12px;"><b>'+ doc.data().EmpName +'</b> ( Level : <b>'+ doc.data().Level_Point +'</b> )<br>Date : '+doc.data().LastUpdate+'</div>';
-      dataSet = [xPicture, xProfile, '<b>'+doc.data().RP_Point+'</b>', i ];
+      dataSet = [xPicture, xProfile, '<b>'+ parseFloat(doc.data().RP_Point).toFixed(2) +'</b>', i ];
       //dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
       dataSrc.push(dataSet);
       count++;

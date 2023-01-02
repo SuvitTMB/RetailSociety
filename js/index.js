@@ -17,7 +17,7 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-   */
+*/   
   main();
 });
 
@@ -84,6 +84,7 @@ function CheckData() {
         sessionStorage.setItem("EmpID_Society", doc.data().empID);
         sessionStorage.setItem("EmpName_Society", doc.data().empName);
         sessionStorage.setItem("EmpPhone_Society", doc.data().empPhone);
+        sessionStorage.setItem("EmpAddress_Society", doc.data().empAddress);
         CheckMember();
       } else if(doc.data().statusconfirm==2) { 
         location.href = "waitingpage.html";
@@ -184,6 +185,25 @@ function AddNewMember() {
     SubGame37 : 0,
     SubGame38 : 0,
     SubGame39 : 0,
+
+
+    WBGame01 : 0,
+    WBGame02 : 0,
+    WBGame03 : 0,
+    WBGame04: 0,
+    WBGame05 : 0,
+    WBGame06 : 0,
+    WBGame07 : 0,
+    WBGame08 : 0,
+    WBGame09 : 0,
+    WBGame10 : 0,
+    WBGame11 : 0,
+    WBGame12 : 0,
+    WBGame13 : 0,
+    WBGame14 : 0,
+    WBGame15 : 0,
+
+
     SumAll : 0,
     SumFalse : 0,
     SumTrue : 0,
