@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="assets/img/favicom.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/random.css" rel="stylesheet">
+<!--
+  <link href="assets/css/bento.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+-->
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+
+</head>
+
+<body style="background-color: #ECEFF1;">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="home.html"><span>LINE</span> Retail Society</a></h1>
+      <div class="mobile-nav-toggle d-lg-none" onclick="OpenMenu()">
+        <i class="icofont-navigation-menu"></i>
+      </div>
+    </div>
+  </header>
+
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>รายการของรางวัล</h2>
+          <ol style="margin-top:-10px;">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="catalog.html">รายการของรางวัล</a></li>
+            <li>วงล้อแห่งโชค</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="blog" class="blog" style="padding-top:10px;">
+      <center>
+        <div class="btn-t3" style="margin-top:30px;">วงล้อมหาสนุก</div>
+      </center>
+
+      <div style="max-width: 400px; width:100%;">
+        <div id="ShowWheel" class="wheelmap" style="margin-top: 60px;">
+          <canvas id="wheel"></canvas>
+          <button id="spin-btn">Click</button>
+          <img src="spinner-arrow-.svg" alt="spinner-arrow" />
+        </div>
+      </div>
+        <div id="final-value" style="position: relative; margin-top: 325px;">
+          <p style="text-align: center;font-size: 13px;">
+            <b>คลิก Start เพื่อหมุนวงล้อ</b><br>คุณสามารถหมุนวงล้อได้เพียง 1 ครั้งนะ อธิฐานสิ ...
+          </p>
+        </div>
+      <div class="clr"></div>
+
+      <div class="container" style="margin-top:50px;">
+        <div class="font13" style="margin:10px 15px;">เหรียญรางวัลของคุณมีค่า สามารถนำมาแลกเพื่เข้าร่วมเกมส์วงล้อแห่งโชค พร้อมลุ้นรับรางวัลมากมายที่เราคัดเลือกมาให้</div>
+        <div style="margin:10px 0px;">
+          <div style="text-align: center; padding-top:20px; font-weight: 600; color:#0056ff;padding-bottom: 10px;">รายการของรางวัล</div>
+            <div id="TableRewards"></div>
+
+
+<!--
+            <table class="table table-bordered" class="font13" style="background-color: #fff;">
+              <thead>
+                <tr style="text-align: center;background-color: #93a3c1;">
+                  <th scope="col">No</th>
+                  <th scope="col">รายละเอียด</th>
+                  <th scope="col">จำนวน</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" style="text-align: center;">1</th>
+                  <td>เหรียญแลกรางวัล 10 เหรียญ</td>
+                  <td style="text-align: center;">5</td>
+                </tr>
+                <tr>
+                  <th scope="row" style="text-align: center;">2</th>
+                  <td>เหรียญแลกรางวัล 20 เหรียญ</td>
+                  <td style="text-align: center;">5</td>
+                </tr>
+                <tr>
+                  <th scope="row" style="text-align: center;">3</th>
+                  <td>เหรียญแลกรางวัล 30 เหรียญ</td>
+                  <td style="text-align: center;">5</td>
+                </tr>
+
+                <tr>
+                  <th scope="row" style="text-align: center;">6</th>
+                  <td style="color:#ff0000;">เสียใจด้วยไม่ได้รางวัล</td>
+                  <td style="text-align: center;">500</td>
+                </tr>
+              </tbody>
+            </table>
+-->
+        </div>
+        <center>
+        <div class="btn-t2" style="margin-top:40px;" onclick="location.href='home.html'">กลับไปหน้าแรก</div>
+        </center>
+      </div>
+    </section>
+<!--
+      <center>
+        <div id="loading" style="margin:20px auto 20px auto;">
+          <img src="./img/loading1.gif" style="width:30px;margin-top:20px; margin-bottom: 80px;">
+        </div>
+      </center>
+      <div class="container" id="ShowContent" style="display: none;">
+        <div class="webboard0" id="DisplayNameWebboard"></div>
+        <div id="DisplayOwner"></div>
+        <div class="clr" style="height: 20px;"></div>
+      </div>
+-->
+
+
+
+  </main>
+
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background-color: #ECEFF1; padding:20px 13px;text-align: center;">
+        <div id="DisplayGift"></div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+
+  <div id="menu" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4 bg-menu">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
+        <div id="MenuSociety"></div>
+        <div style="margin-left: 5px;margin-top:15px;">
+          <div id="DisplayLink"></div>
+        </div>
+      </div>
+      <div class="clr" style="height:70px;"></div>
+    </div>
+  </div>
+
+  <div class="clr" style="height:30px;"></div>
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<!--
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+-->
+  <!-- Template Main JS File -->
+<!--
+  <script src="assets/js/main.js"></script>
+-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <!-- Chart JS Plugin for displaying text over chart -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+  <script src="js/connect.js"></script>
+  <script src="js/random.js"></script>
+  <script src="js/menu.js"></script>
+
+
+
+</body>
+</html>
