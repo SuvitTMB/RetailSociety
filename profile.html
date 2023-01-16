@@ -26,82 +26,12 @@
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
   <link href="assets/css/w3.css" rel="stylesheet">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-
-
   <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
   <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
 
-  <style>
-    .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
-      padding-right: 5px; padding-left: 5px;
-    }
-    .blog .sidebar { 
-      margin: 0 0 40px 0px; box-shadow: none; padding: 20px;
-    }
-    #footer .footer-top { 
-      padding: 30px 15px 20px 15px;
-    }
-    .blog .sidebar { 
-      padding: 0px;
-    }
-    .button, select { font-size: 14px; font-weight: 600; }
-    .label {  font-size: 13px; color:#111; }
-  </style>
-
-  <style type="text/css">
-      .w3-container, .w3-panel {
-        padding:0px;
-      }
-      table.dataTable tbody th, table.dataTable tbody td {
-        padding: 2px 6px;
-        font-size: 13px; color:#000; line-height: 1.2; 
-      }
-      table.dataTable thead th, table.dataTable thead td {
-          background: #94a9b3; color: #ffffff; padding: 4px; margin-top:15px;
-          font-size: 13px; color:#000; line-height: 1.2; 
-          /*vertical-align: text-top;*/
-      }
-      table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
-          font-size: 13px; color:#000; line-height: 1.2; 
-          /*vertical-align: text-top;  */
-      }
-      .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { 
-          margin-bottom: 10px;
-      }
-      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; 
-        /*vertical-align: top;*/ 
-      }
-      .table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td { padding: 6px 4px; }
-      .txt-center { text-align: center; }
-      .txt-right { text-align: right; right: 10px; }
-      .a { width:10px; text-align: center;}
-      .b { height:10px; text-align: center;}
-      .table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
-        cursor: pointer; 
-      }
-      .table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
-        background-color: #0056ff; color:#ffffff;
-      }
-      .table.dataTable tbody tr {
-        background:#ff0000;
-      }
-      .table.dataTable tbody tr { 
-        cursor: pointer; 
-      }
-      table.dataTable thead th, table.dataTable thead td { padding: 9px; }
-      .btn-add {
-        max-width:50px !important; padding:2px 5px; font-size: 13px; margin-top:0px;
-        min-width: 50px;
-      }
-      .dataTables_wrapper .dataTables_filter input {
-        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #e0e5ec; color:#111; font-weight: 600;
-        border:2px solid #fff ;
-      }
-  </style>
 </head>
 
 <body>
@@ -122,40 +52,34 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>อันดับการแข่งขัน</h2>
+          <h2>MyPoint</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="ranking.html">อันดับการแข่งขัน</a></li>
-            <li>แสดงข้อมูลการแข่งขัน</li>
+            <li><a href="mypoint.html">คะแนนของคุณ</a></li>
+            <li>รายละเอียดของคะแนน</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="NewsUpdate" class="blog section-bg" style="margin-top:0px; background-color: #ECEFF1; height: 90px; ">
-      <div id="DisplayRPPoint"></div>
-    </section>
-
-
 
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
-<!--
       <div class="container">
         <div id="DisplayMember"></div>
       </div>
       <div id="DisplayMyPoint"></div>
--->
+
       <div class="container">
         <div class="row" data-aos="fade-up">
           <article class="entry" style="box-shadow: none;width:95%; margin:auto; text-align: center; max-width: 450px;">
             <div class="menu-box" onclick="window.location.href='profile.html';">
-            <div class="menu-reward-img"><img src="./icon/icon-08.png" style="width:35px;"></div>
+            <div class="menu-reward-img" style="background-color: #0056ff;"><img src="./icon/icon-08.png" style="width:35px;"></div>
             <div class="menu-reward-text">ข้อมูลคุณ</div></div>
             <div class="menu-box" onclick="window.location.href='mylog.html';">
             <div class="menu-reward-img"><img src="./icon/icon-07.png" style="width:35px;"></div>
             <div class="menu-reward-text">log คะแนน</div></div>
             <div class="menu-box" onclick="window.location.href='ranking.html';">
-            <div class="menu-reward-img" style="background-color: #0056ff;"><img src="./icon/icon-06.png" style="width:35px;"></div>
+            <div class="menu-reward-img"><img src="./icon/icon-06.png" style="width:35px;"></div>
             <div class="menu-reward-text">อันดับแข่ง</div></div>
             <div class="menu-box" onclick="window.location.href='catalog.html';">
             <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
@@ -172,36 +96,10 @@
 
     <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
       <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="sidebar" data-aos="fade-left">
-              <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ตารางอันดับการแข่งขัน</b></div>
-              </center>
-              <div class="sidebar-item recent-posts">
-                <div style="width:98%; margin:0 auto;">
-                  <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
-                    <thead>
-                      <tr>
-                        <th style="width:12%;text-align: center;">รูป</th>
-                        <th style="width:76%;text-align: center;">ผู้แข่งขัน</th>
-                        <th style="width:6%;text-align: center;">คะแนน</th>
-                        <th style="width:6%;text-align: center;">อันดับ</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-                <div class="clr"></div>
-                <center>
-                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
-                  <!--
-                  <div class="btn-t2" onclick="GotoGroupNews()" type="submit" style="margin-top:20px;font-size:14px;">ดูข่าวทั้งหมด</div>
-                  -->
-                </center>
-              </div>
-            </div>
-          </div>
-        </div>
+        <center>
+          <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ข้อมูลของคุณ</b></div>
+        </center>
+
       </div>
     </section>
   </main>
@@ -264,21 +162,9 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- Data Table -->
-  <script src='https://code.jquery.com/jquery-1.12.3.js'></script>
-  <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js'></script>
-  <script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js'></script>
-  <script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js'></script>
-  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js'></script>
-
-
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/ranking.js"></script>
+  <script src="js/profile.js"></script>
   <script src="js/menu.js"></script>
 
 </body>

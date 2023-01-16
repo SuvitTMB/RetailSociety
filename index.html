@@ -36,7 +36,7 @@
   </header>
 
   <main id="main">
-    <div style="text-align: center;margin-top:50px;"><img src="https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/News%2Fbg.png?alt=media&token=b23cd407-9324-42bc-b874-68e8dccac8af" style="width:90%;max-width: 400px;"></div>
+    <div style="text-align: center;margin-top:65px;"><img src="https://firebasestorage.googleapis.com/v0/b/retailproject-6f4fc.appspot.com/o/News%2Fbg.png?alt=media&token=b23cd407-9324-42bc-b874-68e8dccac8af" style="width:92%;max-width: 400px;"></div>
     <div class="container" style="text-align: center">
       <div id="loading" style="margin-top:30px;"><img src="./img/loading1.gif" style="width:50px;"></div>
       <div id="NoService" style="display: none;margin-top:20px;">
@@ -45,11 +45,25 @@
         </div>
       </div>
       <div id="OldSurvey" style="display: none;margin-top:30px;">
+        <div id="DisplayMyPoint" style="margin-top:-30px; margin-bottom: 5px;"></div>
         <div style="margin:auto;">
-          <div class="btn-t2" onclick="location.href='home.html'" style="margin-bottom: 7px;padding:10px 77px;color:#fff;background-color: #469dfa; border:2px solid #268cf9;">Welcome to ...<br>LINE Retail Society</div>
+          <div class="btn-t2" onclick="location.href='home.html'" style="margin-bottom: 7px;padding:10px 77px;color:#fff;background-color: #0056ff; border:2px solid #268cf9;">คลิกเพื่อเข้าสู่ ...<br>LINE Retail Society</div>
           <div class="clr"></div>
-          <div class="btn-t2" onclick="location.href='intro.html'">แนะนำการใช้<br>ระบบงาน</div>
-          <div class="btn-t2" onclick="DisplayQRCode()">ชวนเพื่อนเข้าใช้งาน<br>LINE Retail Society</div>
+          <div style="width:265px; margin:10px auto;">
+            <div class="ScoreGame6" onclick="location.href='intro.html'" style="margin-right: 5px;">
+              <div><img src="./icon/learning.png" style="width:40px;"></div>
+              <div class="font12" style="padding:5px;"><b>แนะนำ<br>การใช้งาน</b></div>
+            </div>
+            <div class="ScoreGame6" onclick="location.href='webboard-chat.html?gid=beG8FynIhzWgdYFgaFJ9'" style="margin-right: 5px;">
+              <div><img src="./icon/icon-email.png" style="width:40px;"></div>
+              <div class="font12" style="padding:5px;"><b>แจ้งปัญหา<br>การใช้งาน</b></div>
+            </div>
+            <div class="ScoreGame6" onclick="DisplayQRCode()">
+              <div><img src="./icon/friends.png" style="width:40px;"></div>
+              <div class="font12" style="padding:5px;"><b>บอกต่อ<br>เพื่อนเรา</b></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -62,7 +76,7 @@
         <center>
           <div class="btn-t3"><b>ยินดีต้อนรับสู่ LINE Retail Society</b></div>    
           <div style="margin:30px auto 15px auto;"><img src="./img/WelcomePoint.gif" style="width:100%;max-width: 400px;"></div>            
-          <div style="text-align: left;margin: 10px 0; font-size: 13px; color:#000;line-height: 1.3;">เพื่อเพิ่มประสบการณ์ในการใช้งาน <b>LINE Retail Society</b> ของคุณ เรายินดีที่จะมอบ <b><font color="#0056ff">Welcome Point</font></b> สำหรับการสะสมและนำไปใช้แลกของรางวัลที่คุณต้องการ โดยเราจะทำการสุ่ม Welcome Point ให้คุณอัตโนมัติ และนอกจากนี้คุณยังสามารถเข้าทำการเก็บ Point จากภารกิจต่าง ๆ ภายใน <b>LINE Retail Socitey</b> นี้</div>
+          <div style="text-align: left;margin: 10px 0; font-size: 13px; color:#000;line-height: 1.3;">เพื่อเพิ่มประสบการณ์ในการใช้งาน <b>LINE Retail Society</b> ของคุณ เรายินดีที่จะมอบ <b><font color="#0056ff">Welcome Point</font></b> สำหรับการสะสม <b>"เหรียญรางวัล"</b> และนำไปใช้แลกของรางวัลที่คุณต้องการ โดยระบบจะทำการสุ่ม Welcome Point ให้คุณอัตโนมัติ และนอกจากนี้คุณยังสามารถเข้าทำการเก็บ <b>เหรียญรางวัล</b> จากภารกิจต่าง ๆ ภายใน <b>LINE Retail Socitey</b> นี้</div>
           <div class="clr"></div>
           <div class="btn-t2" onclick="WelcomePoint()" style="margin-top:20px;">กดลุ้น <b>Welcome Point</b> ของคุณ</div>
           <div class="clr" style="height: 40px;"></div>
@@ -72,16 +86,18 @@
     <div class="clr" style="height:70px;"></div>
   </div>
 
-
   <div id="id02" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="width:95%;margin:auto;min-height: 270px;">
-        <center>
-          <div id="DisplayWelcomePoint"></div>     
-        </center>
+    <div class="w3-modal-content w3-card-4" style="background: #ebebeb;">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <div class="btn-t3" style="margin-top:20px;">Welcome Point</div>
+        <div><img src="./img/coin.gif" style="padding-top:8px;width:100%;border-radius: 15px;"></div>
+        <div id="BoxTimeGetPoint"></div>
+        <div class="clr"></div>
+        <div class="btn-t2" onclick="GotoWeb()" style="margin-top:20px;">เข้าสู่ <b>LINE Retail Society</div>
+        <div style="height: 15px;"></div>
       </div>
     </div>
-    <div class="clr" style="height:70px;"></div>
+    <div style="height:20px;"></div>
   </div>
 
   <div id="id03" class="w3-modal w3-animate-opacity">
@@ -98,6 +114,28 @@
     </div>
   </div>
 
+  <div id="id04" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #ebebeb;">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <div id="RandomNewsAid"></div>
+      </div>
+    </div>
+    <div style="height:20px;"></div>
+  </div>
+
+
+  <div id="id05" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #ebebeb;">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <div id="UserLevelUp"></div>
+      </div>
+    </div>
+    <div style="height:20px;"></div>
+  </div>
+
+
+
   <script src="js/index.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>

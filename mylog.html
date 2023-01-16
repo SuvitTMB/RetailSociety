@@ -58,23 +58,19 @@
       }
       table.dataTable tbody th, table.dataTable tbody td {
         padding: 2px 6px;
-        font-size: 13px; color:#000; line-height: 1.2; 
+        font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
       }
       table.dataTable thead th, table.dataTable thead td {
           background: #94a9b3; color: #ffffff; padding: 4px; margin-top:15px;
-          font-size: 13px; color:#000; line-height: 1.2; 
-          /*vertical-align: text-top;*/
+          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
       }
       table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
-          font-size: 13px; color:#000; line-height: 1.2; 
-          /*vertical-align: text-top;  */
+          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;  
       }
       .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { 
           margin-bottom: 10px;
       }
-      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; 
-        /*vertical-align: top;*/ 
-      }
+      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; }
       .table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td { padding: 6px 4px; }
       .txt-center { text-align: center; }
       .txt-right { text-align: right; right: 10px; }
@@ -122,29 +118,22 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>อันดับการแข่งขัน</h2>
+          <h2>Mylog</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="ranking.html">อันดับการแข่งขัน</a></li>
-            <li>แสดงข้อมูลการแข่งขัน</li>
+            <li><a href="mylog.html">log คะแนนของคุณ</a></li>
+            <li>รายละเอียดของ log</li>
           </ol>
         </div>
       </div>
     </section>
 
+
     <section id="NewsUpdate" class="blog section-bg" style="margin-top:0px; background-color: #ECEFF1; height: 90px; ">
       <div id="DisplayRPPoint"></div>
     </section>
 
-
-
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
-<!--
-      <div class="container">
-        <div id="DisplayMember"></div>
-      </div>
-      <div id="DisplayMyPoint"></div>
--->
       <div class="container">
         <div class="row" data-aos="fade-up">
           <article class="entry" style="box-shadow: none;width:95%; margin:auto; text-align: center; max-width: 450px;">
@@ -152,10 +141,10 @@
             <div class="menu-reward-img"><img src="./icon/icon-08.png" style="width:35px;"></div>
             <div class="menu-reward-text">ข้อมูลคุณ</div></div>
             <div class="menu-box" onclick="window.location.href='mylog.html';">
-            <div class="menu-reward-img"><img src="./icon/icon-07.png" style="width:35px;"></div>
+            <div class="menu-reward-img" style="background-color: #0056ff;"><img src="./icon/icon-07.png" style="width:35px;"></div>
             <div class="menu-reward-text">log คะแนน</div></div>
             <div class="menu-box" onclick="window.location.href='ranking.html';">
-            <div class="menu-reward-img" style="background-color: #0056ff;"><img src="./icon/icon-06.png" style="width:35px;"></div>
+            <div class="menu-reward-img"><img src="./icon/icon-06.png" style="width:35px;"></div>
             <div class="menu-reward-text">อันดับแข่ง</div></div>
             <div class="menu-box" onclick="window.location.href='catalog.html';">
             <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
@@ -176,17 +165,17 @@
           <div class="col-lg-4">
             <div class="sidebar" data-aos="fade-left">
               <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ตารางอันดับการแข่งขัน</b></div>
+                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>รายการ log คะแนนของคุณ</b></div>
               </center>
               <div class="sidebar-item recent-posts">
                 <div style="width:98%; margin:0 auto;">
                   <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
                     <thead>
                       <tr>
-                        <th style="width:12%;text-align: center;">รูป</th>
-                        <th style="width:76%;text-align: center;">ผู้แข่งขัน</th>
-                        <th style="width:6%;text-align: center;">คะแนน</th>
-                        <th style="width:6%;text-align: center;">อันดับ</th>
+                        <th style="width:10%;text-align: center;">No</th>
+                        <th style="width:80%;text-align: center;">News</th>
+                        <th style="width:9%;text-align: center;">View</th>
+                        <th style="width:1%;text-align: center;display: none;">Time</th>
                       </tr>
                     </thead>
                   </table>
@@ -278,7 +267,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/ranking.js"></script>
+  <script src="js/mylog.js"></script>
   <script src="js/menu.js"></script>
 
 </body>

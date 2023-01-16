@@ -71,12 +71,18 @@
       <center>
         <div class="btn-t3" style="margin-top:30px;">วงล้อมหาสนุก</div>
       </center>
-
       <div style="max-width: 400px; width:100%;">
         <div id="ShowWheel" class="wheelmap" style="margin-top: 60px;">
           <canvas id="wheel"></canvas>
           <button id="spin-btn">Click</button>
-          <img src="spinner-arrow-.svg" alt="spinner-arrow" />
+          <img src="spinner-arrow-.svg" alt="spinner-arrow" class="A-img"/>
+        </div>
+        <div id="ShowWheel1" class="wheelmap1">
+          <center>
+            <div><img src="./img/wheeljpg.jpg" style="width:80%;"></div>
+          </center>
+          <div id="DisplayGiftRewards"></div>
+          <div class="font13" style="text-align:center; color:#f68b1f;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>
         </div>
       </div>
         <div id="final-value" style="position: relative; margin-top: 325px;">
@@ -85,74 +91,25 @@
           </p>
         </div>
       <div class="clr"></div>
-
       <div class="container" style="margin-top:50px;">
         <div class="font13" style="margin:10px 15px;">เหรียญรางวัลของคุณมีค่า สามารถนำมาแลกเพื่เข้าร่วมเกมส์วงล้อแห่งโชค พร้อมลุ้นรับรางวัลมากมายที่เราคัดเลือกมาให้</div>
         <div style="margin:10px 0px;">
           <div style="text-align: center; padding-top:20px; font-weight: 600; color:#0056ff;padding-bottom: 10px;">รายการของรางวัล</div>
             <div id="TableRewards"></div>
-
-
-<!--
-            <table class="table table-bordered" class="font13" style="background-color: #fff;">
-              <thead>
-                <tr style="text-align: center;background-color: #93a3c1;">
-                  <th scope="col">No</th>
-                  <th scope="col">รายละเอียด</th>
-                  <th scope="col">จำนวน</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" style="text-align: center;">1</th>
-                  <td>เหรียญแลกรางวัล 10 เหรียญ</td>
-                  <td style="text-align: center;">5</td>
-                </tr>
-                <tr>
-                  <th scope="row" style="text-align: center;">2</th>
-                  <td>เหรียญแลกรางวัล 20 เหรียญ</td>
-                  <td style="text-align: center;">5</td>
-                </tr>
-                <tr>
-                  <th scope="row" style="text-align: center;">3</th>
-                  <td>เหรียญแลกรางวัล 30 เหรียญ</td>
-                  <td style="text-align: center;">5</td>
-                </tr>
-
-                <tr>
-                  <th scope="row" style="text-align: center;">6</th>
-                  <td style="color:#ff0000;">เสียใจด้วยไม่ได้รางวัล</td>
-                  <td style="text-align: center;">500</td>
-                </tr>
-              </tbody>
-            </table>
--->
         </div>
         <center>
-        <div class="btn-t2" style="margin-top:40px;" onclick="location.href='home.html'">กลับไปหน้าแรก</div>
+        <div class="btn-t2" style="margin-top:40px;" onclick="location.href='catalog.html'">รายชื่อผู้ได้รับรางวัลจากกิจกรรม</div>
+        <div class="clr"></div>
+        <div class="btn-t2" style="margin-top:7px;" onclick="location.href='catalog.html'">รายการของรางวัล</div>
+        <div class="btn-t2" style="margin-top:7px;" onclick="location.href='home.html'">กลับไปหน้าแรก</div>
         </center>
       </div>
     </section>
-<!--
-      <center>
-        <div id="loading" style="margin:20px auto 20px auto;">
-          <img src="./img/loading1.gif" style="width:30px;margin-top:20px; margin-bottom: 80px;">
-        </div>
-      </center>
-      <div class="container" id="ShowContent" style="display: none;">
-        <div class="webboard0" id="DisplayNameWebboard"></div>
-        <div id="DisplayOwner"></div>
-        <div class="clr" style="height: 20px;"></div>
-      </div>
--->
-
-
-
   </main>
 
 
   <div id="id01" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background-color: #ECEFF1; padding:20px 13px;text-align: center;">
+    <div class="w3-modal-content w3-card-4" style="background-color: #ECEFF1; padding:20px 13px;text-align: center;min-height: 350px;">
         <div id="DisplayGift"></div>
     </div>
     <div class="clr" style="height:70px;"></div>
@@ -180,27 +137,10 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-<!--
-  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
--->
-  <!-- Template Main JS File -->
-<!--
-  <script src="assets/js/main.js"></script>
--->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-  <!-- Chart JS Plugin for displaying text over chart -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
   <script src="js/connect.js"></script>
   <script src="js/random.js"></script>
   <script src="js/menu.js"></script>
-
-
-
 </body>
 </html>

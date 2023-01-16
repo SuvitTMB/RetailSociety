@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="assets/img/favicom.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
+
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="home.html"><span>LINE</span> Retail Society</a></h1>
+      <div class="mobile-nav-toggle d-lg-none" onclick="OpenMenu()">
+        <i class="icofont-navigation-menu"></i>
+      </div>
+    </div>
+  </header>
+
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>รางวัลของคุณ</h2>
+          <ol style="margin-top:-10px;">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="yourrewards.html">รางวัลของคุณ</a></li>
+            <li>รางวัลที่คุณแลกไว้</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="NewsUpdate" class="blog section-bg" style="margin-top:0px; background-color: #ECEFF1; height: 90px; ">
+      <div id="DisplayRPPoint"></div>
+    </section>
+
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
+      <div class="container">
+        <div class="row" data-aos="fade-up">
+          <article class="entry" style="box-shadow: none;width:95%; margin:auto; text-align: center; max-width: 450px;">
+            <div class="menu-box" onclick="window.location.href='profile.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-08.png" style="width:35px;"></div>
+            <div class="menu-reward-text">ข้อมูลคุณ</div></div>
+            <div class="menu-box" onclick="window.location.href='mylog.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-07.png" style="width:35px;"></div>
+            <div class="menu-reward-text">log คะแนน</div></div>
+            <div class="menu-box" onclick="window.location.href='ranking.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-06.png" style="width:35px;"></div>
+            <div class="menu-reward-text">อันดับแข่ง</div></div>
+            <div class="menu-box" onclick="window.location.href='catalog.html';">
+            <div class="menu-reward-img"><img src="./icon/icon-04.png" style="width:35px;"></div>
+            <div class="menu-reward-text">แลกรางวัล</div></div>
+            <div class="menu-box" onclick="window.location.href='yourrewards.html';">
+            <div class="menu-reward-img" style="background-color: #0056ff;"><img src="./icon/gift-box.png" style="width:35px;"></div>
+            <div class="menu-reward-text">รางวัลคุณ</div></div>
+            <div class="clr"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
+      <div class="container" data-aos="fade-up">
+        <center>
+          <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>รางวัลของคุณ</b></div>
+        </center>
+
+
+        <div style="margin-top:5px;">
+        <div class="font13" style="margin-bottom: 5px;"><b>รางวัลจากการใช้คะแนนแลกของรางวัล</b></div>
+        <div id="DisplayRedeem"></div>
+        <div class="font13" style="margin-top:30px; margin-bottom: 5px;"><b>รางวัลจากการใช้คะแนนสุ่มของรางวัล</b></div>
+        <div id="DisplayGiftRandom"></div>
+        <div class="cls" style="height: 40px;"></div>
+
+<!--
+<table class="table table-bordered" class="font13" style="background-color: #fff;">
+  <thead><tr style="text-align: center;background-color: #93a3c1;">
+    <th scope="col">No.</th>
+    <th scope="col">รางวัล</th>
+    <th scope="col">ใช้เหรียญ</th>
+  </tr></thead><tbody>
+
+
+<tr><th scope="row" style="text-align: center;">1</th>
+<td style="text-align: left; line-height: 1.2;"><font color="#0056ff">Starbucks 200 บาท</font><br>07/01/2023 21:42:36 PM<br>สถานะ : รอการจัดส่ง</td>
+<td style="text-align: center;">400 เหรียญ</td>
+</tr>
+
+</tbody></table></div>
+-->
+
+
+
+      </div>
+    </section>
+  </main>
+
+<!--
+  <div id="menu" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4 bg-menu">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
+        <div id="MenuSociety"></div>
+        <div style="margin-left: 5px;margin-top:15px;">
+          <div id="DisplayLink"></div>
+        </div>
+      </div>
+      <div class="clr" style="height:70px;"></div>
+    </div>
+  </div>
+-->
+
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="js/connect.js"></script>
+  <script src="js/yourrewards.js"></script>
+  <script src="js/menu.js"></script>
+
+</body>
+</html>
