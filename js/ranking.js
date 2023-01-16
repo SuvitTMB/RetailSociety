@@ -17,21 +17,21 @@ $(document).ready(function () {
 
 
 function RankingMember() {
-  var i = 0;
+  var i = 1;
   count = 0;
   dataSet = "";
   dataSrc = [];
   dbttbMember
   //.where('LineID','==',sessionStorage.getItem("LineID"))
-  .orderBy('RP_Point','desc')
+  .orderBy('XP_Point','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      i = (i+1);
       var xPicture = '<center><img src="'+ doc.data().LinePicture +'" class="img-ranking"></center>';
       var xProfile = '<div style="font-size:12px;"><b>'+ doc.data().EmpName +'</b> ( Level : <b>'+ doc.data().Level_Point +'</b> )<br>Date : '+doc.data().LastUpdate+'</div>';
-      dataSet = [xPicture, xProfile, '<b>'+ parseFloat(doc.data().RP_Point).toFixed(2) +'</b>', i ];
+      dataSet = [xPicture, xProfile, '<b>'+ parseFloat(doc.data().XP_Point).toFixed(2) +'</b>', i ];
       //dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
       dataSrc.push(dataSet);
+      i++;
       count++;
     }); 
     dTable=$('#ex-table').DataTable({
@@ -48,7 +48,7 @@ function RankingMember() {
             //'copy', 'excelFlash', 'excel', 'pdf', 'print'
         ],
           lengthMenu: [[50, 100, -1], [50, 100, "All"]],
-        columnDefs: [ { type: 'num-fmt', 'targets': [1] } ],
+        columnDefs: [ { type: 'num-fmt', 'targets': [2] } ],
         order: [[ 2, 'desc']]
       });   
       //if(dTable.row( this ).data()[5]==1) {

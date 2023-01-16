@@ -193,6 +193,7 @@ function OpenCard(x) {
   var str = "";
   str += '<div><img src="./img/game1-0'+x+'.jpg" class="img-game1"></div>';
   if(UserPlay==0) { // 0=ยังไม่ได้เล่น 1=เล่นแล้ว
+    CheckPointMember();
     str += '<div class="clr" style="height:10px;"></div>';
     str += '<div class="btn-t2-no" onclick="RandomCard1()">คลิกเปิดภาพนี้</div><div class="btn-t2" onclick="CloseAll()">เปลี่ยนภาพอื่น</div>';
     str += '<div class="title-text-random">กิจกรรมเปิดภาพลุ้นรางวัล<br>คุณสามารถเปิดภาพได้เพียงวันละ 1 ภาพเท่านั้น</div>';
@@ -249,8 +250,8 @@ function RandomCard1() {
       TotalGame4 : parseFloat(sTotalGame4) + parseFloat(NewRandom),
       TotalScore : parseFloat(sTotalScore) + parseFloat(NewRandom),
       LastUpdate : dateString,
-      XP_Point : sessionStorage.getItem("XP_Point"),
-      RP_Point : sessionStorage.getItem("RP_Point")
+      XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+      RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
     });
     dbttbnewsLog.add({
       LineID : sessionStorage.getItem("LineID"),
@@ -822,8 +823,8 @@ function ChangeNow() {
       TotalGame4 : parseFloat(sTotalGame4) + parseFloat(newScore),
       TotalScore : parseFloat(sTotalScore) + parseFloat(newScore),
       LastUpdate : dateString,
-      XP_Point : sessionStorage.getItem("XP_Point"),
-      RP_Point : sessionStorage.getItem("RP_Point")
+      XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+      RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
     });
     dbttbQuiz.doc(Eid).update({
       PointOUT : parseFloat(newScore)

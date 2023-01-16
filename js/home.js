@@ -9,10 +9,26 @@ var sTimeGame1 = 0;
 var sTimeGame2 = 0;
 var sTimeGame3 = 0;
 var sTimeGame4 = 0;
+var xToday = "";
+var sTarget = 0;
+var sCountTimeJoin = 0;
+var sPoint = 0;
 
+//var xIDmember = "";
 
 $(document).ready(function () {
   if(sessionStorage.getItem("RefID_Member")==null) { location.href = "index.html"; }
+/*
+  if(sessionStorage.getItem("Level_Point")==1 && sessionStorage.getItem("XP_Point") >= 100) {
+    NextLevel(2);
+  } else if(sessionStorage.getItem("Level_Point")==2 && sessionStorage.getItem("XP_Point") >= 300) { 
+    NextLevel(3);
+  } else if(sessionStorage.getItem("Level_Point")==3 && sessionStorage.getItem("XP_Point") >= 600) { 
+    NextLevel(4);
+  } else if(sessionStorage.getItem("Level_Point")==4 && sessionStorage.getItem("XP_Point") >= 1000) { 
+    NextLevel(5);
+  }
+*/
   //if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
   dbProfile = firebase.firestore().collection("CheckProfile");
@@ -22,6 +38,7 @@ $(document).ready(function () {
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbQuiz = firebase.firestore().collection("ttbQuizoftheday");
   dbttbWebboard = firebase.firestore().collection("ttbWebboard");
+  dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   MenuSlide();
   CheckData();
   CheckUserQuiz();
@@ -39,9 +56,127 @@ function CheckData() {
       CheckFoundData = doc.data().statusconfirm;
       EidProfile = doc.id;
       sDateRegister = doc.data().DateRegister;
+      CheckDateIn();
       ListWebPage();
     });
   });
+}
+
+//var xJoinTime = 0;
+var sCountTimeJoin = 0;
+var sGetRewards = 0;
+var xCheckDate = 0;
+var EidMember = "";
+function CheckDateIn() {
+  var str = "";
+  dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      //xJoinTime = doc.data().JoinTime;
+      EidMember = doc.id;
+      sessionStorage.setItem("XP_Point", doc.data().XP_Point);
+      sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+
+      if(today!=doc.data().DateToDay) {
+        xCheckDate = 1;
+        sCountTimeJoin = parseFloat(doc.data().JoinTime)+1;
+        if(sCountTimeJoin<=5) { sTarget = 5; sPoint = 5; }
+        else if(sCountTimeJoin<=30) { sTarget = 30; sPoint = 10; }
+        else if(sCountTimeJoin<=60) { sTarget = 60; sPoint = 15; }
+        else if(sCountTimeJoin<=90) { sTarget = 90; sPoint = 20; }
+        else if(sCountTimeJoin<=120) { sTarget = 120; sPoint = 30; }
+        else if(sCountTimeJoin<=150) { sTarget = 150; sPoint = 40; }
+        else if(sCountTimeJoin<=180) { sTarget = 180; sPoint = 50; }
+        else if(sCountTimeJoin<=360) { sTarget = 360; sPoint = 100; }
+        else sPoint = 0;
+
+        if(sCountTimeJoin==5) {
+          sGetRewards = 5;
+          GetJoinPoint(5,5);
+        } else if(sCountTimeJoin==30) {
+          sGetRewards = 10;
+          GetJoinPoint(30,10);
+        } else if(sCountTimeJoin==60) {
+          sGetRewards = 15;
+          GetJoinPoint(60,15);
+        } else if(sCountTimeJoin==90) {
+          sGetRewards = 20;
+          GetJoinPoint(90,20);
+        } else if(sCountTimeJoin==120) {
+          sGetRewards = 30;
+          GetJoinPoint(120,30);
+        } else if(sCountTimeJoin==150) {
+          sGetRewards = 40;
+          GetJoinPoint(150,40);
+        } else if(sCountTimeJoin==180) {
+          sGetRewards = 50;
+          GetJoinPoint(180,50);
+        } else if(sCountTimeJoin==360) {
+          sGetRewards = 100;
+          GetJoinPoint(360,100);
+        } else {
+          str+='<div style="margin-top:15px;">';
+          str+='<div class="box-target">เข้าเว็บแล้ว<div class="box-target-number">'+ sCountTimeJoin +'</div>วัน</div>';
+          str+='<div class="box-target">เหลืออีก<div class="box-target-number">'+(sTarget-sCountTimeJoin)+'</div>วัน</div>';
+          str+='<div class="box-target">เพื่อรับ<div class="box-target-number">'+sPoint+'</div>เหรียญรางวัล</div>';
+          str+='</div>';
+          $("#BoxTimeLine").html(str);      
+          document.getElementById("id02").style.display = "block";
+        }
+        dbttbMember.doc(EidMember).update({
+          DateToDay : today,
+          JoinTime : sCountTimeJoin
+        });
+      }
+    });
+    //if(sGetRewards==0) {
+    //  document.getElementById("id02").style.display = "block";
+    //}
+  });
+}
+
+
+function GetJoinPoint(d,x) {
+  var str = "";
+  NewDate();
+  var TimeStampDate = Math.round(Date.now() / 1000);
+  sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(sGetRewards));
+  sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(sGetRewards));
+  if(xCheckDate==1) {
+    var xHeader = "ได้รับเหรียญ "+ sGetRewards +" เหรียญรางวัล";
+    dbttbnewsLog.add({
+      LineID : sessionStorage.getItem("LineID"),
+      LineName : sessionStorage.getItem("LineName"),
+      LinePicture : sessionStorage.getItem("LinePicture"),
+      EmpID : sessionStorage.getItem("EmpID_Society"),
+      EmpName : sessionStorage.getItem("EmpName_Society"),
+      RefID : EidMember,
+      NewsGroup : 0,
+      HeadNews : "Join Website",
+      SubNews : xHeader,
+      GetPoint : parseFloat(sGetRewards),
+      LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
+      LogDate : dateString,
+      LogTimeStamp : TimeStampDate
+    });
+    dbttbMember.doc(EidMember).update({
+      XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+      RP_Point : parseFloat(sessionStorage.getItem("RP_Point")),
+      DateToDay : today,
+      JoinTime : sCountTimeJoin
+    });
+    OpenPopMenu(); 
+  }         
+  str+='<div style="margin-top:15px;">';
+  str+='<div class="font13" style="text-align:center; padding:5px;">ยินดีด้วยคุณได้รับเหรียญรางวัล</div>';
+  str+='<div class="font13" style="text-align:center; font-weight: 600; color:#0056ff;">'+ x +' เหรียญรางวัล</div>';
+  str+='<div class="font13" style="text-align:center; padding:5px;">จากการเข้าชมเว็บไซต์มาแล้ว <b>'+ d +'</b> วัน</div>';
+  str+='</div>';
+  $("#BoxTimeGetPoint").html(str);      
+  document.getElementById("id03").style.display = "block";
+
+  //alert(x);
 }
 
 
@@ -194,6 +329,7 @@ function CheckBarChart() {
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
+      //xIDmember = doc.id;
       var CalAllTime = doc.data().TimeGame1 + doc.data().TimeGame2 + doc.data().TimeGame3 + doc.data().TimeGame4;
       var UserTrue = parseFloat(doc.data().UserSumTrue);
       var UserFalse = parseFloat(doc.data().UserSumFalse);
@@ -253,6 +389,16 @@ function CheckBarChart() {
 }
 
 
+function NextLevel(x) {
+  //dbttbMember.doc(sessionStorage.getItem("RefID_Member")).update({
+    //Level_Point : x
+  //});
+  //sessionStorage.setItem("Level_Point", x);
+  //if(sessionStorage.getItem("XP_Point")>1) {
+  //alert(x+"==="+sessionStorage.getItem("RefID_Member"));
+}
+
+
 function GotoGame(gotopage) {
   if(gotopage==1) {
     location.href = 'quizgame1.html';
@@ -269,7 +415,34 @@ function GotoGame(gotopage) {
 function CloseAll() {
   document.getElementById('menu').style.display='none';
   document.getElementById('id01').style.display='none';
+  document.getElementById('id02').style.display='none';
+  document.getElementById('id03').style.display='none';
 }
 
 
 
+function NewDate() {
+  var today = new Date();
+  var day = today.getDate() + "";
+  var month = (today.getMonth() + 1) + "";
+  var year = today.getFullYear() + "";
+  var hour = today.getHours() + "";
+  var minutes = today.getMinutes() + "";
+  var seconds = today.getSeconds() + "";
+  var ampm = hour >= 12 ? 'PM' : 'AM';
+  day = checkZero(day);
+  month = checkZero(month);
+  year = checkZero(year);
+  hour = checkZero(hour);
+  minutes = checkZero(minutes);
+  seconds = checkZero(seconds);
+  dateString = day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds +" "+ ampm;
+}
+
+
+function checkZero(data){
+  if(data.length == 1){
+    data = "0" + data;
+  }
+  return data;
+}

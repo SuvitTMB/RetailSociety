@@ -13,19 +13,28 @@ var i = 0;
 var str = '';
 var randomDegree = 0;
 var xGroupGift = 0;
+var idCodeGift = "";
+var xgiftstock = 0;
+var xgiftstatus = 0;
+var xgiftname = "";
+var xgiftimg = "";
+var EidMember = "";
+var xRP_Point = 0;
+var EidMember = "";
+var xRP_Point = 0;
+
 
 $(document).ready(function () {
   if(sessionStorage.getItem("RandomWheel")==null) { location.href = "catalog.html"; }
   Connect_DB();
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
+  dbttbMember = firebase.firestore().collection("ttbMember");
   dbGiftRandom = firebase.firestore().collection("ttbGiftRandom");
   dbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
-  //dbttbWebChat = firebase.firestore().collection("ttbWebChat");
-  //CheckBoardID();
-  //GroupChat();
   OpenPopMenu();
   ShowRewards();
 });
+
 
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
@@ -38,11 +47,8 @@ const rotationValues = [
   { minDegree: 151, maxDegree: 210, value: 5 },
   { minDegree: 211, maxDegree: 270, value: 4 },
   { minDegree: 271, maxDegree: 330, value: 3 },
-  //{ minDegree: 331, maxDegree: 360, value: 2 },
 ];
-//Size of each piece
 const data = [16, 16, 16, 16, 16, 16];
-//background color for each piece
 var pieColors = [
   "#0056ff",
   "#f68b1f",
@@ -51,17 +57,11 @@ var pieColors = [
   "#0056ff",
   "#f68b1f",
 ];
-//Create chart
 let myChart = new Chart(wheel, {
-  //Plugin for displaying text on pie chart
   plugins: [ChartDataLabels],
-  //Chart Type Pie
   type: "pie",
   data: {
-    //Labels(values which are to be displayed on chart)
     labels: [1, 2, 3, 4, 5, 6],
-    //labels: [1, 2, 3, 4, 5, 6],
-    //Settings for dataset/pie
     datasets: [
       {
         backgroundColor: pieColors,
@@ -70,16 +70,13 @@ let myChart = new Chart(wheel, {
     ],
   },
   options: {
-    //Responsive chart
     responsive: true,
     animation: { duration: 0 },
     plugins: {
-      //hide tooltip and legend
       tooltip: false,
       legend: {
         display: false,
       },
-      //display labels inside pie chart
       datalabels: {
         color: "#ffffff",
         formatter: (_, context) => context.chart.data.labels[context.dataIndex],
@@ -88,72 +85,97 @@ let myChart = new Chart(wheel, {
     },
   },
 });
-//display value based on the randomAngle
 const valueGenerator = (angleValue) => {
   var str = "";
+  var str0 = "";
   for (let i of rotationValues) {
-    //if the angleValue is between min and max then display it
-    //angleValue = 4;
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-      //console.log("XX-"+angleValue);
-      //i.value = 4;
-      finalValue.innerHTML = `<p style="text-align: center;">หมายเลขที่สุ่มได้ : ${i.value}</p>`;
-      //sessionStorage.removeItem("RandomWheel");
-      //document.getElementById('ShowWheel').style.display='none';
-      str += `<p style="text-align: center;">หมายเลขที่สุ่มได้ : ${i.value}</p>`;
-      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</div>';
-      $("#DisplayGift").html(str);
-      document.getElementById('id01').style.display='block';
+      //finalValue.innerHTML = `<p style="text-align: center;">หมายเลขที่สุ่มได้ : ${i.value}</p>`;
+      var varTimerInMiliseconds = 2000;
+      setTimeout(function(){ 
+        sessionStorage.removeItem("RandomWheel");
+        document.getElementById('ShowWheel').style.display='none';
+        document.getElementById('final-value').style.display='none';
+        document.getElementById('ShowWheel1').style.display='block';
+        switch(parseFloat(xGroupGift)) {
+          case 1:
+            str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
+            str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
+            str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>หากคุณอยู่สาขาเราจะจัดส่งของรางวัลไปให้</div>';
+            break;
+          case 2:
+            str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
+            str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
+            str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>หากคุณอยู่สาขาเราจะจัดส่งของรางวัลไปให้</div>';
+            break;
+          case 3:
+            str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
+            str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
+            str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>เราจะทำการโอน WOW ให้คุณในเดือนถัดไปน้า</div>';
+            break;
+          case 4:
+            str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
+            str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
+            str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>เราจะทำการโอน WOW ให้คุณในเดือนถัดไปน้า</div>';
+            break;
+          case 5:
+            CheckMember();
+            break;
+          case 6:
+            str += '<div class="btn-t3" style="margin-top:15px; background-color: #fff;">คุณไม่ได้รับรางวัล</div>';
+            str += '<div><img src="./img/'+ xgiftimg +'" style="position: relative; width:80%; margin-top:12px;"></div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">เสียใจด้วยน้า ... <br>วันนี้คุณยังไม่ได้รับรางวัลจากเรา<br>ไปหาเหรียญมาเล่นใหม่น้า</div>';
+            str0 += '<div class="font13" style="margin-top:15px;text-align: center;">เสียใจด้วยน้า ...<br><b>วันนี้คุณยังไม่ได้รับรางวัล</b><br>ไปหาเหรียญรางวัลแล้วกลับมาเล่นใหม่น้า</div>';
+            break;
+          default:
+            str += '<div class="btn-t3" style="margin-top:15px; background-color: #fff;">คุณไม่ได้รับรางวัล</div>';
+            str += '<div><img src="./img/sosad.gif" style="position: relative; width:80%; margin-top:12px;"></div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">เสียใจด้วยน้า ... <br>วันนี้คุณยังไม่ได้รับรางวัลจากเรา<br>ไปหาเหรียญมาเล่นใหม่น้า</div>';
+            str0 += '<div class="font13" style="margin-top:15px;text-align: center;">เสียใจด้วยน้า ...<br><b>วันนี้คุณยังไม่ได้รับรางวัล</b><br>ไปหาเหรียญรางวัลแล้วกลับมาเล่นใหม่น้า</div>';
+        }
+        if(parseFloat(xGroupGift)!=5) {
+          console.log("GroupGift="+xGroupGift);
+          str += '<div class="clr"></div><div class="btn-t2" onclick="CloseAll()" style="margin-top:20px; position:relate; ">ปิดหน้าต่างนี้</div>';
+          $("#DisplayGift").html(str);
+          $("#DisplayGiftRewards").html(str0);
+          document.getElementById('id01').style.display='block';
+        }
+      }, varTimerInMiliseconds);
       spinBtn.disabled = false;
+      OpenPopMenu();
       break;
     }
-      //i.value = 4;
   }
 };
 
-//Spinner count
+
 let count = 0;
-//100 rotations for animation and last rotation for result
 let resultValue = 101;
-//Start spinning
 spinBtn.addEventListener("click", () => {
   RandomRewards();
   spinBtn.disabled = true;
-  //Empty final value
   finalValue.innerHTML = `<p style="text-align: center;">Good Luck!</p>`;
-  //Generate random degrees to stop at
   //let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
-  //let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
-
-
-        //randomDegree = 11;
-        //randomDegree = 85; no-1
-        //randomDegree = 17; no-2
-        //randomDegree = 326; no-3
-        //randomDegree = 265; no-4
-        //randomDegree = 207; no-5
-        //randomDegree = 139; no-6
-
   console.log("random-"+randomDegree);
   //let randomDegree = 5;
   //Interval for rotation animation
   let rotationInterval = window.setInterval(() => {
-    //Set rotation for piechart
-    /*
-    Initially to make the piechart rotate faster we set resultValue to 101 so it rotates 101 degrees at a time and this reduces by 1 with every count. Eventually on last rotation we rotate by 1 degree at a time.
-    */
     myChart.options.rotation = myChart.options.rotation + resultValue;
-    //Update chart with new value;
     myChart.update();
-    //If rotation>360 reset it back to 0
     if (myChart.options.rotation >= 331) {
       count += 1;
       resultValue -= 5;
       myChart.options.rotation = 0;
     } else if (count > 15 && myChart.options.rotation == randomDegree) {
-      //valueGenerator(randomDegree);
       valueGenerator(randomDegree);
-      console.log("R="+randomDegree);
       valueGenerator(randomDegree);
       clearInterval(rotationInterval);
       count = 0;
@@ -162,16 +184,38 @@ spinBtn.addEventListener("click", () => {
   }, 10);
 });
 
-/*
-function ClickRandom() {
-  RandomRewards();
-  //alert("Random");
-}
-*/
 
-var idCodeGift = "";
-var xgiftstock = 0;
-var xgiftstatus = 0;
+
+function CheckMember() {
+  var str1 = "";
+  var str2 = "";
+  dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      EidMember = doc.id; 
+      xRP_Point = doc.data().RP_Point;
+    });
+    str1 += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
+    str1 += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
+    str1 += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'xxx</div>';
+    str1 += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+    console.log(EidMember+"==="+xRP_Point);
+    sessionStorage.setItem("RP_Point", parseFloat(xRP_Point)+10);
+    dbttbMember.doc(EidMember).update({
+      RP_Point : parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2)
+    });
+    console.log(parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2));
+    str1 += '<div class="clr"></div><div class="btn-t2" onclick="CloseAll()" style="margin-top:20px; position:relate; ">ปิดหน้าต่างนี้</div>';
+    str2 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>เราโอนคะแนนให้คุณเรียบร้อยแล้วน้า</div>';
+    $("#DisplayGift").html(str1);
+    $("#DisplayGiftRewards").html(str2);
+    document.getElementById('id01').style.display='block';
+    OpenPopMenu();
+  });
+}
+
+
 function GetCodeGift(codegift) { 
   dbGiftRandom.where('giftcode','==',codegift)
   .get().then((snapshot)=> {
@@ -179,6 +223,9 @@ function GetCodeGift(codegift) {
       idCodeGift = doc.id;
       xgiftstock = doc.data().giftstock;
       xgiftstatus = doc.data().giftstatus;
+      xgiftname = doc.data().giftname;
+      xgiftimg = doc.data().giftimg;
+      //alert(xgiftname);
       GetCodeRandom(NewRewards[0],NewRewards[1]);
     });
   });  
@@ -195,86 +242,86 @@ function RandomRewards() {
     });
     NewRewards = random_item(ArrRewards);
     GetCodeGift(NewRewards[1]);
-    //console.log("Random Rewards = "+NewRewards[0]+"==="+NewRewards[1]);
   });  
 }
 
-//var idCodeGift = "";
-//function GetCodeGift(codegift) { 
-
+var xResultQuiz = "";
 function GetCodeRandom(x,y) {
-  //alert(idCodeGift+"==="+xgiftstock+"==="+xgiftstatus);
   randomDegree = 0;
-  //alert(y);
-        //randomDegree = 11;
-        //randomDegree = 85; no-1
-        //randomDegree = 17; no-2
-        //randomDegree = 326; no-3
-        //randomDegree = 265; no-4
-        //randomDegree = 207; no-5
-        //randomDegree = 139; no-6
-        //alert(y);
-switch(y) {
-  case "gift-01":
-    randomDegree = 85;
-    xGroupGift = 1;
-    break;
-  case "gift-02":
-    randomDegree = 17;
-    xGroupGift = 2;
-    break;
-  case "gift-03":
-    randomDegree = 326;
-    xGroupGift = 3;
-    break;
-  case "gift-04":
-    randomDegree = 265;
-    xGroupGift = 4;
-    break;
-  case "gift-05":
-    randomDegree = 207;
-    xGroupGift = 5;
-    break;
-  case "gift-06":
-    randomDegree = 139;
-    xGroupGift = 6;
-    break;
-  default:
-    randomDegree = 139;
-}
-if(randomDegree!=0) {
-  console.log("ID="+idCodeGift);
-  //dbGiftRandom = firebase.firestore().collection("ttbGiftRandom");
-  //dbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
-  var CheckStock = parseFloat(xgiftstock)-1;
-  if(CheckStock!=0) {
-    dbGiftRandom.doc(idCodeGift).update({
-      giftstock : parseFloat(CheckStock)
-    });
-  } else {
-    dbGiftRandom.doc(idCodeGift).update({
-      giftstock : 0,
-      giftstatus : 0
-    });
+  switch(y) {
+    case "gift-01":
+      randomDegree = 85;
+      xGroupGift = 1;
+      xResultQuiz = "";
+      break;
+    case "gift-02":
+      randomDegree = 17;
+      xGroupGift = 2;
+      break;
+    case "gift-03":
+      randomDegree = 326;
+      xGroupGift = 3;
+      break;
+    case "gift-04":
+      randomDegree = 265;
+      xGroupGift = 4;
+      break;
+    case "gift-05":
+      randomDegree = 207;
+      xGroupGift = 5;
+      break;
+    case "gift-06":
+      randomDegree = 139;
+      xGroupGift = 6;
+      break;
+    default:
+      randomDegree = 139;
   }
-  dbGiftRewards.doc(x).update({
-    LineID : sessionStorage.getItem("LineID"),
-    LineName : sessionStorage.getItem("LineName"),
-    LinePicture : sessionStorage.getItem("LinePicture"),
-    EmpID : sessionStorage.getItem("EmpID_Society"),
-    EmpName : sessionStorage.getItem("EmpName_Society"),
-    DateRegister : dateString,
-    RefID : x,
-    Phone : sessionStorage.getItem("EmpPhone_Society"),
-    address : sessionStorage.getItem("EmpAddress_Society"),
-    ResultQuiz : 'Random'
-  });
-  ShowRewards();
-}
-
-
-console.log(x+"==="+y+"==="+randomDegree);
-
+  if(randomDegree!=0) {
+    console.log("ID="+idCodeGift);
+    //dbGiftRandom = firebase.firestore().collection("ttbGiftRandom");
+    //dbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
+    var CheckStock = parseFloat(xgiftstock)-1;
+    if(CheckStock!=0) {
+      dbGiftRandom.doc(idCodeGift).update({
+        giftstock : parseFloat(CheckStock)
+      });
+    } else {
+      dbGiftRandom.doc(idCodeGift).update({
+        giftstock : 0,
+        giftstatus : 0
+      });
+    }
+    if(y=='"gift-05') {
+      dbGiftRewards.doc(x).update({
+        LineID : sessionStorage.getItem("LineID"),
+        LineName : sessionStorage.getItem("LineName"),
+        LinePicture : sessionStorage.getItem("LinePicture"),
+        EmpID : sessionStorage.getItem("EmpID_Society"),
+        EmpName : sessionStorage.getItem("EmpName_Society"),
+        DateRegister : dateString,
+        RefID : x,
+        StatusSend : 2,
+        Phone : sessionStorage.getItem("EmpPhone_Society"),
+        address : sessionStorage.getItem("EmpAddress_Society"),
+        ResultQuiz : 'Random'
+      });
+    } else {
+      dbGiftRewards.doc(x).update({
+        LineID : sessionStorage.getItem("LineID"),
+        LineName : sessionStorage.getItem("LineName"),
+        LinePicture : sessionStorage.getItem("LinePicture"),
+        EmpID : sessionStorage.getItem("EmpID_Society"),
+        EmpName : sessionStorage.getItem("EmpName_Society"),
+        DateRegister : dateString,
+        RefID : x,
+        Phone : sessionStorage.getItem("EmpPhone_Society"),
+        address : sessionStorage.getItem("EmpAddress_Society"),
+        ResultQuiz : 'Random'
+      });
+    }
+    ShowRewards();
+  }
 }
 
 
@@ -288,7 +335,7 @@ function ShowRewards() {
   var str = "";
   str += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
   str += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
-  str += '<th scope="col">No</th><th scope="col">รายละเอียด</th><th scope="col">คงเหลือ</th></tr></thead<tbody>';
+  str += '<th scope="col">No</th><th scope="col">รายละเอียด</th><th scope="col">คงเหลือ</th></tr></thead><tbody>';
   dbGiftRandom
   //.where('RewardsStatus','==',0)
   .orderBy('giftranking','asc')
@@ -329,7 +376,6 @@ function checkZero(data){
   }
   return data;
 }
-
 
 
 function CloseAll() {

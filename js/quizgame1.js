@@ -163,6 +163,7 @@ function gotoGame1(x) {
     document.getElementById('id01').style.display='none';
     CheckScore();
   } else {
+    CheckPointMember();
     SelectChoice = x;
     console.log("เมนูที่เลือก = "+SelectChoice);
     console.log("เช็คค่าตัวแปร = "+xCheck1,xCheck2,xCheck3,xCheck4,xCheck5,xCheck6)
@@ -264,7 +265,6 @@ function SelectBox(x) {
 
 
 function RandomPoint(x) {
-  //ReCheckMember();
   console.log("X="+x);
   str = "";
   var sNewMyPoint = 0;
@@ -293,11 +293,12 @@ function RandomPoint(x) {
 
 
 function SaveDataFWB(x,p) {
+  console.log("Save");
   if(parseFloat(xData1) < 6) {
     NewDate();
     var TimeStampDate = Math.round(Date.now() / 1000);
     var xHeader = "";
-    console.log("ตัวแปร --> "+x+"==="+p+"==="+EidMember);
+    //console.log("ตัวแปร --> "+x+"==="+p+"==="+EidMember);
     TimeCount = parseFloat(TimeCount)+1;
     SumPoint = parseFloat(SumPoint)+parseFloat(p);
     SumScore = parseFloat(SumScore)+parseFloat(p);
@@ -354,8 +355,8 @@ function SaveDataFWB(x,p) {
     sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(p));
     dbttbMember.doc(EidMember).update({
       LastUpdate : dateString,
-      XP_Point : sessionStorage.getItem("XP_Point"),
-      RP_Point : sessionStorage.getItem("RP_Point")
+      XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+      RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
     });
     dbttbnewsLog.add({
       LineID : sessionStorage.getItem("LineID"),

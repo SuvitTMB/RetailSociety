@@ -20,11 +20,6 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
-
-  //dbGameFWB = firebase.firestore().collection("GameFWB");
-
-  //SelectBoxGroup('A');
-
   CheckScore();
   CheckUserFWB();
   OpenPopMenu();
@@ -66,13 +61,11 @@ function CheckScore() {
 
 
 function CheckUserFWB() {
-   //dbGameFWB.where('LineID','==',sessionStorage.getItem("LineID"))
    dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
    .get().then((snapshot)=> {
    snapshot.forEach(doc=> {
      UserArr = [];
      EidMember = doc.id;
-     //sGameStatus = doc.data().GameStatus;
      sGameCount = doc.data().TimeGame3;
      sGameSumPoint = doc.data().TotalGame3;
      UserArr = [doc.data().WBGame01,doc.data().WBGame02,doc.data().WBGame03,doc.data().WBGame04,doc.data().WBGame05,doc.data().WBGame06,doc.data().WBGame07,doc.data().WBGame08,doc.data().WBGame09,doc.data().WBGame10,doc.data().WBGame11,doc.data().WBGame12,doc.data().WBGame13,doc.data().WBGame14,doc.data().WBGame15];
@@ -122,6 +115,7 @@ function CheckButton() {
 
 
 function GetTarget(x) {
+   CheckPointMember();
    str = "";
    seeVDO = 0;
    sMyPoint = 0;
@@ -397,6 +391,7 @@ function BeForRandom(x) {
    for (i = 0; i < 15; i++) {
      str1 += '<div class="box-number" id="'+i+'" onclick="SelectBox('+i+')">'+NewPoint[i].toFixed(2)+'</div>';
    }    
+   str += '<div class="random-number"><img src="./img/number.gif" width="100%"></div>';    
    str += '<div class="btn-t3" style="margin-top:30px;">ระบบสุ่มเหรียญรางวัล</div>';
    str += '<div class="text-subtopic3" style="padding:20px 0;color:#0056ff;">เพื่อให้คุณได้สนุกกับการลุ้นเหรียญรางวัล<br>คุณคิดว่าคุณจะสุ่มได้เหรียญรางวัลเท่าไร</div>';
    //str += '<div style="font-size:16px;color:#fff;"><input id="MyPointSelect" type="number" placeholder="ทายเหรียญซิ" pattern="[+-]?[0-9]" style="background:#f68b1f;color:#fff;text-align:center;border-radius:5px;min-height:30px;padding:5px;"></div>';
@@ -637,8 +632,8 @@ function SaveDataFWB(x,p) {
       LastUpdate : dateString,
       TotalGame3 : parseFloat(sGameSumPoint.toFixed(2)),
       TotalScore : parseFloat(SumScore.toFixed(2)),
-      XP_Point : sessionStorage.getItem("XP_Point"),
-      RP_Point : sessionStorage.getItem("RP_Point")
+      XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+      RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
     });
     dbttbnewsLog.add({
       LineID : sessionStorage.getItem("LineID"),

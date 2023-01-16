@@ -294,6 +294,7 @@ function countdown() {
 
 function CallReadNews() {
   clearTimeout(timerId);
+  CheckPointMember();
   if(xResults=="") { 
     dbttbnews.where(firebase.firestore.FieldPath.documentId(), "==", EidNews)
     .get().then((snapshot)=> {
@@ -328,8 +329,8 @@ function RecordNews() {
   sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(ReadNewsPoint));
   dbttbMember.doc(sessionStorage.getItem("RefID_Member")).update({
     LastUpdate : dateString,
-    XP_Point : sessionStorage.getItem("XP_Point"),
-    RP_Point : sessionStorage.getItem("RP_Point")
+    XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+    RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
   });
   dbttbnewsLog.add({
     LineID : sessionStorage.getItem("LineID"),

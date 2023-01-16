@@ -212,7 +212,9 @@ function CheckUpdate() {
 
 
 function timecountdown() {
-  var timeleft = MaxTime;
+    var timeleft = MaxTime;
+  console.log("Time Left = "+timeleft);
+
     qInterval = setInterval(function(){
     if(timeleft <= 0) {
       stopcountdown();

@@ -1,9 +1,16 @@
 var i = 0;
 var EidProfile = "";
 var dateString = "";
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear()+543;
+var xToday = dd + '/' + mm + '/' + yyyy;
 
 
 $(document).ready(function () {
+
+var isMobile = window.orientation > -1;
 /*
   sessionStorage.clear(); 
   var str = "";
@@ -35,14 +42,11 @@ async function main() {
 
 
 async function getUserProfile() {
-  var str = "";
+  //var str = "";
   const profile = await liff.getProfile();
   sessionStorage.setItem("LineID", profile.userId);
   sessionStorage.setItem("LineName", profile.displayName);
   sessionStorage.setItem("LinePicture", profile.pictureUrl);
-  str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="add-profile" width="100px"></div>';
-  str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
-  $("#MyProfile").html(str);  
   Connect_DB();
 }
 
@@ -69,6 +73,7 @@ function Connect_DB() {
   dbProfile = firebase.firestore().collection("CheckProfile");
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
+  dbttblog = firebase.firestore().collection("ttblog");
   CheckData();
 }
 
@@ -100,40 +105,110 @@ function CheckData() {
   });
 }
 
-
+var EidMember = "";
 var EidUpdateLogin = "";
 var CountLogin = 0;
 var CheckFound = 0;
+var xLevel = 0;
 function CheckMember() {
   dbttbMember.where('LineID','==',sessionStorage.getItem("LineID"))
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       CheckFound = 1;
-      UpdatePorfile();
+      EidMember = doc.id;
       sessionStorage.setItem("RefID_Member", doc.id);
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      UpdatePorfile();
+      if(doc.data().Level_Point==1 && doc.data().XP_Point >= 100) {
+        NextLevel(2);
+      } else if(doc.data().Level_Point==2 && doc.data().XP_Point >= 300) { 
+        NextLevel(3);
+      } else if(doc.data().Level_Point==3 && doc.data().XP_Point >= 600) { 
+        NextLevel(4);
+      } else if(doc.data().Level_Point==4 && doc.data().XP_Point >= 1000) { 
+        NextLevel(5);
+      }
       document.getElementById('loading').style.display='none';
       document.getElementById('OldSurvey').style.display='block';
+      MyPointMenu();
+      CheckAid();
     });
 
     if(CheckFound==0) {
       AddNewMember();
       document.getElementById('loading').style.display='none';
       document.getElementById('OldSurvey').style.display='block';
-      //document.getElementById('NoService').style.display='block';
     }
   });
 }
 
 
+function NextLevel(x) {
+  str = "";
+  xLevel = x;
+  NewDate();
+  var TimeStampDate = Math.round(Date.now() / 1000);
+  console.log("Next Level = " +x);
+  var xPoint = 5;
+  var xHeader = "Level Up "+ x +"";
+  sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(xPoint));
+  sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(xPoint));
+  dbttbMember.doc(sessionStorage.getItem("RefID_Member")).update({
+    XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+    RP_Point : parseFloat(sessionStorage.getItem("RP_Point")),
+    Level_Point : x
+  });
+  sessionStorage.setItem("Level_Point", x);
+  dbttbnewsLog.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    RefID : EidMember,
+    NewsGroup : 0,
+    HeadNews : "Level Up",
+    SubNews : xHeader,
+    GetPoint : parseFloat(xPoint),
+    LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
+    LogDate : dateString,
+    LogTimeStamp : TimeStampDate
+  });
+  str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">คุณได้รับการปรับระดับผู้เล่น</div>';
+  str += '<div><img src="./img/levelup.gif" style="padding-top:8px;width:100%;"></div>';
+  str += '<div style="margin-top:15px;">';
+  str += '<div class="font13" style="padding-top:5px;text-align:center;">คุณได้รับเหรียญเพิ่ม '+ xPoint +' เหรียญรางวัล<br>จากการปรับระดับของผู้เล่นเป็น Level '+ x +'</div>';
+  str += '<div class="clr"></div>';
+  str += '<div class="btn-t2" onclick="GotoProfile()" style="margin-top:20px;">ดูคะแนนของคุณ</div>';
+  str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+  str += '<div style="height: 15px;"></div>';
+  MyPointMenu();
+  $("#UserLevelUp").html(str);      
+  document.getElementById('id05').style.display='block';
+}
+
+
+
+
 function UpdatePorfile() {
-    dbProfile.doc(EidProfile).update({
-      empPicture : sessionStorage.getItem("LinePicture"),
-      linename : sessionStorage.getItem("LineName")
-    });
+  NewDate();
+  var TimeStampDate = Math.round(Date.now() / 1000);
+  dbProfile.doc(EidProfile).update({
+    empPicture : sessionStorage.getItem("LinePicture"),
+    linename : sessionStorage.getItem("LineName")
+  });
+  dbttblog.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    LogDate : dateString,
+    LogTimeStamp : TimeStampDate
+  });
 }
 
 
@@ -160,7 +235,6 @@ function AddNewMember() {
     TotalGame2 : 0,
     TotalGame3 : 0,
     TotalGame4 : 0,
-
     SubGame11 : 0,
     SubGame12 : 0,
     SubGame13 : 0,
@@ -185,8 +259,6 @@ function AddNewMember() {
     SubGame37 : 0,
     SubGame38 : 0,
     SubGame39 : 0,
-
-
     WBGame01 : 0,
     WBGame02 : 0,
     WBGame03 : 0,
@@ -202,8 +274,6 @@ function AddNewMember() {
     WBGame13 : 0,
     WBGame14 : 0,
     WBGame15 : 0,
-
-
     SumAll : 0,
     SumFalse : 0,
     SumTrue : 0,
@@ -214,6 +284,7 @@ function AddNewMember() {
     UserSumTime : 0,
     LogDateTime : dateString,
     LastUpdate : dateString,
+    DateToDay : xToday,
     LogTimeStamp : TimeStampDate
   });
   sessionStorage.setItem("Level_Point", 1);
@@ -234,6 +305,15 @@ function AddNewMember() {
     LogDate : dateString,
     LogTimeStamp : TimeStampDate
   });
+  dbttblog.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Society"),
+    EmpName : sessionStorage.getItem("EmpName_Society"),
+    LogDate : dateString,
+    LogTimeStamp : TimeStampDate
+  });
   document.getElementById('id01').style.display='block';
 }
 
@@ -242,19 +322,95 @@ function WelcomePoint() {
   document.getElementById('id01').style.display='none';
   document.getElementById('id02').style.display='block';
   var str = "";
+  /*
   str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img" style="margin-top:35px;width:120px;height:120px;"></div>';
   str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;text-align:center;">'+ sessionStorage.getItem("LineName")+'</div>';
-  str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div><div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' Point</div>';
+  str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div>';
+  str += '<div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' เหรียญรางวัล</div>';
   str += '<div style="margin-top:15px;"><img src="./img/welcome.gif" style="width:100%; max-width: 200px;"></div>';
   str += '<div class="clr"></div>';
   str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:15px;">เข้าสู่ <b>LINE Retail Society</b></div>';
   str += '<div class="clr" style="height:40px;"></div>';
-  $("#DisplayWelcomePoint").html(str);  
+  */
+  //$("#DisplayWelcomePoint").html(str);  
+  str+='<div style="margin-top:15px;">';
+  str+='<div class="font13" style="text-align:center; padding:5px;">ยินดีด้วยคุณได้รับเหรียญรางวัลจากการสุ่ม</div>';
+  str+='<div class="font13" style="text-align:center; font-weight: 600; color:#0056ff;">'+ sessionStorage.getItem("XP_Point") +' เหรียญรางวัล</div>';
+  //str+='<div class="font13" style="text-align:center; padding:5px;">จากการเข้าชมเว็บไซต์มาแล้ว <b>'+ d +'</b> วัน</div>';
+  str+='</div>';
+  $("#BoxTimeGetPoint").html(str);      
 }
+
+
+function CheckAid() {
+  var str = "";
+  //if(CheckFoundData==1 && sessionStorage.getItem("Aid")==null) {
+  if(CheckFoundData==1) {
+    var RandomAid = [4, 3, 2, 1, 5];
+    var NewAid = random_item(RandomAid);
+    console.log("Display Aid = "+NewAid);
+    if(NewAid==1 && xLevel==0) {
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ข่าวสารองค์กร</div>';
+      str += '<div><img src="./img/news-van.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13" style="padding-top:5px;">เราได้เตรียมข่าวสารและความเคลื่อนไหวภายในองค์กร ให้คุณได้รับรู้ถึงที่ตลอดเวลา และทุก ๅ การอ่านของคุณจะได้รับเหรียญรางวัล สำหรับการสะสมไว้เล่นกิจกรรมกับเรา LINE Retail Society</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoNews()" style="margin-top:20px;">ไปดูข่าวองค์กร</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    } else if(NewAid==2 && xLevel==0) { 
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ระบบงาน LINE Retail Society</div>';
+      str += '<div><img src="./img/diggi-media.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13" style="padding-top:5px;">เราได้จัดหมวดหมู่ของระบบงานทั้งหมดของ LINE Retail Socitey มาไว้ที่เว็บไซต์นี้ทั้งหมดแล้ว คุณสามารถเข้าสู่ระบบงานได้จากเว็บไซต์นี้</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoSystem()" style="margin-top:20px;">ไปดูระบบงาน</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    } else if(NewAid==3 && xLevel==0) { 
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ภารกิจเก็บสะสมเหรียญรางวัล</div>';
+      str += '<div><img src="./img/gotocoin.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13" style="padding-top:5px;">นอกจากการเก็บเหรียญจากการอ่านข่าวสารองค์กรแล้ว เราได้จัดเตรียมกิจกรรมให้เพื่อน ๆ เข้ามาเก็บสะสมเหรียญได้ทุก ๆ วันเลย และให้เพื่อน ๆ ได้ทบทวนความรู้ของตัวเองอยู่ตลอดเวลาด้วยนะ</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoCoin()" style="margin-top:20px;">ไปสะสมเหรียญ</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    } else if(NewAid==4 && xLevel==0) { 
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ห้องคำถาม-คำตอบ</div>';
+      str += '<div><img src="./img/work_work_work.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13" style="padding-top:5px;">หากคุณมีคำถาม หรือข้อสงสัย คุณสามารถที่จะเข้ามาตั้งคำถามในห้องคำถาม-คำตอบได้ และหรือคุณเป็นผู้ที่เกี่ยวข้องกับคำถามเหล่านั้นก็สามารถเข้ามาตอบให้เพื่อน ๆ ได้รับทราบก็ได้เช่นกันน้า</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoChat()" style="margin-top:20px;">ไปห้องถาม-ตอบ</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    } else if(NewAid==5 && xLevel==0) { 
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>แลกของรางวัล</div>';
+      str += '<div><img src="./img/gift2023.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13" style="padding-top:5px;">ไม่ว่าคุณได้มีเหรียญรางวัลมากหรือน้อย คุณก็สามารถเลือกความต้องการของคุณเองได้ เพียง 5 เหรียญรางวัล คุณอาจจะได้รับรางวัลใหญ่ ๆ หรือเพื่อให้มั่นใจก็เก็บเหรียญรางวัลให้พอกับจำนวนที่จะใช้แลกก็ได้นะ</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoRewards()" style="margin-top:20px;">ไปแลกของรางวัล</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    }
+    $("#RandomNewsAid").html(str);      
+    document.getElementById('id04').style.display='block';
+      str += '';
+  }
+}
+
+
 
 
 function DisplayQRCode() {
   document.getElementById('id03').style.display='block';
+}
+
+
+function random_item(items) {
+  return items[Math.floor(Math.random()*items.length)];   
 }
 
 
@@ -289,6 +445,30 @@ function GotoWeb() {
   window.location.href = 'home.html';
 }
 
+function GotoNews() {
+  window.location.href = 'groupnews.html#ttbNews';
+}
+
+function GotoSystem() {
+  window.location.href = 'home.html#menusystem';
+}
+
+function GotoCoin() {
+  window.location.href = 'home.html#menugame';
+}
+
+function GotoChat() {
+  window.location.href = 'webboard.html#Question';
+}
+
+function GotoRewards() {
+  window.location.href = 'catalog.html';
+}
+
+function GotoProfile() {
+  window.location.href = 'profile.html';
+}
+
 
 function random_item(items) {
   return items[Math.floor(Math.random()*items.length)];   
@@ -299,5 +479,32 @@ function CloseAll() {
   document.getElementById('id01').style.display='none';
   document.getElementById('id02').style.display='none';
   document.getElementById('id03').style.display='none';
+  document.getElementById('id04').style.display='none';
+  document.getElementById('id05').style.display='none';
 }
 
+function NewDate() {
+  var today = new Date();
+  var day = today.getDate() + "";
+  var month = (today.getMonth() + 1) + "";
+  var year = today.getFullYear() + "";
+  var hour = today.getHours() + "";
+  var minutes = today.getMinutes() + "";
+  var seconds = today.getSeconds() + "";
+  var ampm = hour >= 12 ? 'PM' : 'AM';
+  day = checkZero(day);
+  month = checkZero(month);
+  year = checkZero(year);
+  hour = checkZero(hour);
+  minutes = checkZero(minutes);
+  seconds = checkZero(seconds);
+  dateString = day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds +" "+ ampm;
+}
+
+
+function checkZero(data){
+  if(data.length == 1){
+    data = "0" + data;
+  }
+  return data;
+}

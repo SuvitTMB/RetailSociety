@@ -208,6 +208,7 @@ function gotoGame2(x) {
     document.getElementById('id01').style.display='none';
     CheckScore();
   } else {
+    CheckPointMember();
     var str = "";
     SelectChoice = 0;
     VDOtimer = 0;
@@ -220,15 +221,14 @@ function gotoGame2(x) {
       //seeVDO = 1;
       //VDOtimer = 223;
       if(xCheck1==0) {
-        //VDOtimer = 225;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">วิธีการสมัครใช้งาน ttb touch ใหม่</div>';    
-      str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/yjLaMMu9ZUk?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">วิธีการสมัครใช้งาน ttb touch ใหม่</div><div class="clr"</div>';    
+      str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/yjLaMMu9ZUk?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
+      //str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"></iframe><div class="clr"</div>';
       if(xCheck1==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -239,13 +239,13 @@ function gotoGame2(x) {
     } else if(x==2) { 
       if(xCheck2==0) { 
         //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">การตั้งค่าต่าง ๆ แบบเฉพาะของคุณ</div>';    
-      str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/HcGl_B2LapM?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">การตั้งค่าต่าง ๆ แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str += '<iframe id="video" class="video" src="https://www.youtube.com/embed/HcGl_B2LapM?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck2==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -256,13 +256,13 @@ function gotoGame2(x) {
     } else if(x==3) { 
       if(xCheck3==0) {  
         //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">สิทธิประโยชน์ของฉัน แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/qNaFl9uUdvA?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">สิทธิประโยชน์ของฉัน แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/qNaFl9uUdvA?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck3==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -272,15 +272,13 @@ function gotoGame2(x) {
       str += '</div></div>';
     } else if(x==4) { 
       if(xCheck4==0) {  
-        //VDOtimer = 393;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัญชีเงินฝาก แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/JiWSdsLO9Qo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัญชีเงินฝาก แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/JiWSdsLO9Qo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck4==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -291,15 +289,13 @@ function gotoGame2(x) {
       str += '</div>';
     } else if(x==5) { 
       if(xCheck5==0) {  
-        //VDOtimer = 443;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       } 
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัตรเครดิต แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/UATEeiUlDXo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการบัตรเครดิต แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/UATEeiUlDXo?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck5==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -309,15 +305,13 @@ function gotoGame2(x) {
       str += '</div></div>';
     } else if(x==6) { 
       if(xCheck6==0) {  
-        //VDOtimer = 569;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/r3eOChjGBRw?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อรถยนต์ แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/r3eOChjGBRw?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck6==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -327,15 +321,13 @@ function gotoGame2(x) {
       str += '</div></div>';
     } else if(x==7) { 
       if(xCheck7==0) {  
-        //VDOtimer = 279;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการกองทุน แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/_mPlS174S5s?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการกองทุน แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/_mPlS174S5s?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck7==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -345,15 +337,13 @@ function gotoGame2(x) {
       str += '</div></div>';
     } else if(x==8) { 
       if(xCheck8==0) {  
-        //VDOtimer = 139;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการประกัน แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/mqGF-B8zPmY?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการประกัน แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/mqGF-B8zPmY?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck8==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -363,15 +353,13 @@ function gotoGame2(x) {
       str += '</div></div>';
     } else if(x==9) { 
       if(xCheck9==0) {  
-        //VDOtimer = 214;
-        //VDOtimer = 120;
-        VDOtimer = 5;
+        VDOtimer = 120;
         timeup = now.setSeconds(now.getSeconds() + Number(VDOtimer));
         counter = setInterval(timer, 1000);
       }
       str += '<div class="text-topic">';
-      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อ แบบเฉพาะของคุณ</div>';    
-      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/wZkMODxJYWg?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>';
+      str += '<div class="btn-t3" style="margin:30px auto 20px auto;">บริการสินเชื่อ แบบเฉพาะของคุณ</div><div class="clr"</div>';    
+      str +='<iframe id="video" class="video" src="https://www.youtube.com/embed/wZkMODxJYWg?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe><div class="clr"</div>';
       if(xCheck9==0) { 
         str += '<div id="timer" class="timer btn-t2-red" style="margin-top:10px;"></div>';
       }
@@ -555,8 +543,8 @@ function SaveDataFWB(x,p) {
   sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(p));
   dbttbMember.doc(EidMember).update({
     LastUpdate : dateString,
-    XP_Point : sessionStorage.getItem("XP_Point"),
-    RP_Point : sessionStorage.getItem("RP_Point")
+    XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
+    RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
   });
   dbttbnewsLog.add({
     LineID : sessionStorage.getItem("LineID"),

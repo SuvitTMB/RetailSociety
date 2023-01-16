@@ -11,3 +11,17 @@ function Connect_DB() {
   };
   firebase.initializeApp(firebaseConfig);
 }
+
+
+function CheckPointMember() {
+  dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      sessionStorage.setItem("XP_Point", doc.data().XP_Point);
+      sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      //console.log("RP="+doc.data().RP_Point);
+      OpenPopMenu();
+    });
+  });
+}
