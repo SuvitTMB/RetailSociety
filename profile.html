@@ -14,7 +14,7 @@
   <link href="assets/img/favicom.ico" rel="icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -29,8 +29,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
-  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
+  <link href="assets/css/form.css" rel="stylesheet">
 
 </head>
 
@@ -96,40 +95,74 @@
 
     <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
       <div class="container" data-aos="fade-up">
-        <center>
-          <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ข้อมูลของคุณ</b></div>
-        </center>
+
+    <div class="container" style="margin:0px auto 20px auto;">
+      <center>
+        <div class="btn-t3" style="background-color: #fff;"><b>ข้อมูลของคุณ</b></div>
+      </center>
+    </div>
+
+    <div class="container-font" style="margin-top:20px;">
+      <div class="row-font" style="margin-top:10px;">
+        <div class="header-font">ข้อมูลผู้ขอใช้ระบบงาน</div>
+        <div class="input-group input-group-icon">
+          <input type="text" id="txtEmpName" placeholder="ชื่อ-นามสกุล (ภาษาไทย)"/>
+          <div class="input-icon"><i class="fa fa-user"></i></div>
+        </div>
+        <div class="input-group input-group-icon">
+          <input type="text" id="txtEmpPhone" placeholder="โทรศัพท์"/>
+          <div class="input-icon"><i class="fa fa-phone"></i></div>
+        </div>
+      </div>
+      <div class="row-font">
+        <div class="header-font">ข้อมูลการเป็นพนักงาน</div>
+          <div class="input-group">
+          <select id="txtEmpRH" required/>
+            <option></option>
+            <option value="ttb bank">พนักงาน ttb bank</option>
+            <option value="OTHER-Outsider">บุคคลภายนอกธนาคาร</option>
+          </select>
+        </div>
+      </div>
+      <div class="row-font">
+        <div class="header-font">สังกัดหน่วยงานของคุณ</div>
+        <div class="input-group">
+          <select id="txtEmpBR" required/>
+            <option></option>
+            <option value="RH1">Branch Banking Regional Office 1 - RH1</option>
+            <option value="RH2">Branch Banking Regional Office 2 - RH2</option>
+            <option value="RH3">Branch Banking Regional Office 3 - RH3</option>
+            <option value="RH4">Branch Banking Regional Office 4 - RH4</option>
+            <option value="RH5">Branch Banking Regional Office 5 - RH5</option>
+            <option value="RH6">Branch Banking Regional Office 6 - RH6</option>
+            <option value="RSOC">Retail Strategy and Omni Channel Experience</option>
+            <option value="RASN">Retail Advisory and Sales Network</option>
+            <option value="MLS">Mortgage Loan Sales</option>
+            <option value="WB">Wealth Banking</option>
+            <option value="other">อื่น ๆ</option>
+          </select>
+        </div>
+      </div>
+      <div class="row-font">
+        <div class="header-font">ข้อมูลที่อยู่สำหรับการจัดส่งของรางวัล</div>
+        <div class="input-group">
+          <textarea id="txtEmpAddress" rows="5" placeholder="ที่อยู่สำหรับการรับรางวัล ..."></textarea>
+        </div>
+      </div>
+
+      <center>
+        <div id="SubmitApp" class="btn-t2" onclick="SaveProfile()" style="margin-top:10px;">บันทึกรายการ</div>
+      </center>
+    </div>
+
+    <div class="clr" style="height: 50px;"></div>
+
+
+
 
       </div>
     </section>
   </main>
-
-<!--
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>พูดคุยกับทีมผู้บริหาร</h4>
-            <p>ไม่ว่าจะเป็นเรื่องที่ต้องการความช่วยเหลือ หรือการสนับสนุนจากผู้บริหาร คุณสามารถส่งเรื่องราวของคุณที่นี่</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="ส่งเรื่องราว">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-      <div class="mr-md-auto text-center text-md-left">
-        <div class="copyright">
-          @<span>LINE Retail Society</span>
-        </div>
-      </div>
-    </div>
-  </footer>
--->
 
   <div id="menu" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content w3-card-4 bg-menu">
@@ -139,8 +172,9 @@
           <div id="DisplayLink"></div>
         </div>
       </div>
-      <div class="clr" style="height:70px;"></div>
+      <div class="clr" style="height:50px;"></div>
     </div>
+    <div class="clr" style="height:40px;"></div>
   </div>
 
   <footer id="footer">
