@@ -22,7 +22,8 @@ var EidMember = "";
 var xRP_Point = 0;
 var EidMember = "";
 var xRP_Point = 0;
-
+var xgiftredeem = 0;
+var xgiftall = 0;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("RandomWheel")==null) { location.href = "catalog.html"; }
@@ -102,28 +103,28 @@ const valueGenerator = (angleValue) => {
             str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
             str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
             str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
-            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู รางวัลของคุณ</div>';
             str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>หากคุณอยู่สาขาเราจะจัดส่งของรางวัลไปให้</div>';
             break;
           case 2:
             str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
             str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
             str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
-            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู รางวัลของคุณ</div>';
             str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>หากคุณอยู่สาขาเราจะจัดส่งของรางวัลไปให้</div>';
             break;
           case 3:
             str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
             str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
             str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
-            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู รางวัลของคุณ</div>';
             str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>เราจะทำการโอน WOW ให้คุณในเดือนถัดไปน้า</div>';
             break;
           case 4:
             str += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
             str += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
             str += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
-            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
+            str += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู รางวัลของคุณ</div>';
             str0 += '<div class="font13" style="margin-top:15px;text-align: center;">ยินดีด้วย ... คุณได้รับรางวัล<br><b>'+ xgiftname +'</b><br>เราจะทำการโอน WOW ให้คุณในเดือนถัดไปน้า</div>';
             break;
           case 5:
@@ -143,7 +144,8 @@ const valueGenerator = (angleValue) => {
         }
         if(parseFloat(xGroupGift)!=5) {
           console.log("GroupGift="+xGroupGift);
-          str += '<div class="clr"></div><div class="btn-t2" onclick="CloseAll()" style="margin-top:20px; position:relate; ">ปิดหน้าต่างนี้</div>';
+          str += '<div class="clr"></div><div class="btn-t2" onclick="GotoRewards()" style="margin-top:20px; position:relate;">รางวัลของคุณ</div>';
+          str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px; position:relate;">ปิดหน้าต่าง</div>';
           $("#DisplayGift").html(str);
           $("#DisplayGiftRewards").html(str0);
           document.getElementById('id01').style.display='block';
@@ -197,8 +199,10 @@ function CheckMember() {
       xRP_Point = doc.data().RP_Point;
     });
     str1 += '<div class="btn-t3" style="margin-top:15px; background-color:#fff;">คุณได้รับรางวัล</div>';
-    str1 += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
-    str1 += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'xxx</div>';
+    //str1 += '<div style="margin:12px auto; background-color:#fff;"><center><img src="./rewards/'+ xgiftimg +'" style="position: relative; width:80%;right: 0%;"></center></div>';
+    str1 += '<div style="margin:12px auto; background-color:#fff; border-radius:15px;"><center><img src="./img/coin-10.png" style="position: relative; width:80%;right: 0%;"></center></div>';
+    str1 += '<div class="font13" style="text-align:center; color:#f68b1f; font-weight: 600;">รางวัล : '+ xgiftname +'</div>';
+    str1 += '<div class="clr"></div><div class="btn-t2" onclick="GotoRewards()" style="margin-top:15px;">รางวัลของคุณ</div>';
     str1 += '<div class="font13" style="margin-top:15px; text-align:center;">คุณสามารถตรวจสอบได้ที่เมนู <b>"รางวัลของคุณ"</b></div>';
     console.log(EidMember+"==="+xRP_Point);
     sessionStorage.setItem("RP_Point", parseFloat(xRP_Point)+10);
@@ -225,7 +229,8 @@ function GetCodeGift(codegift) {
       xgiftstatus = doc.data().giftstatus;
       xgiftname = doc.data().giftname;
       xgiftimg = doc.data().giftimg;
-      //alert(xgiftname);
+      xgiftredeem = doc.data().giftredeem;
+      //xgiftall = console.log(xgiftall) + console.log(doc.data().giftstock); 
       GetCodeRandom(NewRewards[0],NewRewards[1]);
     });
   });  
@@ -247,6 +252,8 @@ function RandomRewards() {
 
 var xResultQuiz = "";
 function GetCodeRandom(x,y) {
+  NewDate();
+  var TimeStampDate = Math.round(Date.now() / 1000);
   randomDegree = 0;
   switch(y) {
     case "gift-01":
@@ -278,12 +285,11 @@ function GetCodeRandom(x,y) {
       randomDegree = 139;
   }
   if(randomDegree!=0) {
-    console.log("ID="+idCodeGift);
-    //dbGiftRandom = firebase.firestore().collection("ttbGiftRandom");
-    //dbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
+    //console.log("ID="+idCodeGift);
     var CheckStock = parseFloat(xgiftstock)-1;
     if(CheckStock!=0) {
       dbGiftRandom.doc(idCodeGift).update({
+        giftredeem : parseFloat(xgiftredeem) + 1,
         giftstock : parseFloat(CheckStock)
       });
     } else {
@@ -292,7 +298,7 @@ function GetCodeRandom(x,y) {
         giftstatus : 0
       });
     }
-    if(y=='"gift-05') {
+    if(y=='gift-05') {
       dbGiftRewards.doc(x).update({
         LineID : sessionStorage.getItem("LineID"),
         LineName : sessionStorage.getItem("LineName"),
@@ -304,6 +310,7 @@ function GetCodeRandom(x,y) {
         StatusSend : 2,
         Phone : sessionStorage.getItem("EmpPhone_Society"),
         address : sessionStorage.getItem("EmpAddress_Society"),
+        TimeStampDate : TimeStampDate,
         ResultQuiz : 'Random'
       });
     } else {
@@ -317,6 +324,7 @@ function GetCodeRandom(x,y) {
         RefID : x,
         Phone : sessionStorage.getItem("EmpPhone_Society"),
         address : sessionStorage.getItem("EmpAddress_Society"),
+        TimeStampDate : TimeStampDate,
         ResultQuiz : 'Random'
       });
     }
@@ -331,6 +339,7 @@ function random_item(items) {
 
 
 function ShowRewards() {
+  xgiftall = 0;
   var i = 1;
   var str = "";
   str += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
@@ -341,6 +350,7 @@ function ShowRewards() {
   .orderBy('giftranking','asc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
+      xgiftall = parseFloat(xgiftall) + parseFloat(doc.data().giftstock); 
       str += '<tr><th scope="row" style="text-align: center;">'+ i +'</th>';
       str += '<td>'+ doc.data().giftname +' ('+ doc.data().gifttotal +')</td>';
       str += '<td style="text-align: center;">'+ doc.data().giftstock +'</td></tr>';
@@ -348,8 +358,15 @@ function ShowRewards() {
     });
     str += '</tbody></table>';
     $("#TableRewards").html(str);
+    $("#DisplayAllStock").html("ของรางวัลคงเหลือ : "+xgiftall+" รายการ");
   });
 }
+
+
+function GotoRewards() {
+  location.href = "yourrewards.html";
+}
+
 
 function NewDate() {
   var today = new Date();

@@ -44,7 +44,7 @@ function CheckScore() {
       SumPoint = doc.data().TotalGame3;
       SumScore = doc.data().TotalScore;
       var CalRatio = ((doc.data().TimeGame3/MaxView)*100);
-      $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+doc.data().TimeGame3+' / '+ MaxView +'</div><div class="ScoreGame4-text">จำนวนครั้ง<br>ที่ดูข้อมูล</div>');
+      $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+doc.data().TimeGame3+' <font color="#999999">| '+ MaxView +'</font></div><div class="ScoreGame4-text">จำนวนครั้ง<br>ที่ดูข้อมูล</div>');
       $("#ShowUserSumTime2").html("<div class='font15number' style='color:#2dcc02'>"+CalRatio.toFixed(2) +'%</div><div class="ScoreGame4-text">เปอร์เซ็นต์<br>การดูข้อมูล</div>');
       $("#ShowUserSumTime3").html("<div class='font15number' style='color:#0056ff'>"+doc.data().TotalGame3.toFixed(2) +'</div><div class="ScoreGame4-text">เหรียญรางวัล<br>ที่ได้รับ</div>');
       str0 = '<div class="progress"><div class="bar1" style="width:'+CalRatio+'%;"></div></div>'

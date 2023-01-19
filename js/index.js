@@ -42,7 +42,6 @@ async function main() {
 
 
 async function getUserProfile() {
-  //var str = "";
   const profile = await liff.getProfile();
   sessionStorage.setItem("LineID", profile.userId);
   sessionStorage.setItem("LineName", profile.displayName);
@@ -57,7 +56,6 @@ function openWindow() {
     external: true     
   })
 }
-
 
 function Connect_DB() {
   var firebaseConfig = {
@@ -200,6 +198,10 @@ function UpdatePorfile() {
     empPicture : sessionStorage.getItem("LinePicture"),
     linename : sessionStorage.getItem("LineName")
   });
+  dbttbMember.doc(EidMember).update({
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    LineName : sessionStorage.getItem("LineName")
+  });
   dbttblog.add({
     LineID : sessionStorage.getItem("LineID"),
     LineName : sessionStorage.getItem("LineName"),
@@ -209,6 +211,7 @@ function UpdatePorfile() {
     LogDate : dateString,
     LogTimeStamp : TimeStampDate
   });
+  console.log("Update");
 }
 
 
@@ -333,11 +336,11 @@ function WelcomePoint() {
   str += '<div class="clr" style="height:40px;"></div>';
   */
   //$("#DisplayWelcomePoint").html(str);  
-  str+='<div style="margin-top:15px;">';
-  str+='<div class="font13" style="text-align:center; padding:5px;">ยินดีด้วยคุณได้รับเหรียญรางวัลจากการสุ่ม</div>';
-  str+='<div class="font13" style="text-align:center; font-weight: 600; color:#0056ff;">'+ sessionStorage.getItem("XP_Point") +' เหรียญรางวัล</div>';
-  //str+='<div class="font13" style="text-align:center; padding:5px;">จากการเข้าชมเว็บไซต์มาแล้ว <b>'+ d +'</b> วัน</div>';
-  str+='</div>';
+  str += '<div class="font13" style="margin-top:10px; text-align:center; padding:5px;">ยินดีด้วยคุณได้รับเหรียญรางวัลครั้งแรก<br>จากการเข้าร่วมกิจกรรม LINE Retail Society</div>';
+  str += '<div class="clr"></div>';
+  str += '<div><img src="./img/coin-'+ sessionStorage.getItem("XP_Point") +'.png" style="margin-top:10px;width:100%;border-radius: 15px; background:#fff;"></div>';
+  str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:30px;">คลิกเพื่อโหลดหน้าเว็บใหม่</div>';
+  str += '<div style="height: 15px;"></div>';
   $("#BoxTimeGetPoint").html(str);      
 }
 

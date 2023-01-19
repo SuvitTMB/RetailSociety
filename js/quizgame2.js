@@ -30,6 +30,7 @@ var counter = 0;
 var sVDOnumber = 0;
 var timeup = 0;
 var xData2 = 0;
+var MaxView = 9;
 
 
 $(document).ready(function () {
@@ -84,7 +85,7 @@ function CheckScore() {
         document.getElementById('id03').style.display='block';
       }
       var CalRatio = ((doc.data().TimeGame2/9)*100);
-      $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+doc.data().TimeGame2+'</div><div class="ScoreGame4-text">จำนวนครั้ง<br>ที่ดูวิดีโอ</div>');
+      $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+doc.data().TimeGame2+' <font color="#999999">| '+ MaxView +'</font></div><div class="ScoreGame4-text">จำนวนครั้ง<br>ที่ดูวิดีโอ</div>');
       $("#ShowUserSumTime2").html("<div class='font15number' style='color:#2dcc02;'>"+CalRatio.toFixed(2) +'%</div><div class="ScoreGame4-text">เปอร์เซ็นต์<br>การดูวิดีโอ</div>');
       $("#ShowUserSumTime3").html("<div class='font15number' style='color:#0056ff;'>"+doc.data().TotalGame2.toFixed(2) +'</div><div class="ScoreGame4-text">คะแนน<br>ที่ได้รับ</div>');
       str0 = '<div class="progress"><div class="bar1" style="width:'+CalRatio+'%;"></div></div>'

@@ -11,6 +11,7 @@ var xRewardsid = "";
 var xRewardsCode = "";
 var xRewardsName = "";
 var xRewardsStock = 0;
+var xWheelRandom = 0;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
@@ -36,7 +37,7 @@ function GetAllRewards() {
   .orderBy('RewardsRank','asc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      arrAllRewards.push({ id: doc.id, RewardsName: doc.data().RewardsName, RewardsCode: doc.data().RewardsCode, RewardsDetail: doc.data().RewardsDetail, RewardsPrice: doc.data().RewardsPrice, RewardsStock: doc.data().RewardsStock });
+      arrAllRewards.push({ id: doc.id, RewardsName: doc.data().RewardsName, RewardsCode: doc.data().RewardsCode, RewardsDetail: doc.data().RewardsDetail, RewardsPrice: doc.data().RewardsPrice, RewardsStock: doc.data().RewardsStock, RewardsRedeem: doc.data().RewardsRedeem, WheelRandom: doc.data().WheelRandom });
     });    
   });
 }
@@ -47,16 +48,47 @@ function ListRewards() {
   var str = "";
   var xCountNews = 0;
   dbRewards
-  //.where('RewardsStatus','==',0)
+  .where('RewardsStatus','==',0)
   .orderBy('RewardsRank','asc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-    if(i==0) {
+      //(alert(doc.data().WheelRandom);
+    if(doc.data().WheelRandom==1) {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
       str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards">';
       str += '<div class="font14">'+ doc.data().RewardsName +'</div>';
       str += '<div class="font12a">'+ doc.data().RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px;">';
+
+
+      if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
+        if(parseFloat(doc.data().RewardsStock)>0) {
+          str += '<div class="rewards-txt">รายการคงเหลือ<br><b>'+ parseFloat(doc.data().RewardsStock) +'</b> รายการ</div>';
+        } else {
+          str += '<div class="rewards-txt" style="background:#ff0000; color:#fff;">ของรางวัล<br><b>ถูกแลกหมดแล้ว</b></div>';
+        }
+        str += '<div class="rewards-linkB">';
+        str += '<div class="coin-number">'+ parseFloat(doc.data().RewardsPrice) +'<img src="./icon/coin.png" class="coin-img"></div>';
+        str += '<div class="font11" style="margin-top:-3px;">เหรียญรางวัล</div>';
+        str += '</div></div><div class="clr"></div></div></div>';
+      } else {
+        if(parseFloat(doc.data().RewardsStock)>0) {
+          str += '<div class="rewards-txt">รายการคงเหลือ<br><b>'+ parseFloat(doc.data().RewardsStock) +'</b> รายการ</div>';
+          str += '<div class="rewards-linkA" onclick="OpenLink(\''+ doc.id +'\',\''+ parseFloat(doc.data().RewardsPrice) +'\',\''+ i +'\')">';
+          str += '<div class="coin-number">'+ parseFloat(doc.data().RewardsPrice) +'<img src="./icon/coin.png" class="coin-img"></div>';
+          str += '<div class="font11" style="margin-top:-3px;">เหรียญรางวัล</div>';
+          str += '</div></div><div class="clr"></div></div></div>';
+        } else {
+          str += '<div class="rewards-txt" style="background:#ff0000; color:#fff;">ของรางวัล<br><b>ถูกแลกหมดแล้ว</b></div>';
+          str += '<div class="rewards-linkB">';
+          str += '<div class="coin-number">'+ parseFloat(doc.data().RewardsPrice) +'<img src="./icon/coin.png" class="coin-img"></div>';
+          str += '<div class="font11" style="margin-top:-3px;">เหรียญรางวัล</div>';
+          str += '</div></div><div class="clr"></div></div></div>';
+        }
+      }
+
+/*
+
       if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
         str += '<div class="rewards-txt">รายการคงเหลือ<br><b>'+ parseFloat(doc.data().RewardsStock) +'</b> รายการ</div>';
         str += '<div class="rewards-linkB">';
@@ -65,11 +97,17 @@ function ListRewards() {
         str += '</div></div><div class="clr"></div></div></div>';
       } else {
         str += '<div class="rewards-txt">รายการคงเหลือ<br><b>'+ parseFloat(doc.data().RewardsStock) +'</b> รายการ</div>';
-        str += '<div class="rewards-linkA" onclick="OpenLink(\''+ doc.id +'\',\''+ parseFloat(doc.data().RewardsPrice) +'\',\''+ i +'\')">';
-        str += '<div class="coin-number">'+ parseFloat(doc.data().RewardsPrice) +'<img src="./icon/coin.png" class="coin-img"></div>';
-        str += '<div class="font11" style="margin-top:-3px;">เหรียญรางวัล</div>';
+        if(doc.data().RewardsStock==0) { 
+          str += '<div class="rewards-linkA" style="background:#ff0000; color:#fff;">';
+          str += '<div>ของรางวัล<br><b>ถูกแลกหมดแล้ว</b></div>';
+        } else {
+          str += '<div class="rewards-linkA" onclick="OpenLink(\''+ doc.id +'\',\''+ parseFloat(doc.data().RewardsPrice) +'\',\''+ i +'\')">';
+          str += '<div class="coin-number">'+ parseFloat(doc.data().RewardsPrice) +'<img src="./icon/coin.png" class="coin-img"></div>';
+          str += '<div class="font11" style="margin-top:-3px;">เหรียญรางวัล</div>';
+        }
         str += '</div></div><div class="clr"></div></div></div>';
       }
+*/
     } else {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">';
       str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards">';
@@ -108,7 +146,7 @@ function ListRewards() {
   });
 }
 
-
+xRewardsRedeem = 0;
 function OpenLink(x,price,i) {
   GetAllRewards();
   var str = "";
@@ -127,6 +165,8 @@ function OpenLink(x,price,i) {
       xHeader = results[0].RewardsName;
       xRewardsCode = results[0].RewardsCode;
       xRewardsName = results[0].RewardsName;
+      xRewardsRedeem = results[0].RewardsRedeem;
+      xWheelRandom = results[0].WheelRandom;
       xRewardsStock = parseFloat(results[0].RewardsStock);
       xRewardsid = results[0].id;
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
@@ -194,7 +234,7 @@ function RedeemPoint(x,price,i,xRP) {
         LastUpdate : dateString,
         RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))-parseFloat(price)
       });
-      console.log("ยอดแลก="+parseFloat(price));
+      //console.log("ยอดแลก="+parseFloat(price));
       sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))-parseFloat(price));
 
       xRewardsStock = parseFloat(xRewardsStock) - 1;
@@ -205,6 +245,7 @@ function RedeemPoint(x,price,i,xRP) {
         });    
       } else {
         dbRewards.doc(xRewardsid).update({
+          RewardsRedeem : parseFloat(xRewardsRedeem) + 1,
           RewardsStock : parseFloat(xRewardsStock) 
         });    
       }
@@ -245,7 +286,7 @@ function RedeemPoint(x,price,i,xRP) {
       var varTimerInMiliseconds = 1500;
       setTimeout(function(){ 
         ShowItem(i);
-      }, varTimerInMiliseconds);n
+      }, varTimerInMiliseconds);
     } else {
       alert("แลกไม่ได้ เนื่องจากของรางวัลหมดแล้ว");
     }
@@ -258,7 +299,7 @@ function RedeemPoint(x,price,i,xRP) {
 function ShowItem(i) {
   var str = "";
   document.getElementById('LoadingSave').style.display='none';
-  if(i==0) {
+  if(xWheelRandom==1) {
     str += '<div class="btn-t3" style="cursor: default;margin-top:10px;background:#fff;">ทำรายการแลกสำเร็จ</div>';
     str += '<div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
     str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;">';
