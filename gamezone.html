@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="assets/img/favicom.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
+
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="home.html"><span>LINE</span> Retail Society</a></h1>
+      <div class="mobile-nav-toggle d-lg-none" onclick="OpenMenu()">
+        <i class="icofont-navigation-menu"></i>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>เกมส์โซน</h2>
+          <ol style="margin-top:-10px;">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="yourrewards.html">เกมส์โซน</a></li>
+            <li>กิจกรรมสำหรับชาว CRBO</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+<!--
+    <section id="NewsUpdate" class="blog section-bg" style="margin-top:0px; background-color: #ECEFF1; height: 90px; ">
+      <div id="DisplayRPPoint"></div>
+    </section>
+-->
+
+
+    <section id="NewsUpdate" class="blog section-bg" style="padding-top:25px; background-color: #ECEFF1; ">
+      <div class="container" data-aos="fade-up" style="margin-bottom: 30px;">
+        <div id="QuizGame"></div>
+          <center>
+          <div class="btn-t3" style="margin-top:20px; background-color: #fff;">Game Zone</div>
+          <div class="font12" style="text-align: left; margin-top:10px;">อีกหนึ่งกิจกรรมสำหรับชาว CRBO ที่สามารถเข้ามาร่วมสนุกกับการเก็บเหรียญรางวัล ได้จากกิจกรรมนี้ในทุก ๆ วัน ทั้งหมดขึ้นอยู่กับความรู้และดวงของคุณ</div>
+<!--
+          <div style="width:94%; max-width: 350px;margin:15px auto;">
+            <div class="ScoreGame4">
+              <div id="Loading1" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show1" style="display:none;"><div id="ShowUserSumTime1"></div></div>
+            </div>
+            <div class="ScoreGame4">
+              <div id="Loading2" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show2" style="display:none;"><div id="ShowUserSumTime2"></div></div>
+            </div>
+            <div class="ScoreGame4">
+              <div id="Loading3" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show3" style="display:none;"><div id="ShowUserSumTime3"></div></div>
+            </div>
+            <div class="ScoreGame4">
+              <div id="Loading4" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
+              <div id="Show4" style="display:none;"><div id="ShowUserSumTime4"></div></div>
+            </div>
+            <div class="clr"></div>
+            <div id="Bar0" style="margin:5px;"></div>
+          </div>
+          <div class="text-team" style="margin:-12px;">ตารางผลสะสมการเข้าร่วมกิจกรรมของคุณ</div>
+          <div class="clr"></div>
+-->
+          <div style="width:330px; margin:30px auto; height: 200px;">
+            <div class="box-menu-game" onclick="GotoGame(1)"><img src="./icon/icon-game.png" style="width:60px;margin-top:5px;"><div class="text-team1">เกมส์วัดดวง</div></div>
+            <div class="box-menu-game" onclick="GotoGame(2)"><img src="./icon/icon-images.png" style="width:60px;margin-top:5px;"><div class="text-team1">ภาพปริศนา</div></div>
+            <div class="box-menu-game" onclick="GotoGame(3)"><img src="./icon/icon-quiz.png" style="width:60px;margin-top:5px;"><div class="text-team1">คำถามประจำวัน</div><div id="RatioGame3"></div></div>
+            <div class="box-menu-game" onclick="GotoGame(4)"><img src="./icon/icon-auction.png" style="width:60px;margin-top:5px;"><div class="text-team1">ประมูลสินค้า</div></div>
+          </div>
+          <div class="clr"></div>
+          <div class="text-team" style="margin:0px;">คลิกเลือกรายการที่ต้องการเข้าร่วมกิจกรรม</div>
+        </center>
+      </div>
+      <center>
+        <div class="btn-t2" onclick="location.href='home.html'">ไปหน้าแรก</div>
+      </center>
+      <div class="cls" style="height: 40px;"></div>
+    </section>
+    </main>
+
+  <div id="menu" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4 bg-menu">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
+        <div id="MenuSociety"></div>
+        <div style="margin-left: 5px;margin-top:15px;">
+          <div id="DisplayLink"></div>
+        </div>
+      </div>
+      <div class="clr" style="height:50px;"></div>
+    </div>
+    <div class="clr" style="height:40px;"></div>
+  </div>
+
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Template Main JS File -->
+
+  <!-- Template Main JS File -->
+  <script src="js/connect.js"></script>
+  <script src="js/gamezone.js"></script>
+  <script src="js/menu.js"></script>
+
+</body>
+</html>
