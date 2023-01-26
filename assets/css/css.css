@@ -432,7 +432,7 @@
   background-color: #f68b1f; cursor: pointer;
 }
 .menu-box-text {
-  font-size: 13px; padding-top:3px; font-weight: 600; color: #111111;
+  font-size: 13px; padding-top:3px; font-weight: 600; color: #111111; line-height: 1.1;
 }
 .menu-box-text1 {
   font-size: 12px; padding-top:3px; font-weight: 600; color: #fff; text-align: center;
@@ -772,8 +772,8 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
     margin-bottom: 10px;
     cursor: pointer;
     z-index: 9999;
-    border:2px solid #ccc;
-    background-color: #ddd; min-width: 140px;
+    border:2px solid #fff;
+    background-color: #002d63; min-width: 140px;
     border-radius: 40px; 
 }
 .tooltipposition {
@@ -781,7 +781,7 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   width:150px;background:#002d63 !important;z-index: 3 !important; opacity: 0.8;
 }
 .showtimeread {
-  padding:6px 30px;color:#111; min-width: 13px; text-align: center; line-height: 1.0;
+  padding:6px 30px;color:#fff; min-width: 13px; text-align: center; line-height: 1.0;
   font-size: 12px; font-weight: 400; width: 100%;
 }
 
@@ -1042,3 +1042,92 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
 .box-target-number {
   font-size: 20px; color:#737373;font-weight: 600;color:#0056ff;margin:-4px 0; font-family: ttb-regular, sans-serif;
 }
+.box-text0 {
+  width:100%;background-color: #f1f1f1;padding:8px; border-radius: 15px;margin-bottom: 3px; font-size: 12px;
+}
+.box-text1 {
+  width:10%; text-align: center; float: left; height: auto; margin-top:-1px;
+}
+.box-text2 {
+  width:100%; text-align: left; line-height: 1.2em; font-size: 12px;
+  padding-top:2px;
+}
+.box-msgtext {
+  width:90%; padding:5px;
+  margin-right: auto; margin-left: auto;
+}
+
+.box-score {
+  width:306px; background-color: #002d63; height:50px; color:#ffffff; border-radius: 8px; 
+  text-align: center; margin:auto; font-size:12px; padding-top:5px;
+}
+.box-tscore1 {
+  width:120px; padding:10px 0px; float: left;
+}
+.box-tscore2 {
+  width:90px; float: left; font-size:30px; margin-top:-3px;
+}
+.box-tscore3 {
+  width:80px; padding:10px 0px; float: left;
+}
+.game2-box1 {
+  width:28%; height: 60px; border:2px; float: left;
+  background:#f68b1f; text-align: center; border-radius: 10px;
+  margin:6px;
+}
+.game2-box1:hover {
+  background-color: #002d63; cursor: pointer;
+}
+
+
+.gameNumber {
+  text-align:center;
+  font-size: 90px; color:#ffffff;
+  margin-top:0px; margin-bottom: -10px;
+}
+.game2-score {
+  margin:auto;
+  width:80%;
+  background:#ffff00;
+  height:60px;
+}
+.game2-box {
+  width:22%; height: 80px; border:2px; float: left;
+  background:#bdd3ff; text-align: center; border-radius: 10px;
+  margin:4px;
+}
+.game2-box1 {
+  width:28%; height: 60px; border:2px; float: left;
+  background:#f68b1f; text-align: center; border-radius: 10px;
+  margin:6px;
+}
+.game2-box1:hover {
+  background-color: #002d63; cursor: pointer;
+}
+
+
+.game-a1 {
+  text-align: center; font-size: 50px; font-weight: 600; margin-top:-5px;
+}
+.game-a2 {
+  text-align: center; font-size: 10px; font-weight: 600; color:#002d63; margin-top:-10px;
+}
+.game-a3 {
+  text-align: center; font-size: 50px; font-weight: 600; color:#ffffff; margin-top:-10px;
+}
+.game-a4 {
+  text-align: center; font-size: 10px; color:#ffffff; margin-top:-23px;
+}
+.game-a5 {
+  text-align: center; font-size: 50px; font-weight: 600; color:#000000; margin-top:-5px;
+}
+.game2-boxs {
+  width:22%; height: 80px; border:2px; float: left;
+  background:#0056ff; text-align: center; border-radius: 10px;
+  margin:4px;
+}
+.text-false {
+  padding:10px 0 20px 0; color:#f68b1f; font-weight: 600; text-align: center; width:100%; font-size:13px;
+}
+
+
