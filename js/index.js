@@ -42,10 +42,14 @@ async function main() {
 
 
 async function getUserProfile() {
+  //var str = "";
   const profile = await liff.getProfile();
   sessionStorage.setItem("LineID", profile.userId);
   sessionStorage.setItem("LineName", profile.displayName);
   sessionStorage.setItem("LinePicture", profile.pictureUrl);
+  //str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="add-profile" width="100px"></div>';
+  //str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
+  //$("#MyProfile").html(str);  
   Connect_DB();
 }
 
@@ -56,6 +60,17 @@ function openWindow() {
     external: true     
   })
 }
+
+/*
+function DetectIphone()
+{
+   var uagent = navigator.userAgent.toLowerCase();
+   if (uagent.search("iphone") > -1)
+      alert('true');
+   else
+      alert('false');
+}
+*/
 
 function Connect_DB() {
   var firebaseConfig = {
@@ -285,6 +300,22 @@ function AddNewMember() {
     UserSumTrue : 0,
     UserSumFree : 0,
     UserSumTime : 0,
+
+    LuckyTime : 0,
+    LuckyWin : 0,
+    LuckyLost : 0,
+    LuckyCoin : 0,
+
+    QuizTime : 0,
+    QuizWin : 0,
+    QuizLost : 0,
+    QuizCoin : 0,
+
+    PictureTime : 0,
+    PictureWin : 0,
+    PictureLost : 0,
+    PictureCoin : 0,
+
     LogDateTime : dateString,
     LastUpdate : dateString,
     DateToDay : xToday,

@@ -348,8 +348,10 @@ function RecordNews() {
     LogTimeStamp : TimeStampDate
   });
   var str = "";
-  str += '<div class="btn-t3"><b>คุณได้รับ '+ ReadNewsPoint +' Point</b></div>';
-  str += '<div style="margin-top:15px;font-size:13px;line-height:1.1;">จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
+  //str += '<div class="btn-t3"><b>คุณได้รับ '+ ReadNewsPoint +' Point</b></div>';
+  //str += '<div style="margin-top:15px;font-size:13px;line-height:1.1;">จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
+  str += '<div class="btn-t3"><b>คุณได้รับเหรียญรางวัล</b></div>';
+  str += '<div style="font-size:13px;line-height:1.1;"><img src="./img/coin-'+ ReadNewsPoint +'.png" style="width:100%; max-width: 250px;background:#e9eef3; border-radius:15px;"><br><br>จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b></div>';
   str += '<div class="clr" style="height:15px;"></div>';
   str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</b></div>';
   str += '<div class="clr" style="height:40px;"></div>';

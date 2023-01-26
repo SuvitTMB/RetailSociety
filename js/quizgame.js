@@ -32,7 +32,7 @@ var xHeader = "คำถามประจำวัน (ทัช) : "+ today;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
-  $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:14px; color:#ff0000;'>คำถามประจำวันที่ "+today);  
+  $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ff0000;'>คำถามประจำวันที่ "+today);  
   Connect_DB();
   //dbttbMember = firebase.firestore().collection("touch_member");
   //dbttbQuiz = firebase.firestore().collection("touch_quiz");
@@ -660,7 +660,7 @@ function SaveData() {
 
 
 function SaveMyScorePoint() { 
-  console.log("Save line 673");
+  //console.log("Save line 673");
   dbttbMember.doc(EidScorePoint).update({
     TimeGame4 : parseFloat(sUserSumTime)+1,
     UserSumTime : parseFloat(sUserSumTime)+1,

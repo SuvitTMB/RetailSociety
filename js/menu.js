@@ -70,9 +70,13 @@ function OpenPopMenu() {
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-16.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
 
-    xLine += '<div class="menu-box1" onclick="window.location.href=\'history.html\';">';
-    xLine += '<div class="menu-box-img1"><img src="./icon/icon-05.png" style="width:35px;"></div>';
-    xLine += '<div class="menu-box-text1" style="color:#0056ff;">ลงทะเบียน</div></div>';
+    //xLine += '<div class="menu-box1" onclick="window.location.href=\'history.html\';">';
+    //xLine += '<div class="menu-box-img1"><img src="./icon/icon-05.png" style="width:35px;"></div>';
+    //xLine += '<div class="menu-box-text1" style="color:#0056ff;">ลงทะเบียน</div></div>';
+
+    xLine += '<div class="menu-box1" onclick="window.location.href=\'gamezone.html\';">';
+    xLine += '<div class="menu-box-img1"><img src="./icon/icon-games.png" style="width:35px;"></div>';
+    xLine += '<div class="menu-box-text1" style="color:#0056ff;">Game Zone</div></div>';
 
     xLine += '<div class="menu-box1" onclick="window.location.href=\'webboard-chat.html?gid=beG8FynIhzWgdYFgaFJ9\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-contact.png" style="width:35px;"></div>';
@@ -90,7 +94,7 @@ function OpenPopMenu() {
 function MyPointMenu() {
   var xLine = "";
   if(sessionStorage.getItem("Level_Point")!=null) {
-    xLine += '<div class="clr" style="height:10px;"></div><div style="height: 70px;background-color: #f1f1f1;">';
+    xLine += '<div class="clr" style="height:10px;"></div><div style="height: 70px;background-color: #f1f1f1; border-radius:10px;">';
     xLine += '<div class="box-reward1"> </div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
@@ -205,6 +209,9 @@ function MenuFooter() {
   str += '<div class="menu-box-img1"><img src="./icon/icon-contact.png" style="width:35px;"></div>';
   str += '<div class="menu-box-text1">แจ้งปัญหา</div></div>';
 
+  str += '<div class="menu-box1" onclick="window.location.href=\'gamezone.html\';">';
+  str += '<div class="menu-box-img1"><img src="./icon/icon-games.png" style="width:35px;"></div>';
+  str += '<div class="menu-box-text1">Game Zone</div></div>';
 
 
   str += '';
@@ -229,6 +236,25 @@ function MenuFooter() {
 */
   $("#DisplayFooter").html(str);  
 }
+
+
+function OpenGameZone() {
+  var xLine = "";
+  var str = "";
+  var xCountNews = 0;
+  dbGroupNews.where('GroupType','==',3)
+  .where('NewsStatus','==',1)
+  .orderBy('NewsGroup','asc')
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> { 
+      str += '<div class="menu-box" onclick="window.location.href=\''+ doc.data().NewsLink +'\';">';
+      str += '<div class="menu-box-img"><img src="'+ doc.data().NewsIcon +'" style="width:35px;"></div>';
+      str += '<div class="menu-box-text">'+ doc.data().NewsNameWeb +'</div></div>';
+    });
+    $("#DisplayGameZone").html(str); 
+  });
+}
+
 
 
 function CloseMenu() {

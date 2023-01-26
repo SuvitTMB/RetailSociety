@@ -6,16 +6,32 @@ var xCal = 0;
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
-  dbttbRedeemRewards = firebase.firestore().collection("ttbRedeemRewards");
-  dbttbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
+  //dbttbRedeemRewards = firebase.firestore().collection("ttbRedeemRewards");
+  //dbttbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
-  MyPoint();
-  RedeemRewards();
-  GiftRewards();
+  //MyPoint();
+  //OpenGameZone();
+  //RedeemRewards();
+  //GiftRewards();
   OpenPopMenu();
 });
 
 
+function GotoGame(x) {
+  if(x==1) {
+    location.href = "intro-game1.html";
+  } else if(x==2) { 
+    location.href = "intro-game2.html";
+  } else if(x==3) { 
+    location.href = "intro-game3.html";
+  } else if(x==4) { 
+    location.href = "intro-game4.html";
+  }
+}
+
+
+
+/*
 function RedeemRewards() {
   var str = "";
   var i = 1;
@@ -80,3 +96,4 @@ function GiftRewards() {
     $("#DisplayGiftRandom").html(str);
   });
 }
+*/
