@@ -75,7 +75,7 @@
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
             <li><a href="gamezone.html">เกมส์โซน</a></li>
-            <li>เกมส์วัดดวง</li>
+            <li>ประมูลสินค้า</li>
           </ol>
         </div>
       </div>
@@ -85,45 +85,18 @@
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
       <div class="container">
         <center>
-          <div class="btn-t3" style="margin-top:20px">เกมส์วัดดวง</div>
-          <div class="NameLine" id="ToDayDate"></div>
-          <div style="width:90%; margin:20px auto;">
-            <div class="ScoreGame4">
-              <div id="Loading1" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
-              <div id="Show1" style="display:none;"><div id="ShowUserSumTime1"></div></div>
-            </div>
-            <div class="ScoreGame4">
-              <div id="Loading2" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
-              <div id="Show2" style="display:none;"><div id="ShowUserSumTime2" style="font-size:13px;">0<div class="ScoreGame4-text">%การตอบ<br>คำถามถูก</div></div></div>
-            </div>
-            <div class="ScoreGame4">
-              <div id="Loading3" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
-              <div id="Show3" style="display:none;"><div id="ShowUserSumTime3" style="font-size:13px;">0<div class="ScoreGame4-text">%การตอบ<br>คำถามผิด</div></div></div>
-            </div>
-            <div class="ScoreGame4">
-              <div id="Loading4" style="display:block;"><img src="./img/loading1.gif" style="padding-top:15px;width:20px;"></div>
-              <div id="Show4" style="display:none;"><div id="ShowUserSumTime4" style="font-size:13px;">0<div class="ScoreGame4-text">คะแนนสะสม<br>ล่าสุด</div></div></div>
-            </div>
-            <div class="clr"></div>
-            <div id="Bar0" style="margin:5px;"></div>
-          </div>
-          <div class="clr"></div>
-
-          <div style="margin:0px 10px;">
-            <div><img src='./icon/icon-game.png' style="width:100px;border-radius: 10px;"></div>
-            <div class="font13" style="text-align: left;"><br>ผู้เข้าร่วมกิจกรรมสามารถเข้าร่วม <b>เกมส์วัดดวง</b> ได้วันละ 1 ครั้ง เพื่อทำการเก็บสะสมเหรียญรางวัล ผู้เข้าร่วมกิจกรรมจะต้องทายผลตัวเลข มากกว่า เท่ากับ หรือน้อยกว่า จำนวน 3 แผ่นป้าย หากทายถูกทั้งหมดจะได้รับเหรียญรางวัลในเกมส์นั้นๆ</div>
+          <div class="btn-t3" style="margin-top:20px">ประมูลสินค้า</div>
+          <div style="margin:15px 10px;">
+            <div><img src='./icon/icon-auction.png' style="width:100px;border-radius: 10px;"></div>
+            <div class="font13" style="text-align: left;"><br>ผู้เข้าร่วมกิจกรรมทุกท่านสามารถเข้าร่วมการ <b>ประมูลสินค้า</b> จากเราได้ หากท่านมีเหรียญรางวัลที่มากเพียงพอสำหรับการประมูลของในรายการนั้น ๆ และการทำการประมูลในแต่ละครั้งจะทำให้เหรียญรางวัลถูกตัดออกมาไว้ก่อน หากมีผู้ประมูลมากกว่าระบบจะคืนเหรียญรางวัลกลับไปให้คุณ ระบบจะสิ้นสุดการประมูลเมื่อถึงเวลาที่กำหนดไว้</div>
           </div>
 
-
+<!--
 
           <div id="Loading" style="display:block;"><img src="./img/loading1.gif" style="margin:30px auto;width:20px;"></div> 
 
           <div id="NoQuiz" style="display:none;">
             <div style="margin:30px 10px 10px 10px;">
-<!--
-              <div class="font13" style="text-align: left;"><b>เกมส์วัดดวง</b><br><br>ผู้เข้าร่วมกิจกรรสามารถเข้าร่วม เกมส์วัดดวง ได้วันละ 1 ครั้ง เพื่อทำการเก็บสะสมเหรียญรางวัล ผู้เข้าร่วมกิจกรรมจะต้องทายผลตัวเลข มากกว่า เท่ากับ หรือน้อยกว่า จำนวน 4 แผ่นป้าย หากทายถูกทั้งหมดจะได้รับเหรียญรางวัลในเกมส์นั้นๆ</div>
-              <div><img src='./icon/icon-game.png' style="width:100px;border-radius: 10px;"></div>
--->
               <div class="btn-t1" style="border-radius: 8px;">
                 <div class="text-team" style="color:#111; font-weight: 600;">คุณได้เข้าร่วมกิจกรรมวันนี้ไปแล้ว</div>
                 <div id="PointToday"></div>
@@ -132,13 +105,14 @@
             </div>
           </div>
 
-          <div id="LoadQuiz" style="display:none;" onclick="window.location.href='game-1.html';">
+          <div id="LoadQuiz" style="display:none;" onclick="window.location.href='game-3.html';">
             <div style="margin:30px 10px 10px 10px;">
-              <div class="btn-t1" style="border-radius: 8px;min-width:170px;padding:10px 35px;">คลิกเพื่อเข้าสู่ ... เกมส์วัดดวง</div>
+              <div class="btn-t1" style="border-radius: 8px;min-width:170px;padding:10px 35px;">คลิกเพื่อเข้าสู่ ... เกมส์ภาพปริศนา</div>
               <div class="clr" style="height: 30px;"></div>
             </div>
           </div>
           <div class="clr"></div>
+-->
         </center>
       </div>
     </section>
@@ -146,12 +120,55 @@
     <section id="NewsUpdate" class="blog section-bg" style="padding-top:25px; background-color: #ECEFF1; ">
       <div class="container">
         <center>
-          <div style="margin-top:30px;">
-            <div class="btn-t22" onclick="UserBoard('A')" id="a1">ข้อมูลของคุณ</div>
-            <!--<div class="btn-t22" onclick="TopDayBoard('B')" id="a2">ผู้นำวันนี้</div>-->
-            <div class="btn-t22" onclick="LeaderBoard('B')" id="a2">ตารางผู้นำ</div>
+          <div style="margin:20px auto 30px auto;">
+            <div class="btn-t22">รายการสินค้าประมูล</div>
           </div>
 
+          <div class="auction-box">
+            <div style="width:25%; float: left; margin-right: 5px;">
+              <img src="./icon/icon-auction.png" style="width:100%; text-align: center;">
+            </div>
+            <div style="width:73%; float: left;">
+              <div class="font13" style="padding:6px 6px 0px 6px;"><b>บัตร Lotus 300 บาท</b></div>
+              <div class="font12" style="padding-top:3px; overflow: hidden;">ข้อมูลและรายละเอียดของสินค้า ข้อมูลและรายละเอียดของสินค้า ข้อมูลและรายละเอียดของสินค้า ข้อมูลและรายละเอียดของสินค้า</div>
+              <div id="demo" class="font12" style="font-weight: 600; color:#000;"></div>
+            </div>
+            <div class="clr"></div>
+
+
+          <div style="width:100%; max-width: 350px;margin:3px auto;">
+            <div class="auction-subbox" onclick="location.href='intro-game1.html'">
+              <div class="auction-number">56</div>
+              <div class="font11center">ครั้งที่ประมูล</div>
+            </div>
+            <div class="auction-subbox" onclick="location.href='intro-game2.html'">
+              <div class="auction-number">78.90</div>
+              <div class="font11center">ราคาล่าสุด</div>
+            </div>
+            <div class="auction-subbox" onclick="location.href='intro-game3.html'">
+              
+              <div class="font11center">เวลาคงเหลือ</div>
+            </div>
+            <div class="auction-subbox" onclick="location.href='intro-game4.html'" style=" background-color: #aacdfb; cursor: pointer;">
+              <div class="auction-number">78.90</div>
+              <div class="font11center">เข้าประมูล</div>
+            </div>
+          </div>
+
+
+          </div>
+          <div class="auction-subbox">
+            <div class="auction-number">56</div>
+            <div class="font12center">ครั้งที่ประมูล</div>
+          </div>
+          <div class="auction-subbox"></div>
+          <div class="auction-subbox" style="width:32%;overflow: hidden;"></div>
+          <div class="clr"></div>
+<!--
+          <div class="webboard-box">sadfadsf</div>
+          <div class="webboard-box">sadfadsf</div>
+          <div class="webboard-box">sadfadsf</div>
+-->
           <div id="LoadingScore" style="display:none;">
             <img src="./img/loading1.gif" style="padding-top:45px;width:20px;margin-bottom: 30px;">
           </div>
@@ -159,14 +176,10 @@
 
           <div class="clr"></div>
           <div style="width:94%; max-width: 350px;margin:8px auto;">
-            <div class="font13" style="margin:15px auto; text-align: center;">เมนู Game Zone</div>
-            <div class="ScoreGame4" onclick="location.href='intro-game1.html'" style=" background-color: #aacdfb; cursor: pointer;">
+            <div class="font13" style="margin:15px auto; text-align: center;">เมนูกิจกรรมที่เกี่ยวข้อง</div>
+            <div class="ScoreGame4" onclick="location.href='intro-game1.html'">
               <div><img src="./icon/icon-game.png" style="width:30px;"></div>
               <div class="font11">เกมส์<br>วัดดวง</div>
-            </div>
-            <div class="ScoreGame4" onclick="location.href='intro-game5.html'">
-              <div><img src="./icon/icon-rock.png" style="width:30px;"></div>
-              <div class="font11">เกมส์เปา<br>ยิงชุบ</div>
             </div>
             <div class="ScoreGame4" onclick="location.href='intro-game2.html'">
               <div><img src="./icon/icon-images.png" style="width:30px;"></div>
@@ -176,16 +189,14 @@
               <div><img src="./icon/icon-quiz.png" style="width:30px;"></div>
               <div class="font11">คำถาม<br>ประจำวัน</div>
             </div>
-            <!--
-            <div class="ScoreGame4" onclick="location.href='intro-game4.html'">
+            <div class="ScoreGame4" onclick="location.href='intro-game4.html'" style=" background-color: #aacdfb; cursor: pointer;">
               <div><img src="./icon/icon-auction.png" style="width:30px;"></div>
               <div class="font11">ประมูล<br>สินค้า</div>
             </div>
-            -->
           </div>
           <div class="clr"></div>
-          <div class="btn-t2" onclick="location.href='gamezone.html'" style="margin:20px auto;">กลับหน้า Game Zone</div>
-          <div class="btn-t2" onclick="location.href='home.html'">ไปหน้าแรก</div>
+          <div class="btn-t2" onclick="ShowIntro()">แนะนำภารกิจ</div>
+          <div class="btn-t2" onclick="location.href='gamezone.html'" type="submit" style="margin:20px auto;">กลับหน้า Game Zone</div>
           <div class="clr"></div>
 
     </section>
@@ -266,7 +277,7 @@
   <script src="assets/js/main.js"></script>
 
   <script src="js/connect.js"></script>
-  <script src="js/intro-game1.js"></script>
+  <script src="js/intro-game4.js"></script>
   <script src="js/menu.js"></script>
 
 </body>

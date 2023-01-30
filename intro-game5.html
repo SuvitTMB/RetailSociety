@@ -26,6 +26,7 @@
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
   <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/hand.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
@@ -75,7 +76,7 @@
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
             <li><a href="gamezone.html">เกมส์โซน</a></li>
-            <li>เกมส์วัดดวง</li>
+            <li>เกมส์ เปา ยิง ชุบ</li>
           </ol>
         </div>
       </div>
@@ -85,7 +86,7 @@
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
       <div class="container">
         <center>
-          <div class="btn-t3" style="margin-top:20px">เกมส์วัดดวง</div>
+          <div class="btn-t3" style="margin-top:20px">เกมส์ เปา ยิง ชุบ</div>
           <div class="NameLine" id="ToDayDate"></div>
           <div style="width:90%; margin:20px auto;">
             <div class="ScoreGame4">
@@ -109,9 +110,30 @@
           </div>
           <div class="clr"></div>
 
-          <div style="margin:0px 10px;">
-            <div><img src='./icon/icon-game.png' style="width:100px;border-radius: 10px;"></div>
-            <div class="font13" style="text-align: left;"><br>ผู้เข้าร่วมกิจกรรมสามารถเข้าร่วม <b>เกมส์วัดดวง</b> ได้วันละ 1 ครั้ง เพื่อทำการเก็บสะสมเหรียญรางวัล ผู้เข้าร่วมกิจกรรมจะต้องทายผลตัวเลข มากกว่า เท่ากับ หรือน้อยกว่า จำนวน 3 แผ่นป้าย หากทายถูกทั้งหมดจะได้รับเหรียญรางวัลในเกมส์นั้นๆ</div>
+          <div id="hands" style="height: 160px;">
+            <div class="hand" id="computer-hand">
+              <div class="fist"></div>
+              <div class="finger finger-1"></div>
+              <div class="finger finger-2"></div>
+              <div class="finger finger-3"></div>
+              <div class="finger finger-4"></div>
+              <div class="thumb"></div>
+              <div class="arm"></div>
+            </div>
+
+            <div class="hand1" id="user-hand">
+              <div class="fist"></div>
+              <div class="finger finger-1"></div>
+              <div class="finger finger-2"></div>
+              <div class="finger finger-3"></div>
+              <div class="finger finger-4"></div>
+              <div class="thumb"></div>
+              <div class="arm"></div>
+            </div>
+          </div>
+          <div class="clr"></div>
+          <div style="margin:10px;">
+            <div class="font13" style="text-align: left;"><br>ผู้เข้าร่วมกิจกรรมสามารถเข้าร่วม <b>เกมส์ เปา ยิง ชุบ</b> ได้วันละ 1 ครั้ง เพื่อทำการเก็บสะสมเหรียญรางวัล ผู้เข้าร่วมกิจกรรมจะต้องเลือกทายฆ้อน กระดาษ หรือ กรรไกร จากแผ่นป้าย ผู้ชนะเท่านั้นที่จะได้รับเหรียญรางวัลในเกมส์นั้นๆ</div>
           </div>
 
 
@@ -120,10 +142,6 @@
 
           <div id="NoQuiz" style="display:none;">
             <div style="margin:30px 10px 10px 10px;">
-<!--
-              <div class="font13" style="text-align: left;"><b>เกมส์วัดดวง</b><br><br>ผู้เข้าร่วมกิจกรรสามารถเข้าร่วม เกมส์วัดดวง ได้วันละ 1 ครั้ง เพื่อทำการเก็บสะสมเหรียญรางวัล ผู้เข้าร่วมกิจกรรมจะต้องทายผลตัวเลข มากกว่า เท่ากับ หรือน้อยกว่า จำนวน 4 แผ่นป้าย หากทายถูกทั้งหมดจะได้รับเหรียญรางวัลในเกมส์นั้นๆ</div>
-              <div><img src='./icon/icon-game.png' style="width:100px;border-radius: 10px;"></div>
--->
               <div class="btn-t1" style="border-radius: 8px;">
                 <div class="text-team" style="color:#111; font-weight: 600;">คุณได้เข้าร่วมกิจกรรมวันนี้ไปแล้ว</div>
                 <div id="PointToday"></div>
@@ -132,9 +150,9 @@
             </div>
           </div>
 
-          <div id="LoadQuiz" style="display:none;" onclick="window.location.href='game-1.html';">
+          <div id="LoadQuiz" style="display:none;">
             <div style="margin:30px 10px 10px 10px;">
-              <div class="btn-t1" style="border-radius: 8px;min-width:170px;padding:10px 35px;">คลิกเพื่อเข้าสู่ ... เกมส์วัดดวง</div>
+              <div class="btn-t1" onclick="window.location.href='game-5.html';" style="border-radius: 8px;min-width:170px;padding:10px 35px;">คลิกเพื่อเข้าสู่ ... เกมส์ เปา ยิง ชุบ</div>
               <div class="clr" style="height: 30px;"></div>
             </div>
           </div>
@@ -160,11 +178,11 @@
           <div class="clr"></div>
           <div style="width:94%; max-width: 350px;margin:8px auto;">
             <div class="font13" style="margin:15px auto; text-align: center;">เมนู Game Zone</div>
-            <div class="ScoreGame4" onclick="location.href='intro-game1.html'" style=" background-color: #aacdfb; cursor: pointer;">
+            <div class="ScoreGame4" onclick="location.href='intro-game1.html'">
               <div><img src="./icon/icon-game.png" style="width:30px;"></div>
               <div class="font11">เกมส์<br>วัดดวง</div>
             </div>
-            <div class="ScoreGame4" onclick="location.href='intro-game5.html'">
+            <div class="ScoreGame4" onclick="location.href='intro-game5.html'" style=" background-color: #aacdfb; cursor: pointer;">
               <div><img src="./icon/icon-rock.png" style="width:30px;"></div>
               <div class="font11">เกมส์เปา<br>ยิงชุบ</div>
             </div>
@@ -266,7 +284,7 @@
   <script src="assets/js/main.js"></script>
 
   <script src="js/connect.js"></script>
-  <script src="js/intro-game1.js"></script>
+  <script src="js/intro-game5.js"></script>
   <script src="js/menu.js"></script>
 
 </body>

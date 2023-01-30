@@ -26,9 +26,14 @@
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
   <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/hand.css" rel="stylesheet">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
+
 </head>
 
 <body>
@@ -51,36 +56,68 @@
           <h2>เกมส์โซน</h2>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="yourrewards.html">เกมส์โซน</a></li>
-            <li>กิจกรรมสำหรับชาว CRBO</li>
+            <li><a href="gamezone.html">เกมส์โซน</a></li>
+            <li>เกมส์ เปา ยิง ชุบ</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section id="NewsUpdate" class="blog section-bg" style="padding-top:25px; background-color: #ECEFF1; ">
-      <div class="container" data-aos="fade-up" style="margin-bottom: 30px;">
-        <div id="QuizGame"></div>
-          <center>
-            <div class="btn-t3" style="margin-top:20px; background-color: #fff;">Game Zone</div>
-            <div class="font12" style="text-align: left; margin-top:10px;">อีกหนึ่งกิจกรรมสำหรับชาว CRBO ที่สามารถเข้ามาร่วมสนุกกับการเก็บเหรียญรางวัล ได้จากกิจกรรมนี้ในทุก ๆ วัน ทั้งหมดขึ้นอยู่กับความรู้และดวงของคุณ</div>
-            <div style="width:330px; margin:30px auto; height: 200px;">
-              <div class="box-menu-game" onclick="GotoGame(1)"><img src="./icon/icon-game.png" style="width:60px;"><div class="text-team1">เกมส์วัดดวง</div><div id="RatioGame1"></div></div>
-              <div class="box-menu-game" onclick="GotoGame(5)"><img src="./icon/icon-rock.png" style="width:60px;"><div class="text-team1">เกมส์ เปา ยิง ชุบ</div><div id="RatioGame5"></div></div>
-              <div class="box-menu-game gray" onclick="GotoGame(2)"><img src="./icon/icon-images.png" style="width:60px;"><div class="text-team1">เกมส์ภาพปริศนา</div></div>
-              <div class="box-menu-game gray" onclick="GotoGame(3)"><img src="./icon/icon-quiz.png" style="width:60px;"><div class="text-team1">คำถามประจำวัน</div><div id="RatioGame3"></div></div>
-              <div class="box-menu-game gray" onclick="GotoGame(4)"><img src="./icon/icon-auction.png" style="width:60px;margin-top:5px;"><div class="text-team1">ประมูลสินค้า</div></div>
-            </div>
-            <div class="clr"></div>
-            <div class="text-team" style="margin-top:8px;">คลิกเลือกรายการที่ต้องการเข้าร่วมกิจกรรม</div>
-          </center>
-        </div>
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #0016ed;">
+      <div class="container">
         <center>
-          <div class="btn-t2" onclick="location.href='home.html'">ไปหน้าแรก</div>
+          <div class="btn-t3" style="margin-top:30px;margin-bottom: 15px;"><b>เกมส์ เปา ยิง ชุบ</b></div>
+          <div class="NameLine" id="ToDayDate"></div>
         </center>
-      <div class="cls" style="height: 40px;"></div>
+        <div class="row" data-aos="fade-up">
+          <article class="entry" style="box-shadow: none;width:95%; margin:auto; text-align: center; max-width: 450px;">
+            <div class="clr"></div>
+            <div style="margin-top:15px;">
+              <div id="computer"></div>
+              <div id="user"></div>
+              <div id="result" class="font12" style="font-weight: 600; color:#fff;">เริ่มการแข่งขัน<br>เลือกปุ่ม ฆ้อน กระดาษ หรือ กรรไกร</div>
+              <div id="icons" style="display:block; width:210px; margin:20px auto 10px auto;">
+                <div onclick="CheckClick('rock');">
+                  <label for="rock-rock">✊</label>
+                </div>
+                <div onclick="CheckClick('paper');">
+                  <label for="rock-paper">🖐️</label>
+                </div>
+                <div onclick="CheckClick('scissors');">
+                  <label for="rock-scissors">✌</label>
+                </div>
+              </div>
+              <div id="Loading1" style="display:none; width:210px; margin:20px auto 10px auto;">
+                <img src="./img/loading1.gif" style="width:35px;">
+              </div>
+              <div id="EndGame" style="display:none; width:210px; margin:20px auto 10px auto;">
+                <div class="font12" style="color:#ffffff;">วันนี้คุณได้ทำการแข่งขันเกมส์นี้ไปแล้ว</div>
+                <div class="clr"></div>
+    <center><div class="btn-t1" style="margin-top:25px;border:1px #ffffff solid;" onclick="location.href='intro-game5.html'">ดูผลการแข่งขันของคุณ</div></center>
+<!--
+                <div class="btn-t2" onclick="location.href='intro-game5.html'" style="margin:10px auto;">ดูผลการแข่งขัน</div>
+                <div class="btn-t2" onclick="location.href='gamezone.html'" style="margin:10px auto;">Game Zone</div>
+-->
+              </div>
+            <div>
+            <div class="clr"></div>
+          </article>
+        </div>
+        <div class="cls" style="height: 40px;"></div>
+      </div>
     </section>
   </main>
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <center>
+          <div id="DisplayWinner"></div>
+          <div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+  </div>
 
   <div id="menu" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content w3-card-4 bg-menu">
@@ -116,8 +153,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/gamezone.js"></script>
+  <script src="js/game-5.js"></script>
   <script src="js/menu.js"></script>
-
 </body>
 </html>
