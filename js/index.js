@@ -10,8 +10,8 @@ var xToday = dd + '/' + mm + '/' + yyyy;
 
 $(document).ready(function () {
 
-var isMobile = window.orientation > -1;
 /*
+var isMobile = window.orientation > -1;
   sessionStorage.clear(); 
   var str = "";
   var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
@@ -24,7 +24,7 @@ var isMobile = window.orientation > -1;
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-*/   
+   */
   main();
 });
 
@@ -315,6 +315,11 @@ function AddNewMember() {
     PictureWin : 0,
     PictureLost : 0,
     PictureCoin : 0,
+
+    RockTime : 0,
+    RockWin : 0,
+    RockLost : 0,
+    RockCoin : 0,
 
     LogDateTime : dateString,
     LastUpdate : dateString,

@@ -19,6 +19,19 @@ if(sessionStorage.getItem("Level_Point")==1) {
   xCal = 100;
 }
 
+function CalPoint() {
+  dbttbMember.where('LineID','==',sessionStorage.getItem("LineID"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      sessionStorage.setItem("Level_Point", doc.data().Level_Point);
+      sessionStorage.setItem("XP_Point", doc.data().XP_Point);
+      sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      //alert("Cal Point");
+    });
+  });
+}
+
 
 function OpenPopMenu() {
   var xLine = "";
@@ -49,7 +62,6 @@ function OpenPopMenu() {
     var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
     xLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
     xLine += '<div class="clr"style="height:20px;"></div>';
-
     xLine += '<div class="btn-t3" style="margin-top:0px; background-color: #fff;">เมนูกิจกรรมที่เกี่ยวข้อง</div>';
     xLine += '<div style="width:95%; margin:0px auto 20px auto; height: 200px;">';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'groupnews.html#ttbNews\';" style="height:95px;"><img src="./icon/icon-news.png" style="width:60px;"><div class="text-team1">ข่าวสารองค์กร</div></div>';
@@ -57,35 +69,24 @@ function OpenPopMenu() {
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'home.html#menugame\';" style="height:95px;"><img src="./icon/icon-player.png" style="width:60px;"><div class="text-team1">ภารกิจสะสมเหรียญ</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'webboard.html\';" style="height:95px;"><img src="./icon/icon-question.png" style="width:60px;"><div class="text-team1">ห้องคำถาม-คำตอบ</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'catalog.html\';" style="height:95px;"><img src="./icon/icon-redeem.png" style="width:60px;"><div class="text-team1">แลกของรางวัล</div></div>';
-    xLine += '<div class="box-menu-game" onclick="window.location.href=\'profile.html\';" style="height:95px;"><img src="./icon/icon-profile.png" style="width:60px;"><div class="text-team1">ข้อมูลของคุณ</div></div>';
+    xLine += '<div class="box-menu-game" onclick="window.location.href=\'gamezone.html\';" style="height:95px;"><img src="./icon/icon-game.png" style="width:60px;"><div class="text-team1">Game Zone</div></div>';
     xLine += '</div><div class="clr"></div>';
-
-
     xLine += '<div style="margin: 10px auto 15px 10px;">';
     xLine += '<div class="menu-box1" onclick="window.location.href=\'home.html\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-01.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">หน้าแรก</div></div>';
-
+    xLine += '<div class="menu-box1" onclick="window.location.href=\'profile.html\';">';
+    xLine += '<div class="menu-box-img1"><img src="./icon/icon-profile.png" style="width:35px;"></div>';
+    xLine += '<div class="menu-box-text1" style="color:#0056ff;">ข้อมูลคุณ</div></div>';
     xLine += '<div class="menu-box1" onclick="window.location.href=\'openchat.html\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-16.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
-
-    //xLine += '<div class="menu-box1" onclick="window.location.href=\'history.html\';">';
-    //xLine += '<div class="menu-box-img1"><img src="./icon/icon-05.png" style="width:35px;"></div>';
-    //xLine += '<div class="menu-box-text1" style="color:#0056ff;">ลงทะเบียน</div></div>';
-
-    xLine += '<div class="menu-box1" onclick="window.location.href=\'gamezone.html\';">';
-    xLine += '<div class="menu-box-img1"><img src="./icon/icon-games.png" style="width:35px;"></div>';
-    xLine += '<div class="menu-box-text1" style="color:#0056ff;">Game Zone</div></div>';
-
     xLine += '<div class="menu-box1" onclick="window.location.href=\'webboard-chat.html?gid=beG8FynIhzWgdYFgaFJ9\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-contact.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">แจ้งปัญหา</div></div>';
-
     xLine += '</div>';
     xLine += '<div class="clr" style="height:10px;"></div>';
     xLine += '<center><div class="btn-t2" onclick="CloseMenu()">Close Menu</div></center>';
-    //xLine += '<div class="clr" style="height:40px;"> </div>';
     $("#MenuSociety").html(xLine); 
   });
 }
@@ -212,28 +213,9 @@ function MenuFooter() {
   str += '<div class="menu-box1" onclick="window.location.href=\'gamezone.html\';">';
   str += '<div class="menu-box-img1"><img src="./icon/icon-games.png" style="width:35px;"></div>';
   str += '<div class="menu-box-text1">Game Zone</div></div>';
-
-
-  str += '';
-  str += '';
-  str += '';
-  str += '</div>';
-
-  //str += '<form action="" method="post"><input type="email" name="email"><input type="submit" value="ส่งเรื่องราว">';
-  //str += '</form>';
-  str += '</div></div></div></div>';
+  str += '</div></div></div></div></div>';
   str += '<div class="container d-md-flex py-4"><div class="mr-md-auto text-center text-md-left">';
   str += '<div class="copyright">@<span>LINE Retail Society</span></div></div></div>';
-
-/*
-  str += '<div class="footer-top"><div class="container">';
-  str += '<div class="row"><div class="col-lg-4 col-md-6 footer-newsletter">';
-  str += '<h4>พูดคุยกับทีมผู้บริหาร</h4><p>ไม่ว่าจะเป็นเรื่องที่ต้องการความช่วยเหลือ หรือการสนับสนุนจากผู้บริหาร คุณสามารถส่งเรื่องราวของคุณที่นี่</p>';
-  str += '<form action="" method="post"><input type="email" name="email"><input type="submit" value="ส่งเรื่องราว">';
-  str += '</form></div></div></div></div>';
-  str += '<div class="container d-md-flex py-4"><div class="mr-md-auto text-center text-md-left">';
-  str += '<div class="copyright">@<span>LINE Retail Society</span></div></div></div>';
-*/
   $("#DisplayFooter").html(str);  
 }
 
@@ -254,7 +236,6 @@ function OpenGameZone() {
     $("#DisplayGameZone").html(str); 
   });
 }
-
 
 
 function CloseMenu() {

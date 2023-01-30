@@ -26,7 +26,6 @@ function CheckWebboard() {
       i = (i+1);
       var xPicture = '<div style="width:100%; text-align:center;"><img src="' + doc.data().LinePicture + '" class="profile-team" onerror="javascript:imgError(this)" style="width:35px;height:35px;"></div>';
       var xPost = '<div><b>'+doc.data().QWebboard.substring(0, 80)+'</b></div><div style="font-size:12px;">Date '+ doc.data().SendDate +' | Read '+doc.data().ReadWebboard +'</div>';
-
       dataSet = [xPicture, xPost, "<b>"+doc.data().AnsWebboard+"</b>", doc.data().TimeStamp, doc.id, i];
       dataSrc.push(dataSet);
       count++;
@@ -119,7 +118,7 @@ function YourQuestion() {
 function NewQuestion() {
   var str = ""; 
   str += '<div class="btn-t3" style="margin-top:15px;">ตั้งคำถามใหม่</div>';
-  str += '<div class="row-font"><div class="header-font" style="padding:15px 10px;line-height:1.2;">เพื่อน ๆ สามารถตั้งคำถามที่อยากจะถามผ่านช่องทางด้านล่างได้เลยน้า</div>';
+  str += '<div class="row-font"><div class="header-font" style="padding:15px 10px;line-height:1.2;">เพื่อน ๆ สามารถตั้งคำถามที่อยากจะถามผ่าน โดยการพิมพ์คำถามที่จะถาม ผ่านทางกล่องคำถามด้านล่างได้เลยน้า</div>';
   str += '<div class="input-group"><textarea id="txtQuestion" rows="10" placeholder="เพิ่มข้อความที่ต้องการถามได้ที่นี่ ..."></textarea></div></div>';
   str += '<div class="clr" style="height:10px;"></div><div class="btn-t2" onclick="AddNewQuestion()" style="margin-top:10px;">เพิ่มคำถามใหม่</div>';
   str += '<div class="btn-t2" onclick="CloseAll()">ยกเลิก</div>';

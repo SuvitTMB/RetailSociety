@@ -119,28 +119,6 @@ function AddNewUser() {
       TimeStamp : 0
     });
     CheckEid();
-/*
-    dbttbGameLucky.add({
-      GroupQuiz : xHeader,
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID_Society"),
-      EmpName : sessionStorage.getItem("EmpName_Society"),
-      TypeSelect : sTypeSelect,
-      LastScore : YourScore,
-      PointIN : YourScore,
-      PointOUT : YourScore,
-      Rewards : 0,
-      TimeStamp : 0,
-      DateRewards : "",
-      QuizDate : today
-    });
-*/
-    //CheckUserQuiz();
-  //} else {
-    //document.getElementById('id02').style.display='none';
-    //document.getElementById('id03').style.display='none';
   }
 }
 

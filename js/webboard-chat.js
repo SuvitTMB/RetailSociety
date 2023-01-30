@@ -116,6 +116,7 @@ function ShowChat(doc) {
     str+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
     str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
   }
+  str+='<div class="clr" style="height:5px;"></div>';
 /*
   str+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
   str+='<img src="./img/box.jpg" class="img-avatar"><div class="msb-font11">Admin</div></div>';
@@ -137,11 +138,13 @@ function NewChat(doc) {
     str1+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
     str1+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
     str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
+    str1+='<div class="clr" style="height:5px;"></div>';
   } else {
     str1+='<div class="list-element"><div class="message-feed media" id="'+i+'"><div class="pull-left">';
     str1+='<img src="'+ doc.data().LinePicture +'" class="img-avatar"></div>';
     str1+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ doc.data().PostMemo +'';
     str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
+    str1+='<div class="clr" style="height:5px;"></div>';
   }
   str = str1+str;
   $("#DisplayMemo").html(str); 
@@ -185,6 +188,7 @@ function CheckMemo() {
   });  
 
   i = i+1;
+/*
   var str1 = "";  
   str1+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
   str1+='<img src="'+ sessionStorage.getItem("LinePicture") +'" class="img-avatar"></div>';
@@ -192,19 +196,21 @@ function CheckMemo() {
   str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ dateString +'</small></div></div></div></div>';
   str = str1+str;
   $("#DisplayMemo").html(str); 
+*/
   $("#TextMamo").val('');
 }
 
 
 function CheckUpdate() {
   CheckLastTimeUpdate = "";
-  console.log(CheckLastTime);
   dbttbWebChat.where("GroupChart",'==',idRoomWebboard)
   .where('PostTimeStamp','>',CheckLastTime).get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      if(doc.data().LineID!=sessionStorage.getItem("LineID")) {
+  console.log(doc.data().PostTimeStamp+" > "+CheckLastTime);
+      //if(doc.data().LineID!=sessionStorage.getItem("LineID")) {
+        //CheckLastTime = doc.data().PostTimeStamp; 
         NewChat(doc);
-      }
+      //}
     });
   });
   timecountdown();
@@ -213,7 +219,7 @@ function CheckUpdate() {
 
 function timecountdown() {
     var timeleft = MaxTime;
-  console.log("Time Left = "+timeleft);
+    console.log("Time Left = "+timeleft);
 
     qInterval = setInterval(function(){
     if(timeleft <= 0) {
