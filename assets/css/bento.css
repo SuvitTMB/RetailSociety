@@ -242,7 +242,7 @@
 }
 #ms-menu-trigger, .message-feed.right {
     text-align: right;
-    margin-top:10px;
+    margin-top:5px;
 }
 #ms-menu-trigger, .toggle-switch {
     -webkit-user-select: none;
