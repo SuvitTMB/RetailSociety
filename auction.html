@@ -58,19 +58,23 @@
       }
       table.dataTable tbody th, table.dataTable tbody td {
         padding: 2px 6px;
-        font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
+        font-size: 13px; color:#000; line-height: 1.2; 
       }
       table.dataTable thead th, table.dataTable thead td {
           background: #94a9b3; color: #ffffff; padding: 4px; margin-top:15px;
-          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;
+          font-size: 13px; color:#000; line-height: 1.2; 
+          /*vertical-align: text-top;*/
       }
       table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
-          font-size: 13px; color:#000; line-height: 1.2; vertical-align: text-top;  
+          font-size: 13px; color:#000; line-height: 1.2; 
+          /*vertical-align: text-top;  */
       }
       .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { 
           margin-bottom: 10px;
       }
-      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; }
+      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; 
+        /*vertical-align: top;*/ 
+      }
       .table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td { padding: 6px 4px; }
       .txt-center { text-align: center; }
       .txt-right { text-align: right; right: 10px; }
@@ -118,68 +122,95 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h4 style="font-size:14px;color:#fff;">ข่าวสารองค์กร</h4>
+          <h4 style="font-size:14px;color:#fff;">เกมส์โซน</h4>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
-            <li><a href="groupnews.html">หมวดข่าวสาร</a></li>
-            <li>รายละเอียดข่าว</li>
+            <li><a href="gamezone.html">เกมส์โซน</a></li>
+            <li>ประมูลสินค้า</li>
           </ol>
         </div>
       </div>
     </section>
-
-    <section id="blog" class="blog" style="padding-top:12px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 entries">
-            <article class="entry" style="box-shadow: none;margin-bottom: 30px;" data-aos="fade-up">
-              <center>
-                <div class="btn-t3" style="margin-top:10px;margin-bottom: 25px;"><b>เลือกหมวดหมู่ข่าวสาร</b></div>
-              </center>
-              <div id="DisplayGroupNews" style="width:100%; max-width: 330px; margin:auto;"></div>
-              <div class="clr"></div>
-            </article>
-          </div>
-        </div>
-      </div>
-      <a id="ttbNews"></a>
+    <section class="blog section-bg" style="margin-top:0px; background-color: #ECEFF1; height: 90px; ">
+      <div id="DisplayRPPoint"></div>
     </section>
+  </main>
 
 
-    <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
-      <a id="SearchNews"></a>
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="sidebar" data-aos="fade-left">
-              <center>
-                <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>ข่าวสารองค์กร</b></div>
-              </center>
-              <div class="sidebar-item recent-posts">
-                <div style="width:98%; margin:0 auto;">
-                  <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
-                    <thead>
-                      <tr>
-                        <th style="width:10%;text-align: center;">Date</th>
-                        <th style="width:80%;text-align: center;">News</th>
-                        <th style="width:9%;text-align: center;">View</th>
-                        <th style="width:1%;text-align: center;display: none;">Time</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-                <div class="clr"></div>
-                <center>
-                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;">กลับไปหน้าแรก</div>
-                </center>
+  <section id="services" class="services" style="padding:40px 5px">
+    <div class="container" data-aos="fade-up">
+      <center>
+        <div class="btn-t3" style="margin-top:5px;">รายการสินค้าประมูล</div>
+      </center>
+      <div style="margin:15px auto 10px auto; padding:0px;max-width:450px;">
+        <div id="LoadStock"></div>
+        <div id="LoadItem"></div>
+      </div>
+      <!--
+      <center>
+        <div class="btn-t2" style="margin-top:10px;" onclick="location.href='intro-game4.html'">ดูรายการสินค้าประมูลทั้งหมด</div>
+      </center>
+      -->
+    </div>
+  </section>
+
+
+  <section id="NewsUpdate" class="blog section-bg" style="padding-top:12px;">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="sidebar" data-aos="fade-left">
+            <center>
+              <div class="btn-t3" style="margin-top:30px;margin-bottom: 25px; background-color: #fff;"><b>อันดับการประมูล</b></div>
+            </center>
+            <div class="sidebar-item recent-posts">
+              <div style="width:98%; margin:0 auto;">
+                <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
+                  <thead>
+                    <tr>
+                      <th style="width:12%;text-align: center;">รูป</th>
+                      <th style="width:76%;text-align: center;">ผู้แข่งขัน</th>
+                      <th style="width:6%;text-align: center;">เหรียญ</th>
+                    </tr>
+                  </thead>
+                </table>
               </div>
+              <div class="clr"></div>
+              <center>
+                <div class="btn-t2" style="margin-top:40px;" onclick="location.href='intro-game4.html'">ดูรายการสินค้าประมูล</div>
+                <div class="btn-t2" style="margin-top:40px;" onclick="location.href='home.html'">ไปหน้าแรก</div>
+              </center>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;">
+        <div id="BeforeAuction"></div>
+        <div class="clr" style="height:20px;"></div>
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
+
+  <div id="id02" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background: #fff;">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;">
+        <center>
+          <div class="btn-t3" style="margin-top:25px;">ราคาประมูลเปลี่ยนแปลง</div>
+          <div><img src="./img/price-change.png"></div>
+          <div class="btn-t2-ok" onclick="gotoAuction()" style="margin-top:25px;">ไปดูราคาประมูลใหม่</div>
+        </center>
+        <div class="clr" style="height:20px;"></div>
+      </div>
+    </div>
+    <div class="clr" style="height:70px;"></div>
+  </div>
 
   <div id="menu" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content w3-card-4 bg-menu">
@@ -226,7 +257,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/groupnews.js"></script>
+  <script src="js/auction.js"></script>
   <script src="js/menu.js"></script>
 
 </body>
