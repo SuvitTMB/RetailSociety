@@ -22,6 +22,7 @@ $(document).ready(function () {
   dbRewards = firebase.firestore().collection("ttbRewards");
   dbttbRedeem = firebase.firestore().collection("ttbRedeemRewards");
   dbGiftRandom = firebase.firestore().collection("ttbGiftRandom");
+  CalPoint();
   MyPoint();
   GetAllRewards();
   ListRewards();
@@ -62,7 +63,7 @@ function ListRewards() {
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px;">';
       if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
         if(parseFloat(doc.data().RewardsStock)>0) {
-          str += '<div class="rewards-txt" onclick="CheckGifts()">รายการคงเหลือ<br><b>'+ parseFloat(doc.data().RewardsStock) +'</b> รายการ</div>';
+          str += '<div class="rewards-txt" onclick="CheckGifts()" style="background:#b2daf6;">รายการคงเหลือ<br><b>'+ parseFloat(doc.data().RewardsStock) +'</b> รายการ</div>';
         } else {
           str += '<div class="rewards-txt" style="background:#ff0000; color:#fff;">ของรางวัล<br><b>ถูกแลกหมดแล้ว</b></div>';
         }

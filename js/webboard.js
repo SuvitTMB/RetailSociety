@@ -24,9 +24,13 @@ function CheckWebboard() {
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       i = (i+1);
-      var xPicture = '<div style="width:100%; text-align:center;"><img src="' + doc.data().LinePicture + '" class="profile-team" onerror="javascript:imgError(this)" style="width:35px;height:35px;"></div>';
+      if(doc.data().Pin==1) {
+        var xPicture = '<div style="width:100%; text-align:center;position: relative;"><img src="' + doc.data().LinePicture + '" class="profile-team" onerror="javascript:imgError(this)" style="width:35px;height:35px;"></div><div style="position: absolute;padding:18px;"><img src="./icon/icon-pin1.png" style="width:20px; height:20px;"></div>';
+      } else {
+        var xPicture = '<div style="width:100%; text-align:center;position: relative;"><img src="' + doc.data().LinePicture + '" class="profile-team" onerror="javascript:imgError(this)" style="width:35px;height:35px;"></div>';
+      }
       var xPost = '<div><b>'+doc.data().QWebboard.substring(0, 80)+'</b></div><div style="font-size:12px;">Date '+ doc.data().SendDate +' | Read '+doc.data().ReadWebboard +'</div>';
-      dataSet = [xPicture, xPost, "<b>"+doc.data().AnsWebboard+"</b>", doc.data().TimeStamp, doc.id, i];
+      dataSet = [xPicture, xPost, "<b>"+doc.data().AnsWebboard+"</b>", doc.data().Pin, doc.data().TimeStamp, doc.id, i];
       dataSrc.push(dataSet);
       count++;
     }); 
@@ -45,15 +49,15 @@ function CheckWebboard() {
         ],
           lengthMenu: [[50, 100, -1], [50, 100, "All"]],
         columnDefs: [ { type: 'num-fmt', 'targets': [1] } ],
-        order: [[ 3, 'desc']]
+        order: [[ 3, 'desc', 4, 'desc']]
       });   
       $('#ex-table tbody').on( 'click', 'tr', function () {
         var data = dTable.row( $(this).parents('tr') ).data();
         if(count!=0) {
           //console.log(dTable.row( this ).data()[5]);
-          if(dTable.row( this ).data()[5]!=0) {
+          if(dTable.row( this ).data()[6]!=0) {
             //ReadWebboard(dTable.row( this ).data()[3],dTable.row( this ).data()[4]);
-            WebboardChat(dTable.row( this ).data()[4]);
+            WebboardChat(dTable.row( this ).data()[5]);
           }
         }
       });        
@@ -71,6 +75,7 @@ function YourQuestion() {
   dataSrc = [];
   dbttbWebboard.where('StatusBoard','==',0)
   .where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .orderBy('Pin','desc')
   .orderBy('TimeStamp','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
@@ -144,6 +149,7 @@ function AddNewQuestion() {
       AnsWebboard : 0,
       ReadWebboard : 0,
       StatusBoard : 0,
+      Pin : 0,
       SendDate : dateString,
       TimeStamp : TimeStampDate
     });

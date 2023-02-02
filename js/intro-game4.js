@@ -1,3 +1,5 @@
+var cleararray = "";
+var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -10,8 +12,13 @@ $(document).ready(function () {
   $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ff0000;'>กิจกรรมประจำวันที่ "+today);  
   Connect_DB();
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
+  dbttbAuction = firebase.firestore().collection("ttbAuction");
+  dbttbMember = firebase.firestore().collection("ttbMember");
+  MyPoint();
+  CalPoint();
   OpenPopMenu();
-  TimeOnline();
+  AuctionStock();
+  //TimeOnline();
 /*
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbQuiz = firebase.firestore().collection("ttbGameLucky");
@@ -19,43 +26,220 @@ $(document).ready(function () {
   CheckUserScore();
   CheckUserQuiz();
   UserBoard('A');
+AuctionType
 */
 });
 
 
+function AuctionStock() {
+  var i = 0
+  str = "";
+  dbttbAuction.where('AuctionStatus','==',1)
+  .orderBy('AuctionType','desc')
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      if(doc.data().AuctionType==0) {
+        //ระบบจะเริ่มประมูล
+        TimeCheckStart(doc.data().AuctionDateStart,i,doc.id);
+        str += '<div class="auction-box" id="'+i+'"><div style="width:25%; float: left; margin-right: 5px;">';
+        str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
+        str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
+        str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
+        str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
+        str += '<div class="auction-subbox">';
+        str += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
+        str += '<div class="auction-subbox">';
+        str += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
+        str += '<div class="auction-subbox" style="width:46%; background-color: #002d63; cursor: pointer;">';
+        str += '<div class="font11" style="color:#fff;padding-top:7px;font-size: 10px;">จะเริ่มประมูลในเวลา</div>';
+        str += '<div id="A'+i+'" class="font12" style="color:#ffff00;padding:0;font-size: 14px; font-weight: 600;"></div>';
+        str += '</div></div></div>';
+      } else if(doc.data().AuctionType==1) { 
+        //ระบบจะปิดประมูล
+        TimeCheckEnd(doc.data().AuctionDateStop,i,doc.id);
+        str += '<div class="auction-box" id="'+i+'"><div style="width:25%; float: left; margin-right: 5px;">';
+        str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
+        str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
+        str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
+        str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
+        str += '<div class="auction-subbox">';
+        str += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
+        str += '<div class="auction-subbox">';
+        str += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
+        str += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
+        str += '<div class="font11" style="color:#444;padding:0;font-size: 10px;">เหลือเวลาประมูลอีก</div>';
+        str += '<div id="A'+i+'" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div>';
+        str += '<div onclick="gotoAuction(\''+ doc.id +'\')" class="auction-number" style="font-size: 13px;font-weight: 600; color:#111111;">คลิกเพื่อเข้าร่วมประมูล</div></div></div></div>';
+      }
+      i++;
+    });
+    $("#LoadStock").html(str);  
+    MyPoint();
+    CalPoint();
+  });
+}
 
+
+function TimeCheckStart(x,n,id) {
+  var countDownDate = new Date(x).getTime();
+  //console.log(x+"==="+countDownDate+"==="+id);
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("A"+n).innerHTML = + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("A"+n).innerHTML = "เริ่มต้นการประมูล";
+      UpdateAuctionStart(x,n,id);
+      //console.log("เริ่มเข้าสู่การประมูล"+ " A"+n+"==="+id);
+    }
+  }, 1000);
+}
+
+
+var xxx = 0;
+function TimeCheckEnd(x,n,id) {
+  var countDownDate = new Date(x).getTime();
+  //console.log(x+"==="+countDownDate+"==="+id);
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("A"+n).innerHTML = + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("A"+n).innerHTML = "หมดเวลาการประมูล";
+      if(xxx==0) {
+        UpdateAuctionStop(x,n,id);
+      }
+     // console.log("หมดเวลา"+ " A"+n+"==="+id);
+    }
+  }, 1000);
+}
+
+
+function UpdateAuctionStart(x,n,id) {
+  var str = "";
+  dbttbAuction.doc(id).update({
+    AuctionClose : 0,
+    AuctionType : 1 //เริ่มต้นการประมูล
+  });
+  dbttbAuction.where(firebase.firestore.FieldPath.documentId(), "==", id)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      TimeCheckEnd(doc.data().AuctionDateStop,n,doc.id);
+      str += '<div id="'+n+'"><div style="width:25%; float: left; margin-right: 5px; max-width:450px;">';
+      str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
+      str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
+      str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
+      str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
+      str += '<div class="auction-subbox">';
+      str += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
+      str += '<div class="auction-subbox">';
+      str += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
+      str += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
+      str += '<div class="font11" style="color:#444;padding:0;font-size: 10px;">เหลือเวลาประมูลอีก</div>';
+      str += '<div id="A'+n+'" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div>';
+      str += '<div class="auction-number" style="font-size: 13px;font-weight: 600; color:#111111;">คลิกเพื่อเข้าร่วมประมูล</div></div></div></div>';
+    });
+    $("#"+n).html(str);  
+  });
+}
+
+
+function UpdateAuctionStop(x,n,id) {
+  xxx = 1;
+  var str = "";
+  dbttbAuction.doc(id).update({
+    AuctionClose : 1,
+    AuctionStatus : 2 //ปิดการประมูล
+  });
+  dbttbAuction.where(firebase.firestore.FieldPath.documentId(), "==", id)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      TimeCheckEnd(doc.data().AuctionDateStop,n,doc.id);
+      str += '<div id="'+n+'"><div style="width:25%; float: left; margin-right: 5px;">';
+      str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
+      str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
+      str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
+      str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
+      str += '<div class="auction-subbox">';
+      str += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
+      str += '<div class="auction-subbox">';
+      str += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
+      str += '<div class="auction-subbox" style="width:46%; background-color: #7489a5; cursor: pointer;">';
+      str += '<div class="font11" style="color:#fff;padding:0;font-size: 10px;">ปิดการประมูล</div>';
+      str += '<div id="A'+n+'" class="font12" style="color:#ffff00;padding:0;font-size: 14px; font-weight: 600;"></div>';
+      str += '<div onclick="gotoAuction(\''+ doc.id +'\')" class="auction-number" style="font-size: 13px;font-weight: 600; color:#fff;">คลิกเพื่อดูผลการประมูล</div></div></div></div>';
+    });
+    $("#"+n).html(str);  
+  });
+}
+
+
+function gotoAuction(id) {
+  location.href = "auction.html?gid="+ id;  
+}
+
+/*
 function TimeOnline() {
-var countDownDate = new Date("Jan 30, 2023 15:37:25").getTime();
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);}
+  var countDownDate = new Date("Jan 31, 2023 16:00:00").getTime();
+  var x = setInterval(function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = "<font color='#0056ff'><b>" + days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s</b></font>";
+    document.getElementById("demo").innerHTML = + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "Time Out";
+    }
+  }, 1000);
+}
+*/
 
 
 
 
 
 /*
+
+ttbAuction
+
+AuctionStatus 0 ยังไม่เปิด 1 เปิดประมูล 2 ปิดประมูล
+AuctionType   0 ยังไม่ประมูล 1 เปิดประมูล
+AuctionID 
+AuctionName
+AuctionImg
+AuctionDetail
+AuctionDateStart
+AuctionDateStop
+
+AuctionTime
+AuctionPrice
+AuctionCoin
+
+
+
+
+
+
 var CheckPass = 0;
 function CheckUserScore() {
   dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))

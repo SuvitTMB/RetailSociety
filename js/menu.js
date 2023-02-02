@@ -56,7 +56,7 @@ function OpenPopMenu() {
     xLine += '<div class="box-reward1"> </div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'</div>เหรียญ<br>รางวัล</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"> </div>เหรียญ<br>รางวัล</div>';
     xLine += '<div class="clr" style="height:3px;"></div>'
     //var xNewXP = (parseFloat(sessionStorage.getItem("XP_Point") - parseFloat(xCal);
     var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
@@ -98,8 +98,8 @@ function MyPointMenu() {
     xLine += '<div class="clr" style="height:10px;"></div><div style="height: 70px;background-color: #f1f1f1; border-radius:10px;">';
     xLine += '<div class="box-reward1"> </div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'</div>เหรียญ<br>แลกรางวัล</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>ประสบการณ์<br>การใช้งาน</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญ<br>แลกรางวัล</div>';
     xLine += '</div><div class="clr" style="height:3px;"></div>'
     $("#DisplayMyPoint").html(xLine); 
   }
@@ -126,7 +126,7 @@ function MyPoint() {
   zLine += '<div class="box-reward1"> </div>';
   zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
   zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'</div>เหรียญ<br>แลกรางวัล</div>';
+  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญ<br>แลกรางวัล</div>';
   zLine += '<div class="clr" style="height:3px;"></div>'
   var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
 
@@ -154,7 +154,7 @@ function MenuFooter() {
   str += '<div class="footer-top"><div class="container">';
   str += '<div class="row"><div class="col-lg-4 col-md-6 footer-newsletter">';
   //str += '<div id="iConMenu" style="width:100%;"></div><div class="clr"></div>';
-  str += '<h4>เมนูที่เกี่ยวข้อง</h4><p>เราเตรียมเมนูไว้สำหรับให้ท่านได้เลือกเข้าใช้งาน เพื่อให้ท่านได้เข้าถึงข้อมูลได้รวดเร็วมากยิ่งขึ้น</p>';
+  str += '<h4 style="font-size: 13px;">เมนูที่เกี่ยวข้อง</h4><p style="font-size: 12px;">เราเตรียมเมนูไว้สำหรับให้ท่านได้เลือกเข้าใช้งาน เพื่อให้ท่านได้เข้าถึงข้อมูลได้รวดเร็วมากยิ่งขึ้น</p>';
   str += '<div>';
 
   str += '<div class="menu-box1" onclick="window.location.href=\'home.html\';">';
@@ -215,7 +215,7 @@ function MenuFooter() {
   str += '<div class="menu-box-text1">Game Zone</div></div>';
   str += '</div></div></div></div></div>';
   str += '<div class="container d-md-flex py-4"><div class="mr-md-auto text-center text-md-left">';
-  str += '<div class="copyright">@<span>LINE Retail Society</span></div></div></div>';
+  str += '<div class="copyright" style="font-size: 12px; font-weight: 600;">@<span>LINE Retail Society</span></div></div></div>';
   $("#DisplayFooter").html(str);  
 }
 

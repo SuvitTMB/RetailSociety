@@ -39,6 +39,7 @@ $(document).ready(function () {
   dbttbQuiz = firebase.firestore().collection("ttbQuizoftheday");
   dbttbWebboard = firebase.firestore().collection("ttbWebboard");
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
+  CalPoint();
   MenuSlide();
   CheckData();
   CheckUserQuiz();

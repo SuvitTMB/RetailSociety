@@ -11,7 +11,7 @@ var xToday = dd + '/' + mm + '/' + yyyy;
 $(document).ready(function () {
 
 /*
-var isMobile = window.orientation > -1;
+  var isMobile = window.orientation > -1;
   sessionStorage.clear(); 
   var str = "";
   var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
@@ -24,7 +24,7 @@ var isMobile = window.orientation > -1;
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-   */
+*/   
   main();
 });
 
@@ -321,6 +321,18 @@ function AddNewMember() {
     RockLost : 0,
     RockCoin : 0,
 
+
+    Game5Time : 0,
+    Game5Win : 0,
+    Game5Lost : 0,
+    Game5Coin : 0,
+
+    Game6Time : 0,
+    Game6Win : 0,
+    Game6Lost : 0,
+    Game6Coin : 0,
+
+
     LogDateTime : dateString,
     LastUpdate : dateString,
     DateToDay : xToday,
@@ -392,7 +404,7 @@ function CheckAid() {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ข่าวสารองค์กร</div>';
       str += '<div><img src="./img/news-van.gif" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
-      str += '<div class="font13" style="padding-top:5px;">เราได้เตรียมข่าวสารและความเคลื่อนไหวภายในองค์กร ให้คุณได้รับรู้ถึงที่ตลอดเวลา และทุก ๅ การอ่านของคุณจะได้รับเหรียญรางวัล สำหรับการสะสมไว้เล่นกิจกรรมกับเรา LINE Retail Society</div>';
+      str += '<div class="font12" style="padding-top:5px; font-size:12px;">เราได้เตรียมข่าวสารและความเคลื่อนไหวภายในองค์กร ให้คุณได้รับรู้ถึงที่ตลอดเวลา และทุก ๅ การอ่านของคุณจะได้รับเหรียญรางวัล สำหรับการสะสมไว้เล่นกิจกรรมกับเรา LINE Retail Society</div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoNews()" style="margin-top:20px;">ไปดูข่าวองค์กร</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
@@ -401,7 +413,7 @@ function CheckAid() {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ระบบงาน LINE Retail Society</div>';
       str += '<div><img src="./img/diggi-media.gif" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
-      str += '<div class="font13" style="padding-top:5px;">เราได้จัดหมวดหมู่ของระบบงานทั้งหมดของ LINE Retail Socitey มาไว้ที่เว็บไซต์นี้ทั้งหมดแล้ว คุณสามารถเข้าสู่ระบบงานได้จากเว็บไซต์นี้</div>';
+      str += '<div class="font12" style="padding-top:5px; font-size:12px;">เราได้จัดหมวดหมู่ของระบบงานทั้งหมดของ LINE Retail Socitey มาไว้ที่เว็บไซต์นี้ทั้งหมดแล้ว คุณสามารถเข้าสู่ระบบงานได้จากเว็บไซต์นี้</div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoSystem()" style="margin-top:20px;">ไปดูระบบงาน</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
@@ -410,7 +422,7 @@ function CheckAid() {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ภารกิจเก็บสะสมเหรียญรางวัล</div>';
       str += '<div><img src="./img/gotocoin.gif" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
-      str += '<div class="font13" style="padding-top:5px;">นอกจากการเก็บเหรียญจากการอ่านข่าวสารองค์กรแล้ว เราได้จัดเตรียมกิจกรรมให้เพื่อน ๆ เข้ามาเก็บสะสมเหรียญได้ทุก ๆ วันเลย และให้เพื่อน ๆ ได้ทบทวนความรู้ของตัวเองอยู่ตลอดเวลาด้วยนะ</div>';
+      str += '<div class="font12" style="padding-top:5px; font-size:12px;">นอกจากการเก็บเหรียญจากการอ่านข่าวสารองค์กรแล้ว เราได้จัดเตรียมกิจกรรมให้เพื่อน ๆ เข้ามาเก็บสะสมเหรียญได้ทุก ๆ วันเลย และให้เพื่อน ๆ ได้ทบทวนความรู้ของตัวเองอยู่ตลอดเวลาด้วยนะ</div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoCoin()" style="margin-top:20px;">ไปสะสมเหรียญ</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
@@ -419,7 +431,7 @@ function CheckAid() {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ห้องคำถาม-คำตอบ</div>';
       str += '<div><img src="./img/work_work_work.gif" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
-      str += '<div class="font13" style="padding-top:5px;">หากคุณมีคำถาม หรือข้อสงสัย คุณสามารถที่จะเข้ามาตั้งคำถามในห้องคำถาม-คำตอบได้ และหรือคุณเป็นผู้ที่เกี่ยวข้องกับคำถามเหล่านั้นก็สามารถเข้ามาตอบให้เพื่อน ๆ ได้รับทราบก็ได้เช่นกันน้า</div>';
+      str += '<div class="font12" style="padding-top:5px;font-size:12px;">หากคุณมีคำถาม หรือข้อสงสัย คุณสามารถที่จะเข้ามาตั้งคำถามในห้องคำถาม-คำตอบได้ และหรือคุณเป็นผู้ที่เกี่ยวข้องกับคำถามเหล่านั้นก็สามารถเข้ามาตอบให้เพื่อน ๆ ได้รับทราบก็ได้เช่นกันน้า</div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoChat()" style="margin-top:20px;">ไปห้องถาม-ตอบ</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
@@ -428,7 +440,7 @@ function CheckAid() {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>แลกของรางวัล</div>';
       str += '<div><img src="./img/gift2023.gif" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
-      str += '<div class="font13" style="padding-top:5px;">ไม่ว่าคุณได้มีเหรียญรางวัลมากหรือน้อย คุณก็สามารถเลือกความต้องการของคุณเองได้ เพียง 5 เหรียญรางวัล คุณอาจจะได้รับรางวัลใหญ่ ๆ หรือเพื่อให้มั่นใจก็เก็บเหรียญรางวัลให้พอกับจำนวนที่จะใช้แลกก็ได้นะ</div>';
+      str += '<div class="font12" style="padding-top:5px;font-size:12px;">ไม่ว่าคุณได้มีเหรียญรางวัลมากหรือน้อย คุณก็สามารถเลือกความต้องการของคุณเองได้ เพียง 5 เหรียญรางวัล คุณอาจจะได้รับรางวัลใหญ่ ๆ หรือเพื่อให้มั่นใจก็เก็บเหรียญรางวัลให้พอกับจำนวนที่จะใช้แลกก็ได้นะ</div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoRewards()" style="margin-top:20px;">ไปแลกของรางวัล</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
