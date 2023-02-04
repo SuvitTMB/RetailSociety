@@ -69,8 +69,8 @@
 .btn-t1 {
   font-family: ttb-regular, sans-serif;
   font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 13px;
+  /*letter-spacing: 1px;*/
   display: inline-block;
   padding: 7px 25px;
   border-radius: 6px;
@@ -308,13 +308,13 @@
   font-size: 13px;line-height: 1.2; color:#000; width:100%; text-align:left;
 }
 .box-reward {
-  width:24%; float: left; text-align: center; height: 60px;
+  width:30%; float: left; text-align: center; height: 60px;
   padding:6px; font-size: 12px; font-weight: 600; color:#999;
   line-height: 1.1;
 }
-.box-reward1 { width:13%; float: left; height: 60px; padding:6px;}
+.box-reward1 { width:4%; float: left; height: 60px; padding:6px;}
 .XPpoint {
-  font-size: 18px; font-weight: 600; color:#0056ff; text-align: center; 
+  font-size: 16px; font-weight: 600; color:#0056ff; text-align: center; 
   /*margin:4px auto;*/ margin-top:4px;
 }
 

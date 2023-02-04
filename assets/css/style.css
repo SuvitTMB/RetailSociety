@@ -359,6 +359,18 @@ p {
     padding: 0 48px 0 0;
     border-left: 0;
   }
+  .font14F {
+    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
+  }
+  .font13F {
+    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
+  }
+  .font13N {
+    font-size: 13px; color:#fff; 
+  }
+  .font13black {
+    font-size: 13px; color:#111; line-height: 1.2; text-align: left;
+  }
 }
 
 /*--------------------------------------------------------------
