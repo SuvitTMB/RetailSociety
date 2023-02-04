@@ -354,12 +354,19 @@ p {
   color: #438fff;
 }
 
-@media (max-width: 991px) {
+
+
+.font13F {
+  display: inline-block;
+  color:#fff;
+  margin-top:8px;
+  transition: 0.3s;
+  font-size: 13px;
+  font-weight: 600;
+}
+
   .font14F {
     font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: inline-block;
-  }
-  .font13F {
-    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: inline-block;
   }
   .font13N {
     font-size: 13px; color:#fff; 
@@ -368,7 +375,6 @@ p {
     font-size: 13px; color:#111; line-height: 1.2; text-align: left;   display: inline-block;
   }
 
-}
 
 
 @media (max-width: 768px) {
