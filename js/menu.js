@@ -27,6 +27,7 @@ function CalPoint() {
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      //console.log("Check RP-Point = "+doc.data().RP_Point);
       //alert("Cal Point");
     });
   });
@@ -55,7 +56,7 @@ function OpenPopMenu() {
     xLine += '<div style="height: 70px;background-color: #fff;">';
     xLine += '<div class="box-reward1"> </div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
-    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
+    xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>ประสบการณ์<br>การใช้งาน</div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"> </div>เหรียญ<br>รางวัล</div>';
     xLine += '<div class="clr" style="height:3px;"></div>'
     //var xNewXP = (parseFloat(sessionStorage.getItem("XP_Point") - parseFloat(xCal);
@@ -95,7 +96,7 @@ function OpenPopMenu() {
 function MyPointMenu() {
   var xLine = "";
   if(sessionStorage.getItem("Level_Point")!=null) {
-    xLine += '<div class="clr" style="height:10px;"></div><div style="height: 70px;background-color: #f1f1f1; border-radius:10px;">';
+    xLine += '<div class="clr" style="height:10px;"></div><div style="height: 70px;background-color: #ECEFF1; border-radius:10px;">';
     xLine += '<div class="box-reward1"> </div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
     xLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>ประสบการณ์<br>การใช้งาน</div>';
@@ -115,36 +116,42 @@ function MyPoint() {
   var xLine = "";
   var yLine = "";
   var zLine = "";
-  yLine += '<div style="margin:10px 0 20px 0;">';
-  yLine += '<div class="container" style="width:90%;padding:5px; max-width:450px;">';
-  yLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-  yLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
-  yLine += '</div></div><div class="clr"></div>';
-  $("#DisplayMember").html(yLine);  
-
-  zLine += '<div style="height: 70px;background-color: #c2dfef; width:100%; max-width:450px; margin:auto;">';
-  zLine += '<div class="box-reward1"> </div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>คะแนน<br>ประสบการณ์</div>';
-  zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญ<br>แลกรางวัล</div>';
-  zLine += '<div class="clr" style="height:3px;"></div>'
-  var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
-
-  zLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
-  zLine += '<div class="clr"style="height:30px;"></div>';
-  zLine += '<div class="clr" style="height:40px;"></div></div>';
-  $("#DisplayMyPoint").html(zLine);  
-
-  xLine += '<div style="margin: -25px auto 20px auto; width: 100%; min-height:50px; max-width: 450px;">';
-  xLine += '<div style="width:73%; float: left;">';
-  xLine += '<div style="width:100%;"><div style="width:32%;float: left; text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-  xLine += '<div class="Profile-title" style="padding-top:5px;"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
-  xLine += '</div></div>';
-  xLine += '<div style="width:24%; float: left; background-color :#c0d8fc; height:50px; text-align: center; border-radius: 8px;margin-top:5px;">';
-  xLine += '<div class="box-reward" style="width:100%; padding-top:4px; font-size: 10px;"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญรางวัล</div>';
-
-  xLine += '</div>';
-  $("#DisplayRPPoint").html(xLine);  
+  dbttbMember.where('LineID','==',sessionStorage.getItem("LineID"))
+  .limit(1)
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+      sessionStorage.setItem("Level_Point", doc.data().Level_Point);
+      sessionStorage.setItem("XP_Point", doc.data().XP_Point);
+      sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      yLine += '<div style="margin:10px 0 20px 0;">';
+      yLine += '<div class="container" style="width:90%;padding:5px; max-width:450px;">';
+      yLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
+      yLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+      yLine += '</div></div><div class="clr"></div>';
+      $("#DisplayMember").html(yLine);  
+      zLine += '<div style="height: 70px;background-color: #c2dfef; width:100%; max-width:450px; margin:auto;">';
+      zLine += '<div class="box-reward1"> </div>';
+      zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("Level_Point")).toFixed(0) +'</div>ระดับ<br>ผู้แข่งขัน</div>';
+      zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("XP_Point")).toFixed(2) +'</div>ประสบการณ์<br>การใช้งาน</div>';
+      zLine += '<div class="box-reward"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญ<br>แลกรางวัล</div>';
+      zLine += '<div class="clr" style="height:3px;"></div>'
+      var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
+      zLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
+      zLine += '<div class="clr"style="height:30px;"></div>';
+      zLine += '<div class="clr" style="height:40px;"></div></div>';
+      $("#DisplayMyPoint").html(zLine);  
+      xLine += '<div style="margin: -25px auto 20px auto; width: 100%; min-height:50px; max-width: 450px;">';
+      xLine += '<div style="width:70%; float: left;">';
+      xLine += '<div style="width:100%;"><div style="width:32%;float: left; text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
+      xLine += '<div class="Profile-title" style="padding-top:5px;"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+      xLine += '</div></div>';
+      xLine += '<div style="width:28%; float: left; background-color :#c0d8fc; height:50px; text-align: center; border-radius: 8px;margin-top:5px;">';
+      xLine += '<div class="box-reward" style="width:100%; padding-top:4px; font-size: 10px;"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญรางวัล</div>';
+      xLine += '</div>';  
+      $("#DisplayRPPoint").html(xLine);  
+    });
+    //OpenPopMenu();
+  });
 }
 
 

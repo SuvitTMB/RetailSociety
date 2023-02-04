@@ -9,6 +9,7 @@ $(document).ready(function () {
   dbttbNews = firebase.firestore().collection("ttbnews");
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
+  dbttbMember = firebase.firestore().collection("ttbMember");
   MyPoint();
   NewsLog();
   OpenPopMenu();

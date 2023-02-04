@@ -18,26 +18,18 @@ $(document).ready(function () {
   CalPoint();
   OpenPopMenu();
   AuctionStock();
-  //TimeOnline();
-/*
-  dbttbMember = firebase.firestore().collection("ttbMember");
-  dbttbQuiz = firebase.firestore().collection("ttbGameLucky");
-  SelectBoxGroup('A');
-  CheckUserScore();
-  CheckUserQuiz();
-  UserBoard('A');
-AuctionType
-*/
 });
 
 
 function AuctionStock() {
-  var i = 0
   str = "";
-  dbttbAuction.where('AuctionStatus','==',1)
+  var i = 0
+  var EndGame = 0;
+ dbttbAuction.where('AuctionStatus','==',1)
   .orderBy('AuctionType','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
+      EndGame = 1;
       if(doc.data().AuctionType==0) {
         //ระบบจะเริ่มประมูล
         TimeCheckStart(doc.data().AuctionDateStart,i,doc.id);
@@ -46,11 +38,11 @@ function AuctionStock() {
         str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
         str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
         str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
-        str += '<div class="auction-subbox">';
-        str += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
-        str += '<div class="auction-subbox">';
-        str += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
-        str += '<div class="auction-subbox" style="width:46%; background-color: #002d63; cursor: pointer;">';
+        str += '<div class="auction-subbox" style="background-color:#002d63;">';
+        str += '<div class="auction-number" style="color:#fff;">+'+ doc.data().AuctionCoin +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">เพิ่มครั้งละ</div></div>';
+        str += '<div class="auction-subbox" style="background-color:#002d63;">';
+        str += '<div class="auction-number" style="color:#fff;">'+ (parseFloat(doc.data().AuctionPrice) + parseFloat(doc.data().AuctionCoin)) +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">ราคาประมูล</div></div>';
+        str += '<div class="auction-subbox" style="width:46%; background-color: #6c757d;">';
         str += '<div class="font11" style="color:#fff;padding-top:7px;font-size: 10px;">จะเริ่มประมูลในเวลา</div>';
         str += '<div id="A'+i+'" class="font12" style="color:#ffff00;padding:0;font-size: 14px; font-weight: 600;"></div>';
         str += '</div></div></div>';
@@ -62,20 +54,28 @@ function AuctionStock() {
         str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
         str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
         str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
-        str += '<div class="auction-subbox">';
-        str += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
-        str += '<div class="auction-subbox">';
-        str += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
-        str += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
+        str += '<div class="auction-subbox" style="background-color:#002d63;">';
+        str += '<div class="auction-number" style="color:#fff;">+'+ doc.data().AuctionCoin +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">เพิ่มครั้งละ</div></div>';
+        str += '<div class="auction-subbox" style="background-color:#002d63;">';
+        str += '<div class="auction-number" style="color:#fff;">'+ (parseFloat(doc.data().AuctionPrice) + parseFloat(doc.data().AuctionCoin)) +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">ราคาประมูล</div></div>';
+        str += '<div class="auction-subbox" style="width:46%; background-color: #fd7e14; cursor: pointer;">';
         str += '<div class="font11" style="color:#444;padding:0;font-size: 10px;">เหลือเวลาประมูลอีก</div>';
-        str += '<div id="A'+i+'" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div>';
+        str += '<div id="A'+i+'" class="font12" style="color:#fff;padding:0;font-size: 14px; font-weight: 600;"></div>';
         str += '<div onclick="gotoAuction(\''+ doc.id +'\')" class="auction-number" style="font-size: 13px;font-weight: 600; color:#111111;">คลิกเพื่อเข้าร่วมประมูล</div></div></div></div>';
       }
       i++;
     });
-    $("#LoadStock").html(str);  
-    MyPoint();
-    CalPoint();
+    if(EndGame==0) {
+      str = "";
+      str = '<div style="font-size:13px; margin:0px auto 20px auto; background-color:#cdd4da;height:80px;padding-top:30px;border-radius: 10px;"><b>ขณะนี้ยังไม่มีรายการประมูล</b></div>';
+      //console.log("ไม่มีรายการประมูลในขณะนี้");
+    } else {
+      MyPoint();
+      CalPoint();
+    }
+      $("#LoadStock").html(str);  
+
+
   });
 }
 

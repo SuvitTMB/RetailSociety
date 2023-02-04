@@ -7,6 +7,7 @@ $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
   dbProfile = firebase.firestore().collection("CheckProfile");
+  dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbNews = firebase.firestore().collection("ttbnews");
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");

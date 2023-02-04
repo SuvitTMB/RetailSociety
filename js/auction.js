@@ -33,12 +33,12 @@ $(document).ready(function () {
   dbttbAuction = firebase.firestore().collection("ttbAuction");
   dbttbAuctionCoin = firebase.firestore().collection("ttbAuctionCoin");
   dbttbAuctionlog = firebase.firestore().collection("ttbAuctionlog");
-  CalPoint();
   OpenPopMenu();
   ListUserAuction();
-  ListItem();
+  CalPoint();
   MyPoint();
   GetOldCoin();
+  ListItem();
 });
 
 
@@ -63,8 +63,6 @@ function CheckUpdate() {
       gAuctionPrice = doc.data().AuctionPrice;
     });
     if(gAuctionPrice==LastPrice) {
-      //console.log("ราคาเปลี่ยน");
-      //console.log(gAuctionTime+"==="+gAuctionPrice);
       LastPrice = gAuctionPrice;
       ListItem();
       ListUserAuction();
@@ -112,15 +110,18 @@ function stopcountdown() {
 
 
 function ListItem() {
-  MyPoint();
-  CalPoint();
+  //CalPoint();
+  //MyPoint();
   var str = "";
   var str1 = "";
+  var EndGame = 0;
   $("#LoadItem").html(str);
   dbttbAuction.where(firebase.firestore.FieldPath.documentId(), "==", ReadID)
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
+      LastPrice = 0;
+      //EndGame = 1;
       //LastPrice = parseFloat(doc.data().AuctionPrice) + parseFloat(doc.data().AuctionCoin) ;
       LastPoint = parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) - parseFloat(LastPrice);
       xAuctionImg = doc.data().AuctionImg;
@@ -143,32 +144,44 @@ function ListItem() {
         str1 += '<div class="auction-subbox">';
         str1 += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
         str1 += '<div class="auction-subbox">';
-        str1 += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาล่าสุด</div></div>';
-        str1 += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
-        str1 += '<div class="font11" style="color:#444; padding-top:7px; font-size: 10px;">เหลือเวลาประมูลอีก</div>';
-        str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></div></div>';
+        str1 += '<div class="auction-number">'+ doc.data().AuctionPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center">ราคาตอนนี้</div></div>';
+
+        str1 += '<div class="auction-subbox" style="background-color:#002d63;">';
+        str1 += '<div class="auction-number" style="color:#fff;">+'+ doc.data().AuctionCoin +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">เพิ่มครั้งละ</div></div>';
+        str1 += '<div class="auction-subbox" style="background-color:#002d63;">';
+        str1 += '<div class="auction-number" style="color:#fff;">'+ LastPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style=" color:#fff;">ราคาประมูล</div></div>';
+        str1 += '<div class="clr"></div>';
+        str1 += '<center><div class="font11" style="color:#444; padding-top:20px; font-size: 10px;">เหลือเวลาประมูลอีก</div>';
+        str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></center>';
+        //str1 += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
+        //str1 += '<div class="font11" style="color:#444; padding-top:7px; font-size: 10px;">เหลือเวลาประมูลอีก</div>';
+        //str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></div>';
+        str1 += '</div>';
         //str += '</div>';
         str1 += '<div class="clr"></div>';
         str1 += '<center>';
         if(doc.data().AuctionClose==0) {
           if(parseFloat(sessionStorage.getItem("RP_Point"))>=parseFloat(LastPrice)) {
             //console.log("1==="+LastPoint+">"+sessionStorage.getItem("RP_Point")+"==="+doc.data().AuctionClose+"==="+doc.data().AuctionClose);
-            str1 += '<div id="CloseAuction" onclick="ClickAuction()" class="btn-t1a" style="margin-top:30px;text-align:center;background-color:#20b52d;padding:7px 40px;">คุณต้องใช้เหรียญรางวัล<br><font color="#ffff00">'+ parseFloat(LastPrice) +'<img src="./icon/coin.png" class="coin-img"> เหรียญรางวัล</font><br>คลิกเพื่อเข้าร่วมประมูล</div>';
+            str1 += '<div id="CloseAuction" onclick="ClickAuction()" class="btn-t1a" style="margin-top:15px;text-align:center;background-color:#20b52d;padding:7px 40px;border-radius:10px;">คุณต้องใช้เหรียญรางวัล<br><font color="#ffff00">'+ parseFloat(LastPrice) +'<img src="./icon/coin.png" class="coin-img"> เหรียญรางวัล</font><br>คลิกเพื่อเข้าร่วมประมูล</div>';
           } else if(parseFloat(sessionStorage.getItem("RP_Point"))<parseFloat(LastPrice)) {
             //console.log("2==="+LastPoint+"<"+sessionStorage.getItem("RP_Point")+"==="+doc.data().AuctionClose+"==="+doc.data().AuctionClose);
-            str1 += '<div id="CloseAuction1" class="btn-t1a" style="margin-top:30px;text-align:center;background-color:#555;padding:7px 40px;">คุณเหลือเหรียญรางวัลอีก<br><font color="#ffff00">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"> เหรียญรางวัล</font><br>เหรียญไม่พอที่จะเข้าร่วมประมูล</div>';
+            str1 += '<div id="CloseAuction1" class="btn-t1a" style="margin-top:15px;text-align:center;background-color:#555;padding:7px 40px;border-radius:10px;">คุณเหลือเหรียญรางวัลอีก<br><font color="#ffff00">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"> เหรียญรางวัล</font><br>เหรียญไม่พอที่จะเข้าร่วมประมูล</div>';
           }
         } else if(doc.data().AuctionClose==1) { 
-          str1 += '<div class="btn-t1a" style="margin-top:30px;text-align:center;background-color:#555;padding:15px 40px;">ขณะนี้การประมูลสินค้า<br>รายการนี้สิ้นสุดลงแล้ว</div>';
+          str1 += '<div class="btn-t1a" onclick="location.href=\'endauction.html\'" style="margin-top:15px;text-align:center;background-color:#555;padding:15px 40px;border-radius:10px;">ขณะนี้การประมูลสินค้า<br>รายการนี้สิ้นสุดลงแล้ว</div>';
         }
         str1 += '</center>';
       }
     });
-    $("#LoadStock").html(str);  
-    $("#LoadItem").html(str1);  
-    MyPoint();
-    CalPoint();
-    timecountdown();
+    //if(EndGame==0) {
+    //  console.log("ไม่มีรายการประมูลในขณะนี้");
+    //} else {
+      MyPoint();
+      $("#LoadStock").html(str);  
+      $("#LoadItem").html(str1);  
+      timecountdown();
+    //}
   });
 }
 
@@ -262,6 +275,9 @@ function GetOldCoin() {
       //console.log("Old CoinID="+CoinID);
       //console.log("Old Coin = "+OldCoinIN);
     });
+    //CalPoint();
+    MyPoint();
+
     /*
     if(CheckOld==0) {
       dbttbAuctionCoin.add({
@@ -291,13 +307,13 @@ function ClickAuction() {
   str += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
   str += '<th scope="col">รายการ</th><th scope="col">จำนวน</th></tr></thead><tbody>';
   str += '<tr><th scope="row" style="text-align: left;">ประมูลครั้งละ</th>';
-  str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ xAuctionCoin +' เหรียญรางวัล</font></td></tr>';
+  str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ xAuctionCoin +' เหรียญ</font></td></tr>';
   str += '<tr><th scope="row" style="text-align: left;">ครั้งที่ประมูล</th>';
   str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ xAuctionTime +' ครั้ง</font></td></tr>';
   str += '<tr><th scope="row" style="text-align: left;">ราคาล่าสุด</th>';
-  str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ xAuctionPrice +' เหรียญรางวัล</font></td></tr>';
+  str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ xAuctionPrice +' เหรียญ</font></td></tr>';
   str += '<tr><th scope="row" style="text-align: left;">ราคาประมูลตอนนี้</th>';
-  str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ LastPrice +' เหรียญรางวัล</font></td></tr>';
+  str += '<td style="text-align: center; line-height: 1.2;"><font color="#0056ff">'+ LastPrice +' เหรียญ</font></td></tr>';
   str += '</tbody></table></div>';
   str += '<div class="clr"></div>';
 
@@ -314,7 +330,6 @@ function ClickAuction() {
 
 function BeForConfirm() {
   CheckLastPrice();
-
   NewDate();
   var TimeStampDate = Math.round(Date.now() / 1000);
   $("#ConfirmItem").html('<img src="./img/loading1.gif" style="padding-top:10px;width:25px;margin-bottom: 30px;">');  
@@ -327,24 +342,28 @@ function BeForConfirm() {
       SendCoinBack(doc.id,doc.data().EmpID,doc.data().CoinIN);
     });
     SaveNewData();
+    //CalPoint();
+    //MyPoint();
   });
 
 }
 
 
 function SendCoinBack(eid,empid,coin) {
+  //CalPoint();
   dbttbMember.where('EmpID','==',empid)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      //console.log("Send Coin Back ==="+doc.data().EmpID);
       AddCoinBack(eid,doc.id,coin);
     });
+    //CalPoint();
+    //MyPoint();
   });
 }
 
-
+var xCoinOld = 0;
 function AddCoinBack(eid,id,coin) {
-  var xCoinOld = 0;
+  xCoinOld = 0;
   dbttbMember.where(firebase.firestore.FieldPath.documentId(), "==", id)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
@@ -353,17 +372,23 @@ function AddCoinBack(eid,id,coin) {
     dbttbMember.doc(id).update({
       RP_Point : parseFloat(xCoinOld)
     });
+    console.log("CoinOld="+xCoinOld);
+    sessionStorage.setItem("RP_Point", xCoinOld);
     dbttbAuctionCoin.doc(eid).delete();
+    MyPoint();
+    OpenPopMenu();
+    //CalPoint();
+    //CalPoint();
     //console.log("Delete");
   });
 }
 
 
 function SaveNewData() {
-  CalPoint();
   NewDate();
   var TimeStampDate = Math.round(Date.now() / 1000);
   var xHeader = xAuctionName;
+  console.log(parseFloat(sessionStorage.getItem("RP_Point"))+"==="+parseFloat(LastPrice));
   dbttbMember.doc(sessionStorage.getItem("RefID_Member")).update({
     RP_Point : parseFloat(sessionStorage.getItem("RP_Point")) - parseFloat(LastPrice)
   });
@@ -405,8 +430,9 @@ function SaveNewData() {
     Status_Confirm : 0,
     LogTimeStamp : TimeStampDate
   })
+  //sessionStorage.setItem("RP_Point", CoinOld);
+  //CalPoint();
   MyPoint();
-  CalPoint();
   OpenPopMenu();
   ListItem();
   ListUserAuction();

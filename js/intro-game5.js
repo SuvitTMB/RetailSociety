@@ -12,9 +12,6 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbttbQuiz = firebase.firestore().collection("ttbGameRock");
-  //CalPoint();
-  //MyPoint();
-
   SelectBoxGroup('A');
   CheckUserScore();
   CheckUserQuiz();
@@ -30,8 +27,8 @@ function CheckUserScore() {
     snapshot.forEach(doc=> {
       //var CalRatio = ((doc.data().RockTime/6)*100);
       var UserAll = parseFloat(doc.data().RockWin) + parseFloat(doc.data().RockLost);
-      var CalTrue = ((parseFloat(doc.data().RockWin)/UserAll)*100);
-      var CalFalse = ((parseFloat(doc.data().RockLost)/UserAll)*100);
+      var CalTrue = ((parseFloat(doc.data().RockWin)/parseFloat(doc.data().RockTime))*100);
+      var CalFalse = ((parseFloat(doc.data().RockLost)/parseFloat(doc.data().RockTime))*100);
       if(Number.isNaN(CalTrue)) { CalTrue = 0; }
       if(Number.isNaN(CalFalse)) { CalFalse = 0; }
       document.getElementById('Loading').style.display='none';

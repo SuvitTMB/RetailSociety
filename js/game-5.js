@@ -28,8 +28,8 @@ $(document).ready(function () {
   CheckUserScore();
   CheckUserQuiz();
   OpenPopMenu();
-  $("#computer").html('<div class="hand gray" style="float: left;width:50%;"><img src="./icon/com-rock.png" style="width:100%;"></div>');
-  $("#user").html('<div class="hand1 gray" style="float: left;width:50%;"><img src="./icon/user-rock.png" style="width:100%;"></div>');
+  $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand gray" style="width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
+  $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1 gray" style="width:100%;"><img src="./icon/user-rock.png" style="width:100%;"></div></div>');
 });
 
 
@@ -63,6 +63,8 @@ function CheckUserQuiz() {
       //$("#DisplayWarning").html(intwarning);
       //BoxNumber();
       //StartNumber();
+
+
       AddNewUser();
     }
   });
@@ -124,24 +126,28 @@ function CheckClick(userChoice) {
   document.getElementById('Loading1').style.display='block';
   const RandomNumber = drinks[Math.floor(Math.random() * drinks.length)];
   compChoice = RandomNumber;
+
+  $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand gray" style="width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
+
+
   if(compChoice=="rock") {
-    $("#computer").html('<div class="hand" style="float: left;width:50%;"><img src="./icon/com-rock.png" style="width:100%;"></div>');
+    $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
     console.log("ฆ้อน");
   } else if(compChoice=="paper") { 
-    $("#computer").html('<div class="hand" style="float: left;width:50%;"><img src="./icon/com-paper.png" style="width:100%;"></div>');
+    $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-paper.png" style="width:100%;"></div></div>');
     console.log("กระดาษ");
   } else if(compChoice=="scissors") { 
-    $("#computer").html('<div class="hand" style="float: left;width:50%;"><img src="./icon/com-scissors.png" style="width:100%;"></div>');
+    $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-scissors.png" style="width:100%;"></div></div>');
     console.log("กรรไกร");
   }
   if(userChoice=="rock") {
-    $("#user").html('<div class="hand1" style="float: left;width:50%;"><img src="./icon/user-rock.png" style="width:100%;"></div>');
+    $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1" style="float: left;width:100%;"><img src="./icon/user-rock.png" style="width:100%;"></div></div>');
     console.log("ฆ้อน");
   } else if(userChoice=="paper") { 
-    $("#user").html('<div class="hand1" style="float: left;width:50%;"><img src="./icon/user-paper.png" style="width:100%;"></div>');
+    $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1" style="float: left;width:100%;"><img src="./icon/user-paper.png" style="width:100%;"></div></div>');
     console.log("กระดาษ");
   } else if(userChoice=="scissors") { 
-    $("#user").html('<div class="hand1" style="float: left;width:50%;"><img src="./icon/user-scissors.png" style="width:100%;"></div>');
+    $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1" style="float: left;width:100%;"><img src="./icon/user-scissors.png" style="width:100%;"></div></div>');
     console.log("กรรไกร");
   }
   if (userChoice === compChoice) {

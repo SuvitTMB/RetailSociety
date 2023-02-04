@@ -22,6 +22,7 @@ $(document).ready(function () {
 
 var CheckPass = 0;
 function CheckUserScore() {
+  MyPoint();
   dbttbMember.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
@@ -103,34 +104,6 @@ function UserBoard(x) {
   });
 }
 
-/*
-function TopDayBoard(x) {
-  SelectBoxGroup(x);
-  document.getElementById('LoadingScore').style.display='block';
-  document.getElementById('UserScore').style.display='none';
-  var i = 0;
-  var str = "";
-  str += '<table class="table" style="width:95%; margin:20px auto;"><tbody>';
-  dbttbQuiz.where('QuizDate','==',today)
-  .orderBy('PointOUT','desc')
-  .orderBy('TimeStamp','desc')
-  .limit(30)
-  .get().then((snapshot)=> {
-    snapshot.forEach(doc=> {
-      str += '<tr>';
-      str += '<td class="td-center td-padding" style="width:40%;text-align:left;font-size:11px;">'+doc.data().DateRegister+'</td>';
-      str += '<td class="td-padding" style="width:45%;"><font color="#0056ff">'+doc.data().EmpName+'</font></td>';
-      str += '<td class="td-padding" style="width:15%;text-align:center;"><font color="#000"><b>'+doc.data().PointOUT+'</b></font></td>';
-      str += '</tr>';
-      i++;
-    }); 
-    str += '</tbody></table>';
-    $("#UserScore").html(str);  
-    document.getElementById('LoadingScore').style.display='none';
-    document.getElementById('UserScore').style.display='block';
-  });
-}
-*/
 
 function LeaderBoard(x) {
   SelectBoxGroup(x);
