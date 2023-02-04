@@ -356,16 +356,16 @@ p {
 
 @media (max-width: 991px) {
   .font14F {
-    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: block;
+    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
   }
   .font13F {
-    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: block;
+    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
   }
   .font13N {
-    font-size: 13px; color:#fff; display: block;
+    font-size: 13px; color:#fff; 
   }
   .font13black {
-    font-size: 13px; color:#111; line-height: 1.2; text-align: left; display: block;
+    font-size: 13px; color:#111; line-height: 1.2; text-align: left;   display: inline-block;
   }
 
 }
