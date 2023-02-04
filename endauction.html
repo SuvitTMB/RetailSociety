@@ -30,6 +30,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+
+
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
+
   <style>
     .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
       padding-right: 5px; padding-left: 5px;
@@ -45,12 +50,57 @@
     }
     .button, select { font-size: 14px; font-weight: 600; }
     .label {  font-size: 13px; color:#111; }
-    .td-center { background-color: #ffffff !important; }
-    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th { 
-      background-color: #fff;
-    }
   </style>
 
+  <style type="text/css">
+      .w3-container, .w3-panel {
+        padding:0px;
+      }
+      table.dataTable tbody th, table.dataTable tbody td {
+        padding: 2px 6px;
+        font-size: 13px; color:#000; line-height: 1.2; 
+      }
+      table.dataTable thead th, table.dataTable thead td {
+          background: #94a9b3; color: #ffffff; padding: 4px; margin-top:15px;
+          font-size: 13px; color:#000; line-height: 1.2; 
+      }
+      table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
+          font-size: 13px; color:#000; line-height: 1.2; 
+      }
+      .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate { 
+          margin-bottom: 10px;
+      }
+      .table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td { padding: 6px 4px; }
+      .table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td { padding: 6px 4px; }
+      .txt-center { text-align: center; }
+      .txt-right { text-align: right; right: 10px; }
+      .a { width:10px; text-align: center;}
+      .b { height:10px; text-align: center;}
+      .table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd { 
+        cursor: pointer; 
+      }
+      table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 { 
+        vertical-align: text-top;
+      }
+      table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+        vertical-align: text-top;
+      }
+      .table.dataTable tbody tr {
+        background:#ff0000;
+      }
+      .table.dataTable tbody tr { 
+        cursor: pointer; 
+      }
+      table.dataTable thead th, table.dataTable thead td { padding: 9px; }
+      .btn-add {
+        max-width:50px !important; padding:2px 5px; font-size: 13px; margin-top:0px;
+        min-width: 50px;
+      }
+      .dataTables_wrapper .dataTables_filter input {
+        border-radius: 5px; padding:5px 12px; font-size: 13px; background-color: #e0e5ec; color:#111; font-weight: 600;
+        border:2px solid #fff ;
+      }
+  </style>
 </head>
 
 <body>
@@ -71,7 +121,7 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <div class="font13F">เกมส์โซน</div>
+          <h4 style="font-size:14px;color:#fff;">เกมส์โซน</h4>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
             <li><a href="gamezone.html">เกมส์โซน</a></li>
@@ -81,10 +131,11 @@
       </div>
     </section>
 
+<!--
     <section id="NewsUpdate" class="blog section-bg" style="margin-top:0px; background-color: #ECEFF1; height: 90px; ">
       <div id="DisplayRPPoint"></div>
     </section>
-
+-->
     <section id="blog" class="blog" style="padding-top:10px;background-color: #fff;">
       <div class="container" style="max-width: 450px;">
         <center>
@@ -101,62 +152,47 @@
       <div class="container" style="max-width: 450px;">
         <center>
           <div style="margin:0px auto 30px auto;">
-            <div class="btn-t3" onclick="location.href='intro-game4.html'" style="background-color: #fff;">สินค้ากำลังประมูล</div>
+            <div class="btn-t3">ผู้ชนะการประมูล</div>
           </div>
-          <div id="LoadStock" style="margin-top:-10px;"></div>
-          <div class="clr"></div>
-          <div class="btn-t2" onclick="location.href='endauction.html'">ดูผู้ชนะการประมูล</div>
-          <div class="btn-t2" onclick="location.href='gamezone.html'" style="margin:20px auto;">กลับหน้า Game Zone</div>
-          <div class="clr" style="height: 25px;"></div>
         </center>
+
+        <div class="sidebar-item recent-posts">
+          <div style="width:98%; margin:0 auto;">
+            <table id="ex-table" class="display" style="width:100%;font-size: 11px;color:#444444;">
+              <thead>
+                <tr>
+                  <th style="width:10%;text-align: center;">img</th>
+                  <th style="width:81%;text-align: center;">คำถาม</th>
+                  <th style="width:8%;text-align: center;">โพส</th>
+                  <th style="width:1%;text-align: center;display: none;">Time</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="clr"></div>
+          <center>
+            <div class="btn-t2" onclick="location.href='intro-game4.html'">ดูสินค้ากำลังประมูล</div>
+            <div class="btn-t2" onclick="location.href='gamezone.html'" style="margin:20px auto;">กลับหน้า Game Zone</div>
+          </center>
+          <div class="clr" style="height: 25px;"></div>
+        </div>
+
+
       </div>
     </section>
   </main>
 
 
+<!--
   <div id="id01" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;">
-        <div id="DisplayVDO"></div>
-        <div class="clr" style="height:20px;"></div>
-      </div>
+    <div class="w3-modal-content w3-card-4" style="background-color: #fff; padding:24px;text-align: center;">
+      <div id="DisplayQuestion"></div>
+
+
     </div>
     <div class="clr" style="height:70px;"></div>
   </div>
-
-
-  <div id="id02" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;">
-        <div id="DisplayGetPoint"></div>
-      </div>
-    </div>
-    <div class="clr" style="height:70px;"></div>
-  </div>
-
-  <div id="id03" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4" style="background: #fff;">
-      <div class="w3-container" style="min-height:300px;width:100%;text-align:center; padding:0;">
-        <div><img src="./img/touch-mobile.gif" width="100%"></div>
-        <div class="btn-t3" style="margin-top:20px auto;">เกมส์วัดดวง</div>
-        <div class="text-team" style="margin:15px 15px 10px 15px;text-align: left;line-height: 1.2;color:#111;">วิธีการและกติการการเข้าร่วมกิจกรรม เกมส์วัดดวง</div>
-        <div>
-          <ul style="font-size: 13px; text-align: left; color:#002d63;">
-            <li>ผู้เข้าแข่งขันสามารถเข้าเก็บคะแนนเกมส์นี้ได้วันละ 1 ครั้ง</li>
-            <li>เกมส์นี้เป็นเกมส์ทายตัวเลขน้อยกว่า เท่ากับ หรือมากกว่า</li>
-            <li>ถ้าทายผลถูกตัวเลขได้ถูกต้องทั้ง 4 แผ่นป้าย รับ 1 เหรียญรางวัล</li>
-            <li>กรณีตอบผิดเกมส์การแข่งขันสิ้นสุด และจะไม่ได้เหรียญรางวัล</li>
-            <li>ถ้าพร้อมที่จะเข้าแข่งขันแล้วกด "<b>เริ่มเกมส์</b>"</li>
-          </ul>
-        </div>
-        <div class="clr"></div>
-        <div class="btn-t1" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>
-        <div class="clr" style="height:30px;"></div>
-      </div>
-    </div>
-    <div class="clr" style="height:70px;"></div>
-  </div>
-
+-->
   <div id="menu" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content w3-card-4 bg-menu">
       <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
@@ -185,10 +221,25 @@
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Data Table -->
+  <script src='https://code.jquery.com/jquery-1.12.3.js'></script>
+  <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js'></script>
+  <script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js'></script>
+  <script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js'></script>
+
+
+  <!-- Template Main JS File -->
   <script src="js/connect.js"></script>
-  <script src="js/intro-game4.js"></script>
+  <script src="js/endauction.js"></script>
   <script src="js/menu.js"></script>
 
 </body>
