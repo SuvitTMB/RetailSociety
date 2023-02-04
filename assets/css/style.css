@@ -354,22 +354,27 @@ p {
   color: #438fff;
 }
 
+@media (max-width: 991px) {
+  .font14F {
+    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: block;
+  }
+  .font13F {
+    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: block;
+  }
+  .font13N {
+    font-size: 13px; color:#fff; display: block;
+  }
+  .font13black {
+    font-size: 13px; color:#111; line-height: 1.2; text-align: left; display: block;
+  }
+
+}
+
+
 @media (max-width: 768px) {
   .header-social-links {
     padding: 0 48px 0 0;
     border-left: 0;
-  }
-  .font14F {
-    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
-  }
-  .font13F {
-    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
-  }
-  .font13N {
-    font-size: 13px; color:#fff; 
-  }
-  .font13black {
-    font-size: 13px; color:#111; line-height: 1.2; text-align: left;
   }
 }
 
