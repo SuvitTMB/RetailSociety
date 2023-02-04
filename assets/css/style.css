@@ -356,10 +356,10 @@ p {
 
 @media (max-width: 991px) {
   .font14F {
-    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
+    font-size: 14px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: inline-block;
   }
   .font13F {
-    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px;
+    font-size: 13px; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: inline-block;
   }
   .font13N {
     font-size: 13px; color:#fff; 
