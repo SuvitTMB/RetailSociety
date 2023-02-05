@@ -178,6 +178,7 @@ function ListItem() {
     //  console.log("ไม่มีรายการประมูลในขณะนี้");
     //} else {
       MyPoint();
+      OpenPopMenu();
       $("#LoadStock").html(str);  
       $("#LoadItem").html(str1);  
       timecountdown();
@@ -272,25 +273,9 @@ function GetOldCoin() {
       CheckOld = 1;
       CoinID = doc.id;
       OldCoinIN = doc.data().CoinIN;
-      //console.log("Old CoinID="+CoinID);
-      //console.log("Old Coin = "+OldCoinIN);
     });
-    //CalPoint();
     MyPoint();
-
-    /*
-    if(CheckOld==0) {
-      dbttbAuctionCoin.add({
-        RefID : ReadID,
-        EmpID : sessionStorage.getItem("EmpID_Society"),
-        CoinIN : 0,
-        LogDate : dateString,
-        LogTimeStamp : TimeStampDate
-      })
-      CheckCoinID();
-      console.log("Point Coin = 0");
-    }
-    */
+    OpenPopMenu();
   });
 }
 
@@ -367,10 +352,11 @@ function AddCoinBack(eid,id,coin) {
   dbttbMember.where(firebase.firestore.FieldPath.documentId(), "==", id)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
+      console.log("โอนคะแนนไปที่ -->"+doc.data().EmpID);
       xCoinOld = parseFloat(doc.data().RP_Point) + parseFloat(coin);
-    });
-    dbttbMember.doc(id).update({
-      RP_Point : parseFloat(xCoinOld)
+      dbttbMember.doc(id).update({
+        RP_Point : parseFloat(xCoinOld)
+      });
     });
     console.log("CoinOld="+xCoinOld);
     sessionStorage.setItem("RP_Point", xCoinOld);
