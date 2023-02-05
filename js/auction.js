@@ -22,7 +22,7 @@ var gAuctionTime = 0;
 var gAuctionPrice = 0;
 var mAuctionTime = 0;
 var mAuctionPrice = 0;
-
+var OldCoinINuser = 0;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
@@ -110,7 +110,8 @@ function stopcountdown() {
 
 
 function ListItem() {
-  //CalPoint();
+  CalPoint();
+  console.log("point-in = "+sessionStorage.getItem("RP_Point"));
   //MyPoint();
   var str = "";
   var str1 = "";
@@ -160,6 +161,7 @@ function ListItem() {
         //str += '</div>';
         str1 += '<div class="clr"></div>';
         str1 += '<center>';
+        console.log("session point = "+sessionStorage.getItem("RP_Point")+OldCoinINuser);
         if(doc.data().AuctionClose==0) {
           if(parseFloat(sessionStorage.getItem("RP_Point"))>=parseFloat(LastPrice)) {
             //console.log("1==="+LastPoint+">"+sessionStorage.getItem("RP_Point")+"==="+doc.data().AuctionClose+"==="+doc.data().AuctionClose);
@@ -272,7 +274,11 @@ function GetOldCoin() {
     snapshot.forEach(doc=> {
       CheckOld = 1;
       CoinID = doc.id;
-      OldCoinIN = doc.data().CoinIN;
+      if(sessionStorage.getItem("EmpName_Society")==doc.data().EmpID) {
+        OldCoinINuser = doc.data().CoinIN;
+      } else {
+        OldCoinIN = doc.data().CoinIN;
+      }
     });
     MyPoint();
     OpenPopMenu();
