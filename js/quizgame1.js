@@ -174,7 +174,7 @@ function gotoGame1(x) {
        if(xCheck1==0) {
           str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
           str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-          str += '<div class="font13black"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+          str += '<div class="font13black"><font style="color:#ff0000;"><br><br><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
        } else {
           str += '<div class="btn-t2" onclick="CloseAll()" style="margin:10px auto 25px auto;">ปิดหน้าต่างนี้</div>';
        }
@@ -183,7 +183,7 @@ function gotoGame1(x) {
        if(xCheck2==0) {
           str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
           str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-          str += '<div class="font13black"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+          str += '<div class="font13black"><font style="color:#ff0000;"><br><br><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
        } else {
           str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
        }
@@ -192,7 +192,7 @@ function gotoGame1(x) {
        if(xCheck3==0) {
           str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
           str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-          str += '<div class="font13black"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+          str += '<div class="font13black"><font style="color:#ff0000;"><br><br><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
        } else {
           str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
        }
@@ -201,7 +201,7 @@ function gotoGame1(x) {
        if(xCheck4==0) {
           str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
           str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-          str += '<div class="font13black"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+          str += '<div class="font13black"><font style="color:#ff0000;"><br><br><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
        } else {
           str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
        }
@@ -210,7 +210,7 @@ function gotoGame1(x) {
        if(xCheck5==0) {
           str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
           str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-          str += '<div class="font13black"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+          str += '<div class="font13black"><font style="color:#ff0000;"><br><br><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
        } else {
           str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
        }
@@ -219,7 +219,7 @@ function gotoGame1(x) {
        if(xCheck6==0) {
           str += '<div class="btn-t2-no" onclick="BeForRandom('+x+')" style="margin-top:10px;">ฉันเข้าใจแล้ว</div>';
           str += '<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">ขอทบทวนใหม่</div>';
-          str += '<div class="font13black"><font style="color:#ff0000;"><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
+          str += '<div class="font13black"><font style="color:#ff0000;"><br><br><b>กรุณาใช้เวลาทำความเข้าใจก่อนทำรายการต่อไป</b></font><br><b>คลิกฉันเข้าใจแล้ว และไปลุ้นเหรียญรางวัลกันเลย</b></div>';
        } else {
           str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:10px;">ปิดหน้าต่างนี้</div>';
        }
