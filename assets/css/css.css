@@ -315,7 +315,7 @@
 .box-reward1 { width:4%; float: left; height: 60px; padding:6px;}
 .XPpoint {
   font-size: 16px; font-weight: 600; color:#0056ff; text-align: center; 
-  /*margin:4px auto;*/ margin-top:4px;
+  /*margin:4px auto;*/ margin-top:8px;
 }
 
 
@@ -880,11 +880,11 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   border-top-right-radius: 20px; width:100%;
 }
 .wb-header {
-  color:#0056ff; font-weight: 600; font-weight: 600; padding-top:10px; letter-spacing: 0px; font-size: 13px;
+  color:#0056ff; font-weight: 600; font-weight: 600; padding-top:10px; letter-spacing: 0px; font-size: 14px;
   line-height: 1.1;
 }
 .wb-subheader {
-  color:#002d63; font-weight: 400; font-weight: 600; margin-top:0px; font-size: 12px;
+  color:#002d63; font-weight: 400; font-weight: 600; margin-top:0px; font-size: 13px;
   line-height: 1.1; padding-top:3px;
 }
 .main-wb {
@@ -896,10 +896,10 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   border-top-right-radius: 20px;
 }
 .text-subtopic1 {
-  padding:20px 10px 20px 10px;line-height: 1.2;color:#002d63; font-size: 12px;
+  padding:20px 10px 20px 10px;line-height: 1.2;color:#002d63; font-size: 14px;
 }
 .text-subtopic2 {
-  padding:0px 10px 10px 10px;line-height: 1.2;color:#002d63; font-size: 12px;
+  padding:0px 10px 10px 10px;line-height: 1.2;color:#002d63; font-size: 14px;
 }
 .text-subtopic3 {
   padding-top:20px;line-height: 1.2;color:#999; font-weight: 600;
