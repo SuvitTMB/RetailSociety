@@ -57,8 +57,8 @@ function ListRewards() {
       //(alert(doc.data().WheelRandom);
     if(doc.data().WheelRandom==1) {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
-      str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards">';
-      str += '<div class="font13black" style="color:#0056ff;">'+ doc.data().RewardsName +'</div>';
+      str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards"><div class="clr"></div>';
+      str += '<div class="font13black" style="color:#0056ff;font-weight: 600;">'+ doc.data().RewardsName +'</div>';
       str += '<div class="font12a">'+ doc.data().RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px;">';
       if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
@@ -88,8 +88,8 @@ function ListRewards() {
       }
     } else {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">';
-      str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards">';
-      str += '<div class="font13black" style="color:#0056ff;">'+ doc.data().RewardsName +'</div>';
+      str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards"><div class="clr"></div>';
+      str += '<div class="font13black" style="color:#0056ff;font-weight: 600;">'+ doc.data().RewardsName +'</div>';
       str += '<div class="font12a">'+ doc.data().RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px;">';
       if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
@@ -188,8 +188,8 @@ function OpenLink(x,price,i) {
       xRewardsStock = parseFloat(results[0].RewardsStock);
       xRewardsid = results[0].id;
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
-      str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ results[0].RewardsCode +'" style="width:200px;margin-top:10px;">';
-      str += '<div class="font13black" style="color:#0056ff;">'+ results[0].RewardsName +'</div>';
+      str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ results[0].RewardsCode +'" style="width:200px;margin-top:10px;"><div class="clr"></div>';
+      str += '<div class="font13black" style="color:#0056ff;font-weight: 600;">'+ results[0].RewardsName +'</div>';
       str += '<div class="font12a" style="overflow: visible; max-height:80px;">'+ results[0].RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px; width:52%; margin:10px auto;">';
       str += '<div class="rewards-linkA" style="width:100%;">';
@@ -223,8 +223,8 @@ function CheckRewards(x,price,i,xRP) {
       if(doc.data().RewardsStock==0) {
         str += '<div class="btn-t3" style="cursor: default;margin-top:10px;background:#fff;">ทำรายการไม่สำเร็จ</div>';
         str += '<div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
-        str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;">';
-        str += '<div class="font13black" style="color:#0056ff;">'+ xRewardsName +'</div>';
+        str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;"><div class="clr"></div>';
+        str += '<div class="font13black" style="color:#0056ff;font-weight: 600;">'+ xRewardsName +'</div>';
         str += '<div class="font12black" style="color:#ff0000;margin:8px auto;text-align:center;"><b>เนื่องจากของรางวัลหมดแล้ว</b></div>';
         str += '</div></div></center><div class="clr"></div>';
         str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</div>';
@@ -320,8 +320,8 @@ function ShowItem(i) {
   if(xWheelRandom==1) {
     str += '<div class="btn-t3" style="cursor: default;margin-top:10px;background:#fff;">ทำรายการแลกสำเร็จ</div>';
     str += '<div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
-    str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;">';
-    str += '<div class="font13black" style="color:#0056ff;">'+ xRewardsName +'</div>';
+    str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;"><div class="clr"></div>';
+    str += '<div class="font13black" style="color:#0056ff;font-weight: 600;">'+ xRewardsName +'</div>';
     str += '<div class="font12black" style="color:#f68b1f;margin:8px auto;text-align:center;">ทำรายการ : '+ dateString +'</div>';
     str += '<div class="font12black" style="color:#777;margin:8px auto;text-align:center;">ระบบได้ทำการตัดเหรียญรางวัลของคุณไปเรียบร้อยแล้ว ขอให้กดปุ่มด้านล่างเพื่อไปหมุนวงล้อกัน หากไม่กดปุ่มและออกจากหน้านี้จะหมดสิทธิ์ในการหมุนวงล้อมหาสนุกนะ</div>';
     str += '</div></div></center><div class="clr"></div>';
@@ -333,8 +333,8 @@ function ShowItem(i) {
   } else {
     str += '<div class="btn-t3" style="cursor: default;margin-top:10px;background:#fff;">ทำรายการแลกสำเร็จ</div>';
     str += '<div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
-    str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;">';
-    str += '<div class="font13black" style="color:#0056ff;">'+ xRewardsName +'</div>';
+    str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;"><div class="clr"></div>';
+    str += '<div class="font13black" style="color:#0056ff;font-weight: 600;">'+ xRewardsName +'</div>';
     str += '<div class="font12black" style="color:#f68b1f;margin:8px auto;text-align:center;">ทำรายการ : '+ dateString +'</div>';
     str += '<div class="font12black" style="color:#777;margin:8px auto;text-align:center;">ระบบได้ทำการบันทึกรายการแลกของรางวัลของคุณเรียบร้อยแล้ว หากปฏิบัติงานอยู่ ณ สำนักงานใหญ่ ให้ติดต่อขอรับรางวัลได้ที่ชั้น 18A</div>';
     str += '</div></div></center><div class="clr"></div>';
