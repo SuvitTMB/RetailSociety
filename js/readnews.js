@@ -91,7 +91,7 @@ function ShowView() {
       }
       str += '<div id="ShowClickLike"></div>';
       str += '</div></div>';
-      str += '<h2 class="entry-title">'+ doc.data().NewsHeader +'</h2>'
+      str += '<div class="entry-title font13black">'+ doc.data().NewsHeader +'</div>'
       if(doc.data().NewsVDO!="") {
         str += '<div style="margin:0px auto 10px auto;">'+ doc.data().NewsVDO +'</div>'
       }
@@ -100,7 +100,7 @@ function ShowView() {
       str += '<li class="d-flex align-items-center"><i class="icofont-file-spreadsheet"></i> '+ doc.data().NewsView +' อ่าน</li>';
       str += '<li class="d-flex align-items-center"><i class="icofont-comment"></i> '+ doc.data().NewsMemo +' ความเห็น</li>';
       str += '</ul></div>';
-      str += '<div class="entry-content"><p>'+ doc.data().NewsDetail +'</p></div>';
+      str += '<div class="entry-content font13black">'+ doc.data().NewsDetail +'</div>';
       if(doc.data().NewsLink!="") { 
         str += '<div class="clr">[ <a href="'+doc.data().NewsLink+'" target="_blank" class="text-link">คลิกดูรายละเอียดเพิ่มเติม</a> ]</div>';
         str += '<div class="clr" style="height:12px;"></div>';
@@ -108,7 +108,7 @@ function ShowView() {
       $("#DisplayIMG").html(str);
       str1 += '<div class="boxvdo-line2" style="margin:20px auto 10px auto;">';
       if(doc.data().NewsDetail!="") {
-        str1 += '<div class="text-memo">'+doc.data().NewsDetail+'</div><div class="clr" style="height:8px;"></div>';
+        str1 += '<div class="text-memo font13black">'+doc.data().NewsDetail+'</div><div class="clr" style="height:8px;"></div>';
         if(doc.data().NewsLink!="") { 
           str1 += '<div class="clr"><div><a href="'+doc.data().NewsLink+'" target="_blank" class="text-link">คลิกดูรายละเอียดเพิ่มเติม</a></div></div>';
           str1 += '<div class="clr" style="height:12px;"></div>';
