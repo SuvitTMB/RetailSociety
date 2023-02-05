@@ -195,7 +195,7 @@ function ListItem() {
 function ListUserAuction() {
   var i = 1;
   count = 0;
-  dataSet = "";
+  dataSet = [];
   dataSrc = [];
   dbttbAuctionlog
   .where('RefID','==',ReadID)
