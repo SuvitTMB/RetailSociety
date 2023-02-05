@@ -43,7 +43,7 @@ input[type=text], textarea {
   -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
-  font-size: 13px;
+  font-size: 13px !important;
 }
 textarea:focus { 
   outline: none !important;
