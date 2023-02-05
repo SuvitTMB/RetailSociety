@@ -213,7 +213,7 @@ function ListUserAuction() {
       data: dataSrc,
       columns: [
         { title: "รูป", className: "txt-center" },
-        { title: "ผู้เข้าแข่งขัน" },
+        { title: "ข้อมูลผู้เข้าร่วมประมูล" },
         { title: "เหรียญ", className: "txt-center" }
         ],
         dom: 'lfrtipB',
