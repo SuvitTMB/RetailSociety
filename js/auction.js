@@ -429,9 +429,9 @@ function SaveNewData() {
   MyPoint();
   OpenPopMenu();
   ListItem();
-  //$('#ex-table').DataTable().destroy();
-  //$("#ex-table tbody").remove();
-  //ListUserAuction();
+  $('#ex-table').DataTable().destroy();
+  $("#ex-table tbody").remove();
+  ListUserAuction();
   $("#ConfirmItem").html('<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">บันทึกการประมูลเรียบร้อยแล้ว</div>');  
 }
 
