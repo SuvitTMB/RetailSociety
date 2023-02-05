@@ -22,10 +22,10 @@
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
-  <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/ttb.css" rel="stylesheet">
   <link href="assets/css/css.css" rel="stylesheet">
   <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
@@ -63,7 +63,7 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h4 style="font-size:14px;color:#fff;">ข่าวสารองค์กร</h4>
+          <div class="font13F">ข่าวสารองค์กร</div>
           <ol style="margin-top:-10px;">
             <li><a href="home.html">Home</a></li>
             <li><a href="groupnews.html">หมวดข่าวสาร</a></li>
@@ -115,19 +115,19 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="sidebar" data-aos="fade-left">
-              <h3 class="sidebar-title" style="font-size:13px;">ค้นหาข่าวสาร</h3>
+              <div class="sidebar-title font13black">ค้นหาข่าวสาร</div>
               <div class="sidebar-item search-form">
               <form action="">
                 <input type="text" onclick="window.location.href='groupnews.html#SearchNews'">
                 <button type="submit"><i class="icofont-search"></i></button>
               </form>
               </div>
-              <h3 class="sidebar-title" style="font-size:13px;">ข่าวสารล่าสุด</h3>
+              <div class="sidebar-title font13black">ข่าวสารล่าสุด</div>
               <div class="sidebar-item recent-posts">
                 <div id="DisplayNewsUpdate"></div>
                 <center>
-                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
                   <div class="btn-t2" onclick="GotoGroupNews()" type="submit" style="margin-top:20px;font-size:14px;">ดูข่าวทั้งหมด</div>
+                  <div class="btn-t2" onclick="GotoHome()" type="submit" style="margin-top:20px;font-size:14px;">กลับไปหน้าแรก</div>
                 </center>
               </div>
             </div>
