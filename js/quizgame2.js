@@ -235,7 +235,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">เริ่มต้นใช้งาน ttb touch ง่าย ๆ ได้ทุกคน</div>';
-      str += '<div class="font13" style="text-align:left;">เรามาพร้อมกับฟีเจอร์ใหม่ที่ชาญฉลาด<br>และวิธีการใช้งานที่ง่ายขึ้น ครอบคลุมทุกธุรกรรม<br>ที่จะมาตอบโจทย์ชีวิตทางการเงินของลูกค้าทุกกลุ่ม</div>';               
+      str += '<div class="font13black" style="text-align:left;">เรามาพร้อมกับฟีเจอร์ใหม่ที่ชาญฉลาด<br>และวิธีการใช้งานที่ง่ายขึ้น ครอบคลุมทุกธุรกรรม<br>ที่จะมาตอบโจทย์ชีวิตทางการเงินของลูกค้าทุกกลุ่ม</div>';               
       str += '</div></div>';
     } else if(x==2) { 
       if(xCheck2==0) { 
@@ -252,7 +252,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่<br>รู้ว่า จะจัดการแอปอย่างไรให้เหมาะกับคุณที่สุด</div>';
-      str += '<div class="font13" style="text-align:left;">ให้คุณจัดการแอปได้อย่างง่าย ๆ ด้วยตัวคุณเอง<br>การจัดการวิดเจ็ต การเปลี่ยนรหัส<br>ตั้งค่าข้อมูลส่วนตัว หรือการรีเซ็ตรหัสผ่าน</div>';               
+      str += '<div class="font13black" style="text-align:left;">ให้คุณจัดการแอปได้อย่างง่าย ๆ ด้วยตัวคุณเอง<br>การจัดการวิดเจ็ต การเปลี่ยนรหัส<br>ตั้งค่าข้อมูลส่วนตัว หรือการรีเซ็ตรหัสผ่าน</div>';               
       str += '</div></div>';
     } else if(x==3) { 
       if(xCheck3==0) {  
@@ -269,7 +269,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ รู้ใจคุณมากขึ้น ลงตัวในแบบเฉพาะคุณ</div>';
-      str += '<div class="font13" style="text-align:left;">สิทธิประโยชน์ที่เป้นของคุณรวมไว้ให้อยู่ที่เดียว จัดการสิทธิประโยชน์ได้อย่างง่าย ๆ</div>';               
+      str += '<div class="font13black" style="text-align:left;">สิทธิประโยชน์ที่เป้นของคุณรวมไว้ให้อยู่ที่เดียว จัดการสิทธิประโยชน์ได้อย่างง่าย ๆ</div>';               
       str += '</div></div>';
     } else if(x==4) { 
       if(xCheck4==0) {  
@@ -285,7 +285,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ทุกเรื่องบัญชีเงินฝาก ttb touch ใหม่</div>';
-      str += '<div class="font13" style="text-align:left;">ช่วยจัดการให้เหมาะกับชีวิตคุณ จัดการบัญชีเงินฝากตามแบบคุณได้อย่างง่าย ๆ</div>';               
+      str += '<div class="font13black" style="text-align:left;">ช่วยจัดการให้เหมาะกับชีวิตคุณ จัดการบัญชีเงินฝากตามแบบคุณได้อย่างง่าย ๆ</div>';               
       str += '</div></div>';
       str += '</div>';
     } else if(x==5) { 
@@ -302,7 +302,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ จัดการบัตรเครดิตตางใจในแบบคุณ</div>';
-      str += '<div class="font13" style="text-align:left;">เปิดการใช้งาน อายัดบัตร/ออกบัตรใหม่ ปรับวงเงิน <br>ตรวจสอบรายการทำรายการแบ่งจ่าย so gooood</div>';               
+      str += '<div class="font13black" style="text-align:left;">เปิดการใช้งาน อายัดบัตร/ออกบัตรใหม่ ปรับวงเงิน <br>ตรวจสอบรายการทำรายการแบ่งจ่าย so gooood</div>';               
       str += '</div></div>';
     } else if(x==6) { 
       if(xCheck6==0) {  
@@ -318,7 +318,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">จัดการสินเชื่อรถยนต์ ให้เหมาะกับชีวิตการเงินคุณ</div>';
-      str += '<div class="font13" style="text-align:left;">ttb touch ใหม่ จัดการสินเชื่อรถยนต์อย่างง่าย ๆ ตามแบบคุณ</div>';               
+      str += '<div class="font13black" style="text-align:left;">ttb touch ใหม่ จัดการสินเชื่อรถยนต์อย่างง่าย ๆ ตามแบบคุณ</div>';               
       str += '</div></div>';
     } else if(x==7) { 
       if(xCheck7==0) {  
@@ -334,7 +334,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ลงทุนอย่างไร ให้เหมาะกับชีวิตคุณ</div>';
-      str += '<div class="font13" style="text-align:left;">ttb touch ใหม่ช่วยให้การลงทุนของคุณง่ายขึ้น พร้อมกับการบริหารและจัดการกองทุนด้ายตัวคุณเอง</div>';               
+      str += '<div class="font13black" style="text-align:left;">ttb touch ใหม่ช่วยให้การลงทุนของคุณง่ายขึ้น พร้อมกับการบริหารและจัดการกองทุนด้ายตัวคุณเอง</div>';               
       str += '</div></div>';
     } else if(x==8) { 
       if(xCheck8==0) {  
@@ -350,7 +350,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่ รู้ทุกกรมธรรม์ที่คุณมี</div>';
-      str += '<div class="font13" style="text-align:left;">พร้อมเตรียมความคุ้มครองที่เหมาะสมที่สุด จัดสรรทุกการคุ้มครองของคุณอย่างง่าย ๆ</div>';               
+      str += '<div class="font13black" style="text-align:left;">พร้อมเตรียมความคุ้มครองที่เหมาะสมที่สุด จัดสรรทุกการคุ้มครองของคุณอย่างง่าย ๆ</div>';               
       str += '</div></div>';
     } else if(x==9) { 
       if(xCheck9==0) {  
@@ -366,7 +366,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">จะกู้ จะผ่อนสินเชื่อย่างไร ให้เข้ากับชีวิตคุณ</div>';
-      str += '<div class="font13" style="text-align:left;">ttb touch จัดการสินเชื่อให้เหมาะสมกับคุณได้อย่างง่ายๆ กับการสมัครสินเชื่อออนไลน์ ชำระสินเชื่อตรวจสอบประวัติ การชำระสินเชื่อ หรือการสมัคร E-Statement</div>';               
+      str += '<div class="font13black" style="text-align:left;">ttb touch จัดการสินเชื่อให้เหมาะสมกับคุณได้อย่างง่ายๆ กับการสมัครสินเชื่อออนไลน์ ชำระสินเชื่อตรวจสอบประวัติ การชำระสินเชื่อ หรือการสมัคร E-Statement</div>';               
       str += '</div></div>';
     }
     if(sVDOnumber!=0 && VDOtimer!=0) {
@@ -394,7 +394,7 @@ function BeForRandom(x) {
     }
     str += '<div class="random-number"><img src="./img/number.gif" width="100%"></div>';    
     str += '<div class="btn-t3" style="margin-top:20px auto;">ระบบสุ่มเหรียญรางวัล</div>';
-    str += '<div class="font13" style="color:#f68b1f;text-align:center; margin:10px auto;"><b>เพื่อให้คุณได้สนุกกับการลุ้นเหรียญรางวัล<br>คุณคิดว่าคุณจะสุ่มได้เหรียญรางวัลเท่าไร?</b></div>';
+    str += '<div class="font13black" style="color:#f68b1f;text-align:center; margin:10px auto;"><b>เพื่อให้คุณได้สนุกกับการลุ้นเหรียญรางวัล<br>คุณคิดว่าคุณจะสุ่มได้เหรียญรางวัลเท่าไร?</b></div>';
     //str += '<div style="font-size:16px;color:#fff;"><input id="MyPointSelect" type="number" placeholder="ทายเหรียญซิ" pattern="[+-]?[0-9]" style="background:#f68b1f;color:#fff;text-align:center;border-radius:5px;min-height:30px;padding:5px;"></div>';
     str += '<div style="width:92%; margin:10px auto 10px auto;">'+ str1 +'</div><div class="clr"></div>';
     str += '<div class="text-subtopic3" style="margin-top:10px;"><b>ทายถูกรับเหรียญรางวัล คูณ 2</b></div>';
