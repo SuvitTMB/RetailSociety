@@ -27,7 +27,7 @@ function RankingMember() {
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       var xPicture = '<center><img src="'+ doc.data().LinePicture +'" class="img-ranking"></center>';
-      var xProfile = '<div style="font-size:12px;"><b>'+ doc.data().EmpName +'</b> ( Level : <b>'+ doc.data().Level_Point +'</b> )<br>Date : '+doc.data().LastUpdate+'</div>';
+      var xProfile = '<div style="font-size:14px;"><b>'+ doc.data().EmpName +'</b> ( Level : <b>'+ doc.data().Level_Point +'</b> )<br>Date : '+doc.data().LastUpdate+'</div>';
       dataSet = [xPicture, xProfile, '<b>'+ parseFloat(doc.data().XP_Point).toFixed(2) +'</b>', i ];
       //dataSet = [i, xNews, doc.data().GetPoint, doc.data().LogTimeStamp, doc.data().RefID, doc.data().NewsGroup];
       dataSrc.push(dataSet);
