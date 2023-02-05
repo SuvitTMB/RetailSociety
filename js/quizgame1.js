@@ -241,7 +241,7 @@ function BeForRandom(x) {
    }
    str += '<div class="random-number"><img src="./img/number.gif" width="100%"></div>';    
    str += '<div class="btn-t3" style="margin-top:20px auto;">ระบบสุ่มเหรียญรางวัล</div>';
-   str += '<div class="font13black" style="color:#f68b1f;text-align:center; margin:10px auto;"><b>เพื่อให้คุณได้สนุกกับการลุ้นเหรียญรางวัล<br>คุณคิดว่าคุณจะสุ่มได้เหรียญรางวัลเท่าไร?<b></div>';
+   str += '<div class="font13black" style="color:#f68b1f;text-align:center; margin:10px auto; font-weight: 600;">เพื่อให้คุณได้สนุกกับการลุ้นเหรียญรางวัล<br>คุณคิดว่าคุณจะสุ่มได้เหรียญรางวัลเท่าไร?</div>';
    str += '<div style="width:92%; margin:10px auto 10px auto;">'+ str1 +'</div><div class="clr"></div>';
    str += '<div class="font13black" style="margin-top:10px; color:#777;">ทายถูกรับเหรียญรางวัล คูณ 2</div>';
    str += '<div class="btn-t2 disabledbutton" id="SubmitApp" onclick="RandomPoint('+x+')" style="margin-top:15px;">คลิกสุ่มเหรียญรางวัล</div><div style="height:30px;"></div>';
