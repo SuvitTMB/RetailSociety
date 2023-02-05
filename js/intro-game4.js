@@ -35,7 +35,7 @@ function AuctionStock() {
         TimeCheckStart(doc.data().AuctionDateStart,i,doc.id);
         str += '<div class="auction-box" id="'+i+'"><div style="width:25%; float: left; margin-right: 5px;">';
         str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
-        str += '<div class="font13black" style="padding:6px 6px 0px 6px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
+        str += '<div class="font13black" style="padding:6px 6px 0px 0px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
         str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
         str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
         str += '<div class="auction-subbox" style="background-color:#002d63;">';
@@ -51,7 +51,7 @@ function AuctionStock() {
         TimeCheckEnd(doc.data().AuctionDateStop,i,doc.id);
         str += '<div class="auction-box" id="'+i+'"><div style="width:25%; float: left; margin-right: 5px;">';
         str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
-        str += '<div class="font13black" style="padding:6px 6px 0px 6px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
+        str += '<div class="font13black" style="padding:6px 6px 0px 0px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
         str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
         str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
         str += '<div class="auction-subbox" style="background-color:#002d63;">';
@@ -137,7 +137,7 @@ function UpdateAuctionStart(x,n,id) {
       TimeCheckEnd(doc.data().AuctionDateStop,n,doc.id);
       str += '<div id="'+n+'"><div style="width:25%; float: left; margin-right: 5px; max-width:450px;">';
       str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
-      str += '<div class="font13black" style="padding:6px 6px 0px 6px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
+      str += '<div class="font13black" style="padding:6px 6px 0px 0px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
       str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
       str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
       str += '<div class="auction-subbox">';
@@ -167,7 +167,7 @@ function UpdateAuctionStop(x,n,id) {
       TimeCheckEnd(doc.data().AuctionDateStop,n,doc.id);
       str += '<div id="'+n+'"><div style="width:25%; float: left; margin-right: 5px;">';
       str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
-      str += '<div class="font13black" style="padding:6px 6px 0px 6px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
+      str += '<div class="font13black" style="padding:6px 6px 0px 0px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
       str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
       str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
       str += '<div class="auction-subbox">';
