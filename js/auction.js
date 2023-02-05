@@ -139,7 +139,7 @@ function ListItem() {
         TimeCheckEnd(doc.data().AuctionDateStop,doc.id);
         str += '<div style="width:25%; float: left; margin-right: 5px;">';
         str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
-        str += '<div class="font13black" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
+        str += '<div class="font13black" style="padding:6px 6px 0px 0px;"><b>'+ doc.data().AuctionName +'</b></div>';
         str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
         str1 += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
         str1 += '<div class="auction-subbox">';
