@@ -1,6 +1,7 @@
 MenuFooter();
 var xCal = 0;
 var xLevel_Point = 0;
+var CoinCheck = 0;
 
 
 if(sessionStorage.getItem("Level_Point")==1) {
@@ -123,6 +124,8 @@ function MyPoint() {
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      CoinCheck = doc.data().RP_Point;
+      console.log("Menu CoinCheck = "+CoinCheck);
       yLine += '<div style="margin:10px 0 20px 0;">';
       yLine += '<div class="container" style="width:90%;padding:5px; max-width:450px;">';
       yLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';

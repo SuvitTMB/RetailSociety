@@ -65,7 +65,9 @@ function CheckUpdate() {
     if(gAuctionPrice==LastPrice) {
       LastPrice = gAuctionPrice;
       ListItem();
-      ListUserAuction();
+      //$('#ex-table').DataTable().destroy();
+      //$("#ex-table tbody").remove();
+      //ListUserAuction();
     }
   });
   timecountdown();
@@ -98,6 +100,7 @@ function timecountdown() {
     qInterval = setInterval(function(){
     if(timeleft <= 0) {
       stopcountdown();
+      MyPoint();
       CheckUpdate();
     }
     },10000);
@@ -132,6 +135,7 @@ function ListItem() {
       xAuctionCoin = doc.data().AuctionCoin;
       xAuctionClose = doc.data().AuctionClose;
       LastPrice = parseFloat(xAuctionPrice) + parseFloat(xAuctionCoin) ;
+      console.log("CoinCheck="+CoinCheck);
       //console.log(LastPrice+"==="+sessionStorage.getItem("RP_Point")+"==="+doc.data().AuctionClose);
       if(doc.data().AuctionType==0) {
         alert("ระบบยังไม่เปิดการประมูล");
@@ -156,17 +160,19 @@ function ListItem() {
         str1 += '<div id="A0" class="font12black" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></center>';
         //str1 += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
         //str1 += '<div class="font11" style="color:#444; padding-top:7px; font-size: 10px;">เหลือเวลาประมูลอีก</div>';
-        //str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></div>';
+        //str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></div>';CoinOld
         str1 += '</div>';
         //str += '</div>';
         str1 += '<div class="clr"></div>';
         str1 += '<center>';
         console.log("session point = "+sessionStorage.getItem("RP_Point")+OldCoinINuser);
         if(doc.data().AuctionClose==0) {
-          if(parseFloat(sessionStorage.getItem("RP_Point"))>=parseFloat(LastPrice)) {
+          //if(parseFloat(sessionStorage.getItem("RP_Point"))>=parseFloat(LastPrice)) {
+          if(parseFloat(CoinCheck)>=parseFloat(LastPrice)) {
             //console.log("1==="+LastPoint+">"+sessionStorage.getItem("RP_Point")+"==="+doc.data().AuctionClose+"==="+doc.data().AuctionClose);
             str1 += '<div id="CloseAuction" onclick="ClickAuction()" class="btn-t1a" style="margin-top:15px;text-align:center;background-color:#20b52d;padding:7px 40px;border-radius:10px;">คุณต้องใช้เหรียญรางวัล<br><font color="#ffff00">'+ parseFloat(LastPrice) +'<img src="./icon/coin.png" class="coin-img"> เหรียญรางวัล</font><br>คลิกเพื่อเข้าร่วมประมูล</div>';
-          } else if(parseFloat(sessionStorage.getItem("RP_Point"))<parseFloat(LastPrice)) {
+          //} else if(parseFloat(sessionStorage.getItem("RP_Point"))<parseFloat(LastPrice)) {
+          } else if(parseFloat(CoinCheck)<parseFloat(LastPrice)) {
             //console.log("2==="+LastPoint+"<"+sessionStorage.getItem("RP_Point")+"==="+doc.data().AuctionClose+"==="+doc.data().AuctionClose);
             str1 += '<div id="CloseAuction1" class="btn-t1a" style="margin-top:15px;text-align:center;background-color:#555;padding:7px 40px;border-radius:10px;">คุณเหลือเหรียญรางวัลอีก<br><font color="#ffff00">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"> เหรียญรางวัล</font><br>เหรียญไม่พอที่จะเข้าร่วมประมูล</div>';
           }
@@ -176,15 +182,11 @@ function ListItem() {
         str1 += '</center>';
       }
     });
-    //if(EndGame==0) {
-    //  console.log("ไม่มีรายการประมูลในขณะนี้");
-    //} else {
-      MyPoint();
-      OpenPopMenu();
-      $("#LoadStock").html(str);  
-      $("#LoadItem").html(str1);  
-      timecountdown();
-    //}
+    MyPoint();
+    OpenPopMenu();
+    $("#LoadStock").html(str);  
+    $("#LoadItem").html(str1);  
+    timecountdown();
   });
 }
 
@@ -427,6 +429,8 @@ function SaveNewData() {
   MyPoint();
   OpenPopMenu();
   ListItem();
+  $('#ex-table').DataTable().destroy();
+  $("#ex-table tbody").remove();
   ListUserAuction();
   $("#ConfirmItem").html('<div class="btn-t2-ok" onclick="CloseAll()" style="margin-top:10px;">บันทึกการประมูลเรียบร้อยแล้ว</div>');  
 }
