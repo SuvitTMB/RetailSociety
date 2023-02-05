@@ -6,9 +6,10 @@ var xCal = 0;
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   Connect_DB();
+  dbttbMember = firebase.firestore().collection("ttbMember");
+  dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbRedeemRewards = firebase.firestore().collection("ttbRedeemRewards");
   dbttbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
-  dbGroupNews = firebase.firestore().collection("ttbheadnews");
   MyPoint();
   RedeemRewards();
   GiftRewards();

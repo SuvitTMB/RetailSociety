@@ -11,9 +11,9 @@ $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
   $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ff0000;'>กิจกรรมประจำวันที่ "+today);  
   Connect_DB();
+  dbttbMember = firebase.firestore().collection("ttbMember");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbAuction = firebase.firestore().collection("ttbAuction");
-  dbttbMember = firebase.firestore().collection("ttbMember");
   MyPoint();
   CalPoint();
   OpenPopMenu();

@@ -160,7 +160,6 @@ function MenuFooter() {
   var str = "";
   str += '<div class="footer-top"><div class="container">';
   str += '<div class="row"><div class="col-lg-4 col-md-6 footer-newsletter">';
-  //str += '<div id="iConMenu" style="width:100%;"></div><div class="clr"></div>';
   str += '<h4 style="font-size: 13px;">เมนูที่เกี่ยวข้อง</h4><p style="font-size: 13px;">เราเตรียมเมนูไว้สำหรับให้ท่านได้เลือกเข้าใช้งาน เพื่อให้ท่านได้เข้าถึงข้อมูลได้รวดเร็วมากยิ่งขึ้น</p>';
   str += '<div>';
 
