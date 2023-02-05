@@ -994,13 +994,13 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   border-bottom-right-radius: 10px;
 }
 .top-header {
-  color:#f68b1f; font-weight: 600; text-align: center; font-size: 12px;
+  color:#f68b1f; font-weight: 600; text-align: center; font-size: 14px;
 }
 .top-subheader {
   color:#0056ff; font-weight: 300; text-align: center; font-size: 13px; font-weight: 600;
 }
 .top-subheader1 {
-  color:#002d63; font-weight: 300; text-align: center; font-size: 12px; padding:10px 4px; line-height: 1.2;
+  color:#002d63; font-weight: 300; text-align: center; font-size: 14px; padding:10px 4px; line-height: 1.2;
 }
 
 .coin-number {
