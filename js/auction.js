@@ -139,8 +139,8 @@ function ListItem() {
         TimeCheckEnd(doc.data().AuctionDateStop,doc.id);
         str += '<div style="width:25%; float: left; margin-right: 5px;">';
         str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
-        str += '<div class="font13" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
-        str += '<div class="font12" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
+        str += '<div class="font13black" style="padding:6px 6px 0px 6px;"><b>'+ doc.data().AuctionName +'</b></div>';
+        str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
         str1 += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
         str1 += '<div class="auction-subbox">';
         str1 += '<div class="auction-number">'+ doc.data().AuctionTime +'</div><div class="font11center">ครั้งที่ประมูล</div></div>';
@@ -153,7 +153,7 @@ function ListItem() {
         str1 += '<div class="auction-number" style="color:#fff;">'+ LastPrice +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style=" color:#fff;">ราคาประมูล</div></div>';
         str1 += '<div class="clr"></div>';
         str1 += '<center><div class="font11" style="color:#444; padding-top:20px; font-size: 10px;">เหลือเวลาประมูลอีก</div>';
-        str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></center>';
+        str1 += '<div id="A0" class="font12black" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></center>';
         //str1 += '<div class="auction-subbox" style="width:46%; background-color: #aacdfb; cursor: pointer;">';
         //str1 += '<div class="font11" style="color:#444; padding-top:7px; font-size: 10px;">เหลือเวลาประมูลอีก</div>';
         //str1 += '<div id="A0" class="font12" style="color:#ea0218;padding:0;font-size: 14px; font-weight: 600;"></div></div>';
@@ -291,8 +291,8 @@ function ClickAuction() {
   var i = 1;
   var str = "";
   str += '<div class="btn-t3" style="margin-top:45px;">ยืนยันการประมูล</div>';
-  str += '<center><div><img src="'+ xAuctionImg +'" style="width:150px; text-align: center;"></div>';
-  str += '<div class="font13" style="text-align:center;"><b>'+ xAuctionName +'</b></div></cener>';
+  str += '<center><div style="margin:15px auto;"><img src="'+ xAuctionImg +'" style="width:150px; text-align: center;"></div>';
+  str += '<div class="font13black" style="text-align:center;font-weight: 600;">'+ xAuctionName +'</div></cener>';
   str += '<div class="clr" style="height:20px;"></div>';
   str += '<table class="table table-bordered" style="background-color: #fff; width:90%; margin:auto;">';
   str += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
