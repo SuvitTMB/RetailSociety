@@ -145,7 +145,7 @@ function ShowLike() {
       i++;
     });
     if(i==0) {
-      str = '<div style="border:1px solid #ccc; background-color: #f1f1f1; border-radius: 10px;padding:20px;text-align: center;">ยังไม่มีกำลังใจจากเพื่อนของเรา</div>';
+      str = '<div class="font13black" style="border:1px solid #ccc; background-color: #f1f1f1; border-radius: 10px;padding:20px;text-align: center;">ยังไม่มีกำลังใจจากเพื่อนของเรา</div>';
     }
     $("#DisplayShowLike").html(str);
   });
@@ -274,7 +274,7 @@ function countdown() {
     clearTimeout(timerId);
     document.getElementById('loading').style.display='none';
     document.getElementById('CountReadNews').style.display='block';
-    $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+xResults+" | รับคะแนน "+ ReadNewsPoint +" Point<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
+    $("#CountReadNews").html("<div class='font12black' style='color:#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+xResults+" | รับคะแนน "+ ReadNewsPoint +" Point<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</div>");
   } else {
     if (timeLeft == -1) {
       document.getElementById('PopupMenu').style.display='none';
@@ -357,7 +357,7 @@ function RecordNews() {
   str += '<div class="clr" style="height:40px;"></div>';
   $("#DisplayGetPoint").html(str);  
   document.getElementById('id01').style.display='block';
-  $("#CountReadNews").html("<font color='#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+dateString+"<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</font>");
+  $("#CountReadNews").html("<div class='font12black' style='color:#777'>ระบบบันทึกการอ่านของคุณเรียบร้อยแล้ว<br>เมื่อวันที่ "+dateString+"<br>มีพนักงานอ่านแล้ว "+ xRecordNews+" คน</div>");
   OpenPopMenu();
   GetAllRead();
 }
@@ -410,7 +410,7 @@ function ShowMemo() {
       i++;
     });
     if(i==0) {
-      str = '<div class="no-message-box">ยังไม่มีข้อความจากเพื่อน</div>';
+      str = '<div class="no-message-box font13black">ยังไม่มีข้อความจากเพื่อน</div>';
     }
     $("#DisplayQuestion").html(str);
   });
