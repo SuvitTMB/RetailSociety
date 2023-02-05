@@ -145,7 +145,7 @@ function ShowLike() {
       i++;
     });
     if(i==0) {
-      str = '<div class="font13black" style="border:1px solid #ccc; background-color: #f1f1f1; border-radius: 10px;padding:20px;text-align: center;">ยังไม่มีกำลังใจจากเพื่อนของเรา</div>';
+      str = '<div class="font13black" style="border:1px solid #ccc; background-color: #f1f1f1; border-radius: 10px;padding:20px;text-align: center;width:100%;">ยังไม่มีกำลังใจจากเพื่อนของเรา</div>';
     }
     $("#DisplayShowLike").html(str);
   });
@@ -410,7 +410,7 @@ function ShowMemo() {
       i++;
     });
     if(i==0) {
-      str = '<div class="no-message-box font13black">ยังไม่มีข้อความจากเพื่อน</div>';
+      str = '<div class="no-message-box font13black" style="width:100%;">ยังไม่มีข้อความจากเพื่อน</div>';
     }
     $("#DisplayQuestion").html(str);
   });
