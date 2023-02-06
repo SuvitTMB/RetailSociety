@@ -87,9 +87,9 @@ function OpenPopMenu() {
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
 
 
-    //xLine += '<div class="menu-box1" onclick="window.location.href=\'openchat.html\';">';
-    //xLine += '<div class="menu-box-img1"><img src="./icon/icon-16.png" style="width:35px;"></div>';
-    //xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
+    xLine += '<div class="menu-box1" onclick="window.location.href=\'openchat.html\';">';
+    xLine += '<div class="menu-box-img1"><img src="./icon/icon-16.png" style="width:35px;"></div>';
+    xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
     xLine += '<div class="menu-box1" onclick="window.location.href=\'webboard-chat.html?gid=beG8FynIhzWgdYFgaFJ9\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-contact.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">แจ้งปัญหา</div></div>';
