@@ -88,10 +88,10 @@ function DisplayChat() {
   .limit(100).get().then( snapshot => {
     snapshot.forEach(doc=> {
       xCheckChat++;
-      if(xx=0) { 
+      //if(xx=0) { 
         CheckLastTime = doc.data().PostTimeStamp; 
-        xx=1;
-      }
+        //xx=1;
+      //}
       ShowChat(doc);
     });
     if(xCheckChat==0) {
