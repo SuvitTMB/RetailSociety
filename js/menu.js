@@ -64,7 +64,7 @@ function OpenPopMenu() {
     var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
     xLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
     xLine += '<div class="clr"style="height:20px;"></div>';
-    xLine += '<div class="btn-t3" style="margin-top:0px; background-color: #fff;">เมนูกิจกรรมที่เกี่ยวข้อง</div>';
+    //xLine += '<div class="btn-t3" style="margin-top:0px; background-color: #fff;">เมนูกิจกรรมที่เกี่ยวข้อง</div>';
     xLine += '<div style="width:95%; margin:0px auto 20px auto; height: 200px;">';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'groupnews.html#ttbNews\';" style="height:95px;"><img src="./icon/icon-news.png" style="width:60px;"><div class="text-team1">ข่าวสารองค์กร</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'home.html#menusystem\';" style="height:95px;"><img src="./icon/icon-app.png" style="width:60px;"><div class="text-team1">ระบบงานของ lINE</div></div>';
