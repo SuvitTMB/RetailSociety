@@ -80,6 +80,13 @@ function OpenPopMenu() {
     xLine += '<div class="menu-box1" onclick="window.location.href=\'profile.html\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-profile.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">ข้อมูลคุณ</div></div>';
+
+
+    xLine += '<div class="menu-box1" onclick="window.location.href=\'intro-game4.html\';">';
+    xLine += '<div class="menu-box-img1"><img src="./icon/icon-auction.png" style="width:35px;"></div>';
+    xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
+
+
     xLine += '<div class="menu-box1" onclick="window.location.href=\'openchat.html\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-16.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';
