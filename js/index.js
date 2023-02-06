@@ -443,8 +443,6 @@ function CheckAid() {
 }
 
 
-
-
 function DisplayQRCode() {
   document.getElementById('id03').style.display='block';
 }

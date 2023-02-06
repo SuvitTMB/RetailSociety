@@ -235,7 +235,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">เริ่มต้นใช้งาน ttb touch ง่าย ๆ ได้ทุกคน</div>';
-      str += '<div class="font13black" style="text-align:left;">เรามาพร้อมกับฟีเจอร์ใหม่ที่ชาญฉลาด<br>และวิธีการใช้งานที่ง่ายขึ้น ครอบคลุมทุกธุรกรรม<br>ที่จะมาตอบโจทย์ชีวิตทางการเงินของลูกค้าทุกกลุ่ม</div>';               
+      str += '<div class="font13black" style="text-align:left; width:100%;">เรามาพร้อมกับฟีเจอร์ใหม่ที่ชาญฉลาด และวิธีการใช้งานที่ง่ายขึ้น ครอบคลุมทุกธุรกรรม ที่จะมาตอบโจทย์ชีวิตทางการเงินของลูกค้าทุกกลุ่ม</div>';               
       str += '</div></div>';
     } else if(x==2) { 
       if(xCheck2==0) { 
@@ -252,7 +252,7 @@ function gotoGame2(x) {
       }
       str += '<div style="padding:15px 15px 20px 15px;">';
       str += '<div class="title-touch" style="color:#0056ff;">ttb touch ใหม่<br>รู้ว่า จะจัดการแอปอย่างไรให้เหมาะกับคุณที่สุด</div>';
-      str += '<div class="font13black" style="text-align:left;">ให้คุณจัดการแอปได้อย่างง่าย ๆ ด้วยตัวคุณเอง<br>การจัดการวิดเจ็ต การเปลี่ยนรหัส<br>ตั้งค่าข้อมูลส่วนตัว หรือการรีเซ็ตรหัสผ่าน</div>';               
+      str += '<div class="font13black" style="text-align:left;">ให้คุณจัดการแอปได้อย่างง่าย ๆ ด้วยตัวคุณเอง การจัดการวิดเจ็ต การเปลี่ยนรหัส ตั้งค่าข้อมูลส่วนตัว หรือการรีเซ็ตรหัสผ่าน</div>';               
       str += '</div></div>';
     } else if(x==3) { 
       if(xCheck3==0) {  

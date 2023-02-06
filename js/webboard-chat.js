@@ -45,7 +45,7 @@ function CheckBoardID() {
       xRead = parseFloat(doc.data().ReadWebboard)+1;
       str += '<div style="width:90%;margin:auto;">'
       str += '<div class="webboard1" style="padding-top:15px;"><img src="' + doc.data().LinePicture + '" class="profile-team" onerror="javascript:imgError(this)" style="width:40px;"></div>';
-      str += '<div class="webboard2"><div style="font-size:12px;"><i>ตั้งคำถามโดย</i><br><b>' + doc.data().EmpName + '</b></div>';
+      str += '<div class="webboard2"><div style="font-size:14px;"><i>ตั้งคำถามโดย</i><br><b>' + doc.data().EmpName + '</b></div>';
       str += '<div class="webboard3">Date : '+ doc.data().SendDate +' | Read '+ xRead +' | Post ' + doc.data().AnsWebboard +'</div></div>';
       str += '</div>';
       $("#DisplayNameWebboard").html(doc.data().QWebboard);
@@ -79,6 +79,7 @@ var CountIN = 0;
 var CheckLastTime = "";
 function DisplayChat() {
   var xCheckChat = 0;
+  var xx = 0;
   str1 = "";
   document.getElementById("TextMamo").innerHTML = "";   
   document.getElementById("DisplayMemo").innerHTML = "";   
@@ -87,7 +88,10 @@ function DisplayChat() {
   .limit(100).get().then( snapshot => {
     snapshot.forEach(doc=> {
       xCheckChat++;
-      CheckLastTime = doc.data().PostTimeStamp; 
+      if(xx=0) { 
+        CheckLastTime = doc.data().PostTimeStamp; 
+        xx=1;
+      }
       ShowChat(doc);
     });
     if(xCheckChat==0) {
@@ -118,12 +122,6 @@ function ShowChat(doc) {
     str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ doc.data().PostDate +'</small></div></div></div></div>';
   }
   str+='<div class="clr" style="height:5px;"></div>';
-/*
-  str+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
-  str+='<img src="./img/box.jpg" class="img-avatar"><div class="msb-font11">Admin</div></div>';
-  str+='<div class="media-body"><div class="mf-content" style="background:#fbe6a5;">เพื่อน ๆ สามารถที่จะเขียนข้อความตอบกลับเพื่อนของเราได้ที่กล่องข้อความด้านล่างได้เลยน้า ...';
-  str+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ dateString +'</small></div></div></div></div>';
-*/
   $("#DisplayMemo").html(str); 
 }
 
@@ -161,12 +159,10 @@ function MemoCount() {
     snapshot.forEach(doc=> {
       xAnsWebboard = xAnsWebboard+1;
     });
-    //xAnsWebboard = xAnsWebboard+1;
     dbttbWebboard.doc(idRoomWebboard).update({
       AnsWebboard : parseInt(xAnsWebboard)
     });
     CheckBoardID();
-    //alert(idRoomWebboard+"==="+xAnsWebboard);
   })
 }
 
@@ -187,17 +183,7 @@ function CheckMemo() {
     PostDate : dateString,
     PostTimeStamp : TimeStampDate
   });  
-
   i = i+1;
-/*
-  var str1 = "";  
-  str1+='<div class="list-element"><div class="message-feed right" id="'+i+'"><div class="pull-right">';
-  str1+='<img src="'+ sessionStorage.getItem("LinePicture") +'" class="img-avatar"></div>';
-  str1+='<div class="media-body"><div class="mf-content" style="background:#fff;">'+ document.getElementById("TextMamo").value +'';
-  str1+='<small class="mf-date"><i class="fa fa-clock-o"></i> '+ dateString +'</small></div></div></div></div>';
-  str = str1+str;
-  $("#DisplayMemo").html(str); 
-*/
   $("#TextMamo").val('');
 }
 
@@ -220,7 +206,7 @@ function CheckUpdate() {
 
 function timecountdown() {
     var timeleft = MaxTime;
-    console.log("Time Left = "+timeleft);
+    console.log("Time Left = "+timeleft+" ||| LastTime = "+CheckLastTime);
     qInterval = setInterval(function(){
     if(timeleft <= 0) {
       stopcountdown();
