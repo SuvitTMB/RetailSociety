@@ -14,9 +14,12 @@ $(document).ready(function () {
   var isMobile = window.orientation > -1;
   sessionStorage.clear(); 
   var str = "";
-  var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
-  var sLineName = "Website";
-  var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
+  //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
+  //var sLineName = "Website";
+  //var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
+  var sLineID = "Ub07e3fd6941babf0c4cd6cabfb51d728";
+  var sLineName = "ตุ๊กตุ๊ก";
+  var sLinePicture = "https://profile.line-scdn.net/0m01f9abbb7251d2d7e727969708486b63a926a2de5046";
   sessionStorage.setItem("LineID", sLineID);
   sessionStorage.setItem("LineName", sLineName);
   sessionStorage.setItem("LinePicture", sLinePicture);
@@ -24,7 +27,7 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-*/   
+  */
   main();
 });
 
@@ -124,6 +127,7 @@ function CheckMember() {
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      sessionStorage.setItem("LastUpdate", doc.data().LogDateTime);
       UpdatePorfile();
       if(doc.data().Level_Point==1 && doc.data().XP_Point >= 100) {
         NextLevel(2);
