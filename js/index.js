@@ -10,7 +10,7 @@ var xToday = dd + '/' + mm + '/' + yyyy;
 
 $(document).ready(function () {
 
-/*
+
   var isMobile = window.orientation > -1;
   sessionStorage.clear(); 
   var str = "";
@@ -27,8 +27,8 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-  */
-  main();
+  
+  //main();
 });
 
 
