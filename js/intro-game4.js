@@ -37,7 +37,8 @@ function AuctionStock() {
         str += '<img src="'+ doc.data().AuctionImg +'" style="width:90%; text-align: center;"></div><div style="width:73%; float: left;">';
         str += '<div class="font13black" style="padding:6px 6px 0px 0px;font-weight: 600;">'+ doc.data().AuctionName +'</div>';
         str += '<div class="font12black" style="padding-top:3px; overflow: hidden;">'+ doc.data().AuctionDetail +'</div></div>';
-        str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px auto;">';
+        str += '<div class="clr"></div><div style="width:100%; max-width: 350px;margin:3px 0;">';
+/*
         str += '<div class="auction-subbox" style="background-color:#002d63;">';
         str += '<div class="auction-number" style="color:#fff;">+'+ doc.data().AuctionCoin +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">เพิ่มครั้งละ</div></div>';
         str += '<div class="auction-subbox" style="background-color:#002d63;">';
@@ -50,8 +51,8 @@ function AuctionStock() {
           str += '</div></div>';
           str += '<div class="clr" style="height:5px;"></div>';
         }
-
-        str += '<div class="auction-subbox" style="width:46%; background-color: #6c757d;">';
+*/
+        str += '<div class="auction-subbox" style="width:100%; background-color: #6c757d;margin-left:0px;">';
         str += '<div class="font11" style="color:#fff;padding-top:7px;font-size: 10px;">จะเริ่มประมูลในเวลา</div>';
         str += '<div id="A'+i+'" class="font12" style="color:#ffff00;padding:0;font-size: 14px; font-weight: 600;"></div>';
         str += '</div></div></div>';
@@ -65,7 +66,7 @@ function AuctionStock() {
         str += '<div class="clr"></div>';
         if(doc.data().EmpName!="") { 
           str += '<div class="clr" style="height:7px;"></div>';
-          str += '<div class="auction-subbox" style="background-color:#feddc1;width:95%;">';
+          str += '<div class="auction-subbox" style="background-color:#feddc1;width:100%; margin-left:0px;">';
           str += '<div style="width:100%;"><div style="width:20%;float: left; text-align: center;margin-right:5px;"><img src="'+ doc.data().LinePicture +'" class="Profile-img" style="width:45px; height:45px;"></div>';
           str += '<div class="Profile-title" style="font-size:12px;color:#111;">ประมูลล่าสุด : <b>'+ doc.data().EmpName +'</b><br>ราคาประมูล : '+ doc.data().AuctionPrice +' เหรียญรางวัล<br>วันที่ประมูล : '+ doc.data().LastDateAuction +'</div>';
           str += '</div></div>';
@@ -79,10 +80,7 @@ function AuctionStock() {
         str += '<div class="auction-number" style="color:#fff;">'+ (parseFloat(doc.data().AuctionPrice) + parseFloat(doc.data().AuctionCoin)) +'<img src="./icon/coin.png" class="coin-img"></div><div class="font11center" style="color:#fff;">ราคาประมูล</div></div>';
 //      str += '</div>';  
 
-
-
-
-        str += '<div class="auction-subbox" style="width:46%; background-color: #fd7e14; cursor: pointer;">';
+        str += '<div class="auction-subbox" style="width:47%; background-color: #fd7e14; cursor: pointer;">';
         str += '<div class="font11" style="color:#444;padding:0;font-size: 10px;">เหลือเวลาประมูลอีก</div>';
         str += '<div id="A'+i+'" class="font12" style="color:#fff;padding:0;font-size: 14px; font-weight: 600;"></div>';
         str += '<div onclick="gotoAuction(\''+ doc.id +'\')" class="auction-number" style="font-size: 13px;font-weight: 600; color:#111111;">คลิกเพื่อเข้าร่วมประมูล</div></div></div></div>';
