@@ -63,8 +63,8 @@ function OpenPopMenu() {
     //var xNewXP = (parseFloat(sessionStorage.getItem("XP_Point") - parseFloat(xCal);
     var xRatio = (parseFloat(sessionStorage.getItem("XP_Point"))/parseFloat(xCal))*100;
     xLine += '<div class="progress2" style="width:'+ xRatio +'%;"></div>';
-    xLine += '<div class="clr"style="height:20px;"></div>';
-    xLine += '<div class="btn-t3" style="margin-top:0px; background-color: #fff;">เมนูกิจกรรมที่เกี่ยวข้อง</div>';
+    xLine += '<div class="clr"style="height:10px;"></div>';
+    //xLine += '<div class="btn-t3" style="margin-top:0px; background-color: #fff;">เมนูกิจกรรมที่เกี่ยวข้อง</div>';
     xLine += '<div style="width:95%; margin:0px auto 20px auto; height: 200px;">';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'groupnews.html#ttbNews\';" style="height:95px;"><img src="./icon/icon-news.png" style="width:60px;"><div class="text-team1">ข่าวสารองค์กร</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'home.html#menusystem\';" style="height:95px;"><img src="./icon/icon-app.png" style="width:60px;"><div class="text-team1">ระบบงานของ lINE</div></div>';
@@ -80,6 +80,13 @@ function OpenPopMenu() {
     xLine += '<div class="menu-box1" onclick="window.location.href=\'profile.html\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-profile.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">ข้อมูลคุณ</div></div>';
+
+
+    xLine += '<div class="menu-box1" onclick="window.location.href=\'intro-game4.html\';">';
+    xLine += '<div class="menu-box-img1"><img src="./icon/icon-auction.png" style="width:35px;"></div>';
+    xLine += '<div class="menu-box-text1" style="color:#0056ff;">ประมูล</div></div>';
+
+
     xLine += '<div class="menu-box1" onclick="window.location.href=\'openchat.html\';">';
     xLine += '<div class="menu-box-img1"><img src="./icon/icon-16.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">OpenChat</div></div>';

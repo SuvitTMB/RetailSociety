@@ -182,7 +182,6 @@ function CheckClick(userChoice) {
     xResult = 1;
     xWin = xCoin;
   }
-  console.log("xResult = "+xResult);
   if(xResult==1) {
     var str = "";
     str += "<div class='btn-t3' style='margin-top:20px;'><b>คุณได้รับเหรียญรางวัล</b></div>";
@@ -190,7 +189,6 @@ function CheckClick(userChoice) {
     str += "<div class='text-false'>คุณชนะการแข่งขันในรอบนนี้</div>";
     str += "<div style='line-height:1.2;'>วันนี้คุณได้รับ <b>"+ xCoin +" เหรียญรางวัล</b><br>แล้วกลับมาเล่นใหม่ในวันพรุ่งนี้น้า</div>";
     $("#DisplayWinner").html(str);
-    document.getElementById('id01').style.display='block';
     SaveDate();
   } else if(xResult==3) {
     var str = "";
@@ -199,7 +197,6 @@ function CheckClick(userChoice) {
     str += "<div class='text-false'><br>คุณแพ้การแข่งขันในรอบนี้</div>";
     str += "<div style='line-height:1.2;'>เราเสียใจที่ไม่สามารถให้เหรียญรางวัลกับคุณได้</b><br>แล้วกลับมาเล่นใหม่ในวันพรุ่งนี้น้า</div>";
     $("#DisplayWinner").html(str);
-    document.getElementById('id01').style.display='block';
     SaveDate();
   }
   $("#result").html(result);

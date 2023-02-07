@@ -10,7 +10,7 @@ var xToday = dd + '/' + mm + '/' + yyyy;
 
 $(document).ready(function () {
 
-/*
+
   var isMobile = window.orientation > -1;
   sessionStorage.clear(); 
   var str = "";
@@ -27,8 +27,8 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-  */
-  main();
+  
+  //main();
 });
 
 
@@ -127,7 +127,6 @@ function CheckMember() {
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
-      sessionStorage.setItem("LastUpdate", doc.data().LogDateTime);
       UpdatePorfile();
       if(doc.data().Level_Point==1 && doc.data().XP_Point >= 100) {
         NextLevel(2);

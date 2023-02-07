@@ -12,6 +12,7 @@ $(document).ready(function () {
   idRoomWebboard = getParameterByName('gid');
   if(idRoomWebboard==null) { location.href = "webboard.html"; }
   Connect_DB();
+  dbttbMember = firebase.firestore().collection("ttbMember");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbWebboard = firebase.firestore().collection("ttbWebboard");
   dbttbWebChat = firebase.firestore().collection("ttbWebChat");
