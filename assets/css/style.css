@@ -354,49 +354,55 @@ p {
   color: #438fff;
 }
 
-
-
-.font13F {
-  display: inline-block;
-  color:#fff;
-  margin:8px 0px 8px 0px;
-  transition: 0.3s;
-  font-size: 14px !important;
-  font-weight: 600;
-  text-align: left;
-  width:90%;
-}
-.font13black {
-  display: inline-block;
-  text-align: left;
-  color:#111;
-  font-size: 14px !important;
-  font-weight: 400;
-  line-height: 1.2;
-  width:90%;
-}
-.font12black {
-  display: inline-block;
-  text-align: left;
-  color:#111;
-  font-size: 13px !important;
-  font-weight: 400;
-  line-height: 1.2;
-  width:90%;
-}
+@media screen and (max-width: 420px) {
+  .font13F {
+    display: inline-block;
+    color:#fff;
+    margin:8px 0px 8px 0px;
+    transition: 0.3s;
+    font-size: 14px !important;
+    font-weight: 600;
+    text-align: left;
+    /*width:90%;*/
+  }
+  .font13black {
+    display: inline-block;
+    text-align: left;
+    color:#111;
+    font-size: 14px !important;
+    /*font-weight: 600;*/
+    line-height: 1.2;
+    /*width:90%;*/
+  }
+  .font13blackCenter {
+    display: inline-block;
+    text-align: center;
+    color:#111;
+    font-size: 14px !important;
+    font-weight: 400;
+    line-height: 1.2;
+    width:100%;
+  }
+  .font12black {
+    display: inline-block;
+    text-align: left;
+    color:#111;
+    font-size: 13px !important;
+    font-weight: 400;
+    line-height: 1.2;
+    /*width:90%;*/
+  }
 
 
   .font14F {
     font-size: 14px !important; font-weight: 600; color:#fff; margin-top:8px; margin-bottom: 8px; display: inline-block;
-    width:90%;
+  /*width:90%;*/
   }
   .font13N {
     font-size: 13px !important; color:#fff; 
-    width:90%;
+  /*width:90%;*/
   }
-  /*.font13black {
-    font-size: 13px; color:#111; line-height: 1.2; text-align: left;   display: inline-block;
-  }*/
+}
 
 
 
