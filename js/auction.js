@@ -65,10 +65,6 @@ function CheckUpdate() {
     if(gAuctionPrice==LastPrice) {
       LastPrice = gAuctionPrice;
       gotoUpdate();
-      //ListItem();
-      //$('#ex-table').DataTable().destroy();
-      //$("#ex-table tbody").remove();
-      //ListUserAuction();
     }
   });
   timecountdown();
@@ -80,24 +76,18 @@ function CheckLastPrice() {
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      //mAuctionTime = doc.data().AuctionTime;
       mAuctionPrice = parseFloat(doc.data().AuctionPrice) + parseFloat(xAuctionCoin);
     });
     if(parseFloat(mAuctionPrice)!=parseFloat(LastPrice)) {
       document.getElementById('id01').style.display='none';
       document.getElementById('id02').style.display='block';
-      //alert("ราคามีการเปลี่ยนแปลงใหม่");     
-      //ListItem();
-      //ListUserAuction();
     }
-    //alert(parseFloat(mAuctionPrice)+"==="+parseFloat(LastPrice));
   });
 }
 
 
 function timecountdown() {
     var timeleft = MaxTime;
-    //console.log("Time Left = "+timeleft);
     qInterval = setInterval(function(){
     if(timeleft <= 0) {
       stopcountdown();

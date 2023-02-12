@@ -46,7 +46,7 @@ function CheckBoardID() {
       xRead = parseFloat(doc.data().ReadWebboard)+1;
       str += '<div style="width:90%;margin:auto;">'
       str += '<div class="webboard1" style="padding-top:15px;"><img src="' + doc.data().LinePicture + '" class="profile-team" onerror="javascript:imgError(this)" style="width:40px;"></div>';
-      str += '<div class="webboard2"><div style="font-size:12px;"><i>ตั้งคำถามโดย</i><br><b>' + doc.data().EmpName + '</b></div>';
+      str += '<div class="webboard2"><div style="font-size:14px;"><i>ตั้งคำถามโดย</i><br><b>' + doc.data().EmpName + '</b></div>';
       str += '<div class="webboard3">Date : '+ doc.data().SendDate +' | Read '+ xRead +' | Post ' + doc.data().AnsWebboard +'</div></div>';
       str += '</div>';
       $("#DisplayNameWebboard").html(doc.data().QWebboard);

@@ -285,7 +285,7 @@ function countdown() {
       document.getElementById('CountReadNews').style.display='block';
       document.getElementById('PopupMenu').style.display='block';
       $("#PopupTime").html('ระบบบันทึกการอ่าน<br>เหลือเวลา ' +timeLeft+ ' วินาที');
-      elem.innerHTML = 'เหลือเวลาอีก ' +timeLeft + ' วินาที<br>(ระบบจะบันทึกการอ่านอัตโนมัติเมื่อสิ้นสุดเวลาที่กำหนด)<br>คุณจะได้ '+ ReadNewsPoint +' Point เมื่อสิ้นสุดเวลาที่กำหนด';
+      elem.innerHTML = '<div class="font12black" style="color:#ff0000; font-weight: 400;"><b>เหลือเวลาการอ่านข่าวอีก ' +timeLeft + ' วินาที</b><br><font color="#111">(ระบบจะบันทึกการอ่านอัตโนมัติเมื่อสิ้นสุดเวลาที่กำหนด)<br>คุณจะได้ '+ ReadNewsPoint +' Point เมื่อสิ้นสุดเวลาที่กำหนด</font></div>';
       timeLeft--;
     }    
   }
@@ -351,7 +351,7 @@ function RecordNews() {
   //str += '<div class="btn-t3"><b>คุณได้รับ '+ ReadNewsPoint +' Point</b></div>';
   //str += '<div style="margin-top:15px;font-size:13px;line-height:1.1;">จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b><br><br><img src="./img/reading.gif" style="width:100%; max-width: 250px;"></div>';
   str += '<div class="btn-t3"><b>คุณได้รับเหรียญรางวัล</b></div>';
-  str += '<div style="font-size:13px;line-height:1.1;"><img src="./img/coin-'+ ReadNewsPoint +'.png" style="width:100%; max-width: 250px;background:#e9eef3; border-radius:15px;"><br><br>จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b></div>';
+  str += '<div style="font-size:14px;line-height:1.1;"><img src="./img/coin-'+ ReadNewsPoint +'.png" style="width:100%; max-width: 250px;background:#e9eef3; border-radius:15px;"><br><br>จากการอ่านข่าวสารเรื่อง<br><br><b>'+xHeadNews+'</b></div>';
   str += '<div class="clr" style="height:15px;"></div>';
   str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่างนี้</b></div>';
   str += '<div class="clr" style="height:40px;"></div>';

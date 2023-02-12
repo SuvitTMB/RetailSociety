@@ -59,7 +59,7 @@ function ListRewards() {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
       str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards"><div class="clr"></div>';
       str += '<div class="font13black" style="color:#0056ff;font-weight: 600;margin-top:15px;">'+ doc.data().RewardsName +'</div>';
-      str += '<div class="font12a">'+ doc.data().RewardsDetail +'</div>';
+      str += '<div class="font13black" style="margin-top:8px;">'+ doc.data().RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px;">';
       if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
         if(parseFloat(doc.data().RewardsStock)>0) {
@@ -90,7 +90,7 @@ function ListRewards() {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">';
       str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ doc.data().RewardsCode +'" class="icon-rewards"><div class="clr"></div>';
       str += '<div class="font13black" style="color:#0056ff;font-weight: 600;margin-top:15px;">'+ doc.data().RewardsName +'</div>';
-      str += '<div class="font12a">'+ doc.data().RewardsDetail +'</div>';
+      str += '<div class="font13black" style="margin-top:8px;">'+ doc.data().RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px;">';
       if(sessionStorage.getItem("RP_Point")<doc.data().RewardsPrice) {
         if(parseFloat(doc.data().RewardsStock)>0) {
@@ -149,18 +149,7 @@ function CheckGifts() {
     $("#DisplayGifts").html(str);
     $("#Displayitem").html("ของรางวัลคงเหลือ : "+xgiftall+" รายการ");
   });
-
-
-
-/*
-  var str = "";
-  str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
-
-  str += '</div>';
-  $("#DisplayGifts").html(str);
-*/
   document.getElementById('id02').style.display='block';
-  //alert("List Gift");
 }
 
 
@@ -190,14 +179,14 @@ function OpenLink(x,price,i) {
       str += '<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
       str += '<div class="icon-box iconbox-blue"><img src="./rewards/'+ results[0].RewardsCode +'" style="width:200px;margin-top:10px;"><div class="clr"></div>';
       str += '<div class="font13black" style="color:#0056ff;font-weight: 600;margin-top:15px;">'+ results[0].RewardsName +'</div>';
-      str += '<div class="font12a" style="overflow: visible; max-height:80px;">'+ results[0].RewardsDetail +'</div>';
+      str += '<div class="font13black" style="overflow: visible; max-height:80px;">'+ results[0].RewardsDetail +'</div>';
       str += '<div style="height: 40px; border-radius: 10px; margin-top:8px; width:52%; margin:10px auto;">';
       str += '<div class="rewards-linkA" style="width:100%;">';
       str += '<div class="coin-number">'+ parseFloat(results[0].RewardsPrice) +'<img src="./icon/coin.png" class="coin-img"></div>';
       str += '<div class="font11" style="margin-top:-3px;">เหรียญรางวัล</div>';
       str += '</div></div><div class="clr"></div></div></div>';
       if(doc.data().RP_Point>=price) {
-        str += '<div class="font12a" style="color:#ff0000;">ระบบจะทำการหักเหรียญรางวัลของคุณ ตามราคาของรางวัลชิ้นนั้นๆ หลังจากที่คุณได้ทำการกดยืนยันการแลกรางวัลแล้ว</div>';
+        str += '<div class="font12black" style="color:#ff0000;font-weight:600;">ระบบจะทำการหักเหรียญรางวัลของคุณ ตามราคาของรางวัลชิ้นนั้นๆ หลังจากที่คุณได้ทำการกดยืนยันการแลกรางวัลแล้ว</div>';
       } else {
         str += '<div>คะแนนของคุณไม่พอแลกของรางัลแล้วนะ</div>';
       }

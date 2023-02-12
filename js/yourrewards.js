@@ -10,9 +10,11 @@ $(document).ready(function () {
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbRedeemRewards = firebase.firestore().collection("ttbRedeemRewards");
   dbttbGiftRewards = firebase.firestore().collection("ttbGiftRewards");
+  dbttbAuction = firebase.firestore().collection("ttbAuction");
   MyPoint();
   RedeemRewards();
   GiftRewards();
+  GiftAuction();
   OpenPopMenu();
 });
 
@@ -79,5 +81,35 @@ function GiftRewards() {
     str += '</tbody></table></div>';
     str += '<div class="clr"></div>';
     $("#DisplayGiftRandom").html(str);
+  });
+}
+
+
+
+function GiftAuction() {
+  var str = "";
+  var i = 1;
+  var xStatus = "";
+  str += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
+  str += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
+  str += '<th scope="col">No.</th><th scope="col">รางวัล</th><th scope="col">ใช้เหรียญ</th></tr></thead><tbody>';
+  dbttbAuction.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .orderBy('TimeStamp','desc')
+  .get().then((snapshot)=> {
+    snapshot.forEach(doc=> {
+        if(doc.data().StatusSend==0) {
+          xStatus = "<font color='#999999'>รอการจัดส่ง</font>";
+        } else if(doc.data().StatusSend==1) {
+          xStatus = "<font color='#07bb12'>จัดส่งเรียบร้อยแล้ว</font>";
+        }
+        str += '<tr><th scope="row" style="text-align: center;">'+ i +'</th>';
+        str += '<td style="text-align: left; line-height: 1.2;"><font color="#0056ff">'+ doc.data().AuctionName +'</font>';
+        str += '<br>ประมูลเมื่อ : '+ doc.data().LastDateAuction +'<br>สถานะ : '+ xStatus +'</td>';
+        str += '<td style="text-align: center;">'+ doc.data().AuctionPrice +' เหรียญ</td></tr>';
+        i++;
+    });
+    str += '</tbody></table></div>';
+    str += '<div class="clr"></div>';
+    $("#DisplayGiftAuction").html(str);
   });
 }

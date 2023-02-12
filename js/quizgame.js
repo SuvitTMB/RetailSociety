@@ -729,11 +729,11 @@ function ClearQuiz() {
     $("#DisplayChoice").html(str2);
   } else {
     LastScore = 0;
-    $("#DisplayQuestion").html("<div class='txt-qq'>คุณได้เข้าร่วมกิจกรรมนี้ไปแล้วในวันนี้<div>คุณทำคะแนนได้ : <span class='txt-qqq'>"+ LastScore +"</span> คะแนน</div></div>");
+    $("#DisplayQuestion").html("<div class='txt-qq'>คุณได้เข้าร่วมกิจกรรมนี้ไปแล้วในวันนี้<div class='font13black'>คุณทำคะแนนได้ : <span class='txt-qqq'>"+ LastScore +"</span> คะแนน</div></div>");
     var str2 = "";
     str2 += '<center><div><img src="./img/false.png" width="100px;"></div>';
     str2 += '<div class="txt-qq" style="color:#f68b1f;">เสียใจด้วยน้า<div>';
-    str2 += '<div style="padding:10px 0;color:#000000">วันนี้คุณตอบคำถามไม่ถูกต้อง</div>';
+    str2 += '<div class="font13black" style="padding:10px 0;color:#000000; text-align:center;">วันนี้คุณตอบคำถามไม่ถูกต้อง</div>';
     str2 += '<div class="btn-t0" onclick="CloseAll()" style="margin-top;10px;"">พรุ่งนี้กลับมาเล่นกันใหม่น้า</div><br><br></center>';
     $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำคะแนนได้ "+ parseFloat(LastScore).toFixed(2) +" คะแนน</div>");
     $("#DisplayChoice").html(str2);

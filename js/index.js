@@ -27,7 +27,7 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-  */
+*/  
   main();
 });
 
@@ -127,6 +127,7 @@ function CheckMember() {
       sessionStorage.setItem("Level_Point", doc.data().Level_Point);
       sessionStorage.setItem("XP_Point", doc.data().XP_Point);
       sessionStorage.setItem("RP_Point", doc.data().RP_Point);
+      sessionStorage.setItem("LastUpdate", doc.data().LogDateTime);
       UpdatePorfile();
       if(doc.data().Level_Point==1 && doc.data().XP_Point >= 100) {
         NextLevel(2);
@@ -380,7 +381,7 @@ function WelcomePoint() {
   str += '<div class="font13" style="margin-top:10px; text-align:center; padding:5px;">ยินดีด้วยคุณได้รับเหรียญรางวัลครั้งแรก<br>จากการเข้าร่วมกิจกรรม LINE Retail Society</div>';
   str += '<div class="clr"></div>';
   str += '<div><img src="./img/coin-'+ sessionStorage.getItem("XP_Point") +'.png" style="margin-top:10px;width:100%;border-radius: 15px; background:#fff;"></div>';
-  str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:30px;">คลิกเพื่อโหลดหน้าเว็บใหม่</div>';
+  str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:30px;">คลิกเพื่อเริ่มต้นการใช้งาน</div>';
   str += '<div style="height: 15px;"></div>';
   $("#BoxTimeGetPoint").html(str);      
 }
@@ -390,12 +391,12 @@ function CheckAid() {
   var str = "";
   //if(CheckFoundData==1 && sessionStorage.getItem("Aid")==null) {
   if(CheckFoundData==1) {
-    var RandomAid = [4, 3, 2, 1, 5];
+    var RandomAid = [4, 3, 2, 1, 5, 6, 7];
     var NewAid = random_item(RandomAid);
     console.log("Display Aid = "+NewAid);
     if(NewAid==1 && xLevel==0) {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ข่าวสารองค์กร</div>';
-      str += '<div><img src="./img/news-van.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div><img src=""./ad/ad-01.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
       str += '<div class="font13black" style="padding-top:5px;">เราได้เตรียมข่าวสารและความเคลื่อนไหวภายในองค์กร ให้คุณได้รับรู้ถึงที่ตลอดเวลา และทุก ๅ การอ่านของคุณจะได้รับเหรียญรางวัล สำหรับการสะสมไว้เล่นกิจกรรมกับเรา LINE Retail Society</div>';
       str += '<div class="clr"></div>';
@@ -404,7 +405,7 @@ function CheckAid() {
       str += '<div style="height: 15px;"></div>';
     } else if(NewAid==2 && xLevel==0) { 
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ระบบงาน LINE Retail Society</div>';
-      str += '<div><img src="./img/diggi-media.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div><img src="./ad/ad-03.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
       str += '<div class="font13black" style="padding-top:5px;">เราได้จัดหมวดหมู่ของระบบงานทั้งหมดของ LINE Retail Socitey มาไว้ที่เว็บไซต์นี้ทั้งหมดแล้ว คุณสามารถเข้าสู่ระบบงานได้จากเว็บไซต์นี้</div>';
       str += '<div class="clr"></div>';
@@ -413,7 +414,7 @@ function CheckAid() {
       str += '<div style="height: 15px;"></div>';
     } else if(NewAid==3 && xLevel==0) { 
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ภารกิจเก็บสะสมเหรียญรางวัล</div>';
-      str += '<div><img src="./img/gotocoin.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div><img src="./ad/ad-05.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
       str += '<div class="font13black" style="padding-top:5px;">นอกจากการเก็บเหรียญจากการอ่านข่าวสารองค์กรแล้ว เราได้จัดเตรียมกิจกรรมให้เพื่อน ๆ เข้ามาเก็บสะสมเหรียญได้ทุก ๆ วันเลย และให้เพื่อน ๆ ได้ทบทวนความรู้ของตัวเองอยู่ตลอดเวลาด้วยนะ</div>';
       str += '<div class="clr"></div>';
@@ -422,7 +423,7 @@ function CheckAid() {
       str += '<div style="height: 15px;"></div>';
     } else if(NewAid==4 && xLevel==0) { 
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ห้องคำถาม-คำตอบ</div>';
-      str += '<div><img src="./img/work_work_work.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div><img src="./ad/ad-04.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
       str += '<div class="font13black" style="padding-top:5px;">หากคุณมีคำถาม หรือข้อสงสัย คุณสามารถที่จะเข้ามาตั้งคำถามในห้องคำถาม-คำตอบได้ และหรือคุณเป็นผู้ที่เกี่ยวข้องกับคำถามเหล่านั้นก็สามารถเข้ามาตอบให้เพื่อน ๆ ได้รับทราบก็ได้เช่นกันน้า</div>';
       str += '<div class="clr"></div>';
@@ -431,11 +432,29 @@ function CheckAid() {
       str += '<div style="height: 15px;"></div>';
     } else if(NewAid==5 && xLevel==0) { 
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>แลกของรางวัล</div>';
-      str += '<div><img src="./img/gift2023.gif" style="padding-top:8px;width:100%;"></div>';
+      str += '<div><img src="./ad/ad-02.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
       str += '<div class="font13black" style="padding-top:5px;">ไม่ว่าคุณได้มีเหรียญรางวัลมากหรือน้อย คุณก็สามารถเลือกความต้องการของคุณเองได้ เพียง 5 เหรียญรางวัล คุณอาจจะได้รับรางวัลใหญ่ ๆ หรือเพื่อให้มั่นใจก็เก็บเหรียญรางวัลให้พอกับจำนวนที่จะใช้แลกก็ได้นะ</div>';
       str += '<div class="clr"></div>';
       str += '<div class="btn-t2" onclick="GotoRewards()" style="margin-top:20px;">ไปแลกของรางวัล</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    } else if(NewAid==6 && xLevel==0) { 
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ประมูลสินค้า</div>';
+      str += '<div><img src="./ad/ad-02.jpg" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13black" style="padding-top:5px;">เมื่อคุณได้สะสมเหรียญรางวัลได้มากพอแล้ว อีกหนึ่งวิธีที่คุณจะได้รับของรางวัลจากเราไปก็คือการเข้าร่วมกิจกรรมการประมูลของรางวัล หากคุณเป็นผู้ประมูลสูงสุดก็รับของรางวัลชิ้นนั้นไปเลย</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoAuction()" style="margin-top:20px;">ไปประมูลสินค้ากัน</div>';
+      str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
+      str += '<div style="height: 15px;"></div>';
+    } else if(NewAid==7 && xLevel==0) { 
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>Game Zone</div>';
+      str += '<div><img src="./ad/ad-07.jpg" style="padding-top:8px;width:100%;"></div>';
+      str += '<div style="margin-top:15px;">';
+      str += '<div class="font13black" style="padding-top:5px;">ในทุก ๆ วันการเก็บคะแนนเป็นสิ่งสำคัญที่เราจะนำมาเล่นในกิจกรรมต่าง ๆ ของเรา เราขอแนะนำให้เข้าร่วมเก็บเหรียญรางวัลจาก Game Zone ที่นี่ได้ในทุก ๆ วันเลย</div>';
+      str += '<div class="clr"></div>';
+      str += '<div class="btn-t2" onclick="GotoAuction()" style="margin-top:20px;">ไปประมูลสินค้ากัน</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
       str += '<div style="height: 15px;"></div>';
     }
@@ -482,9 +501,12 @@ function checkZero(data){
   return data;
 }
 
+function GotoAuction() {
+  window.location.href = 'intro-game4.html';
+}
 
 function GotoWeb() {
-  window.location.href = 'home.html';
+  window.location.href = 'intro.html';
 }
 
 function GotoNews() {

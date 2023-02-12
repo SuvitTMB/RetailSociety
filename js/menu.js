@@ -52,7 +52,8 @@ function OpenPopMenu() {
     xLine += '<div style="margin:20px 0 20px 0;">';
     xLine += '<div class="container" style="width:100%;padding:5px;">';
     xLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-    xLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+    //xLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+    xLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>'+ sessionStorage.getItem("LineName") +'<br>Login : '+ sessionStorage.getItem("LastUpdate") +'</div>';
     xLine += '</div></div><div class="clr"></div>';
     xLine += '<div style="height: 70px;background-color: #fff;">';
     xLine += '<div class="box-reward1"> </div>';
@@ -66,8 +67,8 @@ function OpenPopMenu() {
     xLine += '<div class="clr"style="height:10px;"></div>';
     //xLine += '<div class="btn-t3" style="margin-top:0px; background-color: #fff;">เมนูกิจกรรมที่เกี่ยวข้อง</div>';
     xLine += '<div style="width:95%; margin:0px auto 20px auto; height: 200px;">';
-    xLine += '<div class="box-menu-game" onclick="window.location.href=\'groupnews.html#ttbNews\';" style="height:95px;"><img src="./icon/icon-news.png" style="width:60px;"><div class="text-team1">ข่าวสารองค์กร</div></div>';
-    xLine += '<div class="box-menu-game" onclick="window.location.href=\'home.html#menusystem\';" style="height:95px;"><img src="./icon/icon-app.png" style="width:60px;"><div class="text-team1">ระบบงานของ lINE</div></div>';
+    xLine += '<div class="box-menu-game" onclick="window.location.href=\'groupnews.html#ttbNews\';" style="height:95px;"><img src="./icon/icon-news.png" style="width:60px;"><div class="text-team1">ข่าวสารธนาคาร</div></div>';
+    xLine += '<div class="box-menu-game" onclick="window.location.href=\'home.html#menusystem\';" style="height:95px;"><img src="./icon/icon-app.png" style="width:60px;"><div class="text-team1">ระบบงานที่เกี่ยวข้อง</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'home.html#menugame\';" style="height:95px;"><img src="./icon/icon-player.png" style="width:60px;"><div class="text-team1">ภารกิจสะสมเหรียญ</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'webboard.html\';" style="height:95px;"><img src="./icon/icon-question.png" style="width:60px;"><div class="text-team1">ห้องคำถาม-คำตอบ</div></div>';
     xLine += '<div class="box-menu-game" onclick="window.location.href=\'catalog.html\';" style="height:95px;"><img src="./icon/icon-redeem.png" style="width:60px;"><div class="text-team1">แลกของรางวัล</div></div>';
@@ -83,7 +84,7 @@ function OpenPopMenu() {
 
 
     xLine += '<div class="menu-box1" onclick="window.location.href=\'intro-game4.html\';">';
-    xLine += '<div class="menu-box-img1"><img src="./icon/icon-auction.png" style="width:35px;"></div>';
+    xLine += '<div class="menu-box-img1"><img src="./icon/auction.png" style="width:35px;"></div>';
     xLine += '<div class="menu-box-text1" style="color:#0056ff;">ประมูล</div></div>';
 
 
@@ -136,7 +137,7 @@ function MyPoint() {
       yLine += '<div style="margin:10px 0 20px 0;">';
       yLine += '<div class="container" style="width:90%;padding:5px; max-width:450px;">';
       yLine += '<div style="width:95px;float: left;text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-      yLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+      yLine += '<div class="Profile-title"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>'+ sessionStorage.getItem("LastUpdate") +'</div>';
       yLine += '</div></div><div class="clr"></div>';
       $("#DisplayMember").html(yLine);  
       zLine += '<div style="height: 70px;background-color: #c2dfef; width:100%; max-width:450px; margin:auto;">';
@@ -153,7 +154,7 @@ function MyPoint() {
       xLine += '<div style="margin: -25px auto 20px auto; width: 100%; min-height:50px; max-width: 450px;">';
       xLine += '<div style="width:70%; float: left;">';
       xLine += '<div style="width:100%;"><div style="width:32%;float: left; text-align: center;"><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img"></div>';
-      xLine += '<div class="Profile-title" style="padding-top:5px;"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>Phone : '+ sessionStorage.getItem("EmpPhone_Society") +'</div>';
+      xLine += '<div class="Profile-title" style="padding-top:5px;"><b>'+ sessionStorage.getItem("EmpName_Society") +'</b><br>LineName : '+ sessionStorage.getItem("LineName") +'<br>'+ sessionStorage.getItem("LastUpdate") +'</div>';
       xLine += '</div></div>';
       xLine += '<div style="width:28%; float: left; background-color :#c0d8fc; height:50px; text-align: center; border-radius: 8px;margin-top:5px;">';
       xLine += '<div class="box-reward" style="width:100%; padding-top:4px; font-size: 10px;"><div class="XPpoint">'+ parseFloat(sessionStorage.getItem("RP_Point")).toFixed(2) +'<img src="./icon/coin.png" class="coin-img"></div>เหรียญรางวัล</div>';
@@ -183,7 +184,7 @@ function MenuFooter() {
 
   str += '<div class="menu-box1" onclick="window.location.href=\'groupnews.html#ttbNews\';">';
   str += '<div class="menu-box-img1"><img src="./icon/news-01.png" style="width:35px;"></div>';
-  str += '<div class="menu-box-text1">ข่าวองค์กร</div></div>';
+  str += '<div class="menu-box-text1">ข่าวธนาคาร</div></div>';
 
   str += '<div class="menu-box1" onclick="window.location.href=\'home.html#menugame\';">';
   str += '<div class="menu-box-img1"><img src="./icon/icon-03.png" style="width:35px;"></div>';
@@ -229,6 +230,12 @@ function MenuFooter() {
   str += '<div class="menu-box1" onclick="window.location.href=\'gamezone.html\';">';
   str += '<div class="menu-box-img1"><img src="./icon/icon-games.png" style="width:35px;"></div>';
   str += '<div class="menu-box-text1">Game Zone</div></div>';
+
+  str += '<div class="menu-box1" onclick="window.location.href=\'intro-game4.html\';">';
+  str += '<div class="menu-box-img1"><img src="./icon/auction.png" style="width:35px;"></div>';
+  str += '<div class="menu-box-text1">ประมูล</div></div>';
+
+
   str += '</div></div></div></div></div>';
   str += '<div class="container d-md-flex py-4"><div class="mr-md-auto text-center text-md-left">';
   str += '<div class="copyright" style="font-size: 12px; font-weight: 600;">@<span>LINE Retail Society</span></div></div></div>';

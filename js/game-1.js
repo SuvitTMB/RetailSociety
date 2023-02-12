@@ -79,7 +79,7 @@ function CheckUserQuiz() {
     if(Eid=="") {
       CheckAddEdit = 1;
       document.getElementById("id04").style.display = "block";
-      $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ffffff;'>กิจกรรมประจำวันที่ "+today);  
+      $("#ToDayDate").html("<div class='font13black' style='margin:0px auto 25px auto; color:#ffffff; font-weight:600;'>กิจกรรมประจำวันที่ "+today);  
       $("#Displayintromessage").html(intromessage);
       $("#DisplayWarning").html(intwarning);
       BoxNumber();
@@ -307,7 +307,7 @@ function TrueGame() {
     textDisplayPoint += "<div class='btn-t3' style='margin-top:20px;'><b>คุณได้รับเหรียญรางวัล</b></div>";
     textDisplayPoint += "<div><img src='./img/coin-"+ xCoin +".png' style='max-width: 100%; margin-bottom: 10px;background:#e6ecfa; border-radius:10px;'></div>";
     textDisplayPoint += "<div class='text-false'>คุณชนะการแข่งขันในรอบนนี้</div>";
-    textDisplayPoint += "<div style='line-height:1.2;'>วันนี้คุณได้รับ <b>"+ xCoin +" เหรียญรางวัล</b><br>แล้วกลับมาเล่นใหม่ในวันพรุ่งนี้น้า</div>";
+    textDisplayPoint += "<div class='font12black' style='text-align:center;'>วันนี้คุณได้รับ <b>"+ xCoin +" เหรียญรางวัล</b><br>แล้วกลับมาเล่นใหม่ในวันพรุ่งนี้น้า</div>";
     $("#DisplayEndScore").html(textDisplayPoint);
     document.getElementById("id02").style.display = "block";
     SaveDate();
@@ -370,113 +370,6 @@ function SaveDate() {
     document.getElementById("Show1").style.display = "block";
     OpenPopMenu();
   }
-/*
-      GroupQuiz : xHeader,
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID_Society"),
-      EmpName : sessionStorage.getItem("EmpName_Society"),
-      QuizDate : today,
-      RefID : "", //add
-      QuizType : CheckType,
-      Quetion :  "",
-      Answer : 0,
-      AnswerTxt : "", //add
-      ResultQuiz : typeResult,
-      PointIN : 0 ,
-      ChangePoint : 0,
-      Rewards : 0,
-      DateRewards : "",
-*/
-
-
-
-
-/*
-      GroupQuiz : xHeader,
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID_Society"),
-      EmpName : sessionStorage.getItem("EmpName_Society"),
-      TypeSelect : sTypeSelect,
-      LastScore : YourScore,
-      PointIN : YourScore,
-      PointOUT : YourScore,
-      Rewards : 0,
-      TimeStamp : 0,
-      DateRewards : "",
-      QuizDate : today
-    dbttbQuiz.add({
-      GroupQuiz : "Extra Point Touch : "+today,
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID_Society"),
-      EmpName : sessionStorage.getItem("EmpName_Society"),
-      QuizDate : today,
-      RefID : "", //add
-      QuizType : 0,
-      Quetion :  "",
-      Answer : "",
-      AnswerTxt : "", //add
-      ResultQuiz : "",
-      ChangePoint : 0,
-      PointIN : parseFloat(NewRandom),
-      PointOUT : parseFloat(NewRandom),
-      LastScore : 0,
-      Rewards : 0,
-      DateRewards : "",
-      DateRegister : dateString,
-      TimeStamp : TimeStampDate
-    });
-    sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(NewRandom));
-    sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(NewRandom));
-    dbttbMember.doc(EidScorePoint).update({
-      TimeGame4 : parseFloat(sUserSumTime)+1,
-      UserSumTime : parseFloat(sUserSumTime)+1,
-      UserSumFree : sUserSumFree + 1,
-      //UserSumTrue : sUserSumTrue + 1,
-      TotalGame4 : parseFloat(sTotalGame4) + parseFloat(NewRandom),
-      TotalScore : parseFloat(sTotalScore) + parseFloat(NewRandom),
-      LastUpdate : dateString,
-      XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
-      RP_Point : parseFloat(sessionStorage.getItem("RP_Point"))
-    });
-    dbttbnewsLog.add({
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID_Society"),
-      EmpName : sessionStorage.getItem("EmpName_Society"),
-      RefID : EidScorePoint,
-      NewsGroup : 0,
-      HeadNews : "QuizGame-4",
-      SubNews : xHeader,
-      GetPoint : parseFloat(NewRandom),
-      LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
-      LogDate : dateString,
-      LogTimeStamp : TimeStampDate
-    });
-    OpenPopMenu();
-    var str1 = "";
-    str1 += '<div class="text-team">ดีใจด้วยน้า<br>วันนี้คุณไม่ต้องตอบคำถาม<div>';
-    str1 += '<div><img src="./img/congratulations@.gif" style="margin-top:25px;width:100%;border-radius: 12px;"></div>';
-    str1 += '<div class="text-team" style="padding-top:15px;font-weight:600;">วันนี้คุณได้รับ '+parseFloat(NewRandom).toFixed(2)+' คะแนน</div>';
-    $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำคะแนนได้ "+ parseFloat(NewRandom).toFixed(2) +" คะแนน</div>");
-    $("#ShowEndPoint").html(str1);
-    //var str = "";
-    //str += 'คุณตอบคำถามประจำวันนี้ไปเรียบร้อยแล้ว<br>';
-    //str += 'วันนี้คุณทำคะแนนได้ <font color="#0056ff"><b>'+parseFloat(NewRandom).toFixed(2)+'</b></font> คะแนน';
-    //$("#ShowPointToDay").html(str);  
-
-    document.getElementById("QuizComplete").style.display = "block";
-    document.getElementById("DiaplayBox").style.display = "none";
-    document.getElementById("id04").style.display = "block";
-  }
-*/
-
 }
 
 

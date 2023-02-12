@@ -223,8 +223,8 @@ function SaveDate() {
     if(xWin==0) {
       dbttbMember.doc(EidMember).update({
         RockTime : parseFloat(sRockTime)+1,
-        //RockWin : parseFloat(sRockWin)+parseFloat(xWin),
         RockLost : parseFloat(sRockLost)+parseFloat(xLost),
+        //RockWin : parseFloat(sRockWin)+parseFloat(xWin),
         //RockCoin : parseFloat(sRockCoin)+parseFloat(xCoin),
         //XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
         //RP_Point : parseFloat(sessionStorage.getItem("RP_Point")),

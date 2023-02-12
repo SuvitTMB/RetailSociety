@@ -7,7 +7,7 @@ today = dd + '/' + mm + '/' + yyyy;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
-  $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ff0000;'>กิจกรรมประจำวันที่ "+today);  
+  $("#ToDayDate").html("<div class='font13black' style='margin:0px auto 25px auto; color:#ff0000; font-weight:600;'>กิจกรรมประจำวันที่ "+today);  
   Connect_DB();
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbMember = firebase.firestore().collection("ttbMember");
