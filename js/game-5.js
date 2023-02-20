@@ -22,7 +22,7 @@ $(document).ready(function () {
   Connect_DB();
   dbttbMember = firebase.firestore().collection("ttbMember");
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
-  dbttbGameLucky = firebase.firestore().collection("ttbGameRock");
+  dbttbGameRock = firebase.firestore().collection("ttbGameRock");
   dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   CalPoint();
   CheckUserScore();
@@ -49,7 +49,7 @@ function CheckUserScore() {
 
 function CheckUserQuiz() {
   var str = "";
-  dbttbGameLucky.where('QuizDate','==',today)
+  dbttbGameRock.where('QuizDate','==',today)
   .where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
@@ -75,7 +75,7 @@ function CheckUserQuiz() {
 function AddNewUser() {
   if(CheckAddEdit==1) {
     var TimeStampDate = "";
-    dbttbGameLucky.add({
+    dbttbGameRock.add({
       GroupQuiz : xHeader,
       LineID : sessionStorage.getItem("LineID"),
       LineName : sessionStorage.getItem("LineName"),
@@ -105,11 +105,12 @@ function AddNewUser() {
 
 
 function CheckEid() {
-  dbttbGameLucky.where('QuizDate','==',today)
+  dbttbGameRock.where('QuizDate','==',today)
   .where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       EidGame = doc.id;
+      console.log("EidGame="+EidGame);
     });
   });
 }
@@ -126,10 +127,7 @@ function CheckClick(userChoice) {
   document.getElementById('Loading1').style.display='block';
   const RandomNumber = drinks[Math.floor(Math.random() * drinks.length)];
   compChoice = RandomNumber;
-
   $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand gray" style="width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
-
-
   if(compChoice=="rock") {
     $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
     console.log("ฆ้อน");
@@ -156,29 +154,29 @@ function CheckClick(userChoice) {
     NewGame();
   }
   if (userChoice === 'rock' && compChoice === 'paper') {
-    result = 'ฆ้อน แพ้ กระดาษ<br>เสียใจด้วยคุณแพ้';
+    result = 'กระดาษ ชนะ ฆ้อน<br>เสียใจด้วยคุณแพ้';
     xResult = 3;
   }
   if (userChoice === 'rock' && compChoice === 'scissors') {
-    result = 'ฆ้อน ชนะ กรรไกร<br>ยินดีด้วยคุณชนะ';
+    result = 'กรรไกร แพ้ ฆ้อน<br>ยินดีด้วยคุณชนะ';
     xResult = 1;
     xWin = xCoin;
   }
   if (userChoice === 'paper' && compChoice === 'rock') {
-    result = 'กระดาษ ชนะ ฆ้อน<br>ยินดีด้วยคุณชนะ';
+    result = 'ฆ้อน แพ้ กระดาษ<br>ยินดีด้วยคุณชนะ';
     xResult = 1;
     xWin = xCoin;
   }
   if (userChoice === 'paper' && compChoice === 'scissors') {
-    result = 'กระดาษ แพ้ กรรไกร<br>เสียใจด้วยคุณแพ้';
+    result = 'กรรไกร ชนะ กระดาษ<br>เสียใจด้วยคุณแพ้';
     xResult = 3;
   }
   if (userChoice === 'scissors' && compChoice === 'rock') {
-    result = 'กรรไกร แพ้ ฆ้อน<br>เสียใจด้วยคุณแพ้';
+    result = 'ฆ้อน ชนะ กรรไกร<br>เสียใจด้วยคุณแพ้';
     xResult = 3;
   }
   if (userChoice === 'scissors' && compChoice === 'paper') {
-    result = 'กรรไกร ชนะ กระดาษ<br>ยินดีด้วยคุณชนะ';
+    result = 'กระดาษ แพ้ กรรไกร<br>ยินดีด้วยคุณชนะ';
     xResult = 1;
     xWin = xCoin;
   }
@@ -211,7 +209,7 @@ function SaveDate() {
   NewDate();
   var TimeStampDate = Math.round(Date.now() / 1000);
   if(CheckAddEdit==1) {
-    dbttbGameLucky.doc(EidGame).update({
+    dbttbGameRock.doc(EidGame).update({
       PointOUT : parseFloat(xWin),
       LastScore : parseFloat(sessionStorage.getItem("XP_Point")),
       DateRegister : dateString,
@@ -223,7 +221,7 @@ function SaveDate() {
     if(xWin==0) {
       dbttbMember.doc(EidMember).update({
         RockTime : parseFloat(sRockTime)+1,
-        RockLost : parseFloat(sRockLost)+parseFloat(xLost),
+        RockLost : parseFloat(sRockLost)+1,
         //RockWin : parseFloat(sRockWin)+parseFloat(xWin),
         //RockCoin : parseFloat(sRockCoin)+parseFloat(xCoin),
         //XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),

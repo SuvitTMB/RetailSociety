@@ -17,9 +17,9 @@ $(document).ready(function () {
   //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
   //var sLineName = "Website";
   //var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
-  var sLineID = "Ub07e3fd6941babf0c4cd6cabfb51d728";
-  var sLineName = "ตุ๊กตุ๊ก";
-  var sLinePicture = "https://profile.line-scdn.net/0m01f9abbb7251d2d7e727969708486b63a926a2de5046";
+  //var sLineID = "Ub07e3fd6941babf0c4cd6cabfb51d728";
+  //var sLineName = "ตุ๊กตุ๊ก";
+  //var sLinePicture = "https://profile.line-scdn.net/0m01f9abbb7251d2d7e727969708486b63a926a2de5046";
   sessionStorage.setItem("LineID", sLineID);
   sessionStorage.setItem("LineName", sLineName);
   sessionStorage.setItem("LinePicture", sLinePicture);
@@ -395,8 +395,8 @@ function CheckAid() {
     var NewAid = random_item(RandomAid);
     console.log("Display Aid = "+NewAid);
     if(NewAid==1 && xLevel==0) {
-      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ข่าวสารองค์กร</div>';
-      str += '<div><img src=""./ad/ad-01.jpg" style="padding-top:8px;width:100%;"></div>';
+      str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>ข่าวสารธนาคาร</div>';
+      str += '<div><img src="./ad/ad-01.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
       str += '<div class="font13black" style="padding-top:5px;">เราได้เตรียมข่าวสารและความเคลื่อนไหวภายในองค์กร ให้คุณได้รับรู้ถึงที่ตลอดเวลา และทุก ๅ การอ่านของคุณจะได้รับเหรียญรางวัล สำหรับการสะสมไว้เล่นกิจกรรมกับเรา LINE Retail Society</div>';
       str += '<div class="clr"></div>';

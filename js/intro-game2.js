@@ -1,3 +1,5 @@
+
+//https://codepen.io/knak1030/pen/ZjdGjg
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -7,11 +9,11 @@ today = dd + '/' + mm + '/' + yyyy;
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
-  $("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ff0000;'>กิจกรรมประจำวันที่ "+today);  
+  $("#ToDayDate").html("<div class='font13black' style='margin:0px auto 25px auto; color:#ff0000;'>กิจกรรมประจำวันที่ "+today);  
   Connect_DB();
   dbGroupNews = firebase.firestore().collection("ttbheadnews");
   dbttbMember = firebase.firestore().collection("ttbMember");
-  dbttbQuiz = firebase.firestore().collection("ttbGameImage");
+  dbttbGameImage = firebase.firestore().collection("ttbGameImage");
   SelectBoxGroup('A');
   CheckUserScore();
   CheckUserQuiz();
@@ -35,8 +37,8 @@ function CheckUserScore() {
       document.getElementById('NoQuiz').style.display='block';
       document.getElementById('LoadQuiz').style.display='none';
       $("#ShowUserSumTime1").html("<div class='font15number' style='color:#f68b1f;'>"+doc.data().PictureTime+'</div><div class="ScoreGame4-text">จำนวน<br>แข่งสะสม</div>');
-      $("#ShowUserSumTime2").html("<div class='font15number' style='color:#2dcc02'>"+CalTrue.toFixed(2) +'%</div><div class="ScoreGame4-text">%<br>ตอบถูก</div>');
-      $("#ShowUserSumTime3").html("<div class='font15number' style='color:#ff0000'>"+CalFalse.toFixed(2) +'%</div><div class="ScoreGame4-text">%<br>ตอบผิด</div>');
+      $("#ShowUserSumTime2").html("<div class='font15number' style='color:#2dcc02'>"+CalTrue.toFixed(2) +'%</div><div class="ScoreGame4-text">%<br>เลือกถูก</div>');
+      $("#ShowUserSumTime3").html("<div class='font15number' style='color:#ff0000'>"+CalFalse.toFixed(2) +'%</div><div class="ScoreGame4-text">%<br>เลือกผิด</div>');
       $("#ShowUserSumTime4").html("<div class='font15number' style='color:#0056ff'>"+doc.data().PictureCoin.toFixed(2) +'</div><div class="ScoreGame4-text">เหรียญ<br>รางวัล</div>');
     });
     document.getElementById('Loading1').style.display='none';
@@ -53,7 +55,7 @@ function CheckUserScore() {
 
 function CheckUserQuiz() {
   var str0 = 0;
-  dbttbQuiz.where('QuizDate','==',today)
+  dbttbGameImage.where('QuizDate','==',today)
   .where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
@@ -85,7 +87,7 @@ function UserBoard(x) {
   var i = 0;
   var str = "";
   str += '<table class="table" style="width:95%; margin:20px auto;"><tbody>';
-  dbttbQuiz.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  dbttbGameImage.where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
   .orderBy('TimeStamp','desc')
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
@@ -103,34 +105,6 @@ function UserBoard(x) {
   });
 }
 
-/*
-function TopDayBoard(x) {
-  SelectBoxGroup(x);
-  document.getElementById('LoadingScore').style.display='block';
-  document.getElementById('UserScore').style.display='none';
-  var i = 0;
-  var str = "";
-  str += '<table class="table" style="width:95%; margin:20px auto;"><tbody>';
-  dbttbQuiz.where('QuizDate','==',today)
-  .orderBy('PointOUT','desc')
-  .orderBy('TimeStamp','desc')
-  .limit(30)
-  .get().then((snapshot)=> {
-    snapshot.forEach(doc=> {
-      str += '<tr>';
-      str += '<td class="td-center td-padding" style="width:40%;text-align:left;font-size:11px;">'+doc.data().DateRegister+'</td>';
-      str += '<td class="td-padding" style="width:45%;"><font color="#0056ff">'+doc.data().EmpName+'</font></td>';
-      str += '<td class="td-padding" style="width:15%;text-align:center;"><font color="#000"><b>'+doc.data().PointOUT+'</b></font></td>';
-      str += '</tr>';
-      i++;
-    }); 
-    str += '</tbody></table>';
-    $("#UserScore").html(str);  
-    document.getElementById('LoadingScore').style.display='none';
-    document.getElementById('UserScore').style.display='block';
-  });
-}
-*/
 
 function LeaderBoard(x) {
   SelectBoxGroup(x);
