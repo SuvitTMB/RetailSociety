@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <link href="assets/img/favicom.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <link href="assets/css/hand.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
+  <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
+
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="home.html"><span>LINE</span> Retail Society</a></h1>
+      <div class="mobile-nav-toggle d-lg-none" onclick="OpenMenu()">
+        <i class="icofont-navigation-menu"></i>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="font13F">เกมส์โซน</div>
+          <ol style="margin-top:-10px;">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="gamezone.html">เกมส์โซน</a></li>
+            <li>คำถามประจำวัน</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="blog" style="padding-top:10px;background-color: #0016ed;">
+      <div class="container">
+        <center>
+          <div class="btn-t3" style="margin-top:30px;margin-bottom: 15px;"><b>คำถามประจำวัน</b></div>
+          <div class="NameLine" id="ToDayDate"></div>
+        </center>
+        <div class="row" data-aos="fade-up">
+          <article class="entry" style="box-shadow: none;width:95%; margin:auto; text-align: center; max-width: 450px;">
+            <div class="clr"></div>
+            <div id="QuizZone">
+              <div style="padding:0px 0 10px 0;"><img src="./img/loadimg.png" width="230px;"></div>
+              <center>
+              <!--
+              <div class="col-sm-4 game2-box1" onclick="StartQuiz()" style="width:190px;font-size: 14px; color:#fff;padding:6px 25px; height:34px;float:none; margin-top:20px;">คลิกเพื่อ ... เข้าสู่คำถาม</div>
+              -->
+              <div style="color:#ffffff;margin-top:10px;">. . . . L o a d i n g . . . .<br><progress value="0" max="5" id="progressBar"></progress></div>
+              <div class="font12" style="line-height:1.2;color:#fff;margin-top:20px;"><b>คำเตือน</b><br>หากคุณออกจากหน้านี้ก่อนการแข่งขันจะสิ้นสุด<br>คุณจะไม่สามารถตอบคำถามในวันนี้ได้อีก</div>
+              </center>
+            </div>
+            <div class="clr"></div>
+
+            <div id="ShowQuiz" style="display: none;">
+              <center>
+                <div style="margin-top:10px;background:#f68b1f;padding:20px;border-radius: 10px;">
+                  <div id="DisplayTimer"></div>
+                  <!--<div id="DisplayDay"></div>-->
+                  <div id="DisplayQuestion"></div>
+                </div>
+                <div class="clr"></div>
+                <div id="DisplayChoice" style="color:#fff;margin-top:0px;"></div>
+                <div class="font12" style="color:#ffffff;margin-top:6px;">วันนี้คุณได้ทำการแข่งขันเกมส์นี้ไปแล้ว</div>
+                <div class="clr"></div>
+                <center><div class="btn-t1" style="margin-top:10px;border:1px #ffffff solid;" onclick="location.href='intro-game3.html'">ดูผลการแข่งขันของคุณ</div></center>
+              </center>
+            </div>
+
+
+
+          </article>
+        </div>
+        <div class="cls" style="height: 40px;"></div>
+      </div>
+    </section>
+  </main>
+
+
+<!--
+            <div style="margin-top:15px;">
+              <div id="computer"></div>
+              <div id="user"><div>ตัวคุณ</div></div>
+              <div id="result" class="font12" style="font-weight: 600; color:#fff;">เริ่มการแข่งขัน<br>เลือกปุ่ม ฆ้อน กระดาษ หรือ กรรไกร</div>
+              <div id="icons" style="display:block; width:210px; margin:20px auto 10px auto;">
+                <div onclick="CheckClick('rock');">
+                  <label for="rock-rock">✊</label>
+                </div>
+                <div onclick="CheckClick('paper');">
+                  <label for="rock-paper">🖐️</label>
+                </div>
+                <div onclick="CheckClick('scissors');">
+                  <label for="rock-scissors">✌</label>
+                </div>
+              </div>
+              <div id="Loading1" style="display:none; width:210px; margin:20px auto 10px auto;">
+                <img src="./img/loading1.gif" style="width:35px;">
+              </div>
+              <div id="EndGame" style="display:none; width:210px; margin:20px auto 10px auto;">
+                <div class="font12" style="color:#ffffff;">วันนี้คุณได้ทำการแข่งขันเกมส์นี้ไปแล้ว</div>
+                <div class="clr"></div>
+                <center><div class="btn-t1" style="margin-top:15px;border:1px #ffffff solid;" onclick="location.href='intro-game5.html'">ดูผลการแข่งขันของคุณ</div></center>
+                <div class="btn-t2" onclick="location.href='intro-game5.html'" style="margin:10px auto;">ดูผลการแข่งขัน</div>
+                <div class="btn-t2" onclick="location.href='gamezone.html'" style="margin:10px auto;">Game Zone</div>
+              </div>
+            <div>
+
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <center>
+          <div id="DisplayWinner"></div>
+          <div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+  </div>
+-->
+
+
+  <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <center>
+          <div id="DisplayLastScore" class="TextLastScore"></div>
+          <div class="btn-t2" onclick="CloseAll()" style="margin-top:15px; width:130px;">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div id="id02" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="background-color: #ffffff;">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <center>
+          <div id="DisplayEndScore" class="TextLastScore"></div>
+          <div style="margin-top:15px;width:130px;" class="btn-t2" onclick="CloseAll()">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div id="id03" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <div class="w3-container" style="min-height:300px;padding:24px;width:100%;text-align:center;">
+        <center>
+          <div id="DisplayExtraPoint" class="TextLastScore"></div>
+          <div class="btn-t2" onclick="CloseAll()" style="margin-top:15px;width:130px;">ปิดหน้าต่าง</div>
+        </center>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div id="menu" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4 bg-menu">
+      <div class="w3-container" style="min-height:300px;width:100%;text-align:center;padding:0px;margin-bottom: 20px;">
+        <div id="MenuSociety"></div>
+        <div style="margin-left: 5px;margin-top:15px;">
+          <div id="DisplayLink"></div>
+        </div>
+      </div>
+      <div class="clr" style="height:50px;"></div>
+    </div>
+    <div class="clr" style="height:40px;"></div>
+  </div>
+
+  <footer id="footer">
+    <div id="DisplayFooter"></div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Template Main JS File -->
+
+  <!-- Template Main JS File -->
+  <script src="js/connect.js"></script>
+  <script src="js/game-3.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
