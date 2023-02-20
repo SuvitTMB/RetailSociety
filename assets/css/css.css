@@ -484,10 +484,10 @@
   border-bottom-right-radius: 6px;
 }
 .copyright {
-  color:#fff; font-size: 13px; letter-spacing: 2px;
+  color:#fff; font-size: 13px; letter-spacing: 1px;
 }
 .font11 { 
-  padding:0px;font-size:11px;color:#555; line-height: 1.2;
+  padding:0px;font-size:12px;color:#555; line-height: 1.2;
 }
 .font12 { 
   padding:10px 6px;font-size:13px;color:#555; line-height: 1.2;
@@ -703,7 +703,7 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   text-align: left;
   background-color: transparent;
   margin: 8px;
-  padding: 8px 20px;
+  padding: 10px 20px;
   border: 2px solid lightgray;
   font-weight: normal;
   text-align: center;
@@ -713,7 +713,7 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   color:#000000;
   max-width: 350px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.1;
 }
 .quiz-choice:hover {
@@ -753,7 +753,7 @@ box-shadow: 0px 0px 6px 5px rgba(178,178,178,0.17); color:#111; height: 35px; wi
   background: #0056ff !important; border: 2px solid #ffffff !important;*/
 }
 .SelectQ {
-  font-size:13px;
+  font-size:14px;
   color:#ffffff;
   background: #f68b1f !important;
   border: 2px solid #ffffff !important;
