@@ -310,7 +310,7 @@ function ShowItem(i) {
     str += '<div class="btn-t3" style="cursor: default;margin-top:10px;background:#fff;">ทำรายการแลกสำเร็จ</div>';
     str += '<div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">';
     str += '<center><div class="icon-box iconbox-blue"><img src="./rewards/'+ xRewardsCode +'" style="width:200px;margin-top:10px;"><div class="clr"></div>';
-    str += '<div class="font13black" style="color:#0056ff;font-weight: 600;margin-top:15px;">'+ xRewardsName +'</div>';
+    str += '<div class="font13black" style="color:#0056ff;font-weight: 600;margin-top:15px;">'+ xRewardsName +'</div><div class="clr"></div>';
     str += '<div class="font12black" style="color:#f68b1f;margin:8px auto;text-align:center;">ทำรายการ : '+ dateString +'</div>';
     str += '<div class="font12black" style="color:#777;margin:8px auto;text-align:center;">ระบบได้ทำการตัดเหรียญรางวัลของคุณไปเรียบร้อยแล้ว ขอให้กดปุ่มด้านล่างเพื่อไปหมุนวงล้อกัน หากไม่กดปุ่มและออกจากหน้านี้จะหมดสิทธิ์ในการหมุนวงล้อมหาสนุกนะ</div>';
     str += '</div></div></center><div class="clr"></div>';

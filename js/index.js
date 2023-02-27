@@ -17,9 +17,9 @@ $(document).ready(function () {
   //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
   //var sLineName = "Website";
   //var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
-  //var sLineID = "Ub07e3fd6941babf0c4cd6cabfb51d728";
-  //var sLineName = "ตุ๊กตุ๊ก";
-  //var sLinePicture = "https://profile.line-scdn.net/0m01f9abbb7251d2d7e727969708486b63a926a2de5046";
+  var sLineID = "Ub07e3fd6941babf0c4cd6cabfb51d728";
+  var sLineName = "ตุ๊กตุ๊ก";
+  var sLinePicture = "https://profile.line-scdn.net/0m01f9abbb7251d2d7e727969708486b63a926a2de5046";
   sessionStorage.setItem("LineID", sLineID);
   sessionStorage.setItem("LineName", sLineName);
   sessionStorage.setItem("LinePicture", sLinePicture);
@@ -50,9 +50,6 @@ async function getUserProfile() {
   sessionStorage.setItem("LineID", profile.userId);
   sessionStorage.setItem("LineName", profile.displayName);
   sessionStorage.setItem("LinePicture", profile.pictureUrl);
-  //str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="add-profile" width="100px"></div>';
-  //str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
-  //$("#MyProfile").html(str);  
   Connect_DB();
 }
 
@@ -98,15 +95,15 @@ function CheckData() {
         sessionStorage.setItem("EmpAddress_Society", doc.data().empAddress);
         CheckMember();
       } else if(doc.data().statusconfirm==2) { 
-        location.href = "waitingpage.html";
-        //location.href = "https://liff.line.me/1655966947-KxrAqdyp";
+        //location.href = "waitingpage.html";
+        location.href = "https://liff.line.me/1657509542-3oroPan4";
       } else {
         location.href = "cancelpage.html";
       }
     });
     if(CheckFoundData==0) {
-      location.href = "registerpage.html";
-      //location.href = "https://liff.line.me/1655966947-KxrAqdyp"; 
+      //location.href = "registerpage.html";
+      location.href = "https://liff.line.me/1657509542-RMjxl0yQ"; 
     }
   });
 }
@@ -452,9 +449,9 @@ function CheckAid() {
       str += '<div class="btn-t3" style="margin-top:10px; min-width:220px; background:#fff;">เมนูแนะนำ<br>Game Zone</div>';
       str += '<div><img src="./ad/ad-07.jpg" style="padding-top:8px;width:100%;"></div>';
       str += '<div style="margin-top:15px;">';
-      str += '<div class="font13black" style="padding-top:5px;">ในทุก ๆ วันการเก็บคะแนนเป็นสิ่งสำคัญที่เราจะนำมาเล่นในกิจกรรมต่าง ๆ ของเรา เราขอแนะนำให้เข้าร่วมเก็บเหรียญรางวัลจาก Game Zone ที่นี่ได้ในทุก ๆ วันเลย</div>';
+      str += '<div class="font13black" style="padding-top:5px;">ในทุก ๆ วันการเก็บเหรียญรางวัล ป็นสิ่งสำคัญที่จะนำมาเล่นในกิจกรรมต่าง ๆ เราขอแนะนำให้คุณเข้าร่วมเก็บเหรียญรางวัลจาก Game Zone ที่นี่ได้ในทุก ๆ วันเลย</div>';
       str += '<div class="clr"></div>';
-      str += '<div class="btn-t2" onclick="GotoAuction()" style="margin-top:20px;">ไปประมูลสินค้ากัน</div>';
+      str += '<div class="btn-t2" onclick="GotoGameZone()" style="margin-top:20px;">ไป Game Zone</div>';
       str += '<div class="btn-t2" onclick="CloseAll()" style="margin-top:20px;">ปิดหน้าต่าง</div>';
       str += '<div style="height: 15px;"></div>';
     }
@@ -531,6 +528,10 @@ function GotoRewards() {
 
 function GotoProfile() {
   window.location.href = 'profile.html';
+}
+
+function GotoGameZone() {
+  window.location.href = 'gamezone.html';
 }
 
 

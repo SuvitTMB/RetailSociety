@@ -60,9 +60,6 @@ function CheckUserQuiz() {
       CheckAddEdit = 1;
       $("#ToDayDate").html("<div class='font12' style='margin:0px auto 25px auto; color:#ffffff; font-weight:600;'>กิจกรรมประจำวันที่ "+today);  
       $("#Displayintromessage").html(intwarning);
-      //$("#DisplayWarning").html(intwarning);
-      //BoxNumber();
-      //StartNumber();
       AddNewUser();
     }
   });

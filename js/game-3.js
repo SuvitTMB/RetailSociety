@@ -185,13 +185,14 @@ function GetQuestion() {
       SumQuizFalse = doc.data().SumQuizFalse;
       if(doc.data().QuizTypeQuestion=="1") {
         //$("#DisplayDay").html("<div class='txt-q'><i>คำถามประจำวันที่ : "+ today +"</i></div>");
-        $("#DisplayQuestion").html("<div class='txt-qq'>"+ doc.data().QuizQuestion +" | "+doc.data().QuizAnswer+"</div>");
+        //$("#DisplayQuestion").html("<div class='txt-qq'>"+ doc.data().QuizQuestion +" | "+doc.data().QuizAnswer+"</div>");
+        $("#DisplayQuestion").html("<div class='txt-qq'>"+ doc.data().QuizQuestion +"</div>");
         EQuizForm += "<div style='margin-top:20px;'></div><center>";
         EQuizForm += "<div class='quiz-choice' onclick='ClickChoice(1,\""+ doc.data().QuizChoice1 +"\")' id='answer1'><input type='radio'>"+ doc.data().QuizChoice1 +"</div>";
         EQuizForm += "<div class='quiz-choice' onclick='ClickChoice(2,\""+ doc.data().QuizChoice2 +"\")' id='answer2'><input type='radio'>"+ doc.data().QuizChoice2 +"</div>";
         EQuizForm += "<div class='quiz-choice' onclick='ClickChoice(3,\""+ doc.data().QuizChoice3 +"\")' id='answer3'><input type='radio'>"+ doc.data().QuizChoice3 +"</div>";
         EQuizForm += "<div class='quiz-choice' onclick='ClickChoice(4,\""+ doc.data().QuizChoice4 +"\")' id='answer4'><input type='radio'>"+ doc.data().QuizChoice4 +"</div>";
-        EQuizForm += "<div id='SubmitAns' class='btn-t0' onclick='SendAnswer()'>ส่งคำตอบ</div><br><br><br>";
+        EQuizForm += "<div id='SubmitAns' class='btn-t0' onclick='SendAnswer()' style='margin-top:10px;'>ส่งคำตอบ</div><br><br><br>";
         EQuizForm += "</center>";
       } else if(doc.data().QuizTypeQuestion=="2") {
         //$("#DisplayDay").html("<div class='txt-q'><i>คำถามประจำวันที่ : "+ doc.data().QuizDate +"</i></div>");
@@ -430,7 +431,6 @@ function SaveData() {
 
 function FalseGame() {
     xLost = 1;
-    //if(RoundNumber!=3) {
     var textDisplayPoint = "";
     $("#DisplayWarning").html(cleararray);
     $("#DisplayMessage").val(cleararray);
@@ -445,9 +445,8 @@ function FalseGame() {
     textmessage="เสียใจด้วยน้า พรุ่งนี้มาเล่นกันใหม่";
     $("#DisplayMessage").html(textmessage);
     $("#DisplayLastScore").html(textDisplayPoint);
+    document.getElementById("MessageEnd").style.display = "block";
     document.getElementById("id01").style.display = "block";
-    //SaveData();
-  //}
 }
 
 function TrueGame() {
@@ -457,8 +456,6 @@ function TrueGame() {
     $("#DisplayWarning").html(cleararray);
     $("#Displayintromessage").val(cleararray);
     $("#Displayintromessage").html(cleararray);
-    //DisplayRound();
-    //if(ScorePoint<3) { FalseGame(); }
     textmessage="ยินดีด้วยคุณตอบคำถามได้ถูกต้อง";
     $("#DisplayMessage").val(cleararray);
     $("#DisplayMessage").html(textmessage);
@@ -468,10 +465,9 @@ function TrueGame() {
     textDisplayPoint += "<div class='text-false'>คุณตอบคำถามถูกในรอบนนี้</div>";
     textDisplayPoint += "<div class='font12black' style='text-align:center;'>วันนี้คุณได้รับ <b>"+ xCoin +" เหรียญรางวัล</b><br>แล้วกลับมาเล่นใหม่ในวันพรุ่งนี้น้า</div>";
     $("#DisplayEndScore").html(textDisplayPoint);
+    document.getElementById("MessageEnd").style.display = "block";
     document.getElementById("id02").style.display = "block";
-    //SaveData();
 }
-
 
 
 function SaveQuestion() { 
@@ -497,8 +493,6 @@ function SaveQuestion() {
 }
 
 
-
-
 function ClearQuiz() {
   var a = "";
   clearInterval(counter);
@@ -512,13 +506,9 @@ function ClearQuiz() {
     var str1 = "";
     var str2 = "";
     LastScore = YourScore;
-    $("#DisplayQuestion").html("<div class='txt-qq'>ยินดีด้วยคุณตอบคำถามได้ถูกต้อง<br>คุณทำคะแนนได้ "+ LastScore +" คะแนน</div>");
+    $("#DisplayQuestion").html("<div class='txt-qq'>ยินดีด้วยคุณตอบคำถามได้ถูกต้อง<br>คุณทำเหรียญรางวัลได้ "+ LastScore +" เหรียญรางวัล</div>");
     str2 += '<div><br><br><img src="./img/true.png" width="70px;"></div>';
-    //str2 += '<div class="txt-qq" style="color:#ffffff;"><b>ยินดีด้วยคุณตอบคำถามได้ถูกต้อง</b></div>';
-    //str2 += '<div style="padding:10px 0;color:#f68b1f;font-size:13px; font-weight:600;">คุณสามารถเปลี่ยนคะแนนที่ได้รับได้ใหม่<br>โดยคุณอาจจะได้รับคะแนนที่ <b>เพิ่มขึ้น</b> หรือ <b>ลดลง</b> ก็ได้</div>';
-    //str2 += '<div class="btn-t2-no" onclick="ChangeNow()">เลือกลุ้นคะแนน</div><div class="btn-t2-ok" onclick="NoChangeNow()">เลือกรับ 1 คะแนน</div>';
-    //str2 += '<div style="padding:15px 10px;font-weight:600;">ช่วงคะแนนใหม่ที่จะได้<br>อยู่ระหว่าง 0.3 - 1.70 คะแนน<br>คุณต้องรู้จักการบริหารความเสี่ยงด้วยน้า</div><br><br>';
-    $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำคะแนนได้ "+ parseFloat(LastScore).toFixed(2) +" คะแนน</div>");
+    $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำเหรียญรางวัลได้ "+ parseFloat(LastScore).toFixed(2) +" เหรียญรางวัล</div>");
     $("#DisplayChoice").html(str2);
   } else {
     LastScore = 0;
@@ -526,32 +516,10 @@ function ClearQuiz() {
     $("#DisplayQuestion").html("<div class='txt-qq'>วันนี้คุณตอบคำถามไม่ถูกต้อง<div class='font13black' style='color:#fff;'>คุณไม่ได้รับเหรียญรางวัล</div></div>");
     str2 += '<center><div><br><img src="./img/false.png" width="100px;"></div>';
     str2 += '<div class="txt-qq" style="color:#fff;margin-top:8px;">เสียใจด้วยน้า<div></center>';
-    //str2 += '<div class="font13black" style="padding:10px 0;color:#fff; text-align:center;">วันนี้คุณตอบคำถามไม่ถูกต้อง</div>';
-    //str2 += '<div class="btn-t0" onclick="CloseAll()" style="margin-top;10px;"">พรุ่งนี้กลับมาเล่นกันใหม่น้า</div><br><br>';
-    $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำคะแนนได้ "+ parseFloat(LastScore).toFixed(2) +" คะแนน</div>");
+    $("#DisplayMyScore").html("<div class='BoxScoreCard'>วันนี้คุณทำเหรียญรางวัลได้ "+ parseFloat(LastScore).toFixed(2) +" เหรียญรางวัล</div>");
     $("#DisplayChoice").html(str2);
-/*
-    var TimeStampDate = Math.round(Date.now() / 1000);
-    dbttbnewsLog.add({
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : sessionStorage.getItem("EmpID_Society"),
-      EmpName : sessionStorage.getItem("EmpName_Society"),
-      RefID : EidScorePoint,
-      NewsGroup : 0,
-      HeadNews : "QuizGame-4",
-      SubNews : xHeader,
-      GetPoint : 0,
-      LastPoint : parseFloat(sessionStorage.getItem("XP_Point")),
-      LogDate : dateString,
-      LogTimeStamp : TimeStampDate
-    });
-    OpenPopMenu();
-*/
   }  
 }
-
 
 
 function NewDate() {

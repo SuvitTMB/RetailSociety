@@ -57,14 +57,6 @@ function CheckUserQuiz() {
     });
     if(EidGame=="") {
       CheckAddEdit = 1;
-      //document.getElementById("id04").style.display = "block";
-      //$("#ToDayDate").html("<div style='margin:0px auto 25px auto; font-size:13px; color:#ffffff;'>กิจกรรมประจำวันที่ "+today);  
-      //$("#Displayintromessage").html(intromessage);
-      //$("#DisplayWarning").html(intwarning);
-      //BoxNumber();
-      //StartNumber();
-
-
       AddNewUser();
     }
   });
@@ -99,6 +91,7 @@ function AddNewUser() {
       TypeSelect : sTypeSelect,
       TimeStamp : 0
     });
+    //console.log("เพิ่มข้อมูลใหม่");
     CheckEid();
   }
 }
@@ -107,10 +100,14 @@ function AddNewUser() {
 function CheckEid() {
   dbttbGameRock.where('QuizDate','==',today)
   .where('EmpID','==',sessionStorage.getItem("EmpID_Society"))
+  .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       EidGame = doc.id;
-      console.log("EidGame="+EidGame);
+      //console.log("เช็ค id ="+EidGame);result
+      document.getElementById('Loading2').style.display='none';
+      document.getElementById('result').style.display='block';
+      document.getElementById('icons').style.display='block';
     });
   });
 }
@@ -121,6 +118,8 @@ var xResult = 0;
 var xScorePoint = 0;
 var drinks = [ "rock","paper","scissors"];
 function CheckClick(userChoice) {
+  if(EidGame=="") { CheckEid(); }
+  //alert(EidGame);
   var result = "";
   var compChoice= "";
   document.getElementById('icons').style.display='none';
@@ -130,23 +129,23 @@ function CheckClick(userChoice) {
   $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand gray" style="width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
   if(compChoice=="rock") {
     $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-rock.png" style="width:100%;"></div></div>');
-    console.log("ฆ้อน");
+    //console.log("ฆ้อน");
   } else if(compChoice=="paper") { 
     $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-paper.png" style="width:100%;"></div></div>');
-    console.log("กระดาษ");
+    //console.log("กระดาษ");
   } else if(compChoice=="scissors") { 
     $("#computer").html('<div style="width:50%;float: left;"><div class="font13N">คอมพิวเตอร์</div><div class="hand" style="float: left;width:100%;"><img src="./icon/com-scissors.png" style="width:100%;"></div></div>');
-    console.log("กรรไกร");
+    //console.log("กรรไกร");
   }
   if(userChoice=="rock") {
     $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1" style="float: left;width:100%;"><img src="./icon/user-rock.png" style="width:100%;"></div></div>');
-    console.log("ฆ้อน");
+    //console.log("ฆ้อน");
   } else if(userChoice=="paper") { 
     $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1" style="float: left;width:100%;"><img src="./icon/user-paper.png" style="width:100%;"></div></div>');
-    console.log("กระดาษ");
+    //console.log("กระดาษ");
   } else if(userChoice=="scissors") { 
     $("#user").html('<div style="width:50%;float: left;"><div class="font13N">ตัวคุณ</div><div class="hand1" style="float: left;width:100%;"><img src="./icon/user-scissors.png" style="width:100%;"></div></div>');
-    console.log("กรรไกร");
+    //console.log("กรรไกร");
   }
   if (userChoice === compChoice) {
     result = 'เสมอกัน<br>คลิกเลือกใหม่อีกครั้ง';
@@ -180,7 +179,7 @@ function CheckClick(userChoice) {
     xResult = 1;
     xWin = xCoin;
   }
-  console.log("xResult = "+xResult);
+  //console.log("xResult = "+xResult);
   if(xResult==1) {
     var str = "";
     str += "<div class='btn-t3' style='margin-top:20px;'><b>คุณได้รับเหรียญรางวัล</b></div>";
@@ -217,15 +216,11 @@ function SaveDate() {
     });
     sessionStorage.setItem("XP_Point", parseFloat(sessionStorage.getItem("XP_Point"))+parseFloat(xWin));
     sessionStorage.setItem("RP_Point", parseFloat(sessionStorage.getItem("RP_Point"))+parseFloat(xWin));
-    console.log("xWin="+xWin);
+    //console.log("xWin="+xWin);
     if(xWin==0) {
       dbttbMember.doc(EidMember).update({
         RockTime : parseFloat(sRockTime)+1,
         RockLost : parseFloat(sRockLost)+1,
-        //RockWin : parseFloat(sRockWin)+parseFloat(xWin),
-        //RockCoin : parseFloat(sRockCoin)+parseFloat(xCoin),
-        //XP_Point : parseFloat(sessionStorage.getItem("XP_Point")),
-        //RP_Point : parseFloat(sessionStorage.getItem("RP_Point")),
         LastUpdate : dateString
       });
     } else {

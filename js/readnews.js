@@ -1,3 +1,7 @@
+var ReadNewsPoint = 1;
+var timeLeft = 60;
+
+
 var EidNews = "";
 var ReadID = "";
 var ReadGroup = "";
@@ -6,9 +10,9 @@ var ClickView = 0;
 var ClickMemo = 0;
 var ClickLike = 0;
 var xRecordNews = 0;
-var ReadNewsPoint = 1;
 var xHeadNews = "";
 var xNewsGroup = 0;
+var xResults = "";
 
 $(document).ready(function () {
   if(sessionStorage.getItem("EmpID_Society")==null) { location.href = "index.html"; }
@@ -51,7 +55,6 @@ function GetAllRead() {
   dbttbnewsRead.where('LineID','==',sessionStorage.getItem("LineID"))
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
-      //ReadMemberArr.push(doc.data().RefID);
       ReadUserArr.push({ RefID: doc.data().RefID, ReadDate: doc.data().ReadDate, ID: doc.id });
     });    
     console.log(ReadUserArr);
@@ -59,7 +62,6 @@ function GetAllRead() {
 }
 
 
-var xResults = "";
 function ShowView() {
   var str = "";
   var str1 = "";
@@ -80,6 +82,7 @@ function ShowView() {
       ClickLike = doc.data().NewsLike;
       ClickMemo = doc.data().NewsMemo;
       xRecordNews = doc.data().RecordNews;
+      timeLeft = doc.data().Timer;
       CheckUserRead();
       str2 += '<div id="DisplayShowLike"></div>';
       $("#DisplayVote").html(str2);
@@ -265,7 +268,6 @@ function GotoHome() {
 }
 
 
-var timeLeft = 60;
 var elem = document.getElementById('CountReadNews');
 var timerId = setInterval(countdown, 1000); 
 function countdown() {
