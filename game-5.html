@@ -75,8 +75,11 @@
             <div style="margin-top:15px;">
               <div id="computer"></div>
               <div id="user"><div>ตัวคุณ</div></div>
-              <div id="result" class="font12" style="font-weight: 600; color:#fff;">เริ่มการแข่งขัน<br>เลือกปุ่ม ฆ้อน กระดาษ หรือ กรรไกร</div>
-              <div id="icons" style="display:block; width:210px; margin:20px auto 10px auto;">
+              <div id="result" class="font12" style="display:none;font-weight: 600; color:#fff;">เริ่มการแข่งขัน<br>คลิกเลือกปุ่ม ฆ้อน กระดาษ หรือ กรรไกร</div>
+              <div id="Loading2" style="display:block; width:210px; margin:10px auto 10px auto;">
+                <img src="./img/loading1.gif" style="width:35px;">
+              </div>
+              <div id="icons" style="display:none; width:210px; margin:10px auto 10px auto;">
                 <div onclick="CheckClick('rock');">
                   <label for="rock-rock">✊</label>
                 </div>
@@ -87,23 +90,19 @@
                   <label for="rock-scissors">✌</label>
                 </div>
               </div>
-              <div id="Loading1" style="display:none; width:210px; margin:20px auto 10px auto;">
+              <div id="Loading1" style="display:none; width:210px; margin:10px auto 10px auto;">
                 <img src="./img/loading1.gif" style="width:35px;">
               </div>
-              <div id="EndGame" style="display:none; width:210px; margin:20px auto 10px auto;">
+              <div id="EndGame" style="display:none; width:210px; margin:10px auto 10px auto;">
                 <div class="font12" style="color:#ffffff;">วันนี้คุณได้ทำการแข่งขันเกมส์นี้ไปแล้ว</div>
                 <div class="clr"></div>
                 <center><div class="btn-t1" style="margin-top:15px;border:1px #ffffff solid;" onclick="location.href='intro-game5.html'">ดูผลการแข่งขันของคุณ</div></center>
-<!--
-                <div class="btn-t2" onclick="location.href='intro-game5.html'" style="margin:10px auto;">ดูผลการแข่งขัน</div>
-                <div class="btn-t2" onclick="location.href='gamezone.html'" style="margin:10px auto;">Game Zone</div>
--->
               </div>
             <div>
             <div class="clr"></div>
           </article>
         </div>
-        <div class="cls" style="height: 40px;"></div>
+        <div class="cls" style="height: 25px;"></div>
       </div>
     </section>
   </main>

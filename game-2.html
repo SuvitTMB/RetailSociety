@@ -87,12 +87,15 @@
   border-radius: 8px;
   border:2px solid #ffffff;
 }
-
 .textinbox {
-  position: absolute; color:#ffffff; font-size:14px; text-align: center; padding:36px 8px; width:100%;
-  line-height: 1.2; 
+  position: absolute; 
+  color:#ffffff; font-size:14px; text-align: center; padding:36px 8px; width:100%;line-height: 1.2; 
 }
+.textimg {
+  position: absolute; 
+  margin:-1px;
 
+}
 .card__off {
   cursor: default;
   background: #dc3545 !important;
@@ -163,34 +166,38 @@
     <section id="blog" class="blog" style="padding-top:10px;background-color: #0016ed;">
       <div class="container">
         <center>
-          <div class="btn-t3" style="margin-top:30px;margin-bottom: 15px;"><b>เกมส์เปิดภาพลุ้นเหรียญ</b></div>
+          <div class="btn-t3" style="margin-top:30px;margin-bottom: 5px;"><b>เกมส์เปิดภาพลุ้นเหรียญ</b></div>
           <div class="NameLine" id="ToDayDate"></div>
         </center>
-        <div class="row" data-aos="fade-up">
+        <div class="row" data-aos="fade-up" style="margin-top:-20px;">
           <article class="entry" style="box-shadow: none;width:95%; margin:auto; text-align: center; max-width: 450px;">
             <div class="clr"></div>
             <div id="Display-1" style="width:90%; margin:auto;">
               <div class="scene scene--card" onclick="OpenCard(1)">
                 <div id="Card11" class="card">
-                  <div class="textinbox">ฉลาดออม ฉลาดใช้</div>
+                  <!--<div class="textinbox">ฉลาดออม ฉลาดใช้</div>-->
+                  <div class="textimg"><img src="./ad/Fin-01.jpg" style="width:100%;border-radius: 6px;"></div>
                   <div class="card__face card__face--back"><img src="./icon/icon-03.png" style="margin-top:-180px;"></div>
                 </div>
               </div>
               <div class="scene scene--card" onclick="OpenCard(2)">
                 <div id="Card22" class="card">
-                  <div class="textinbox">รอบรู้ เรื่องกู้ยืม</div>
+                  <!--<div class="textinbox">รอบรู้ เรื่องกู้ยืม</div>-->
+                  <div class="textimg"><img src="./ad/Fin-02.jpg" style="width:100%;border-radius: 6px;"></div>
                   <div class="card__face card__face--back"><img src="./icon/icon-04.png" style="margin-top:-180px;"></div>
                 </div>
               </div>
               <div class="scene scene--card" onclick="OpenCard(3)">
                 <div id="Card33" class="card">
-                  <div class="textinbox" style="position: absolute;">ลงทุน เพื่ออนาคต</div>
-                  <div class="card__face card__face--back"><img src="./icon/icon-05.png" style="margin-top:-180px;"></div>                  
+                  <!--<div class="textinbox" style="position: absolute;">ลงทุน เพื่ออนาคต</div>-->
+                  <div class="textimg"><img src="./ad/Fin-03.jpg" style="width:100%;border-radius: 6px;"></div>
+                  <div class="card__face card__face--back"><img src="./icon/icon-05.png" style="margin-top:-180px;"></div>
                 </div>
               </div>
               <div class="scene scene--card" onclick="OpenCard(4)">
                 <div id="Card44" class="card">
-                  <div class="textinbox" style="margin-top:-5px;">มีความคุ้มครอง<br>ที่อุ่นใจ</div>
+                  <!--<div class="textinbox" style="margin-top:-5px;">มีความคุ้มครอง<br>ที่อุ่นใจ</div>-->
+                  <div class="textimg"><img src="./ad/Fin-04.jpg" style="width:100%;border-radius: 6px;"></div>
                   <div class="card__face card__face--back"><img src="./icon/icon-06.png" style="margin-top:-180px;"></div>         
                 </div>
               </div>
@@ -199,25 +206,25 @@
               <div id="Displayintromessage"></div>
             </div>
             <div id="Display-2" style="width:90%; margin:auto; display: none;">
-              <div class="scene scene--card">
+              <div class="scene scene--card" style="background: url(./ad/Fin-01.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
                 <div id="Card1" class="card card__noselected">
                   <div class="textinbox">ฉลาดออม ฉลาดใช้</div>
                   <div class="card__face card__face--back"><div id="Show-1"></div></div>
                 </div>
               </div>
-              <div class="scene scene--card">
+              <div class="scene scene--card" style="background: url(./ad/Fin-02.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
                 <div id="Card2" class="card card__noselected">
                   <div class="textinbox">รอบรู้ เรื่องกู้ยืม</div>
                   <div class="card__face card__face--back"><div id="Show-2"></div></div>
                 </div>
               </div>
-              <div class="scene scene--card">
+              <div class="scene scene--card" style="background: url(./ad/Fin-03.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
                 <div id="Card3" class="card card__noselected">
                   <div class="textinbox" style="position: absolute;">ลงทุน เพื่ออนาคต</div>
                   <div class="card__face card__face--back"><div id="Show-3"></div></div>                  
                 </div>
               </div>
-              <div class="scene scene--card">
+              <div class="scene scene--card" style="background: url(./ad/Fin-04.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
                 <div id="Card4" class="card card__noselected">
                   <div class="textinbox" style="margin-top:-5px;">มีความคุ้มครอง<br>ที่อุ่นใจ</div>
                   <div class="card__face card__face--back"><div id="Show-4"></div></div>         
